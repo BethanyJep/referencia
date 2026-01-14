@@ -124,7 +124,7 @@ function highlightText(element, searchTerm) {
     const textNodes = [];
     let node;
     
-    while (node = walker.nextNode()) {
+    while ((node = walker.nextNode()) !== null) {
         if (node.textContent.trim().length > 0) {
             textNodes.push(node);
         }
@@ -136,7 +136,7 @@ function highlightText(element, searchTerm) {
         const lowerText = text.toLowerCase();
         const index = lowerText.indexOf(searchTerm);
         
-        if (index !== -1 && textNode.parentElement.tagName !== 'SCRIPT') {
+        if (index !== -1 && textNode.parentElement && textNode.parentElement.tagName !== 'SCRIPT') {
             const before = text.substring(0, index);
             const match = text.substring(index, index + searchTerm.length);
             const after = text.substring(index + searchTerm.length);
@@ -209,7 +209,6 @@ function initializeMobileNav() {
     
     navToggle.addEventListener('click', function() {
         // Future implementation for mobile menu if needed
-        console.log('Mobile navigation toggle clicked');
     });
 }
 
@@ -329,6 +328,4 @@ function addKeyboardShortcutsHint() {
 // Initialize keyboard shortcuts hint
 addKeyboardShortcutsHint();
 
-// Log initialization
-console.log('Referencia - AI & LLM Reference Guide initialized successfully!');
-console.log('Keyboard shortcuts: "/" to focus search, "Escape" to clear search');
+// Initialization complete
