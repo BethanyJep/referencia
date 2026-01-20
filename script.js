@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSearch();
     initializeSmoothScroll();
     initializeMobileNav();
+    initializeLessonNav();
 });
 
 // Accordion Implementation
@@ -209,6 +210,53 @@ function initializeMobileNav() {
     
     navToggle.addEventListener('click', function() {
         // Future implementation for mobile menu if needed
+    });
+}
+
+// Lesson Navigation Highlighting
+function initializeLessonNav() {
+    const lessonNavLinks = document.querySelectorAll('.lesson-nav-link');
+    const sections = document.querySelectorAll('.lesson-section');
+    
+    if (lessonNavLinks.length === 0) return;
+    
+    // Highlight nav based on scroll position
+    window.addEventListener('scroll', () => {
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.pageYOffset >= sectionTop - 250) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        lessonNavLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+    
+    // Smooth scroll to sections
+    lessonNavLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
+                const offset = 200; // Account for sticky header + nav
+                const targetPosition = targetSection.offsetTop - offset;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
 }
 

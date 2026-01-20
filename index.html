@@ -30,68 +30,127 @@
     <main class="container">
         <section class="hero">
             <h2>Welcome to Referencia</h2>
-            <p>An explainer on all things AI, breaking down complex terminologies for data scientists diving into the world of Artificial Intelligence and Large Language Models.</p>
+            <p>An interactive learning platform for data scientists diving into the world of Artificial Intelligence and Large Language Models. Learn through structured lessons, visual explanations, and hands-on experiments.</p>
         </section>
 
         <section class="content-section">
-            <h2 class="section-title">📚 Table of Contents</h2>
-            <div class="toc-grid">
-                <a href="#intro-ai" class="toc-item">Introduction to AI</a>
-                <a href="#ml-basics" class="toc-item">Machine Learning Basics</a>
-                <a href="#llm-overview" class="toc-item">Large Language Models</a>
-                <a href="#key-terms" class="toc-item">Key Terminology</a>
-                <a href="#popular-models" class="toc-item">Popular Models</a>
-                <a href="#frameworks" class="toc-item">Frameworks & Tools</a>
-                <a href="#applications" class="toc-item">Applications</a>
-                <a href="#best-practices" class="toc-item">Best Practices</a>
+            <h2 class="section-title">📚 Learning Path</h2>
+            <p class="section-description">Follow our structured curriculum from fundamentals to advanced topics. Each lesson includes theory, visuals, experiments, and resources.</p>
+            
+            <div class="lessons-grid">
+                <a href="lessons/intro-to-ai.html" class="lesson-card">
+                    <div class="lesson-number">01</div>
+                    <h3>🤖 Introduction to AI</h3>
+                    <p>Understand what AI is, its types, and real-world applications</p>
+                    <div class="lesson-meta">
+                        <span class="lesson-duration">⏱️ 45 min</span>
+                        <span class="lesson-level">🟢 Beginner</span>
+                    </div>
+                </a>
+
+                <a href="lessons/machine-learning-basics.html" class="lesson-card">
+                    <div class="lesson-number">02</div>
+                    <h3>🧠 Machine Learning Basics</h3>
+                    <p>Explore supervised, unsupervised, and reinforcement learning</p>
+                    <div class="lesson-meta">
+                        <span class="lesson-duration">⏱️ 60 min</span>
+                        <span class="lesson-level">🟢 Beginner</span>
+                    </div>
+                </a>
+
+                <a href="lessons/deep-learning.html" class="lesson-card">
+                    <div class="lesson-number">03</div>
+                    <h3>🔬 Deep Learning</h3>
+                    <p>Neural networks, CNNs, RNNs, and modern architectures</p>
+                    <div class="lesson-meta">
+                        <span class="lesson-duration">⏱️ 75 min</span>
+                        <span class="lesson-level">🟡 Intermediate</span>
+                    </div>
+                </a>
+
+                <a href="lessons/large-language-models.html" class="lesson-card">
+                    <div class="lesson-number">04</div>
+                    <h3>🔤 Large Language Models</h3>
+                    <p>Transformers, training techniques, and LLM applications</p>
+                    <div class="lesson-meta">
+                        <span class="lesson-duration">⏱️ 90 min</span>
+                        <span class="lesson-level">🟡 Intermediate</span>
+                    </div>
+                </a>
+
+                <a href="lessons/prompt-engineering.html" class="lesson-card">
+                    <div class="lesson-number">05</div>
+                    <h3>✍️ Prompt Engineering</h3>
+                    <p>Master the art of crafting effective prompts for LLMs</p>
+                    <div class="lesson-meta">
+                        <span class="lesson-duration">⏱️ 60 min</span>
+                        <span class="lesson-level">🟡 Intermediate</span>
+                    </div>
+                </a>
+
+                <a href="lessons/rag-systems.html" class="lesson-card">
+                    <div class="lesson-number">06</div>
+                    <h3>🔍 RAG Systems</h3>
+                    <p>Build retrieval-augmented generation applications</p>
+                    <div class="lesson-meta">
+                        <span class="lesson-duration">⏱️ 90 min</span>
+                        <span class="lesson-level">🔴 Advanced</span>
+                    </div>
+                </a>
+
+                <a href="lessons/ai-frameworks.html" class="lesson-card">
+                    <div class="lesson-number">07</div>
+                    <h3>🛠️ AI Frameworks & Tools</h3>
+                    <p>PyTorch, TensorFlow, Hugging Face, and more</p>
+                    <div class="lesson-meta">
+                        <span class="lesson-duration">⏱️ 75 min</span>
+                        <span class="lesson-level">🟡 Intermediate</span>
+                    </div>
+                </a>
+
+                <a href="lessons/best-practices.html" class="lesson-card">
+                    <div class="lesson-number">08</div>
+                    <h3>✅ Best Practices & Ethics</h3>
+                    <p>Safety, ethics, and production deployment strategies</p>
+                    <div class="lesson-meta">
+                        <span class="lesson-duration">⏱️ 60 min</span>
+                        <span class="lesson-level">🔴 Advanced</span>
+                    </div>
+                </a>
             </div>
         </section>
 
-        <section id="intro-ai" class="content-section">
-            <h2 class="section-title">🤖 Introduction to AI</h2>
-            <div class="accordion">
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span>What is Artificial Intelligence?</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <p><strong>Artificial Intelligence (AI)</strong> refers to the simulation of human intelligence in machines that are programmed to think, learn, and make decisions. AI systems can perform tasks that typically require human intelligence, such as visual perception, speech recognition, decision-making, and language translation.</p>
-                        <p><strong>Key characteristics:</strong></p>
-                        <ul>
-                            <li>Learning from data and experience</li>
-                            <li>Adapting to new situations</li>
-                            <li>Solving complex problems</li>
-                            <li>Making predictions and decisions</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span>Types of AI</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="term-card">
-                            <h4>Narrow AI (Weak AI)</h4>
-                            <p>AI designed for specific tasks. Examples include virtual assistants, recommendation systems, and image recognition. This is the most common form of AI today.</p>
-                        </div>
-                        <div class="term-card">
-                            <h4>General AI (Strong AI)</h4>
-                            <p>Theoretical AI with human-like intelligence across various domains. Can understand, learn, and apply knowledge to different contexts like humans.</p>
-                        </div>
-                        <div class="term-card">
-                            <h4>Superintelligent AI</h4>
-                            <p>Hypothetical AI that surpasses human intelligence in all aspects. Currently exists only in theory and science fiction.</p>
-                        </div>
-                    </div>
-                </div>
+        <section class="content-section quick-reference">
+            <h2 class="section-title">⚡ Quick Reference</h2>
+            <p class="section-description">Need to look up a term or concept quickly? Browse our reference sections.</p>
+            
+            <div class="reference-grid">
+                <a href="lessons/terminology.html" class="reference-card">
+                    <h3>📖 Key Terminology</h3>
+                    <p>Essential terms and concepts in AI and LLMs</p>
+                </a>
+                <a href="lessons/models-overview.html" class="reference-card">
+                    <h3>🌟 Popular Models</h3>
+                    <p>GPT, Claude, Gemini, LLaMA, BERT, and more</p>
+                </a>
+                <a href="lessons/applications.html" class="reference-card">
+                    <h3>💡 Applications</h3>
+                    <p>Real-world use cases and implementations</p>
+                </a>
             </div>
         </section>
+    </main>
 
-        <section id="ml-basics" class="content-section">
-            <h2 class="section-title">🧠 Machine Learning Basics</h2>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Referencia - An open-source AI & LLM learning platform</p>
+            <p>Breaking down complex AI terminologies for data scientists</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
             <div class="accordion">
                 <div class="accordion-item">
                     <button class="accordion-header">

@@ -1,30 +1,40 @@
-# Referencia - AI & LLM Reference Guide
+# Referencia - AI & LLM Learning Platform
 
-An interactive reference website for data scientists diving into the world of Artificial Intelligence and Large Language Models (LLMs). Breaking down complex terminologies into easy-to-understand explanations.
+A structured, lesson-based learning platform for data scientists diving into the world of Artificial Intelligence and Large Language Models (LLMs). Each lesson includes theory, visual explanations (sketchnotes), hands-on experiments, and curated resources.
 
 ![Referencia Website](https://github.com/user-attachments/assets/f1466853-fc56-4637-a5bc-50bf84677143)
 
 ## 🌟 Features
 
-- **Comprehensive Content**: Covers AI fundamentals, Machine Learning, LLMs, terminology, popular models, frameworks, and best practices
-- **Interactive Accordions**: Expandable sections for easy navigation and focused reading
-- **Smart Search**: Real-time search with highlighting to quickly find specific terms and concepts
-- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
-- **Clean UI**: Modern gradient design with intuitive navigation
-- **Keyboard Shortcuts**: Press "/" to focus search, "Escape" to clear
-- **No Dependencies**: Pure HTML, CSS, and JavaScript - no build process required
+- **📚 Structured Lessons**: Progressive learning path from beginner to advanced
+- **🎨 Visual Sketchnotes**: Simplified visual explanations for complex concepts
+- **🧪 Hands-On Experiments**: Interactive demos and applications to practice concepts
+- **📖 Curated Resources**: Carefully selected articles, videos, tools, and books
+- **🎯 Learning Objectives**: Clear goals for each lesson
+- **📱 Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
+- **🚀 No Build Process**: Pure HTML, CSS, and JavaScript - open and use immediately
+- **♿ Accessible**: Keyboard navigation and screen reader friendly
 
-## 📚 Content Sections
+## 📚 Learning Path
 
-1. **Introduction to AI** - Understanding artificial intelligence and its types
-2. **Machine Learning Basics** - Supervised, unsupervised, reinforcement learning, and deep learning
-3. **Large Language Models (LLMs)** - Architecture, training techniques, and capabilities
-4. **Key Terminology** - Essential concepts like parameters, embeddings, hallucination, etc.
-5. **Popular Models** - GPT, Claude, Gemini, LLaMA, BERT, and more
-6. **Frameworks & Tools** - PyTorch, TensorFlow, Hugging Face, LangChain, vector databases
-7. **Applications** - Real-world use cases from chatbots to research assistants
-8. **Best Practices** - Prompt engineering, safety, ethics, and development tips
-9. **Learning Resources** - Courses, papers, communities, and practice platforms
+### Beginner Lessons
+1. **🤖 Introduction to AI** (45 min) - What is AI, types, and applications
+2. **🧠 Machine Learning Basics** (60 min) - Supervised, unsupervised, and reinforcement learning
+3. **🔬 Deep Learning** (75 min) - Neural networks, CNNs, RNNs, and modern architectures
+
+### Intermediate Lessons
+4. **🔤 Large Language Models** (90 min) - Transformers, training techniques, and applications
+5. **✍️ Prompt Engineering** (60 min) - Crafting effective prompts for LLMs
+6. **🛠️ AI Frameworks & Tools** (75 min) - PyTorch, TensorFlow, Hugging Face, and more
+
+### Advanced Lessons
+7. **🔍 RAG Systems** (90 min) - Building retrieval-augmented generation applications
+8. **✅ Best Practices & Ethics** (60 min) - Safety, ethics, and production deployment
+
+### Quick Reference
+- **📖 Key Terminology** - Essential AI and LLM concepts
+- **🌟 Popular Models** - GPT, Claude, Gemini, LLaMA, BERT, and more
+- **💡 Applications** - Real-world use cases and implementations
 
 ## 🚀 Getting Started
 
@@ -46,6 +56,33 @@ npx http-server -p 8080
 ```
 
 Then navigate to `http://localhost:8080` in your browser.
+
+## 📖 Lesson Structure
+
+Each lesson includes five key sections:
+
+1. **📖 Overview** - Introduction and learning objectives
+2. **🎨 Sketchnote** - Visual summary of concepts (simplified drawings)
+3. **📚 Core Content** - Detailed explanations with examples
+4. **🧪 Experiments** - Hands-on demos and applications
+5. **📚 Resources** - Articles, videos, tools, and books for deeper learning
+
+## 🎨 Creating Content
+
+Want to add your own lessons or experiments?
+
+1. Check out the [LESSON_GUIDE.md](LESSON_GUIDE.md) for detailed instructions
+2. Use `lessons/intro-to-ai.html` as a template
+3. Add your sketchnotes to `/assets/sketchnotes/`
+4. Link your AI experiments/demos in the experiments section
+5. Update `index.html` to include your new lesson
+
+## 🧪 Adding Experiments
+
+Experiments are hands-on demonstrations that help learners understand concepts:
+- Host on GitHub Pages, CodePen, Streamlit, or Hugging Face Spaces
+- Link them in the "Experiments" section of relevant lessons
+- Each experiment should demonstrate a core concept from the lesson
 
 ## 🎯 Use Cases
 

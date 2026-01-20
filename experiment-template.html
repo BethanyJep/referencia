@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Experiment Template - Interactive demonstration for Referencia lessons">
+    <title>AI Experiment | Referencia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #6b7280;
+        }
+
+        .experiment-area {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .input-group input,
+        .input-group textarea,
+        .input-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .input-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .result {
+            background: white;
+            border: 2px solid #2563eb;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .result.show {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result h3 {
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+
+        .result p {
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-link a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+
+        .info-box {
+            background: #dbeafe;
+            border-left: 4px solid #2563eb;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .info-box p {
+            color: #1e40af;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧪 AI Experiment Template</h1>
+            <p>Interactive demonstration for Referencia lessons</p>
+        </div>
+
+        <div class="info-box">
+            <p>💡 <strong>Tip:</strong> This is a template. Customize it for your specific AI demonstration!</p>
+        </div>
+
+        <div class="experiment-area">
+            <div class="input-group">
+                <label for="userInput">Enter your input:</label>
+                <textarea id="userInput" placeholder="Type something here..."></textarea>
+            </div>
+
+            <div class="input-group">
+                <label for="modelSelect">Select model type:</label>
+                <select id="modelSelect">
+                    <option value="simple">Simple Demo</option>
+                    <option value="advanced">Advanced Demo</option>
+                </select>
+            </div>
+
+            <button class="btn" onclick="runExperiment()">Run Experiment</button>
+
+            <div id="result" class="result">
+                <h3>Result:</h3>
+                <p id="resultText"></p>
+            </div>
+        </div>
+
+        <div class="back-link">
+            <a href="../lessons/intro-to-ai.html">← Back to Lesson</a>
+        </div>
+    </div>
+
+    <script>
+        function runExperiment() {
+            const input = document.getElementById('userInput').value;
+            const model = document.getElementById('modelSelect').value;
+            const resultDiv = document.getElementById('result');
+            const resultText = document.getElementById('resultText');
+
+            if (!input.trim()) {
+                alert('Please enter some input!');
+                return;
+            }
+
+            // Simulate processing
+            resultDiv.classList.remove('show');
+            
+            setTimeout(() => {
+                // Replace this with your actual AI logic
+                let result = '';
+                
+                if (model === 'simple') {
+                    result = `Simple analysis: Your input has ${input.length} characters and ${input.split(' ').length} words.`;
+                } else {
+                    result = `Advanced analysis: Your input contains ${input.split('.').length} sentences. 
+                             The longest word is "${getLongestWord(input)}" with ${getLongestWord(input).length} characters.`;
+                }
+
+                resultText.textContent = result;
+                resultDiv.classList.add('show');
+            }, 500);
+        }
+
+        function getLongestWord(text) {
+            const words = text.replace(/[.,!?]/g, '').split(' ');
+            return words.reduce((longest, current) => 
+                current.length > longest.length ? current : longest, '');
+        }
+
+        // Allow Enter key to run experiment
+        document.getElementById('userInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                runExperiment();
+            }
+        });
+    </script>
+</body>
+</html>
