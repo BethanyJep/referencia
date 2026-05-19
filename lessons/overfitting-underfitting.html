@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lesson 09: Overfitting vs Underfitting - Three cat students learning VERY differently!">
+    <title>Lesson 09: Overfitting & Underfitting | Referencia 🐱</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="../index.html" style="text-decoration: none; color: white;">
+                    <h1 class="logo">Referencia</h1>
+                </a>
+                <p class="tagline">Lesson 09: Overfitting & Underfitting</p>
+            </div>
+        </nav>
+    </header>
+
+    <div class="lesson-header">
+        <div class="container">
+            <div class="lesson-number">LESSON 09</div>
+            <h1 class="lesson-title">📊 Overfitting & Underfitting</h1>
+            <p class="lesson-subtitle">Three cat students - The memorizer, the lazy one, and the balanced learner!</p>
+            <div class="lesson-info">
+                <span class="lesson-info-item">⏱️ 40 minutes</span>
+                <span class="lesson-info-item">🟢 Beginner</span>
+                <span class="lesson-info-item">📚 5 sections</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="lesson-nav">
+        <div class="container">
+            <div class="lesson-nav-container">
+                <a href="#intro" class="lesson-nav-link active">Introduction</a>
+                <a href="#sketchnote" class="lesson-nav-link">Sketchnote</a>
+                <a href="#types" class="lesson-nav-link">Core Content</a>
+                <a href="#experiments" class="lesson-nav-link">Experiments</a>
+                <a href="#resources" class="lesson-nav-link">Resources</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- SECTION 1: INTRODUCTION -->
+        <section id="intro" class="lesson-section">
+            <h2>📖 Introduction: The Goldilocks Problem</h2>
+            
+            <div class="lesson-intro">
+                <p>Imagine three cat students 🐱🐱🐱 studying for an exam about identifying birds:</p>
+                
+                <ul>
+                    <li><strong>😤 Overfit Cat:</strong> Memorizes every single training photo perfectly—including the exact tree branches, lighting, and backgrounds. On the test, it fails because the new photos look different!</li>
+                    <li><strong>😴 Underfit Cat:</strong> Barely pays attention, just learns "if it's not a fish, it's probably a bird." Too simple—misses all the nuances!</li>
+                    <li><strong>😺 Just-Right Cat:</strong> Learns the actual patterns—beaks, feathers, wings—that generalize to new, unseen birds!</li>
+                </ul>
+                
+                <p>Finding the "just right" balance is one of the most important challenges in machine learning!</p>
+            </div>
+
+            <div class="term-card" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(37, 99, 235, 0.1)); border-left: 4px solid #10b981;">
+                <h3>💡 Key Insight</h3>
+                <p><strong>Overfitting:</strong> Model memorizes training data, fails on new data (too complex)</p>
+                <p><strong>Underfitting:</strong> Model is too simple to capture patterns (too simple)</p>
+                <p><strong>Goal:</strong> Find the sweet spot that generalizes well!</p>
+            </div>
+
+            <h3>🎯 What You'll Learn</h3>
+            <ul>
+                <li>What causes overfitting and underfitting</li>
+                <li>How to detect each problem</li>
+                <li>Techniques to prevent overfitting (regularization, dropout, etc.)</li>
+                <li>The bias-variance tradeoff</li>
+                <li>Best practices for training well-generalized models</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 2: SKETCHNOTE -->
+        <section id="sketchnote" class="lesson-section">
+            <h2>🎨 Sketchnote: Visual Summary</h2>
+            <p style="color: var(--text-light); margin-bottom: 20px;">The three cat students!</p>
+
+            <div class="sketchnote-container">
+                <div class="sketchnote-placeholder">
+                    <h3>🖼️ Sketchnote Concept</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;"><strong>Three cats with different learning styles:</strong></p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+                        <div style="background: #fee2e2; padding: 20px; border-radius: 10px; text-align: center;">
+                            <p style="font-size: 2.5rem;">😤🐱</p>
+                            <h4>Overfit Cat</h4>
+                            <p><em>"The Memorizer"</em></p>
+                            <ul style="text-align: left; font-size: 0.85rem;">
+                                <li>Memorizes everything</li>
+                                <li>100% on training!</li>
+                                <li>50% on test... 😱</li>
+                                <li>"That bird isn't on THE tree!"</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: #fee2e2; padding: 20px; border-radius: 10px; text-align: center;">
+                            <p style="font-size: 2.5rem;">😴🐱</p>
+                            <h4>Underfit Cat</h4>
+                            <p><em>"The Lazy One"</em></p>
+                            <ul style="text-align: left; font-size: 0.85rem;">
+                                <li>Barely tries</li>
+                                <li>60% on training</li>
+                                <li>60% on test</li>
+                                <li>"Eh, if it flies, it's a bird?"</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: #dcfce7; padding: 20px; border-radius: 10px; text-align: center;">
+                            <p style="font-size: 2.5rem;">😺🐱</p>
+                            <h4>Just-Right Cat</h4>
+                            <p><em>"The Balanced One"</em></p>
+                            <ul style="text-align: left; font-size: 0.85rem;">
+                                <li>Learns patterns</li>
+                                <li>92% on training</li>
+                                <li>90% on test! ✨</li>
+                                <li>"Beak + feathers = bird!"</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 25px; padding: 15px; background: #f0f9ff; border-radius: 8px;">
+                        <p><strong>Visual: The Fitting Curve</strong></p>
+                        <p>Show a scatter plot with three lines:</p>
+                        <p>📈 Underfit: Straight line missing the curve</p>
+                        <p>📈 Overfit: Squiggly line hitting every point</p>
+                        <p>📈 Just Right: Smooth curve capturing the trend</p>
+                    </div>
+                    
+                    <p style="margin-top: 20px; color: var(--text-light);">
+                        💡 Save your sketchnote as: <code>/assets/sketchnotes/overfitting-underfitting.png</code>
+                    </p>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px;">
+                <h3>🐱 The Cat Student Exam Story</h3>
+                <p><strong>Exam day arrives!</strong> The test has new bird photos they've never seen.</p>
+                <p><strong>Overfit Cat:</strong> "This robin isn't sitting on the EXACT branch from my study materials! I've never seen this robin! Is it even a bird?!" 😤 <em>FAIL</em></p>
+                <p><strong>Underfit Cat:</strong> "It's got... something? Probably a bird. Or a plane. Whatever." 😴 <em>BARELY PASS</em></p>
+                <p><strong>Just-Right Cat:</strong> "Orange breast, wings, beak, feathers—definitely a robin!" 😺 <em>ACE!</em></p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: CORE CONTENT -->
+        <section id="types" class="lesson-section">
+            <h2>📚 Core Content</h2>
+
+            <div class="accordion">
+                <!-- Understanding the Problem -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🔍 Understanding Overfitting & Underfitting</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="term-card" style="border-left: 4px solid #ef4444;">
+                                <h4>📈 Overfitting</h4>
+                                <p><strong>What:</strong> Model is too complex, memorizes training data</p>
+                                <p><strong>Signs:</strong></p>
+                                <ul>
+                                    <li>Training accuracy: 99%</li>
+                                    <li>Test accuracy: 70%</li>
+                                    <li>Big gap = overfitting!</li>
+                                </ul>
+                                <p><strong>Cause:</strong> Too many parameters, too little data, training too long</p>
+                            </div>
+                            <div class="term-card" style="border-left: 4px solid #f59e0b;">
+                                <h4>📉 Underfitting</h4>
+                                <p><strong>What:</strong> Model is too simple, can't capture patterns</p>
+                                <p><strong>Signs:</strong></p>
+                                <ul>
+                                    <li>Training accuracy: 65%</li>
+                                    <li>Test accuracy: 63%</li>
+                                    <li>Both low = underfitting!</li>
+                                </ul>
+                                <p><strong>Cause:</strong> Model too simple, not enough training, wrong features</p>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px; border-left: 4px solid #22c55e;">
+                            <h4>✅ Good Fit</h4>
+                            <p><strong>Signs:</strong></p>
+                            <ul>
+                                <li>Training accuracy: 92%</li>
+                                <li>Test accuracy: 90%</li>
+                                <li>Small gap, both high = good generalization!</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bias-Variance Tradeoff -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>⚖️ The Bias-Variance Tradeoff</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>Bias (Underfitting)</h4>
+                                <p>Error from oversimplified assumptions</p>
+                                <p>Model misses relevant patterns</p>
+                                <p><strong>High bias = underfitting</strong></p>
+                                <p><em>Cat that thinks all flying things are birds</em></p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Variance (Overfitting)</h4>
+                                <p>Error from sensitivity to training data</p>
+                                <p>Model fits noise, not signal</p>
+                                <p><strong>High variance = overfitting</strong></p>
+                                <p><em>Cat that only recognizes exact training photos</em></p>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px;">
+                            <h4>The Tradeoff</h4>
+                            <p>As you increase model complexity:</p>
+                            <ul>
+                                <li>📉 Bias decreases (captures more patterns)</li>
+                                <li>📈 Variance increases (fits more noise)</li>
+                            </ul>
+                            <p><strong>Goal:</strong> Find the sweet spot with lowest total error!</p>
+                            <p><code>Total Error = Bias² + Variance + Irreducible Error</code></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detecting the Problems -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🔎 How to Detect Overfitting/Underfitting</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>📊 Learning Curves</h4>
+                            <p>Plot training and validation loss over epochs:</p>
+                            <ul>
+                                <li><strong>Overfitting:</strong> Training loss keeps dropping, validation loss starts rising</li>
+                                <li><strong>Underfitting:</strong> Both losses plateau high</li>
+                                <li><strong>Good fit:</strong> Both losses converge low</li>
+                            </ul>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>🔄 Cross-Validation</h4>
+                            <p>Split data into K folds, train on K-1, test on 1, rotate:</p>
+                            <ol>
+                                <li>More reliable estimate of generalization</li>
+                                <li>High variance across folds = overfitting</li>
+                                <li>Consistent low scores = underfitting</li>
+                            </ol>
+                        </div>
+
+                        <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; margin-top: 20px;"><code># Detecting overfitting with train/test comparison
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+model.fit(X_train, y_train)
+
+train_acc = accuracy_score(y_train, model.predict(X_train))
+test_acc = accuracy_score(y_test, model.predict(X_test))
+
+print(f"Training Accuracy: {train_acc:.2%}")
+print(f"Test Accuracy: {test_acc:.2%}")
+print(f"Gap: {train_acc - test_acc:.2%}")  # Big gap = overfitting!</code></pre>
+                    </div>
+                </div>
+
+                <!-- Fixing Overfitting -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🔧 Fixing Overfitting</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>📊 More Data</h4>
+                                <p>More examples = harder to memorize, must learn patterns</p>
+                                <p><em>Give the cat more bird photos to study!</em></p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🎲 Data Augmentation</h4>
+                                <p>Create variations: flip, rotate, crop, add noise</p>
+                                <p><em>Same birds from different angles!</em></p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🎯 Regularization (L1/L2)</h4>
+                                <p>Penalize large weights, force simplicity</p>
+                                <p><code>Loss = Error + λ × (weights²)</code></p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🚪 Dropout</h4>
+                                <p>Randomly turn off neurons during training</p>
+                                <p>Prevents co-adaptation, like training blind</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>⏰ Early Stopping</h4>
+                                <p>Stop training when validation loss starts rising</p>
+                                <p><em>Stop studying before you memorize too much!</em></p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🏗️ Simpler Model</h4>
+                                <p>Fewer layers, fewer neurons, fewer parameters</p>
+                                <p><em>Less room to memorize!</em></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fixing Underfitting -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🔧 Fixing Underfitting</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>🏗️ More Complex Model</h4>
+                                <p>Add layers, neurons, parameters</p>
+                                <p><em>Give the cat a bigger brain!</em></p>
+                            </div>
+                            <div class="term-card">
+                                <h4>⏰ Train Longer</h4>
+                                <p>More epochs, let it learn more</p>
+                                <p><em>More study time!</em></p>
+                            </div>
+                            <div class="term-card">
+                                <h4>📊 Better Features</h4>
+                                <p>Engineer more informative inputs</p>
+                                <p><em>Show clearer examples!</em></p>
+                            </div>
+                            <div class="term-card">
+                                <h4>⚙️ Less Regularization</h4>
+                                <p>Reduce constraints if too strong</p>
+                                <p><em>Let the cat explore more!</em></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: EXPERIMENTS -->
+        <section id="experiments" class="lesson-section">
+            <h2>🧪 Experiments: See Overfitting in Action!</h2>
+            <p style="color: var(--text-light); margin-bottom: 30px;">Visualize and understand fitting problems!</p>
+
+            <div class="experiments-grid">
+                <div class="experiment-card">
+                    <h3>📊 TensorFlow Playground</h3>
+                    <p>Watch overfitting happen in real-time! Add too many neurons and see the model memorize noise.</p>
+                    <p><strong>Try:</strong> Max neurons, spiral data → watch it overfit!</p>
+                    <a href="https://playground.tensorflow.org" class="experiment-link" target="_blank">Launch Playground →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>📈 Visualize Learning Curves</h3>
+                    <p>Use sklearn's learning_curve function to plot train vs validation performance.</p>
+                    <p><strong>Concepts:</strong> Detecting when overfitting starts</p>
+                    <a href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_learning_curve.html" class="experiment-link" target="_blank">Sklearn Tutorial →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🎯 Regularization Demo</h3>
+                    <p>Interactive visualization of how L1 and L2 regularization affect model fitting.</p>
+                    <p><strong>See:</strong> How constraints prevent overfitting</p>
+                    <a href="https://www.desmos.com/calculator" class="experiment-link" target="_blank">Explore on Desmos →</a>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(37, 99, 235, 0.1));">
+                <h3>💻 Try It: Create and Fix Overfitting</h3>
+                <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto;"><code># Demonstrating overfitting and regularization
+import numpy as np
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import Ridge
+from sklearn.pipeline import make_pipeline
+
+# Generate simple data
+np.random.seed(42)
+X = np.linspace(0, 1, 20).reshape(-1, 1)
+y = np.sin(2 * np.pi * X).ravel() + np.random.randn(20) * 0.3
+
+# 🐱 Overfit Cat: Degree 15 polynomial, no regularization
+overfit_model = make_pipeline(PolynomialFeatures(15), Ridge(alpha=0))
+overfit_model.fit(X, y)
+# This will fit every tiny wiggle in the data!
+
+# 😴 Underfit Cat: Degree 1 (just a line)
+underfit_model = make_pipeline(PolynomialFeatures(1), Ridge(alpha=0))
+underfit_model.fit(X, y)
+# Too simple to capture the sine wave!
+
+# 😺 Just-Right Cat: Degree 3 with regularization
+justright_model = make_pipeline(PolynomialFeatures(3), Ridge(alpha=0.1))
+justright_model.fit(X, y)
+# Captures the pattern without the noise!
+
+print("🐱 Models trained! Plot them to see the difference!")</code></pre>
+            </div>
+        </section>
+
+        <!-- SECTION 5: RESOURCES -->
+        <section id="resources" class="lesson-section">
+            <h2>📚 Resources for Further Learning</h2>
+            
+            <div class="resources-section">
+                <div class="resources-columns">
+                    <div class="resource-column">
+                        <h3>🎥 Videos</h3>
+                        <ul>
+                            <li><a href="https://www.youtube.com/watch?v=EuBBz3bI-aA" target="_blank">Overfitting Explained - StatQuest</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=SjQyLhQIXSM" target="_blank">Bias vs Variance - StatQuest</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=NUXdtN1W1FE" target="_blank">Regularization Explained</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📖 Articles</h3>
+                        <ul>
+                            <li><a href="https://machinelearningmastery.com/overfitting-and-underfitting-with-machine-learning-algorithms/" target="_blank">Overfitting Guide - ML Mastery</a></li>
+                            <li><a href="https://towardsdatascience.com/understanding-the-bias-variance-tradeoff-165e6942b229" target="_blank">Bias-Variance Tradeoff</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>🛠️ Tools</h3>
+                        <ul>
+                            <li><a href="https://playground.tensorflow.org" target="_blank">TensorFlow Playground</a></li>
+                            <li><a href="https://scikit-learn.org/stable/modules/cross_validation.html" target="_blank">Sklearn Cross-Validation</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📚 Concepts</h3>
+                        <ul>
+                            <li><a href="https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff" target="_blank">Bias-Variance Tradeoff</a></li>
+                            <li><a href="https://en.wikipedia.org/wiki/Regularization_(mathematics)" target="_blank">Regularization</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="lesson-navigation">
+            <a href="prompt-engineering.html" class="lesson-nav-btn">
+                <span>←</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Previous</span>
+                    <span class="lesson-nav-btn-title">Prompt Engineering</span>
+                </div>
+            </a>
+            <a href="model-bias.html" class="lesson-nav-btn next">
+                <span>→</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Next Lesson</span>
+                    <span class="lesson-nav-btn-title">Model Bias & Fairness</span>
+                </div>
+            </a>
+        </nav>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Referencia - Learning AI, one cat at a time 🐱</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

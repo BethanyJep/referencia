@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lesson 07: AI Agents - Agent Whiskers with spy gear on autonomous missions!">
+    <title>Lesson 07: AI Agents | Referencia 🐱</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="../index.html" style="text-decoration: none; color: white;">
+                    <h1 class="logo">Referencia</h1>
+                </a>
+                <p class="tagline">Lesson 07: AI Agents</p>
+            </div>
+        </nav>
+    </header>
+
+    <div class="lesson-header">
+        <div class="container">
+            <div class="lesson-number">LESSON 07</div>
+            <h1 class="lesson-title">🕵️ AI Agents</h1>
+            <p class="lesson-subtitle">Agent Whiskers - A cat with spy gear doing autonomous tasks!</p>
+            <div class="lesson-info">
+                <span class="lesson-info-item">⏱️ 50 minutes</span>
+                <span class="lesson-info-item">🟡 Intermediate</span>
+                <span class="lesson-info-item">📚 5 sections</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="lesson-nav">
+        <div class="container">
+            <div class="lesson-nav-container">
+                <a href="#intro" class="lesson-nav-link active">Introduction</a>
+                <a href="#sketchnote" class="lesson-nav-link">Sketchnote</a>
+                <a href="#types" class="lesson-nav-link">Core Content</a>
+                <a href="#experiments" class="lesson-nav-link">Experiments</a>
+                <a href="#resources" class="lesson-nav-link">Resources</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- SECTION 1: INTRODUCTION -->
+        <section id="intro" class="lesson-section">
+            <h2>📖 Introduction: What are AI Agents?</h2>
+            
+            <div class="lesson-intro">
+                <p>Imagine <strong>Agent Whiskers</strong> 🕵️🐱 — a cat with a tiny spy earpiece, night-vision goggles, and a utility belt. You give it a mission: "Book me a flight to Paris and find a cat-friendly hotel." Agent Whiskers doesn't just answer—it <em>takes action</em>! It searches flights, compares prices, books the best option, and emails you the confirmation!</p>
+                
+                <p><strong>AI Agents</strong> are systems that can perceive their environment, make decisions, and take autonomous actions to achieve goals. Unlike chatbots that just respond, agents can use tools, plan multi-step tasks, and execute complex workflows!</p>
+            </div>
+
+            <div class="term-card" style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(37, 99, 235, 0.1)); border-left: 4px solid #8b5cf6;">
+                <h3>💡 Key Insight</h3>
+                <p><strong>AI Agents</strong> combine LLMs with the ability to take actions: calling APIs, searching the web, executing code, and using tools. They can reason, plan, and act autonomously!</p>
+                <p><em>"Agent: LLM + Tools + Autonomy = Can actually DO things!"</em></p>
+            </div>
+
+            <h3>🎯 What You'll Learn</h3>
+            <ul>
+                <li>The difference between chatbots and agents</li>
+                <li>Core components: perception, reasoning, action, memory</li>
+                <li>Tool use and function calling</li>
+                <li>Agent architectures: ReAct, Plan-and-Execute, Multi-Agent</li>
+                <li>Building agents with LangChain, AutoGPT, and more</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 2: SKETCHNOTE -->
+        <section id="sketchnote" class="lesson-section">
+            <h2>🎨 Sketchnote: Visual Summary</h2>
+            <p style="color: var(--text-light); margin-bottom: 20px;">Agent Whiskers on a mission!</p>
+
+            <div class="sketchnote-container">
+                <div class="sketchnote-placeholder">
+                    <h3>🖼️ Sketchnote Concept</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;"><strong>Agent Whiskers equipped for autonomous missions:</strong></p>
+                    
+                    <div style="background: linear-gradient(135deg, #ede9fe, #dbeafe); padding: 30px; border-radius: 10px; text-align: center;">
+                        <p style="font-size: 4rem;">🕵️🐱</p>
+                        <h4>Agent Whiskers</h4>
+                        <p><em>"Your mission, should you accept it..."</em></p>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 20px;">
+                            <div style="background: white; padding: 10px; border-radius: 8px;">
+                                <p style="font-size: 1.5rem;">🔍</p>
+                                <p style="font-size: 0.8rem;">Web Search</p>
+                            </div>
+                            <div style="background: white; padding: 10px; border-radius: 8px;">
+                                <p style="font-size: 1.5rem;">💻</p>
+                                <p style="font-size: 0.8rem;">Run Code</p>
+                            </div>
+                            <div style="background: white; padding: 10px; border-radius: 8px;">
+                                <p style="font-size: 1.5rem;">📧</p>
+                                <p style="font-size: 0.8rem;">Send Email</p>
+                            </div>
+                            <div style="background: white; padding: 10px; border-radius: 8px;">
+                                <p style="font-size: 1.5rem;">📅</p>
+                                <p style="font-size: 0.8rem;">Calendar</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 25px; padding: 15px; background: #f0f9ff; border-radius: 8px;">
+                        <p><strong>The Agent Loop:</strong></p>
+                        <p>🎯 Goal → 🤔 Think/Plan → 🛠️ Use Tool → 👀 Observe Result → 🔄 Repeat until done!</p>
+                    </div>
+                    
+                    <p style="margin-top: 20px; color: var(--text-light);">
+                        💡 Save your sketchnote as: <code>/assets/sketchnotes/ai-agents.png</code>
+                    </p>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px;">
+                <h3>🐱 Agent Whiskers Mission Log</h3>
+                <p><strong>Mission:</strong> "Book a flight to Paris and find a pet-friendly hotel"</p>
+                <p><strong>Step 1 - Think:</strong> "I need to search for flights first, then hotels. Let me use the flight search tool."</p>
+                <p><strong>Step 2 - Act:</strong> *calls Skyscanner API* → Gets list of flights</p>
+                <p><strong>Step 3 - Observe:</strong> "Found 5 flights. The 2pm one is cheapest. Let me book it."</p>
+                <p><strong>Step 4 - Act:</strong> *calls booking API* → Flight confirmed!</p>
+                <p><strong>Step 5 - Think:</strong> "Now for hotels. Need pet-friendly filter..."</p>
+                <p><strong>... continues until mission complete!</strong> ✅</p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: CORE CONTENT -->
+        <section id="types" class="lesson-section">
+            <h2>📚 Core Content</h2>
+
+            <div class="accordion">
+                <!-- Chatbot vs Agent -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🆚 Chatbot vs. Agent</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="term-card">
+                                <h4>💬 Chatbot (LLM)</h4>
+                                <p><strong>Input:</strong> Text prompt</p>
+                                <p><strong>Output:</strong> Text response</p>
+                                <p><strong>Can:</strong> Answer questions, generate text</p>
+                                <p><strong>Cannot:</strong> Take real actions, access live data</p>
+                                <p><strong>Example:</strong> "What's the weather?" → "I don't have access to current weather data."</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🕵️ Agent (LLM + Tools)</h4>
+                                <p><strong>Input:</strong> Goal/Task</p>
+                                <p><strong>Output:</strong> Actions + Results</p>
+                                <p><strong>Can:</strong> Use tools, execute plans, take actions!</p>
+                                <p><strong>Has:</strong> Access to APIs, code execution, memory</p>
+                                <p><strong>Example:</strong> "What's the weather?" → *calls weather API* → "It's 72°F and sunny!"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agent Components -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🧩 Agent Components</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>🧠 Brain (LLM)</h4>
+                                <p>The reasoning engine. Understands goals, plans steps, decides which tools to use.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🛠️ Tools</h4>
+                                <p>APIs and functions the agent can call: search, code execution, databases, etc.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>💾 Memory</h4>
+                                <p>Short-term (conversation) and long-term (vector DB) to remember context.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>📋 Planning</h4>
+                                <p>Breaking complex tasks into steps, creating and revising plans.</p>
+                            </div>
+                        </div>
+
+                        <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; margin-top: 20px;"><code># Agent with tools (conceptual)
+agent = Agent(
+    llm=GPT4(),
+    tools=[
+        WebSearch(),
+        Calculator(),
+        EmailSender(),
+        CodeExecutor(),
+        CalendarAPI()
+    ],
+    memory=VectorMemory(),
+    planner=ReActPlanner()
+)
+
+# Give it a task!
+result = agent.run("Find the best pizza place nearby and book a table for tonight")</code></pre>
+                    </div>
+                </div>
+
+                <!-- Tool Use / Function Calling -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🔧 Tool Use & Function Calling</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>How Tool Calling Works</h4>
+                            <ol>
+                                <li><strong>Define tools:</strong> Describe available functions to the LLM</li>
+                                <li><strong>LLM decides:</strong> Based on the task, which tool to call?</li>
+                                <li><strong>Execute:</strong> System runs the function with LLM's parameters</li>
+                                <li><strong>Return result:</strong> Feed output back to LLM</li>
+                                <li><strong>Continue:</strong> LLM decides next step based on result</li>
+                            </ol>
+                        </div>
+
+                        <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; margin-top: 20px;"><code># OpenAI Function Calling example
+tools = [{
+    "type": "function",
+    "function": {
+        "name": "get_weather",
+        "description": "Get current weather for a location",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "location": {"type": "string", "description": "City name"}
+            }
+        }
+    }
+}]
+
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[{"role": "user", "content": "What's the weather in Paris?"}],
+    tools=tools
+)
+
+# LLM responds with: call get_weather(location="Paris")
+# You execute it, return result, LLM formulates final answer!</code></pre>
+                    </div>
+                </div>
+
+                <!-- Agent Architectures -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🏗️ Agent Architectures</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>ReAct (Reason + Act)</h4>
+                            <p>Interleave reasoning and action:</p>
+                            <pre style="background: #f3f4f6; padding: 10px; border-radius: 5px;"><code>Thought: I need to find flight prices
+Action: search_flights("NYC to Paris")
+Observation: Found 5 flights, cheapest is $450
+Thought: That's good! Now I need hotels...
+Action: search_hotels("Paris, pet-friendly")
+...</code></pre>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>Plan-and-Execute</h4>
+                            <p>Create a full plan first, then execute steps:</p>
+                            <ol>
+                                <li>Plan: [Search flights, Book flight, Search hotels, Book hotel, Send confirmation]</li>
+                                <li>Execute step 1...</li>
+                                <li>Execute step 2...</li>
+                                <li>(Replan if needed)</li>
+                            </ol>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>Multi-Agent Systems</h4>
+                            <p>Multiple specialized agents working together:</p>
+                            <ul>
+                                <li><strong>Researcher Agent:</strong> Gathers information</li>
+                                <li><strong>Writer Agent:</strong> Creates content</li>
+                                <li><strong>Critic Agent:</strong> Reviews and improves</li>
+                                <li><strong>Coordinator:</strong> Manages the team</li>
+                            </ul>
+                            <p><em>Like a team of cat agents, each with a specialty!</em> 🐱🐱🐱</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agent Frameworks -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🛠️ Agent Frameworks</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>LangChain</h4>
+                                <p>Popular framework for building LLM applications with agents, tools, and chains.</p>
+                                <a href="https://langchain.com" target="_blank">langchain.com →</a>
+                            </div>
+                            <div class="term-card">
+                                <h4>AutoGPT</h4>
+                                <p>Autonomous agent that breaks down goals and works independently.</p>
+                                <a href="https://github.com/Significant-Gravitas/AutoGPT" target="_blank">GitHub →</a>
+                            </div>
+                            <div class="term-card">
+                                <h4>CrewAI</h4>
+                                <p>Framework for orchestrating multi-agent teams with roles and goals.</p>
+                                <a href="https://crewai.com" target="_blank">crewai.com →</a>
+                            </div>
+                            <div class="term-card">
+                                <h4>OpenAI Assistants</h4>
+                                <p>Built-in agent capabilities with code interpreter, file search, and function calling.</p>
+                                <a href="https://platform.openai.com/docs/assistants" target="_blank">OpenAI Docs →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: EXPERIMENTS -->
+        <section id="experiments" class="lesson-section">
+            <h2>🧪 Experiments: Build Your Own Agent!</h2>
+            <p style="color: var(--text-light); margin-bottom: 30px;">Create agents that can take real actions!</p>
+
+            <div class="experiments-grid">
+                <div class="experiment-card">
+                    <h3>🤖 OpenAI Assistants</h3>
+                    <p>Build an agent with code interpreter and file search capabilities right in the OpenAI playground!</p>
+                    <p><strong>Try:</strong> Create an assistant that can analyze data files</p>
+                    <a href="https://platform.openai.com/playground" class="experiment-link" target="_blank">OpenAI Playground →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🦜 LangChain Agents</h3>
+                    <p>Build custom agents with any tools you want. Great documentation and examples!</p>
+                    <p><strong>Try:</strong> Agent with web search + calculator</p>
+                    <a href="https://python.langchain.com/docs/modules/agents/" class="experiment-link" target="_blank">LangChain Docs →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>👥 CrewAI Multi-Agent</h3>
+                    <p>Create a team of agents that collaborate! Researcher, writer, editor working together.</p>
+                    <p><strong>Try:</strong> Build a content creation crew</p>
+                    <a href="https://docs.crewai.com/" class="experiment-link" target="_blank">CrewAI Docs →</a>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px; background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(37, 99, 235, 0.1));">
+                <h3>💻 Build a Simple Agent</h3>
+                <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto;"><code># Simple ReAct Agent with LangChain
+from langchain.agents import create_react_agent, AgentExecutor
+from langchain_openai import ChatOpenAI
+from langchain.tools import DuckDuckGoSearchRun, Tool
+
+# Create tools for Agent Whiskers
+search = DuckDuckGoSearchRun()
+tools = [
+    Tool(
+        name="Search",
+        func=search.run,
+        description="Search the web for current information"
+    )
+]
+
+# Create the agent
+llm = ChatOpenAI(model="gpt-4")
+agent = create_react_agent(llm, tools, prompt)
+agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+
+# Give Agent Whiskers a mission!
+result = agent_executor.invoke({
+    "input": "What are the top 3 cat cafes in Tokyo and their ratings?"
+})
+
+print(result)  # Agent searches, compiles info, and reports back! 🕵️🐱</code></pre>
+            </div>
+        </section>
+
+        <!-- SECTION 5: RESOURCES -->
+        <section id="resources" class="lesson-section">
+            <h2>📚 Resources for Further Learning</h2>
+            
+            <div class="resources-section">
+                <div class="resources-columns">
+                    <div class="resource-column">
+                        <h3>🎥 Videos</h3>
+                        <ul>
+                            <li><a href="https://www.youtube.com/watch?v=sal78ACtGTc" target="_blank">What are AI Agents? - IBM</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=DWUdGhRrv2c" target="_blank">Building Agents - LangChain</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=bJn9XhFwAUs" target="_blank">AutoGPT Explained</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📖 Articles</h3>
+                        <ul>
+                            <li><a href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank">LLM Agents - Lilian Weng</a></li>
+                            <li><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank">Building Effective Agents - Anthropic</a></li>
+                            <li><a href="https://blog.langchain.dev/what-is-an-agent/" target="_blank">What is an Agent? - LangChain</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>🛠️ Frameworks</h3>
+                        <ul>
+                            <li><a href="https://langchain.com/" target="_blank">LangChain</a></li>
+                            <li><a href="https://crewai.com/" target="_blank">CrewAI</a></li>
+                            <li><a href="https://github.com/microsoft/autogen" target="_blank">AutoGen (Microsoft)</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📚 Courses</h3>
+                        <ul>
+                            <li><a href="https://www.deeplearning.ai/short-courses/functions-tools-agents-langchain/" target="_blank">LangChain Agents - DeepLearning.AI</a></li>
+                            <li><a href="https://www.deeplearning.ai/short-courses/ai-agents-in-langgraph/" target="_blank">AI Agents in LangGraph</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="lesson-navigation">
+            <a href="reinforcement-learning.html" class="lesson-nav-btn">
+                <span>←</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Previous</span>
+                    <span class="lesson-nav-btn-title">Reinforcement Learning</span>
+                </div>
+            </a>
+            <a href="prompt-engineering.html" class="lesson-nav-btn next">
+                <span>→</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Next Lesson</span>
+                    <span class="lesson-nav-btn-title">Prompt Engineering</span>
+                </div>
+            </a>
+        </nav>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Referencia - Learning AI, one cat at a time 🐱</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

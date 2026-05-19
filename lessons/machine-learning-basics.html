@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Lesson 02: Machine Learning Basics - Master supervised, unsupervised, and reinforcement learning">
-    <title>Lesson 02: Machine Learning Basics | Referencia</title>
+    <meta name="description" content="Lesson 01: Machine Learning Basics - Learning from Data vs. Coding Rules with our cat student!">
+    <title>Lesson 01: Machine Learning Basics | Referencia 🐱</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -14,54 +14,428 @@
                 <a href="../index.html" style="text-decoration: none; color: white;">
                     <h1 class="logo">Referencia</h1>
                 </a>
-                <p class="tagline">Lesson 02: Machine Learning Basics</p>
+                <p class="tagline">Lesson 01: Machine Learning Basics</p>
             </div>
         </nav>
     </header>
 
     <div class="lesson-header">
         <div class="container">
-            <div class="lesson-number">LESSON 02</div>
+            <div class="lesson-number">LESSON 01</div>
             <h1 class="lesson-title">🧠 Machine Learning Basics</h1>
-            <p class="lesson-subtitle">Explore supervised, unsupervised, and reinforcement learning techniques that power modern AI</p>
+            <p class="lesson-subtitle">Learning from Data vs. Coding Rules - Watch a cat student learn to recognize fellow felines!</p>
             <div class="lesson-info">
-                <span class="lesson-info-item">⏱️ 60 minutes</span>
+                <span class="lesson-info-item">⏱️ 45 minutes</span>
                 <span class="lesson-info-item">🟢 Beginner</span>
-                <span class="lesson-info-item">📚 6 sections</span>
+                <span class="lesson-info-item">📚 5 sections</span>
             </div>
         </div>
     </div>
 
+    <nav class="lesson-nav">
+        <div class="container">
+            <div class="lesson-nav-container">
+                <a href="#intro" class="lesson-nav-link active">Introduction</a>
+                <a href="#sketchnote" class="lesson-nav-link">Sketchnote</a>
+                <a href="#types" class="lesson-nav-link">Core Content</a>
+                <a href="#experiments" class="lesson-nav-link">Experiments</a>
+                <a href="#resources" class="lesson-nav-link">Resources</a>
+            </div>
+        </div>
+    </nav>
+
     <main class="container">
-        <section class="lesson-section">
-            <h2>📖 Lesson Coming Soon</h2>
+        <!-- SECTION 1: INTRODUCTION -->
+        <section id="intro" class="lesson-section">
+            <h2>📖 Introduction: What is Machine Learning?</h2>
+            
             <div class="lesson-intro">
-                <p>This lesson is currently being developed. It will cover:</p>
-                <ul>
-                    <li>What is Machine Learning and how it differs from traditional programming</li>
-                    <li>Supervised Learning: Classification and Regression</li>
-                    <li>Unsupervised Learning: Clustering and Dimensionality Reduction</li>
-                    <li>Reinforcement Learning: Agents, environments, and rewards</li>
-                    <li>Model training, evaluation, and optimization</li>
-                    <li>Practical ML workflows and best practices</li>
-                </ul>
-                <p style="margin-top: 20px;"><strong>Expected completion:</strong> Coming soon!</p>
+                <p>Imagine teaching a computer to recognize cats. In <strong>traditional programming</strong>, you'd write hundreds of rules: "If it has whiskers AND pointy ears AND fur AND says meow..." But what about hairless cats? What about cats that don't meow? Every edge case needs a new rule!</p>
+                
+                <p>In <strong>machine learning</strong>, instead of writing rules, you show the computer thousands of cat pictures (with labels) and let it figure out the patterns itself! The computer learns what makes a cat a cat, without you explicitly programming every detail.</p>
+            </div>
+
+            <div class="term-card" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1)); border-left: 4px solid var(--primary-color);">
+                <h3>💡 Key Insight</h3>
+                <p><strong>Machine Learning</strong> trains algorithms on data instead of hard-coded rules. The model learns patterns from examples and can then make predictions on new, unseen data.</p>
+                <p><em>"ML: Computer learns from examples, not explicit instructions"</em></p>
+            </div>
+
+            <h3>🎯 What You'll Learn</h3>
+            <ul>
+                <li>The fundamental difference between traditional programming and machine learning</li>
+                <li>How ML models learn patterns from data (using our cat student!)</li>
+                <li>The basic ML workflow: data → training → model → predictions</li>
+                <li>Types of machine learning: supervised, unsupervised, reinforcement</li>
+                <li>Why ML is revolutionary for solving complex problems</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 2: SKETCHNOTE -->
+        <section id="sketchnote" class="lesson-section">
+            <h2>🎨 Sketchnote: Visual Summary</h2>
+            <p style="color: var(--text-light); margin-bottom: 20px;">A cat-themed visual explanation of Machine Learning vs. Traditional Programming</p>
+
+            <div class="sketchnote-container">
+                <div class="sketchnote-placeholder">
+                    <h3>🖼️ Sketchnote Concept</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;"><strong>Side-by-side comic of two scenarios:</strong></p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; text-align: left; max-width: 800px; margin: 0 auto;">
+                        <div style="background: #fee2e2; padding: 20px; border-radius: 10px;">
+                            <h4>❌ Left Side: Traditional Programming</h4>
+                            <ul>
+                                <li>Frustrated programmer at desk</li>
+                                <li>Writing endless if/else rules:</li>
+                                <li><code>if whiskers AND ears AND fur...</code></li>
+                                <li>Flowchart getting complicated</li>
+                                <li>Edge cases breaking everything!</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: #dcfce7; padding: 20px; border-radius: 10px;">
+                            <h4>✅ Right Side: Machine Learning</h4>
+                            <ul>
+                                <li>Smart cat wearing glasses 🐱👓</li>
+                                <li>Looking at training images:</li>
+                                <li>"Cat" ✓ | "Not Cat" ✗</li>
+                                <li>Learning patterns automatically</li>
+                                <li>Can recognize NEW cats!</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 25px; padding: 15px; background: #f0f9ff; border-radius: 8px;">
+                        <p><strong>Process Flow to Show:</strong></p>
+                        <p>📊 Input Data (labeled cat photos) → 🧠 Learning Algorithm (cat student) → 🤖 Trained Model → ✨ Identifies new cats!</p>
+                    </div>
+                    
+                    <p style="margin-top: 20px; color: var(--text-light);">
+                        💡 Save your sketchnote as: <code>/assets/sketchnotes/ml-basics.png</code>
+                    </p>
+                </div>
+                <!-- Uncomment when you add your sketchnote:
+                <img src="../assets/sketchnotes/ml-basics.png" alt="Machine Learning vs Traditional Programming - Cat Student Sketchnote" class="sketchnote-img">
+                -->
+            </div>
+
+            <div class="term-card" style="margin-top: 30px;">
+                <h3>🐱 The Cat Student Story</h3>
+                <p><strong>Traditional side:</strong> A human programmer struggles with writing perfect rules for cat detection. Every edge case (hairless cats, sleeping cats, cat drawings) requires a new rule. The flowchart becomes impossibly complex!</p>
+                <p><strong>ML side:</strong> Our "Cat Student" (the ML model wearing glasses) learns by example. Fed thousands of labeled images, it discovers patterns on its own: face shapes, ear positions, body proportions. When shown a NEW cat picture it's never seen, it recognizes the pattern!</p>
+                <p><strong>Moral:</strong> ML models learn <em>patterns</em>, not rules. They generalize from examples!</p>
             </div>
         </section>
 
+        <!-- SECTION 3: CORE CONTENT (TYPES) -->
+        <section id="types" class="lesson-section">
+            <h2>📚 Core Content</h2>
+
+            <div class="accordion">
+                <!-- Traditional vs ML -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>💻 Traditional Programming vs. Machine Learning</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="term-card">
+                                <h4>Traditional Programming</h4>
+                                <p><strong>Input:</strong> Data + Rules (code)</p>
+                                <p><strong>Output:</strong> Answers</p>
+                                <p><strong>Process:</strong> Programmer writes explicit step-by-step instructions</p>
+                                <pre style="background: #f3f4f6; padding: 10px; border-radius: 5px; font-size: 0.85rem;"><code>if (has_whiskers && has_pointy_ears) {
+    return "Cat";
+} else {
+    return "Not Cat";
+}</code></pre>
+                                <p><strong>Limitation:</strong> Every scenario must be anticipated and coded. Can't handle unexpected cases.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Machine Learning</h4>
+                                <p><strong>Input:</strong> Data + Answers (labels)</p>
+                                <p><strong>Output:</strong> Rules (learned model)</p>
+                                <p><strong>Process:</strong> Algorithm finds patterns in data automatically</p>
+                                <pre style="background: #f3f4f6; padding: 10px; border-radius: 5px; font-size: 0.85rem;"><code># Show many examples
+model.fit(cat_images, labels)
+
+# Model learns patterns itself!
+model.predict(new_image)</code></pre>
+                                <p><strong>Advantage:</strong> Learns from examples, handles complexity, improves with more data.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The ML Workflow -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🔄 The Machine Learning Workflow</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <h4>Step-by-Step Process:</h4>
+                        <ol>
+                            <li><strong>📊 Collect Data:</strong> Gather thousands of examples (cat images with "cat" labels, non-cat images with "not cat" labels)</li>
+                            <li><strong>🧹 Prepare Data:</strong> Clean, normalize, and split into training/test sets</li>
+                            <li><strong>🏋️ Train Model:</strong> Feed data to learning algorithm, which adjusts internal parameters to find patterns</li>
+                            <li><strong>📈 Evaluate:</strong> Test the model on data it hasn't seen to measure accuracy</li>
+                            <li><strong>🚀 Deploy:</strong> Use the trained model to make predictions on new data</li>
+                            <li><strong>🔄 Iterate:</strong> Improve with more data or better algorithms</li>
+                        </ol>
+                        
+                        <div class="term-card" style="margin-top: 20px;">
+                            <h4>🐱 Cat Student's Training Day</h4>
+                            <p>Imagine our cat student in class:</p>
+                            <ul>
+                                <li>Card 1: <em>Picture of a tabby cat</em> → Teacher says: "Cat" ✅</li>
+                                <li>Card 2: <em>Picture of a dog</em> → Teacher says: "Not Cat" ❌</li>
+                                <li>Card 3: <em>Picture of a Persian cat</em> → Teacher says: "Cat" ✅</li>
+                                <li>...thousands more examples...</li>
+                            </ul>
+                            <p>After seeing many examples, the cat student notices patterns: face shapes, ear positions, eye types. It didn't memorize every picture—it learned <strong>the essence of cat-ness!</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Types of ML -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>📊 Types of Machine Learning</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>1. Supervised Learning 👨‍🏫</h4>
+                            <p>Learn from <strong>labeled data</strong> (input + correct answer). Like our cat example!</p>
+                            <p><strong>The teacher shows answers during training.</strong></p>
+                            <p><strong>Examples:</strong></p>
+                            <ul>
+                                <li>Image classification (cat vs. dog)</li>
+                                <li>Spam email detection</li>
+                                <li>House price prediction</li>
+                                <li>Medical diagnosis from X-rays</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="term-card">
+                            <h4>2. Unsupervised Learning 🔍</h4>
+                            <p>Find patterns in <strong>unlabeled data</strong>. No teacher, no correct answers given!</p>
+                            <p><strong>The model discovers structure on its own.</strong></p>
+                            <p><strong>Examples:</strong></p>
+                            <ul>
+                                <li>Customer segmentation (group similar customers)</li>
+                                <li>Anomaly detection (find unusual patterns)</li>
+                                <li>Topic modeling (discover themes in text)</li>
+                                <li>Dimensionality reduction</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="term-card">
+                            <h4>3. Reinforcement Learning 🎮</h4>
+                            <p>Learn through <strong>trial and error</strong> with rewards and penalties.</p>
+                            <p><strong>The agent explores and learns from consequences.</strong></p>
+                            <p><strong>Examples:</strong></p>
+                            <ul>
+                                <li>Game-playing AI (AlphaGo, chess engines)</li>
+                                <li>Robot control and navigation</li>
+                                <li>Self-driving cars</li>
+                                <li>Trading algorithms</li>
+                            </ul>
+                            <p><em>We'll explore this in detail in Lesson 06 with our cat-in-a-maze!</em> 🐱🧀</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Why ML Matters -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🌟 Why Machine Learning Matters</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <h4>ML Can Solve Problems That Are:</h4>
+                        <ul>
+                            <li><strong>Too complex for rules:</strong> Recognizing faces, understanding speech, translating languages</li>
+                            <li><strong>Constantly changing:</strong> Spam patterns, fraud detection, recommendations</li>
+                            <li><strong>Requiring personalization:</strong> Netflix suggestions, ad targeting, news feeds</li>
+                            <li><strong>Involving massive data:</strong> Genomics, climate modeling, particle physics</li>
+                        </ul>
+                        
+                        <h4 style="margin-top: 20px;">Real-World Applications:</h4>
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>🏥 Healthcare</h4>
+                                <p>Disease diagnosis, drug discovery, medical imaging</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🚗 Transportation</h4>
+                                <p>Self-driving cars, route optimization, traffic prediction</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>💰 Finance</h4>
+                                <p>Fraud detection, credit scoring, algorithmic trading</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🛒 E-commerce</h4>
+                                <p>Recommendations, dynamic pricing, inventory management</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Terms -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>📖 Key Terms to Remember</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>Training Data</h4>
+                                <p>The examples used to teach the model (e.g., labeled cat images)</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Features</h4>
+                                <p>Input variables the model uses to make predictions (e.g., pixel values, whisker presence)</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Labels</h4>
+                                <p>The correct answers in supervised learning (e.g., "cat" or "not cat")</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Model</h4>
+                                <p>The learned function that maps inputs to outputs</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Training</h4>
+                                <p>The process of adjusting model parameters to minimize errors</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Inference</h4>
+                                <p>Using the trained model to make predictions on new data</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: EXPERIMENTS -->
+        <section id="experiments" class="lesson-section">
+            <h2>🧪 Experiments: Hands-On Learning</h2>
+            <p style="color: var(--text-light); margin-bottom: 30px;">Try these interactive demos to see machine learning in action!</p>
+
+            <div class="experiments-grid">
+                <div class="experiment-card">
+                    <h3>🐱 Cat vs. Not Cat Classifier</h3>
+                    <p>Upload an image and watch a trained ML model predict whether it's a cat! See how it handles edge cases like drawings, hairless cats, or cat-shaped objects.</p>
+                    <p><strong>Concepts demonstrated:</strong> Supervised learning, image classification, model inference</p>
+                    <a href="#" class="experiment-link">Coming Soon →</a>
+                    <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 10px;">
+                        <em>Build with: TensorFlow.js, ml5.js, or Teachable Machine</em>
+                    </p>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>📈 Watch Training in Real-Time</h3>
+                    <p>Visualize how a model learns! See accuracy improve and loss decrease as the model trains on data, epoch by epoch.</p>
+                    <p><strong>Concepts demonstrated:</strong> Training loop, loss function, convergence</p>
+                    <a href="https://playground.tensorflow.org" class="experiment-link" target="_blank">Try TensorFlow Playground →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🎨 Teachable Machine</h3>
+                    <p>Train your own image classifier in the browser with zero coding! Use your webcam to create custom categories.</p>
+                    <p><strong>Concepts demonstrated:</strong> Data collection, training, real-time inference</p>
+                    <a href="https://teachablemachine.withgoogle.com" class="experiment-link" target="_blank">Try Teachable Machine →</a>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px; background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(37, 99, 235, 0.1));">
+                <h3>💻 Try It Yourself: Python Code</h3>
+                <p>Want to train your own cat classifier? Here's a simple example:</p>
+                <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto;"><code># Simple ML workflow with scikit-learn
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+
+# 1. Prepare data (features X, labels y)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# 2. Create and train model
+model = RandomForestClassifier()
+model.fit(X_train, y_train)  # This is where learning happens!
+
+# 3. Make predictions
+predictions = model.predict(X_test)
+
+# 4. Evaluate
+print(f"Accuracy: {accuracy_score(y_test, predictions):.2%}")</code></pre>
+            </div>
+        </section>
+
+        <!-- SECTION 5: RESOURCES -->
+        <section id="resources" class="lesson-section">
+            <h2>📚 Resources for Further Learning</h2>
+            
+            <div class="resources-section">
+                <div class="resources-columns">
+                    <div class="resource-column">
+                        <h3>📖 Articles & Tutorials</h3>
+                        <ul>
+                            <li><a href="https://www.cloudthat.com/resources/blog/machine-learning-vs-traditional-programming-a-comprehensive-comparison-for-optimal-use-cases" target="_blank">ML vs Traditional Programming - CloudThat</a></li>
+                            <li><a href="https://machinelearningmastery.com/what-is-machine-learning/" target="_blank">Gentle Intro to ML - ML Mastery</a></li>
+                            <li><a href="https://www.kaggle.com/learn/intro-to-machine-learning" target="_blank">Intro to ML - Kaggle (Free Course)</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>🎥 Videos</h3>
+                        <ul>
+                            <li><a href="https://www.youtube.com/watch?v=ukzFI9rgwfU" target="_blank">ML Basics - StatQuest (15 min)</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank">Neural Networks - 3Blue1Brown</a></li>
+                            <li><a href="https://www.coursera.org/learn/machine-learning" target="_blank">ML Course - Andrew Ng (Coursera)</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>🛠️ Tools</h3>
+                        <ul>
+                            <li><a href="https://scikit-learn.org/" target="_blank">Scikit-learn - Python ML Library</a></li>
+                            <li><a href="https://www.tensorflow.org/" target="_blank">TensorFlow - Google's ML Framework</a></li>
+                            <li><a href="https://colab.research.google.com/" target="_blank">Google Colab - Free Notebooks</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📚 Books</h3>
+                        <ul>
+                            <li><strong>Hands-On ML</strong> - Aurélien Géron</li>
+                            <li><strong>100-Page ML Book</strong> - Andriy Burkov</li>
+                            <li><strong>Pattern Recognition & ML</strong> - Bishop</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
         <nav class="lesson-navigation">
-            <a href="intro-to-ai.html" class="lesson-nav-btn">
+            <a href="../index.html" class="lesson-nav-btn">
                 <span>←</span>
                 <div class="lesson-nav-btn-content">
-                    <span class="lesson-nav-btn-label">Previous Lesson</span>
-                    <span class="lesson-nav-btn-title">Introduction to AI</span>
+                    <span class="lesson-nav-btn-label">Back to</span>
+                    <span class="lesson-nav-btn-title">All Lessons</span>
                 </div>
             </a>
-            <a href="deep-learning.html" class="lesson-nav-btn next">
+            <a href="neural-networks.html" class="lesson-nav-btn next">
                 <span>→</span>
                 <div class="lesson-nav-btn-content">
                     <span class="lesson-nav-btn-label">Next Lesson</span>
-                    <span class="lesson-nav-btn-title">Deep Learning</span>
+                    <span class="lesson-nav-btn-title">Neural Networks</span>
                 </div>
             </a>
         </nav>
@@ -69,7 +443,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Referencia - An open-source AI & LLM learning platform</p>
+            <p>&copy; 2026 Referencia - Learning AI, one cat at a time 🐱</p>
         </div>
     </footer>
 

@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Dictionary - Complete glossary of AI and machine learning terms with cat-themed explanations">
+    <title>AI Dictionary | Referencia 🐱</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .glossary-alpha-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 20px 0;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 100;
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 30px;
+        }
+        .glossary-alpha-nav a {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .glossary-alpha-nav a:hover { opacity: 0.8; }
+        .glossary-letter-section { margin-bottom: 40px; }
+        .glossary-letter-heading {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+        .glossary-term {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary-color);
+            transition: box-shadow 0.2s;
+        }
+        .glossary-term:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .glossary-term h3 { margin: 0 0 8px 0; color: #1f2937; font-size: 1.1rem; }
+        .glossary-definition { color: #374151; margin-bottom: 6px; }
+        .glossary-analogy { color: #6b7280; font-style: italic; margin-bottom: 6px; }
+        .glossary-usecase { color: #374151; margin-bottom: 8px; }
+        .glossary-lesson-link {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+        .glossary-term[style*="display: none"] { display: none !important; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" style="text-decoration: none; color: white;">
+                    <h1 class="logo">Referencia</h1>
+                </a>
+                <p class="tagline">📖 AI Dictionary</p>
+            </div>
+        </nav>
+        <div class="search-bar">
+            <div class="container">
+                <input type="text" id="glossarySearch" placeholder="Search terms... e.g. 'embedding', 'transformer', 'RAG'" />
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2>📖 The AI Dictionary 🐱</h2>
+            <p>Every AI term explained simply with cat-themed analogies and real-world use cases. Click any term's lesson link to dive deeper.</p>
+        </section>
+
+        <div class="glossary-alpha-nav">
+            <a href="#letter-A">A</a>
+            <a href="#letter-B">B</a>
+            <a href="#letter-C">C</a>
+            <a href="#letter-D">D</a>
+            <a href="#letter-E">E</a>
+            <a href="#letter-F">F</a>
+            <a href="#letter-G">G</a>
+            <a href="#letter-H">H</a>
+            <a href="#letter-I">I</a>
+            <a href="#letter-K">K</a>
+            <a href="#letter-L">L</a>
+            <a href="#letter-M">M</a>
+            <a href="#letter-N">N</a>
+            <a href="#letter-O">O</a>
+            <a href="#letter-P">P</a>
+            <a href="#letter-Q">Q</a>
+            <a href="#letter-R">R</a>
+            <a href="#letter-S">S</a>
+            <a href="#letter-T">T</a>
+            <a href="#letter-U">U</a>
+            <a href="#letter-V">V</a>
+            <a href="#letter-W">W</a>
+            <a href="#letter-Z">Z</a>
+        </div>
+
+        <!-- A -->
+        <section id="letter-A" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">A</h2>
+
+            <div class="glossary-term">
+                <h3>Accuracy</h3>
+                <p class="glossary-definition">A metric measuring how often a model's predictions are correct, calculated as the number of correct predictions divided by the total number of predictions.</p>
+                <p class="glossary-analogy">🐱 If Whiskers correctly identifies 9 out of 10 treats as "tuna" vs "salmon," her accuracy is 90%.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Measuring how well an image classifier correctly labels photos of cats vs dogs.</p>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Agent (AI Agent)</h3>
+                <p class="glossary-definition">An AI system that autonomously perceives its environment, makes decisions, and takes actions to achieve a goal — often using tools like web search or code execution.</p>
+                <p class="glossary-analogy">🐱 Agent Whiskers independently hunts for information, checks the fridge, and orders tuna — all without being told each step.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> An AI assistant that browses the web, reads emails, and books meetings on your behalf.</p>
+                <a href="lessons/ai-agents.html" class="glossary-lesson-link">→ Lesson 17: AI Agents</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Artificial Intelligence</h3>
+                <p class="glossary-definition">The broad field of computer science focused on creating systems that can perform tasks that normally require human intelligence, such as reasoning, learning, and problem-solving.</p>
+                <p class="glossary-analogy">🐱 AI is like teaching a robot cat to do everything a real cat does — nap strategically, judge humans, and occasionally be useful.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Powering virtual assistants, recommendation engines, self-driving cars, and medical diagnostics.</p>
+                <a href="lessons/intro-to-ai.html" class="glossary-lesson-link">→ Lesson 01: What is AI?</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Attention Mechanism</h3>
+                <p class="glossary-definition">A technique that allows a model to focus on the most relevant parts of the input when producing each part of the output, rather than treating all input equally.</p>
+                <p class="glossary-analogy">🐱 When Whiskers hears "treat," she tunes out everything else and zeros in on that one word — that's attention.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Helping a translation model focus on the right source words when generating each target word.</p>
+                <a href="lessons/transformers.html" class="glossary-lesson-link">→ Lesson 09: Transformer Architecture</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Autoencoder</h3>
+                <p class="glossary-definition">A neural network that learns to compress data into a compact representation (encoding) and then reconstruct it (decoding), used for dimensionality reduction and anomaly detection.</p>
+                <p class="glossary-analogy">🐱 Whiskers summarizes her day into five meows, then her kitten reconstructs the full story from those meows.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Detecting fraudulent transactions by learning what "normal" looks like and flagging deviations.</p>
+            </div>
+        </section>
+
+        <!-- B -->
+        <section id="letter-B" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">B</h2>
+
+            <div class="glossary-term">
+                <h3>Backpropagation</h3>
+                <p class="glossary-definition">The algorithm used to train neural networks by computing gradients of the loss function with respect to each weight, then propagating them backwards through the network to update weights.</p>
+                <p class="glossary-analogy">🐱 Whiskers misses a jump. She retraces every decision — angle, speed, timing — to figure out exactly where she went wrong.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Teaching a neural network to classify handwritten digits by correcting its mistakes layer by layer.</p>
+                <a href="lessons/neural-networks.html" class="glossary-lesson-link">→ Lesson 04: Neural Networks</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Batch Size</h3>
+                <p class="glossary-definition">The number of training examples processed together in one forward and backward pass before updating the model's weights.</p>
+                <p class="glossary-analogy">🐱 Instead of correcting Whiskers after every single toy toss, you let her play with 32 toys then give one big coaching session.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Choosing a batch size of 64 to balance training speed and memory usage when training an image classifier.</p>
+            </div>
+
+            <div class="glossary-term">
+                <h3>BERT</h3>
+                <p class="glossary-definition">Bidirectional Encoder Representations from Transformers — a pre-trained language model by Google that reads text in both directions simultaneously to understand context deeply.</p>
+                <p class="glossary-analogy">🐱 Whiskers reads a sentence from both left and right at the same time, understanding the middle word using clues from all sides.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Powering Google Search to understand the intent behind user queries, not just keywords.</p>
+                <a href="lessons/transformers.html" class="glossary-lesson-link">→ Lesson 09: Transformer Architecture</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Bias (Model Bias)</h3>
+                <p class="glossary-definition">Systematic errors in a model's predictions caused by unfair assumptions in the training data or algorithm, leading to unfair or skewed outcomes for certain groups.</p>
+                <p class="glossary-analogy">🐱 If Whiskers only trained on tabby cats, she'll wrongly label all Siamese cats as "not cat" — that's bias from skewed data.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Hiring algorithms unfairly penalizing candidates from underrepresented groups due to biased historical data.</p>
+                <a href="lessons/model-bias.html" class="glossary-lesson-link">→ Lesson 18: Model Bias &amp; Fairness</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Bounding Box</h3>
+                <p class="glossary-definition">A rectangle drawn around an object in an image to indicate its location, used in object detection tasks alongside a class label.</p>
+                <p class="glossary-analogy">🐱 Whiskers draws a box around every bird she spots through the window — that box is a bounding box.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Self-driving cars drawing bounding boxes around pedestrians, traffic lights, and other vehicles in real time.</p>
+            </div>
+        </section>
+
+        <!-- C -->
+        <section id="letter-C" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">C</h2>
+
+            <div class="glossary-term">
+                <h3>Classification</h3>
+                <p class="glossary-definition">A supervised learning task where the model assigns an input to one of a predefined set of categories or classes.</p>
+                <p class="glossary-analogy">🐱 Whiskers looks at every item in the house and sorts it into: "toy," "food," or "ignore" — that's classification.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Spam filters classifying incoming emails as "spam" or "not spam."</p>
+            </div>
+
+            <div class="glossary-term">
+                <h3>CNN (Convolutional Neural Network)</h3>
+                <p class="glossary-definition">A neural network architecture designed for processing grid-structured data like images, using convolutional layers to detect local patterns such as edges, textures, and shapes.</p>
+                <p class="glossary-analogy">🐱 A cat's eye scans a scene in overlapping patches — spotting whiskers here, ears there — just like a CNN slides a filter across an image.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Face recognition on your phone, medical image analysis, and autonomous driving cameras.</p>
+                <a href="lessons/cnn.html" class="glossary-lesson-link">→ Lesson 08: CNNs — Computer Vision</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Context Window</h3>
+                <p class="glossary-definition">The maximum number of tokens an LLM can process in a single interaction — both the input prompt and the generated output combined must fit within this limit.</p>
+                <p class="glossary-analogy">🐱 Whiskers has a short memory — she only remembers the last 10 minutes of conversation. That's her context window.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> A model with a 128K token context window can process an entire novel at once before generating a summary.</p>
+                <a href="lessons/large-language-models.html" class="glossary-lesson-link">→ Lesson 10: Large Language Models</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Corpus</h3>
+                <p class="glossary-definition">A large, structured collection of text used to train or evaluate language models, ranging from web pages and books to domain-specific documents.</p>
+                <p class="glossary-analogy">🐱 Whiskers's library of every cat meow ever recorded — thousands of purrs, hisses, and chirps — is her training corpus.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> The Common Crawl web corpus (petabytes of text) used to pre-train GPT-style models.</p>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Cross-Entropy Loss</h3>
+                <p class="glossary-definition">A loss function that measures how well a model's predicted probability distribution matches the true distribution, commonly used for classification tasks.</p>
+                <p class="glossary-analogy">🐱 Whiskers confidently says "90% tuna, 10% salmon" but it's actually salmon — cross-entropy penalizes her confidence in the wrong answer.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Training image classifiers and language models to output calibrated probability scores.</p>
+            </div>
+        </section>
+
+        <!-- D -->
+        <section id="letter-D" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">D</h2>
+
+            <div class="glossary-term">
+                <h3>Dataset</h3>
+                <p class="glossary-definition">A structured collection of examples (inputs and sometimes labels) used to train, validate, or test a machine learning model.</p>
+                <p class="glossary-analogy">🐱 Prof. Whiskers's stack of 10,000 flashcards with cat photos on one side and breed names on the other — that's a dataset.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> ImageNet, a dataset of 14 million labeled images, used to train early deep learning vision models.</p>
+                <a href="lessons/training-data.html" class="glossary-lesson-link">→ Lesson 03: Training Data &amp; Datasets</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Deep Learning</h3>
+                <p class="glossary-definition">A subset of machine learning using neural networks with many layers (deep architectures) to automatically learn hierarchical representations from raw data.</p>
+                <p class="glossary-analogy">🐱 A kitten first learns edges, then shapes, then faces — each layer of understanding builds on the last, going deeper and deeper.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Powering voice assistants, image generation, medical diagnosis, and language translation.</p>
+                <a href="lessons/deep-learning.html" class="glossary-lesson-link">→ Lesson 05: Deep Learning</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Diffusion Model</h3>
+                <p class="glossary-definition">A generative model that learns to create data by learning to reverse a process of gradually adding noise, starting from pure noise and iteratively denoising to produce a clean output.</p>
+                <p class="glossary-analogy">🐱 A static-filled TV screen slowly resolves into a crisp picture of Whiskers, step by step — that's diffusion in reverse.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Stable Diffusion and DALL-E 3 generating photorealistic images from text prompts.</p>
+                <a href="lessons/diffusion-models.html" class="glossary-lesson-link">→ Lesson 12: Diffusion Models</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Discriminator (GAN)</h3>
+                <p class="glossary-definition">The component of a Generative Adversarial Network that evaluates whether a given sample is real (from the training data) or fake (produced by the Generator).</p>
+                <p class="glossary-analogy">🐱 The Cat Critic looks at each painting and judges: "Real masterpiece or Whiskers's forgery?" — pushing the artist to improve.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> In GAN-based image synthesis, the discriminator forces the generator to produce ever-more-realistic faces.</p>
+                <a href="lessons/gans.html" class="glossary-lesson-link">→ Lesson 11: GANs</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Dropout</h3>
+                <p class="glossary-definition">A regularization technique where random neurons are temporarily deactivated during training to prevent overfitting and force the network to learn more robust features.</p>
+                <p class="glossary-analogy">🐱 Each training session, some kittens in the class randomly fall asleep — the remaining ones must still solve the problem without them.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Applied in deep networks to reduce reliance on specific neurons and improve generalization to new data.</p>
+                <a href="lessons/deep-learning.html" class="glossary-lesson-link">→ Lesson 05: Deep Learning</a>
+            </div>
+        </section>
+
+        <!-- E -->
+        <section id="letter-E" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">E</h2>
+
+            <div class="glossary-term">
+                <h3>Embedding</h3>
+                <p class="glossary-definition">A dense numerical vector representation of data (words, sentences, images) in a continuous space where semantically similar items are placed close together.</p>
+                <p class="glossary-analogy">🐱 "Kitten" and "cat" sit close together on Whiskers's mental map, while "kitten" and "spaceship" are far apart — that's an embedding space.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Powering semantic search so that "feline" and "cat" return the same results, and enabling recommendation systems.</p>
+                <a href="lessons/tokenization-embeddings.html" class="glossary-lesson-link">→ Lesson 14: Tokenization &amp; Embeddings</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Encoder</h3>
+                <p class="glossary-definition">The component of a model that transforms raw input (text, images, audio) into a rich internal representation (usually a vector or sequence of vectors) that captures meaning.</p>
+                <p class="glossary-analogy">🐱 Whiskers reads the entire scene outside the window and compresses it into a single "danger level" score in her head — that's encoding.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> BERT uses an encoder to convert sentences into embeddings for downstream tasks like classification.</p>
+                <a href="lessons/transformers.html" class="glossary-lesson-link">→ Lesson 09: Transformer Architecture</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Epoch</h3>
+                <p class="glossary-definition">One complete pass through the entire training dataset during model training. Models are typically trained for multiple epochs until performance converges.</p>
+                <p class="glossary-analogy">🐱 Whiskers reviews all 1,000 flashcards once — that's one epoch. She does it 50 times to really memorize them.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Training a neural network for 100 epochs while monitoring validation loss to decide when to stop.</p>
+                <a href="lessons/deep-learning.html" class="glossary-lesson-link">→ Lesson 05: Deep Learning</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Evaluation Metrics</h3>
+                <p class="glossary-definition">Quantitative measures used to assess model performance, such as accuracy, precision, recall, F1-score, BLEU, or ROUGE, chosen based on the task and what matters most.</p>
+                <p class="glossary-analogy">🐱 Whiskers's report card — not just "did she catch the toy?" but also "how fast?" and "how often did she miss?" — covers multiple metrics.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Using F1-score instead of accuracy when class imbalance exists, like in rare disease detection.</p>
+            </div>
+        </section>
+
+        <!-- F -->
+        <section id="letter-F" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">F</h2>
+
+            <div class="glossary-term">
+                <h3>Feature</h3>
+                <p class="glossary-definition">An individual measurable property or characteristic of the data used as input to a model, such as pixel values, word frequencies, or sensor readings.</p>
+                <p class="glossary-analogy">🐱 When identifying a cat, Whiskers notes: pointy ears, whiskers, fur texture, tail length — each of these is a feature.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> A house price model uses features like square footage, location, and number of bedrooms.</p>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Feature Extraction</h3>
+                <p class="glossary-definition">The process of using a pre-trained model to transform raw input into meaningful intermediate representations (features) that can be used for a new task without full retraining.</p>
+                <p class="glossary-analogy">🐱 Whiskers uses her cat-hunting skills (detecting movement, shapes) as a base to spot birds — she's extracting and reusing features.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Using a pre-trained ResNet's convolutional layers to extract image features for a custom medical imaging classifier.</p>
+                <a href="lessons/transfer-learning.html" class="glossary-lesson-link">→ Lesson 07: Transfer Learning &amp; Fine-tuning</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Fine-tuning</h3>
+                <p class="glossary-definition">The process of taking a pre-trained model and continuing training on a smaller, task-specific dataset to adapt its knowledge to a new domain or task.</p>
+                <p class="glossary-analogy">🐱 Whiskers already knows how to hunt mice; with a few lessons, she adapts those skills to herd sheep. Same base skills, new specialty.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Fine-tuning GPT on company documents to create a customer service chatbot that knows your product.</p>
+                <a href="lessons/transfer-learning.html" class="glossary-lesson-link">→ Lesson 07: Transfer Learning &amp; Fine-tuning</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Foundation Model</h3>
+                <p class="glossary-definition">A large model trained on broad data at massive scale that can be adapted to a wide range of downstream tasks, serving as a foundation for many applications.</p>
+                <p class="glossary-analogy">🐱 Whiskers is so universally talented she can hunt, herd, cuddle, or perform — foundation models are the Whiskers of AI.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> GPT-4, Claude, and Gemini are foundation models used for writing, coding, analysis, and more.</p>
+                <a href="lessons/large-language-models.html" class="glossary-lesson-link">→ Lesson 10: Large Language Models</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Function Calling</h3>
+                <p class="glossary-definition">A capability allowing LLMs to invoke external tools or APIs in a structured way — the model decides when and how to call a function based on the conversation context.</p>
+                <p class="glossary-analogy">🐱 Agent Whiskers knows she can ring the treat bell, call for backup, or check the weather app — function calling is knowing which button to press.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> A travel assistant LLM calling a flight search API to return real-time prices within a chat conversation.</p>
+                <a href="lessons/ai-agents.html" class="glossary-lesson-link">→ Lesson 17: AI Agents</a>
+            </div>
+        </section>
+
+        <!-- G -->
+        <section id="letter-G" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">G</h2>
+
+            <div class="glossary-term">
+                <h3>GAN (Generative Adversarial Network)</h3>
+                <p class="glossary-definition">A framework where two neural networks — a Generator and a Discriminator — compete against each other: the generator tries to create realistic fake data, while the discriminator tries to detect fakes.</p>
+                <p class="glossary-analogy">🐱 Cat Artist creates paintings; Cat Critic tries to spot forgeries. Their competition forces the artist to get so good the critic can't tell.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Generating photorealistic human faces (StyleGAN), deepfakes, and data augmentation for rare medical cases.</p>
+                <a href="lessons/gans.html" class="glossary-lesson-link">→ Lesson 11: GANs</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Generative AI</h3>
+                <p class="glossary-definition">AI systems that can create new content — text, images, audio, video, or code — that didn't exist before, by learning patterns from training data.</p>
+                <p class="glossary-analogy">🐱 Instead of just recognizing cat photos, Whiskers can now paint entirely new cat portraits she's never seen before — that's generative.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> ChatGPT writing essays, Midjourney generating artwork, and GitHub Copilot completing code.</p>
+            </div>
+
+            <div class="glossary-term">
+                <h3>GPU</h3>
+                <p class="glossary-definition">Graphics Processing Unit — hardware originally designed for rendering graphics that, due to its massively parallel architecture, is ideal for the matrix computations in deep learning.</p>
+                <p class="glossary-analogy">🐱 A CPU is one very smart cat solving puzzles one by one; a GPU is 10,000 average cats solving the same puzzle simultaneously.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Training GPT-3 required thousands of NVIDIA A100 GPUs running in parallel for months.</p>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Gradient Descent</h3>
+                <p class="glossary-definition">An optimization algorithm that iteratively adjusts model weights in the direction that most reduces the loss function, like descending a hill to find the lowest point.</p>
+                <p class="glossary-analogy">🐱 Whiskers is lost in hilly terrain and always takes a step downhill — eventually she reaches the valley (minimum error).</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> The core algorithm behind training nearly every modern neural network, from tiny classifiers to massive LLMs.</p>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Grounding</h3>
+                <p class="glossary-definition">The process of anchoring an AI model's outputs to factual, verifiable sources — preventing hallucination by tying responses to real, retrieved information.</p>
+                <p class="glossary-analogy">🐱 Instead of guessing what's in the fridge, Whiskers opens it and checks before answering — grounded in reality, not imagination.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> RAG systems ground LLM answers in retrieved documents so the model doesn't fabricate facts.</p>
+                <a href="lessons/rag-systems.html" class="glossary-lesson-link">→ Lesson 16: RAG Systems</a>
+            </div>
+        </section>
+
+        <!-- H -->
+        <section id="letter-H" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">H</h2>
+
+            <div class="glossary-term">
+                <h3>Hallucination (AI)</h3>
+                <p class="glossary-definition">When an AI model generates confident-sounding but factually incorrect or completely fabricated information, presenting it as if it were true.</p>
+                <p class="glossary-analogy">🐱 Whiskers tells everyone she climbed Mount Everest last Tuesday — convincingly and with detail — but she's never left the apartment.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> A chatbot confidently citing a scientific paper that doesn't exist — a dangerous hallucination in medical or legal contexts.</p>
+                <a href="lessons/hallucinations.html" class="glossary-lesson-link">→ Lesson 19: AI Hallucinations</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Hyperparameter</h3>
+                <p class="glossary-definition">Configuration settings set before training begins (not learned from data) that control the training process, such as learning rate, batch size, number of layers, and dropout rate.</p>
+                <p class="glossary-analogy">🐱 Before Whiskers starts studying, you decide: how many hours per day, how many flashcards per session, how long to rest — those are hyperparameters.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Tuning the learning rate via grid search to find the best value that makes training converge fastest.</p>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Hugging Face</h3>
+                <p class="glossary-definition">An open-source AI platform and community that hosts thousands of pre-trained models, datasets, and tools, making state-of-the-art AI accessible to developers worldwide.</p>
+                <p class="glossary-analogy">🐱 Hugging Face is the giant library where Whiskers can borrow any pre-trained cat-brain off the shelf and take it home immediately.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Downloading a pre-trained BERT model in two lines of Python code to classify sentiment in customer reviews.</p>
+            </div>
+        </section>
+
+        <!-- I -->
+        <section id="letter-I" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">I</h2>
+
+            <div class="glossary-term">
+                <h3>Inference</h3>
+                <p class="glossary-definition">The process of using a trained model to generate predictions or outputs on new, unseen data — as opposed to training, where the model learns from data.</p>
+                <p class="glossary-analogy">🐱 Whiskers is done studying. Now when she sees a new animal, she just identifies it on the spot — that's inference, no more studying needed.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Running a trained fraud detection model in real time on incoming bank transactions to flag suspicious ones.</p>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Instruction Tuning</h3>
+                <p class="glossary-definition">Fine-tuning a language model on examples of instruction-following tasks (e.g., "Summarize this," "Translate that") to make it better at following natural language instructions.</p>
+                <p class="glossary-analogy">🐱 Whiskers was a great natural learner, but instruction tuning teaches her to follow commands like "sit," "fetch," and "explain quantum physics simply."</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> InstructGPT and ChatGPT were trained with instruction tuning to be helpful assistants rather than raw text predictors.</p>
+            </div>
+        </section>
+
+        <!-- K -->
+        <section id="letter-K" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">K</h2>
+
+            <div class="glossary-term">
+                <h3>Knowledge Cutoff</h3>
+                <p class="glossary-definition">The date after which an LLM has no training data — events, discoveries, or changes that occurred after this date are unknown to the model unless retrieved externally.</p>
+                <p class="glossary-analogy">🐱 Whiskers went into a cave in April 2024. She knows everything that happened before then, but nothing after — that's her knowledge cutoff.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> A model with a 2023 cutoff won't know about 2024 elections or product releases unless you tell it or use RAG.</p>
+            </div>
+        </section>
+
+        <!-- L -->
+        <section id="letter-L" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">L</h2>
+
+            <div class="glossary-term">
+                <h3>Label</h3>
+                <p class="glossary-definition">The correct answer or category associated with a training example in supervised learning — what the model is trained to predict.</p>
+                <p class="glossary-analogy">🐱 Each flashcard has a cat photo on one side and the breed name written on the back — that breed name is the label.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Human annotators labeling thousands of medical images as "tumor" or "no tumor" to train a cancer detection model.</p>
+                <a href="lessons/training-data.html" class="glossary-lesson-link">→ Lesson 03: Training Data &amp; Datasets</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Latent Space</h3>
+                <p class="glossary-definition">A compressed, abstract representation of data learned by a model — a lower-dimensional space where similar concepts are clustered near each other.</p>
+                <p class="glossary-analogy">🐱 Whiskers's mental map of all animals she knows — cats cluster together, dogs in another area, and mythical creatures off in a weird corner.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> In image generation, navigating latent space lets you smoothly morph a cat face into a dog face.</p>
+                <a href="lessons/diffusion-models.html" class="glossary-lesson-link">→ Lesson 12: Diffusion Models</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Layer (Neural Network)</h3>
+                <p class="glossary-definition">A group of neurons in a neural network that processes its inputs together — networks stack multiple layers (input, hidden, output) to learn increasingly abstract features.</p>
+                <p class="glossary-analogy">🐱 First layer detects Whiskers's edges, second detects her features, third recognizes her face — each layer adds understanding.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> A deep network for speech recognition with dozens of layers, each learning progressively more abstract audio patterns.</p>
+                <a href="lessons/neural-networks.html" class="glossary-lesson-link">→ Lesson 04: Neural Networks</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Learning Rate</h3>
+                <p class="glossary-definition">A hyperparameter that controls how large the steps are when updating model weights during gradient descent — too high causes instability, too low causes slow convergence.</p>
+                <p class="glossary-analogy">🐱 A huge learning rate is Whiskers bounding down the hill and overshooting the valley; too small and she barely moves — the sweet spot finds the bottom.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Learning rate schedulers that start high and decay over training time are standard practice in modern deep learning.</p>
+            </div>
+
+            <div class="glossary-term">
+                <h3>LLM (Large Language Model)</h3>
+                <p class="glossary-definition">A neural network with billions of parameters trained on massive text corpora to understand and generate human language, capable of tasks from writing to coding to reasoning.</p>
+                <p class="glossary-analogy">🐱 The Literary Cat who read every book ever written — she can continue any story, answer any question, and write in any style.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> ChatGPT, Claude, and Gemini powering chatbots, code assistants, document summarizers, and more.</p>
+                <a href="lessons/large-language-models.html" class="glossary-lesson-link">→ Lesson 10: Large Language Models</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>LoRA (Low-Rank Adaptation)</h3>
+                <p class="glossary-definition">An efficient fine-tuning technique that adds small, trainable rank-decomposition matrices to a frozen pre-trained model, drastically reducing the number of parameters needed to fine-tune.</p>
+                <p class="glossary-analogy">🐱 Instead of retraining all of Whiskers's skills from scratch, you add tiny sticky notes to key skills — lightweight but effective updates.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Fine-tuning a 70B parameter LLM on a single GPU by only training LoRA adapter weights (a few million parameters).</p>
+                <a href="lessons/transfer-learning.html" class="glossary-lesson-link">→ Lesson 07: Transfer Learning &amp; Fine-tuning</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Loss Function</h3>
+                <p class="glossary-definition">A mathematical function that measures how wrong the model's predictions are — training aims to minimize this value so the model improves its accuracy.</p>
+                <p class="glossary-analogy">🐱 Whiskers's disappointment score after guessing wrong — the higher the score, the worse she did, and the more she needs to adjust.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Mean Squared Error for regression tasks, Cross-Entropy for classification — choosing the right loss matters enormously.</p>
+            </div>
+        </section>
+
+        <!-- M -->
+        <section id="letter-M" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">M</h2>
+
+            <div class="glossary-term">
+                <h3>Machine Learning</h3>
+                <p class="glossary-definition">A subset of AI where systems learn patterns from data and improve their performance over time without being explicitly programmed for each task.</p>
+                <p class="glossary-analogy">🐱 Instead of writing rules for Whiskers, you show her 1,000 cat photos and let her figure out what "cat" means on her own.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Email spam filters, Netflix recommendations, and credit scoring all use machine learning.</p>
+                <a href="lessons/machine-learning-basics.html" class="glossary-lesson-link">→ Lesson 02: Machine Learning Basics</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Multi-Head Attention</h3>
+                <p class="glossary-definition">An extension of the attention mechanism that runs multiple attention operations in parallel, each learning to focus on different aspects of the input simultaneously.</p>
+                <p class="glossary-analogy">🐱 Whiskers reads a sentence with eight pairs of eyes at once — one pair focuses on grammar, another on meaning, another on tone — all simultaneously.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Transformers use multi-head attention so the model simultaneously attends to syntax, semantics, and co-reference in text.</p>
+                <a href="lessons/transformers.html" class="glossary-lesson-link">→ Lesson 09: Transformer Architecture</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Multimodal</h3>
+                <p class="glossary-definition">AI models that can process and generate multiple types of data — such as text, images, audio, and video — within a single unified architecture.</p>
+                <p class="glossary-analogy">🐱 Whiskers can read a caption, look at a photo, listen to a meow, and respond in all three formats — she's multimodal.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> GPT-4V, Gemini, and Claude analyze images alongside text, enabling use cases like chart reading and visual Q&amp;A.</p>
+            </div>
+        </section>
+
+        <!-- N -->
+        <section id="letter-N" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">N</h2>
+
+            <div class="glossary-term">
+                <h3>Neural Network</h3>
+                <p class="glossary-definition">A computational model loosely inspired by biological brains, consisting of interconnected layers of nodes (neurons) that transform inputs into outputs through learned weights.</p>
+                <p class="glossary-analogy">🐱 Whiskers's brain is a network of neurons passing notes to each other — each neuron says "I spotted something suspicious" and votes on the final answer.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> The backbone of image recognition, speech synthesis, language translation, and game-playing AI.</p>
+                <a href="lessons/neural-networks.html" class="glossary-lesson-link">→ Lesson 04: Neural Networks</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>NLP (Natural Language Processing)</h3>
+                <p class="glossary-definition">The field of AI focused on enabling computers to understand, interpret, and generate human language — encompassing tasks like translation, summarization, and sentiment analysis.</p>
+                <p class="glossary-analogy">🐱 Teaching a computer to understand Whiskers's meows, hisses, and purrs — every nuance of feline (or human) language.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Powering Google Translate, autocomplete, customer service chatbots, and contract analysis tools.</p>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Node (Neuron)</h3>
+                <p class="glossary-definition">The basic computational unit of a neural network that receives inputs, applies an activation function, and passes its output to the next layer.</p>
+                <p class="glossary-analogy">🐱 Each neuron-kitten in class receives notes from classmates, decides how excited to get (activation), and passes a note to the next row.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> A deep network may have millions of nodes, each contributing to recognizing a specific pattern or feature.</p>
+                <a href="lessons/neural-networks.html" class="glossary-lesson-link">→ Lesson 04: Neural Networks</a>
+            </div>
+        </section>
+
+        <!-- O -->
+        <section id="letter-O" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">O</h2>
+
+            <div class="glossary-term">
+                <h3>Overfitting</h3>
+                <p class="glossary-definition">When a model learns the training data too well — including its noise and quirks — so it performs great on training data but poorly on new, unseen data.</p>
+                <p class="glossary-analogy">🐱 Whiskers memorizes every exact question from last year's exam perfectly, then fails the new exam because she only memorized, not understood.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> A model that achieves 99% training accuracy but only 60% test accuracy — a classic overfitting sign.</p>
+                <a href="lessons/overfitting-underfitting.html" class="glossary-lesson-link">→ Lesson 06: Overfitting vs. Underfitting</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Optimization</h3>
+                <p class="glossary-definition">The process of adjusting a model's parameters to minimize the loss function, using algorithms like gradient descent, Adam, or RMSProp.</p>
+                <p class="glossary-analogy">🐱 Whiskers keeps tweaking her hunting strategy — adjusting pounce angle, timing, and approach — until she catches the toy every time.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> The Adam optimizer is the default choice for training most modern deep learning models due to its adaptive learning rates.</p>
+            </div>
+        </section>
+
+        <!-- P -->
+        <section id="letter-P" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">P</h2>
+
+            <div class="glossary-term">
+                <h3>Parameters</h3>
+                <p class="glossary-definition">The learnable values (weights and biases) inside a neural network that are adjusted during training. The number of parameters reflects a model's capacity to learn complex patterns.</p>
+                <p class="glossary-analogy">🐱 Every instinct Whiskers has trained — how much to weight each clue — are her parameters. GPT-4 has hundreds of billions of them.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> GPT-3 has 175 billion parameters; more parameters generally means more capability but also more compute and memory.</p>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Perplexity</h3>
+                <p class="glossary-definition">A metric for language models measuring how surprised the model is by new text — lower perplexity means the model is better at predicting the text, indicating higher quality.</p>
+                <p class="glossary-analogy">🐱 Whiskers reads a sentence and guesses the next word. If she's rarely surprised, her perplexity is low — she's a great predictor.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Comparing language models: a model with perplexity 20 is better than one with perplexity 50 on the same test set.</p>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Pooling</h3>
+                <p class="glossary-definition">A downsampling operation in CNNs that reduces the spatial dimensions of feature maps by summarizing regions (e.g., max pooling takes the maximum value in each region).</p>
+                <p class="glossary-analogy">🐱 Whiskers scans a 4×4 patch of the photo and just notes the most distinctive detail — pooling keeps the gist and discards the noise.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Max pooling reduces a 224×224 image to smaller representations while retaining dominant features like edges and shapes.</p>
+                <a href="lessons/cnn.html" class="glossary-lesson-link">→ Lesson 08: CNNs — Computer Vision</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Pretraining</h3>
+                <p class="glossary-definition">The initial phase of training a large model on massive unlabeled datasets using self-supervised objectives (like next-token prediction), building general knowledge before task-specific fine-tuning.</p>
+                <p class="glossary-analogy">🐱 Whiskers spends years reading every book in the library — no specific goal, just absorbing everything — before specializing in one topic.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> GPT-4 was pre-trained on trillions of tokens before being fine-tuned for chat and instruction-following.</p>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Prompt</h3>
+                <p class="glossary-definition">The input text provided to a language model to guide its output — the instructions, context, examples, or questions that shape what the model generates.</p>
+                <p class="glossary-analogy">🐱 Whiskers won't move until you tell her exactly what you want. A vague "do something" gets chaos; a clear prompt gets results.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Crafting a detailed prompt for a code assistant to generate production-ready Python with error handling and tests.</p>
+                <a href="lessons/prompt-engineering.html" class="glossary-lesson-link">→ Lesson 15: Prompt Engineering</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Prompt Engineering</h3>
+                <p class="glossary-definition">The practice of designing, iterating, and optimizing input prompts to elicit better, more accurate, or more useful outputs from AI language models.</p>
+                <p class="glossary-analogy">🐱 Whispering "Whiskers, please bring me the red toy near the couch" vs. just "fetch" — the specificity of your words determines the quality of the result.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Using chain-of-thought prompting ("let's think step by step") to dramatically improve LLM reasoning on math problems.</p>
+                <a href="lessons/prompt-engineering.html" class="glossary-lesson-link">→ Lesson 15: Prompt Engineering</a>
+            </div>
+        </section>
+
+        <!-- Q -->
+        <section id="letter-Q" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">Q</h2>
+
+            <div class="glossary-term">
+                <h3>Quantization</h3>
+                <p class="glossary-definition">A technique to reduce model size and inference cost by representing weights and activations with lower-precision numbers (e.g., 4-bit integers instead of 32-bit floats) with minimal accuracy loss.</p>
+                <p class="glossary-analogy">🐱 Instead of Whiskers remembering every detail in full HD, she stores memories in compressed JPEG — smaller, nearly as good, fits on less hardware.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Running a 70B parameter LLM on a laptop using 4-bit quantization (GGUF format) instead of requiring a server.</p>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Query (Attention)</h3>
+                <p class="glossary-definition">In the attention mechanism, the Query is a vector representing "what am I looking for?" — it's compared against Keys to determine how much attention to pay to each Value in the input.</p>
+                <p class="glossary-analogy">🐱 Whiskers thinks "I'm looking for danger" (her Query), scans the room for things matching that (Keys), and weighs the relevant ones (Values).</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Every transformer layer computes queries, keys, and values to route information through the network when processing language.</p>
+                <a href="lessons/transformers.html" class="glossary-lesson-link">→ Lesson 09: Transformer Architecture</a>
+            </div>
+        </section>
+
+        <!-- R -->
+        <section id="letter-R" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">R</h2>
+
+            <div class="glossary-term">
+                <h3>RAG (Retrieval-Augmented Generation)</h3>
+                <p class="glossary-definition">A technique that combines an LLM with a retrieval system — the model first searches an external knowledge base for relevant documents, then uses them as context to generate a grounded response.</p>
+                <p class="glossary-analogy">🐱 Whiskers checks the library before answering — she retrieves the relevant books first, then crafts her answer based on what she actually read.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Enterprise chatbots that answer questions about internal documents without hallucinating or going out-of-date.</p>
+                <a href="lessons/rag-systems.html" class="glossary-lesson-link">→ Lesson 16: RAG Systems</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Reinforcement Learning</h3>
+                <p class="glossary-definition">A type of machine learning where an agent learns to make decisions by taking actions in an environment and receiving rewards or penalties, optimizing for long-term cumulative reward.</p>
+                <p class="glossary-analogy">🐱 Cat in a maze gets a treat for going right, a spray of water for going left — she learns the optimal path purely through trial and reward.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Training AlphaGo to master the game of Go, and teaching robots to walk without falling over.</p>
+                <a href="lessons/reinforcement-learning.html" class="glossary-lesson-link">→ Lesson 13: Reinforcement Learning</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>RLHF (Reinforcement Learning from Human Feedback)</h3>
+                <p class="glossary-definition">A training technique where human raters compare model outputs, a reward model is trained on their preferences, and the LLM is fine-tuned using RL to produce outputs humans prefer.</p>
+                <p class="glossary-analogy">🐱 Whiskers shows two meow performances; judges vote on the better one. She learns to perform the crowd-pleasing version — that's RLHF.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> ChatGPT and Claude were aligned using RLHF to be helpful, harmless, and honest rather than just statistically plausible.</p>
+                <a href="lessons/reinforcement-learning.html" class="glossary-lesson-link">→ Lesson 13: Reinforcement Learning</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>RNN (Recurrent Neural Network)</h3>
+                <p class="glossary-definition">A neural network architecture designed for sequential data that maintains a hidden state across time steps, allowing it to process inputs one at a time while remembering past context.</p>
+                <p class="glossary-analogy">🐱 Whiskers reads a sentence one word at a time, updating her mental state after each word — she never forgets earlier words as she processes later ones.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Largely replaced by Transformers, but still used for time-series forecasting and some sequential data tasks.</p>
+            </div>
+
+            <div class="glossary-term">
+                <h3>ReLU (Rectified Linear Unit)</h3>
+                <p class="glossary-definition">The most common activation function in deep learning — it outputs the input directly if positive, and zero otherwise, introducing non-linearity without vanishing gradient problems.</p>
+                <p class="glossary-analogy">🐱 Whiskers ignores signals below zero (no reaction) but reacts proportionally to positive signals — simple, fast, and very effective.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Used as the activation function in most hidden layers of CNNs and deep feedforward networks.</p>
+            </div>
+        </section>
+
+        <!-- S -->
+        <section id="letter-S" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">S</h2>
+
+            <div class="glossary-term">
+                <h3>Self-Attention</h3>
+                <p class="glossary-definition">An attention mechanism where each element in a sequence attends to all other elements in the same sequence, allowing the model to capture relationships and dependencies within the input.</p>
+                <p class="glossary-analogy">🐱 Reading "the cat sat on the mat because it was soft," Whiskers automatically connects "it" to "mat" — that cross-referencing is self-attention.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> The core mechanism in Transformer models, enabling understanding of long-range dependencies in text.</p>
+                <a href="lessons/transformers.html" class="glossary-lesson-link">→ Lesson 09: Transformer Architecture</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Semantic Search</h3>
+                <p class="glossary-definition">A search approach that finds results based on meaning and intent rather than exact keyword matching, using embeddings to measure conceptual similarity between query and documents.</p>
+                <p class="glossary-analogy">🐱 Whiskers searches for "feline" and finds "cat" results — she's searching by meaning, not just the exact word.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Enterprise search tools that find relevant documents even when the exact search terms don't appear in them.</p>
+                <a href="lessons/tokenization-embeddings.html" class="glossary-lesson-link">→ Lesson 14: Tokenization &amp; Embeddings</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Softmax</h3>
+                <p class="glossary-definition">An activation function that converts a vector of raw scores into a probability distribution — all values sum to 1 — commonly used in the output layer of classification models.</p>
+                <p class="glossary-analogy">🐱 Whiskers rates "tuna" 8, "salmon" 5, "kibble" 2 — softmax converts these to 73%, 24%, 3% probabilities. She's 73% sure it's tuna.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> The final layer of an image classifier assigns probabilities across 1,000 ImageNet classes using softmax.</p>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Supervised Learning</h3>
+                <p class="glossary-definition">A machine learning paradigm where the model is trained on labeled examples — each input is paired with the correct output — and learns to map inputs to outputs.</p>
+                <p class="glossary-analogy">🐱 Prof. Whiskers shows flashcards with photos AND answers on the back — the student learns by seeing both the question and correct answer.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Spam detection, image classification, sentiment analysis, and medical diagnosis models all use supervised learning.</p>
+                <a href="lessons/machine-learning-basics.html" class="glossary-lesson-link">→ Lesson 02: Machine Learning Basics</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>System Prompt</h3>
+                <p class="glossary-definition">A special instruction given to an LLM before any user interaction that sets its persona, behavior, constraints, and context — invisible to users but shaping all responses.</p>
+                <p class="glossary-analogy">🐱 Before Whiskers meets a visitor, you whisper: "Act professional, don't scratch, speak only about cats." That whisper is the system prompt.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Customer service chatbots use system prompts to restrict the model to company-relevant topics and maintain brand voice.</p>
+                <a href="lessons/prompt-engineering.html" class="glossary-lesson-link">→ Lesson 15: Prompt Engineering</a>
+            </div>
+        </section>
+
+        <!-- T -->
+        <section id="letter-T" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">T</h2>
+
+            <div class="glossary-term">
+                <h3>Temperature (LLM)</h3>
+                <p class="glossary-definition">A parameter that controls the randomness of an LLM's output — low temperature (near 0) makes outputs more focused and deterministic; high temperature makes them more creative and varied.</p>
+                <p class="glossary-analogy">🐱 Temperature 0.0 is sleepy Whiskers giving safe, predictable answers. Temperature 1.5 is her after too much catnip — creative, unpredictable, and occasionally unhinged.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Use low temperature for factual Q&amp;A, high temperature for brainstorming and creative writing.</p>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Token</h3>
+                <p class="glossary-definition">The basic unit of text that language models process — typically a word, sub-word, or character. "Tokenization" is roughly 1 token per 0.75 words in English.</p>
+                <p class="glossary-analogy">🐱 Whiskers doesn't read whole words; she reads syllable-chunks. "Unbelievable" becomes "Un-believ-able" — three tokens, three bites of text.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> LLM pricing is typically per 1,000 tokens — understanding tokenization helps manage API costs.</p>
+                <a href="lessons/tokenization-embeddings.html" class="glossary-lesson-link">→ Lesson 14: Tokenization &amp; Embeddings</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Tokenization</h3>
+                <p class="glossary-definition">The process of splitting raw text into tokens (sub-words, words, or characters) that a model can process numerically, using algorithms like BPE (Byte Pair Encoding) or WordPiece.</p>
+                <p class="glossary-analogy">🐱 Whiskers chops a long sentence into bite-sized pieces before eating it — tokenization is the chopping, tokens are the bites.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> GPT models use BPE tokenization with a vocabulary of ~50,000 tokens to handle any text input.</p>
+                <a href="lessons/tokenization-embeddings.html" class="glossary-lesson-link">→ Lesson 14: Tokenization &amp; Embeddings</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Training Data</h3>
+                <p class="glossary-definition">The labeled (or unlabeled) examples used to teach a model — the quality, quantity, and diversity of training data is the single biggest factor in model performance.</p>
+                <p class="glossary-analogy">🐱 Prof. Whiskers's flashcards are her training data. Garbage flashcards (blurry photos, wrong labels) produce a confused student.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> GPT-4 was trained on trillions of tokens; curated, high-quality data matters more than sheer volume.</p>
+                <a href="lessons/training-data.html" class="glossary-lesson-link">→ Lesson 03: Training Data &amp; Datasets</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Transfer Learning</h3>
+                <p class="glossary-definition">A technique where a model trained on one task is reused as the starting point for a different but related task, dramatically reducing data and compute requirements.</p>
+                <p class="glossary-analogy">🐱 Whiskers mastered hunting mice; now she transfers those stalking, pouncing, and timing skills to herd sheep with minimal retraining.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Fine-tuning a pre-trained BERT model for medical text classification with only a few thousand labeled examples.</p>
+                <a href="lessons/transfer-learning.html" class="glossary-lesson-link">→ Lesson 07: Transfer Learning &amp; Fine-tuning</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Transformer</h3>
+                <p class="glossary-definition">A neural network architecture based entirely on attention mechanisms (introduced in "Attention Is All You Need," 2017) that processes sequences in parallel and forms the backbone of all modern LLMs.</p>
+                <p class="glossary-analogy">🐱 Unlike RNN-Whiskers reading word-by-word, Transformer-Whiskers reads the whole sentence at once and pays attention to every word's relationship with every other word.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> The architecture behind GPT, BERT, T5, LLaMA — virtually every state-of-the-art language, vision, and multimodal model.</p>
+                <a href="lessons/transformers.html" class="glossary-lesson-link">→ Lesson 09: Transformer Architecture</a>
+            </div>
+        </section>
+
+        <!-- U -->
+        <section id="letter-U" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">U</h2>
+
+            <div class="glossary-term">
+                <h3>Underfitting</h3>
+                <p class="glossary-definition">When a model is too simple to capture the underlying patterns in the data, performing poorly on both training and test sets — the model hasn't learned enough.</p>
+                <p class="glossary-analogy">🐱 Whiskers only learned "if it has fur, it's a cat" — she fails on dogs, lions, and teddy bears. She's underfitting from a too-simple rule.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> A linear model trying to fit complex non-linear data will underfit — visible as poor performance even on training data.</p>
+                <a href="lessons/overfitting-underfitting.html" class="glossary-lesson-link">→ Lesson 06: Overfitting vs. Underfitting</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Unsupervised Learning</h3>
+                <p class="glossary-definition">A machine learning paradigm where the model finds patterns in unlabeled data without any correct answers provided — discovering structure, clusters, or representations on its own.</p>
+                <p class="glossary-analogy">🐱 No flashcard answers this time — Whiskers just groups all the animals herself based on what she notices. She discovers "fluffy ones" and "scaly ones" on her own.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Customer segmentation, anomaly detection, and dimensionality reduction (PCA) for data exploration.</p>
+            </div>
+        </section>
+
+        <!-- V -->
+        <section id="letter-V" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">V</h2>
+
+            <div class="glossary-term">
+                <h3>Validation Set</h3>
+                <p class="glossary-definition">A subset of data held out during training, used to tune hyperparameters and monitor model performance — distinct from the test set (used only for final evaluation).</p>
+                <p class="glossary-analogy">🐱 Whiskers practices with flashcards (training), checks her progress with pop quizzes (validation), and takes the final exam once (test).</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Monitoring validation loss during training to detect overfitting and trigger early stopping.</p>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Vector</h3>
+                <p class="glossary-definition">A mathematical object represented as an ordered list of numbers — in AI, vectors encode information like word meanings, image features, or document content as coordinates in high-dimensional space.</p>
+                <p class="glossary-analogy">🐱 Whiskers's personality in coordinates: [curiosity: 9.2, laziness: 7.8, friendliness: 4.1] — that's a vector representation of a cat.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Text embeddings are vectors; "king" - "man" + "woman" ≈ "queen" — arithmetic works in vector space.</p>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Vector Database</h3>
+                <p class="glossary-definition">A specialized database optimized for storing, indexing, and efficiently searching high-dimensional embedding vectors using approximate nearest neighbor algorithms.</p>
+                <p class="glossary-analogy">🐱 Whiskers's library where every book is stored as coordinates — ask for "something near adventure + mystery" and get the closest matches instantly.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Pinecone, Weaviate, and pgvector power the retrieval layer of RAG systems, finding relevant documents from millions of embeddings in milliseconds.</p>
+                <a href="lessons/rag-systems.html" class="glossary-lesson-link">→ Lesson 16: RAG Systems</a>
+            </div>
+
+            <div class="glossary-term">
+                <h3>Vision Transformer (ViT)</h3>
+                <p class="glossary-definition">A Transformer architecture applied to images by splitting them into fixed-size patches and treating each patch as a token, achieving state-of-the-art results on image classification.</p>
+                <p class="glossary-analogy">🐱 Whiskers cuts her photo into a grid of 16×16 tiles, reads each tile as a "word," and understands the full picture using attention — same trick as text Transformers.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> ViT models power Google's image search and form the vision component of multimodal models like GPT-4V.</p>
+            </div>
+        </section>
+
+        <!-- W -->
+        <section id="letter-W" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">W</h2>
+
+            <div class="glossary-term">
+                <h3>Weight (Neural Network)</h3>
+                <p class="glossary-definition">A learnable parameter in a neural network that determines the strength of the connection between neurons — weights are adjusted during training to minimize the loss function.</p>
+                <p class="glossary-analogy">🐱 Each neuron-kitten has a volume knob for how loudly to pass a signal. Training slowly turns the right knobs up and the wrong ones down.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> A neural network's weights are what gets saved when you download a model file — they encode everything the model learned.</p>
+                <a href="lessons/neural-networks.html" class="glossary-lesson-link">→ Lesson 04: Neural Networks</a>
+            </div>
+        </section>
+
+        <!-- Z -->
+        <section id="letter-Z" class="glossary-letter-section">
+            <h2 class="glossary-letter-heading">Z</h2>
+
+            <div class="glossary-term">
+                <h3>Zero-Shot Learning</h3>
+                <p class="glossary-definition">The ability of a model to correctly perform a task it has never been explicitly trained on, relying solely on its general knowledge and the task description provided in the prompt.</p>
+                <p class="glossary-analogy">🐱 Nobody taught Whiskers about capybaras, but she correctly identifies one just from the description "large, friendly, semi-aquatic rodent" — that's zero-shot.</p>
+                <p class="glossary-usecase">💼 <strong>Use case:</strong> Asking GPT-4 to classify a new product category it's never seen by describing the categories in the prompt alone.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Referencia - Learning AI, one cat at a time 🐱</p>
+            <p><a href="index.html" style="color: white;">← Back to All Lessons</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('glossarySearch').addEventListener('input', function() {
+            const q = this.value.toLowerCase();
+            document.querySelectorAll('.glossary-term').forEach(function(el) {
+                el.style.display = el.textContent.toLowerCase().includes(q) ? '' : 'none';
+            });
+            // Show/hide letter sections based on whether they have visible terms
+            document.querySelectorAll('.glossary-letter-section').forEach(function(sec) {
+                const visible = Array.from(sec.querySelectorAll('.glossary-term')).some(t => t.style.display !== 'none');
+                sec.style.display = visible ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

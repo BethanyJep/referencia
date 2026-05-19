@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lesson 08: CNNs (Computer Vision) - How cats scan the world, one pixel patch at a time!">
+    <title>Lesson 08: CNNs — Computer Vision | Referencia 🐱</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="../index.html" style="text-decoration: none; color: white;">
+                    <h1 class="logo">Referencia</h1>
+                </a>
+                <p class="tagline">Lesson 08: CNNs — Computer Vision</p>
+            </div>
+        </nav>
+    </header>
+
+    <div class="lesson-header">
+        <div class="container">
+            <div class="lesson-number">LESSON 08</div>
+            <h1 class="lesson-title">🐾 CNNs — Computer Vision</h1>
+            <p class="lesson-subtitle">How cats scan the world, one pixel patch at a time!</p>
+            <div class="lesson-info">
+                <span class="lesson-info-item">⏱️ 50 minutes</span>
+                <span class="lesson-info-item">🟡 Intermediate</span>
+                <span class="lesson-info-item">📚 5 sections</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="lesson-nav">
+        <div class="container">
+            <div class="lesson-nav-container">
+                <a href="#intro" class="lesson-nav-link active">Introduction</a>
+                <a href="#sketchnote" class="lesson-nav-link">Sketchnote</a>
+                <a href="#types" class="lesson-nav-link">Core Content</a>
+                <a href="#experiments" class="lesson-nav-link">Experiments</a>
+                <a href="#resources" class="lesson-nav-link">Resources</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- SECTION 1: INTRODUCTION -->
+        <section id="intro" class="lesson-section">
+            <h2>📖 Introduction: Seeing Like a Cat</h2>
+
+            <div class="lesson-intro">
+                <p>Have you ever watched a cat enter a new room? 🐱 Its eyes don't absorb the whole scene at once — they <em>slide</em> across the space, detecting edges first (is that a door frame?), then shapes (is that a box?), and finally whole objects (is that a mouse?!). It processes the world in <strong>local patches</strong>, building up understanding layer by layer.</p>
+
+                <p><strong>Convolutional Neural Networks (CNNs)</strong> do exactly this with images. A tiny filter slides across an image, detecting patterns at each position — first simple edges, then textures, then full objects. Before ChatGPT could "see" your photos, a CNN was turning those pixels into numbers it could understand!</p>
+            </div>
+
+            <div class="term-card" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(239, 68, 68, 0.1)); border-left: 4px solid #f59e0b;">
+                <h3>💡 Key Insight</h3>
+                <p><strong>A CNN is a neural network designed specifically for grid data like images.</strong> The word "convolution" describes the sliding-filter operation that makes it so good at detecting visual patterns — regardless of where in the image those patterns appear.</p>
+                <p><em>"Convolution = a tiny filter sliding across an image, lighting up wherever it finds its pattern." 🔦</em></p>
+            </div>
+
+            <h3>🎯 What You'll Learn</h3>
+            <ul>
+                <li>What a CNN is and why it beats regular neural networks on images</li>
+                <li>How the convolution operation works (filters, kernels, feature maps)</li>
+                <li>The standard CNN layer stack: Conv → ReLU → Pool → FC</li>
+                <li>Famous CNN architectures: LeNet, AlexNet, VGG, ResNet, MobileNet</li>
+                <li>Real-world applications: Face ID, medical imaging, self-driving cars</li>
+                <li>Train your first image classifier in Python with Keras</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 2: SKETCHNOTE -->
+        <section id="sketchnote" class="lesson-section">
+            <h2>🎨 Sketchnote: Whiskers Scans the Room</h2>
+            <p style="color: var(--text-light); margin-bottom: 20px;">A cat's eye sliding a filter over pixels — building understanding layer by layer!</p>
+
+            <div class="sketchnote-container">
+                <div class="sketchnote-placeholder">
+                    <h3>🖼️ CNN in Action: A Cat Scanning an Image</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;"><strong>Watch a 3×3 filter slide over a 5×5 pixel grid:</strong></p>
+
+                    <!-- Inline visual: 5x5 pixel grid with 3x3 filter overlay -->
+                    <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 30px; border-radius: 12px; text-align: center;">
+
+                        <p style="font-size: 2.5rem; margin-bottom: 10px;">😺</p>
+                        <p style="font-weight: bold; margin-bottom: 20px;">Whiskers' Eye — Scanning Mode Activated 🔍</p>
+
+                        <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; align-items: flex-start;">
+
+                            <!-- Input Image Grid -->
+                            <div>
+                                <p style="font-weight: bold; margin-bottom: 8px;">📷 Input Image (5×5)</p>
+                                <div style="display: inline-block; border: 2px solid #92400e;">
+                                    <div style="display: grid; grid-template-columns: repeat(5, 40px); gap: 0;">
+                                        <!-- Row 1 -->
+                                        <div style="width:40px;height:40px;background:#fbbf24;border:1px solid #d97706;display:flex;align-items:center;justify-content:center;font-size:0.7rem;">12</div>
+                                        <div style="width:40px;height:40px;background:#f59e0b;border:1px solid #d97706;display:flex;align-items:center;justify-content:center;font-size:0.7rem;">20</div>
+                                        <div style="width:40px;height:40px;background:#fde68a;border:1px solid #d97706;display:flex;align-items:center;justify-content:center;font-size:0.7rem;">5</div>
+                                        <div style="width:40px;height:40px;background:#fbbf24;border:1px solid #d97706;display:flex;align-items:center;justify-content:center;font-size:0.7rem;">14</div>
+                                        <div style="width:40px;height:40px;background:#f59e0b;border:1px solid #d97706;display:flex;align-items:center;justify-content:center;font-size:0.7rem;">8</div>
+                                        <!-- Row 2 -->
+                                        <div style="width:40px;height:40px;background:#ef4444;border:3px solid #b91c1c;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:bold;color:white;">1</div>
+                                        <div style="width:40px;height:40px;background:#dc2626;border:3px solid #b91c1c;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:bold;color:white;">0</div>
+                                        <div style="width:40px;height:40px;background:#ef4444;border:3px solid #b91c1c;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:bold;color:white;">1</div>
+                                        <div style="width:40px;height:40px;background:#fbbf24;border:1px solid #d97706;display:flex;align-items:center;justify-content:center;font-size:0.7rem;">3</div>
+                                        <div style="width:40px;height:40px;background:#fde68a;border:1px solid #d97706;display:flex;align-items:center;justify-content:center;font-size:0.7rem;">11</div>
+                                        <!-- Row 3 -->
+                                        <div style="width:40px;height:40px;background:#ef4444;border:3px solid #b91c1c;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:bold;color:white;">0</div>
+                                        <div style="width:40px;height:40px;background:#dc2626;border:3px solid #b91c1c;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:bold;color:white;">1</div>
+                                        <div style="width:40px;height:40px;background:#ef4444;border:3px solid #b91c1c;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:bold;color:white;">0</div>
+                                        <div style="width:40px;height:40px;background:#fbbf24;border:1px solid #d97706;display:flex;align-items:center;justify-content:center;font-size:0.7rem;">9</div>
+                                        <div style="width:40px;height:40px;background:#fde68a;border:1px solid #d97706;display:flex;align-items:center;justify-content:center;font-size:0.7rem;">7</div>
+                                        <!-- Row 4 -->
+                                        <div style="width:40px;height:40px;background:#ef4444;border:3px solid #b91c1c;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:bold;color:white;">1</div>
+                                        <div style="width:40px;height:40px;background:#dc2626;border:3px solid #b91c1c;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:bold;color:white;">0</div>
+                                        <div style="width:40px;height:40px;background:#ef4444;border:3px solid #b91c1c;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:bold;color:white;">1</div>
+                                        <div style="width:40px;height:40px;background:#fbbf24;border:1px solid #d97706;display:flex;align-items:center;justify-content:center;font-size:0.7rem;">2</div>
+                                        <div style="width:40px;height:40px;background:#fde68a;border:1px solid #d97706;display:flex;align-items:center;justify-content:center;font-size:0.7rem;">15</div>
+                                        <!-- Row 5 -->
+                                        <div style="width:40px;height:40px;background:#fbbf24;border:1px solid #d97706;display:flex;align-items:center;justify-content:center;font-size:0.7rem;">6</div>
+                                        <div style="width:40px;height:40px;background:#fde68a;border:1px solid #d97706;display:flex;align-items:center;justify-content:center;font-size:0.7rem;">13</div>
+                                        <div style="width:40px;height:40px;background:#fbbf24;border:1px solid #d97706;display:flex;align-items:center;justify-content:center;font-size:0.7rem;">4</div>
+                                        <div style="width:40px;height:40px;background:#f59e0b;border:1px solid #d97706;display:flex;align-items:center;justify-content:center;font-size:0.7rem;">18</div>
+                                        <div style="width:40px;height:40px;background:#fbbf24;border:1px solid #d97706;display:flex;align-items:center;justify-content:center;font-size:0.7rem;">10</div>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.8rem; color: #92400e; margin-top: 6px;">🔴 = 3×3 filter position</p>
+                            </div>
+
+                            <!-- Arrow -->
+                            <div style="display:flex;align-items:center;font-size:2rem;">➡️</div>
+
+                            <!-- Feature Map -->
+                            <div>
+                                <p style="font-weight: bold; margin-bottom: 8px;">✨ Feature Map (3×3)</p>
+                                <div style="display: inline-block; border: 2px solid #065f46;">
+                                    <div style="display: grid; grid-template-columns: repeat(3, 48px); gap: 0;">
+                                        <div style="width:48px;height:48px;background:#6ee7b7;border:1px solid #059669;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:bold;">4</div>
+                                        <div style="width:48px;height:48px;background:#34d399;border:1px solid #059669;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:bold;">7</div>
+                                        <div style="width:48px;height:48px;background:#10b981;border:1px solid #059669;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:bold;color:white;">12</div>
+                                        <div style="width:48px;height:48px;background:#34d399;border:1px solid #059669;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:bold;">9</div>
+                                        <div style="width:48px;height:48px;background:#059669;border:1px solid #065f46;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:bold;color:white;">15</div>
+                                        <div style="width:48px;height:48px;background:#6ee7b7;border:1px solid #059669;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:bold;">3</div>
+                                        <div style="width:48px;height:48px;background:#10b981;border:1px solid #059669;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:bold;color:white;">11</div>
+                                        <div style="width:48px;height:48px;background:#34d399;border:1px solid #059669;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:bold;">6</div>
+                                        <div style="width:48px;height:48px;background:#6ee7b7;border:1px solid #059669;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:bold;">2</div>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.8rem; color: #065f46; margin-top: 6px;">🟢 Activated features!</p>
+                            </div>
+                        </div>
+
+                        <!-- CNN Pipeline -->
+                        <div style="margin-top: 30px; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            <p style="font-weight: bold; margin-bottom: 15px;">🐱 CNN Processing Pipeline</p>
+                            <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; font-size: 0.9rem;">
+                                <div style="background:#fde68a;padding:8px 12px;border-radius:8px;text-align:center;">
+                                    <div style="font-size:1.4rem;">🖼️</div>
+                                    <div><strong>Input</strong></div>
+                                    <div style="font-size:0.75rem;">Raw pixels</div>
+                                </div>
+                                <div style="font-size:1.2rem;">→</div>
+                                <div style="background:#dbeafe;padding:8px 12px;border-radius:8px;text-align:center;">
+                                    <div style="font-size:1.4rem;">🔲</div>
+                                    <div><strong>Conv Layer</strong></div>
+                                    <div style="font-size:0.75rem;">Detect edges</div>
+                                </div>
+                                <div style="font-size:1.2rem;">→</div>
+                                <div style="background:#dcfce7;padding:8px 12px;border-radius:8px;text-align:center;">
+                                    <div style="font-size:1.4rem;">⚡</div>
+                                    <div><strong>ReLU</strong></div>
+                                    <div style="font-size:0.75rem;">Keep positives</div>
+                                </div>
+                                <div style="font-size:1.2rem;">→</div>
+                                <div style="background:#ede9fe;padding:8px 12px;border-radius:8px;text-align:center;">
+                                    <div style="font-size:1.4rem;">🗜️</div>
+                                    <div><strong>Pooling</strong></div>
+                                    <div style="font-size:0.75rem;">Shrink + keep best</div>
+                                </div>
+                                <div style="font-size:1.2rem;">→</div>
+                                <div style="background:#fee2e2;padding:8px 12px;border-radius:8px;text-align:center;">
+                                    <div style="font-size:1.4rem;">🎯</div>
+                                    <div><strong>FC Layer</strong></div>
+                                    <div style="font-size:0.75rem;">Predict class</div>
+                                </div>
+                                <div style="font-size:1.2rem;">→</div>
+                                <div style="background:#fef3c7;padding:8px 12px;border-radius:8px;text-align:center;">
+                                    <div style="font-size:1.4rem;">🐱</div>
+                                    <div><strong>"Cat!"</strong></div>
+                                    <div style="font-size:0.75rem;">98.7% confidence</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 20px; color: var(--text-light);">
+                        💡 Save your sketchnote as: <code>/assets/sketchnotes/cnn.png</code>
+                    </p>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px;">
+                <h3>🐱 Whiskers' Vision Log</h3>
+                <p><strong>Image received:</strong> 224×224 px photo of a suspicious red dot on the floor</p>
+                <p><strong>Layer 1 — Edge detector:</strong> "Found horizontal edges at rows 12, 47, 89... vertical edges at cols 5, 23..."</p>
+                <p><strong>Layer 2 — Shape detector:</strong> "Edges combine into a circular shape at centre..."</p>
+                <p><strong>Layer 3 — Object detector:</strong> "Circular, red, high contrast → 97% probability: LASER DOT 🔴"</p>
+                <p><strong>Final decision:</strong> <em>CHASE IT IMMEDIATELY.</em> 🐾</p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: CORE CONTENT -->
+        <section id="types" class="lesson-section">
+            <h2>📚 Core Content</h2>
+
+            <div class="accordion">
+
+                <!-- Accordion 1: What is a CNN? -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🔭 What is a CNN?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>The Full Name & Big Idea</h4>
+                            <p>A <strong>Convolutional Neural Network (CNN)</strong> is a type of deep learning model purpose-built for <em>grid-structured data</em> — most commonly images (a 2D grid of pixels), but also audio (1D grid of samples) and video (3D grid of frames).</p>
+                            <p>The breakthrough idea: instead of connecting every pixel to every neuron (which would be astronomically large), use <strong>small shared filters</strong> that slide across the image. This exploits two key properties of images:</p>
+                            <ul>
+                                <li><strong>Local patterns matter:</strong> An edge looks like an edge whether it's in the top-left or bottom-right corner.</li>
+                                <li><strong>Hierarchy of features:</strong> Simple edges → shapes → textures → object parts → whole objects.</li>
+                            </ul>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 16px;">
+                            <h4>Why Can't a Plain Neural Net Do This?</h4>
+                            <p>A plain (fully-connected) network treating a 224×224 RGB image as input would need <strong>150,528 input neurons</strong>. Connect those to just 1,000 hidden neurons → 150 million parameters in one layer alone! CNNs solve this by sharing filter weights across the whole image, slashing parameters by 99%.</p>
+                        </div>
+
+                        <div class="terms-grid" style="margin-top: 16px;">
+                            <div class="term-card">
+                                <h4>📸 Instagram Face Detection</h4>
+                                <p>CNNs find faces in photos and suggest who to tag — even in crowd shots with hundreds of people.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🏥 Medical X-Ray Analysis</h4>
+                                <p>CNNs trained on millions of X-rays can detect tumours, fractures, and pneumonia faster than human radiologists.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🚗 Self-Driving Cars</h4>
+                                <p>Tesla's Autopilot uses CNNs to detect pedestrians, lane markings, traffic signs, and other vehicles in real time.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>📱 Face ID (iPhone)</h4>
+                                <p>Apple's Neural Engine runs a CNN on 30,000 infrared dots projected onto your face to authenticate you in milliseconds.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion 2: How Convolution Works -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>⚙️ How Convolution Works</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>The Filter (Kernel)</h4>
+                            <p>A <strong>filter</strong> (also called a kernel) is a tiny matrix of learnable weights — typically 3×3 or 5×5. During convolution, this filter slides across every position of the input image, and at each position computes a <strong>dot product</strong> between the filter weights and the pixel values underneath. The result is stored in the <strong>feature map</strong>.</p>
+                            <p>Each filter learns to detect one specific visual pattern:</p>
+                            <ul>
+                                <li>A vertical-edge filter: high values on left, low on right (like [ -1, 0, 1 ] repeated)</li>
+                                <li>A horizontal-edge filter: high on top, low on bottom</li>
+                                <li>A corner detector, a blob detector, a diagonal detector…</li>
+                            </ul>
+                            <p>The network doesn't decide what to detect — <strong>training teaches it</strong> which filters are most useful!</p>
+                        </div>
+
+                        <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto; margin-top: 16px;"><code># Visualising a vertical-edge detecting filter
+import numpy as np
+
+# A 3x3 vertical-edge filter (Sobel-ish)
+filter_v = np.array([
+    [-1, 0, 1],
+    [-2, 0, 2],
+    [-1, 0, 1]
+])
+
+# Slide it over a tiny 5x5 image (conceptual)
+# At each position: sum(filter_v * patch_under_it)
+# High activation → strong vertical edge found there!
+print("Filter detects:", "vertical edges")</code></pre>
+
+                        <div class="term-card" style="margin-top: 16px;">
+                            <h4>🗜️ Pooling Layers</h4>
+                            <p>After convolution, the feature maps are still large. <strong>Max-pooling</strong> downsamples them by taking only the <em>maximum</em> value from each small region (e.g., 2×2 patches → single number). This:</p>
+                            <ul>
+                                <li>Shrinks the spatial dimensions (saves compute)</li>
+                                <li>Keeps only the strongest signal ("was this feature present anywhere in this patch?")</li>
+                                <li>Makes the network <strong>slightly translation-invariant</strong> — a cat ear shifted a few pixels still produces a strong activation</li>
+                            </ul>
+                            <p><em>Think of max-pooling as Whiskers' brain skimming a room: "I noticed <strong>something</strong> fluffy in the corner — I don't need to know exactly which pixel it was on." 🐾</em></p>
+                        </div>
+
+                        <div style="background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 16px; margin-top: 16px;">
+                            <p><strong>📐 Dimension maths (for the curious):</strong></p>
+                            <p>Input: 28×28 image → 3×3 filter, stride 1, no padding → Feature map: 26×26</p>
+                            <p>After 2×2 max-pool → 13×13</p>
+                            <p>Formula: <code>output_size = (input_size - filter_size) / stride + 1</code></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion 3: CNN Architecture Layers -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🏗️ CNN Architecture Layers</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p style="margin-bottom: 16px;">Every standard CNN is built from the same four building blocks, stacked in a repeating pattern:</p>
+
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>🔲 Convolutional Layer</h4>
+                                <p>Applies a bank of learnable filters to the input. Each filter produces one feature map. A typical conv layer has 32–512 filters. <strong>This is where the network learns what to look for.</strong></p>
+                            </div>
+                            <div class="term-card">
+                                <h4>⚡ ReLU Activation</h4>
+                                <p>Applies the function <code>f(x) = max(0, x)</code> — it zeros out negative values and keeps positives unchanged. This injects non-linearity, letting the network learn complex decision boundaries. Without it, stacking layers would just be matrix multiplication.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🗜️ Pooling Layer</h4>
+                                <p>Reduces spatial size (usually 2×2 max-pool → halves width and height). Reduces parameters, controls overfitting, and builds position tolerance. Applied after each conv+ReLU block.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🎯 Fully Connected Layer</h4>
+                                <p>At the end of the network, the feature maps are flattened into a 1D vector and passed through one or more fully-connected layers — just like a regular neural network. The final FC layer outputs class scores (e.g., "cat: 98%, dog: 1%, fish: 1%").</p>
+                            </div>
+                        </div>
+
+                        <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 20px; border-radius: 10px; margin-top: 20px; text-align: center;">
+                            <p style="font-weight: bold; margin-bottom: 12px;">🐱 Full CNN Pipeline (with emojis!)</p>
+                            <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; font-size: 0.85rem;">
+                                <span style="background:white;padding:6px 10px;border-radius:6px;">🖼️<br><strong>Image</strong><br>224×224×3</span>
+                                <span>→</span>
+                                <span style="background:white;padding:6px 10px;border-radius:6px;">🔲<br><strong>Conv</strong><br>222×222×32</span>
+                                <span>→</span>
+                                <span style="background:white;padding:6px 10px;border-radius:6px;">⚡<br><strong>ReLU</strong><br>same size</span>
+                                <span>→</span>
+                                <span style="background:white;padding:6px 10px;border-radius:6px;">🗜️<br><strong>Pool</strong><br>111×111×32</span>
+                                <span>→</span>
+                                <span style="background:white;padding:6px 10px;border-radius:6px;">🔲⚡🗜️<br><strong>Repeat</strong><br>deeper features</span>
+                                <span>→</span>
+                                <span style="background:white;padding:6px 10px;border-radius:6px;">📏<br><strong>Flatten</strong><br>1D vector</span>
+                                <span>→</span>
+                                <span style="background:white;padding:6px 10px;border-radius:6px;">🎯<br><strong>FC + Softmax</strong><br>"Cat: 98%"</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion 4: Famous CNN Architectures -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🏆 Famous CNN Architectures</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p style="margin-bottom: 16px;">The history of CNNs is a story of <em>going deeper</em> — more layers, smarter tricks, better results:</p>
+
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>📜 LeNet-5 (1998)</h4>
+                                <p><strong>By:</strong> Yann LeCun at AT&T Bell Labs</p>
+                                <p><strong>Task:</strong> Handwritten digit recognition (MNIST)</p>
+                                <p><strong>Size:</strong> 5 layers, ~60,000 parameters — tiny by modern standards!</p>
+                                <p><em>The great-great-grandparent of every modern vision model. 🐾</em></p>
+                            </div>
+                            <div class="term-card">
+                                <h4>💥 AlexNet (2012)</h4>
+                                <p><strong>By:</strong> Alex Krizhevsky et al., University of Toronto</p>
+                                <p><strong>Task:</strong> ImageNet (1.2M images, 1,000 classes)</p>
+                                <p><strong>Why famous:</strong> Won ImageNet 2012 by a huge margin using GPUs + ReLU + Dropout — <strong>launched the modern deep learning era</strong>!</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>📐 VGG (2014)</h4>
+                                <p><strong>By:</strong> Visual Geometry Group, Oxford</p>
+                                <p><strong>Key idea:</strong> Just stack 3×3 conv layers very deep (16 or 19 layers). Simple and elegant.</p>
+                                <p><strong>Famous for:</strong> Beautifully clean architecture — great for teaching and transfer learning.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🔄 ResNet (2015)</h4>
+                                <p><strong>By:</strong> Microsoft Research (He et al.)</p>
+                                <p><strong>Key idea:</strong> <strong>Skip connections</strong> (residual connections) — let gradients "skip" layers. This solved the vanishing gradient problem and enabled 152-layer networks!</p>
+                                <p><em>Still the most-used backbone today. 🏗️</em></p>
+                            </div>
+                            <div class="term-card">
+                                <h4>📱 MobileNet (2017)</h4>
+                                <p><strong>By:</strong> Google</p>
+                                <p><strong>Key idea:</strong> Depthwise separable convolutions — 8–9× fewer operations than standard convolutions.</p>
+                                <p><strong>Designed for:</strong> Phones, embedded devices, real-time apps. Used in Google Lens!</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🔍 EfficientNet (2019)</h4>
+                                <p><strong>By:</strong> Google Brain</p>
+                                <p><strong>Key idea:</strong> Systematically scale depth, width, and resolution together using a compound coefficient.</p>
+                                <p><strong>Result:</strong> 8× smaller and 6× faster than the best ResNet at the same accuracy. 🚀</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion 5: Real-World Use Cases + Code -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🌍 Real-World Use Cases + Code</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>🏥 Medical Imaging</h4>
+                                <p>CNNs detect tumours in MRI scans, identify diabetic retinopathy in eye photos, and classify skin lesions from smartphone photos. In some benchmarks, CNN systems match or beat dermatologists.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>📱 Face ID</h4>
+                                <p>Your iPhone projects 30,000 invisible infrared dots onto your face. A CNN processes the resulting depth map — matching it against your enrolled face — in under 100ms.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🚗 Autonomous Vehicles</h4>
+                                <p>CNNs handle pedestrian detection, lane segmentation, traffic-sign classification, and obstacle avoidance. Tesla uses a pure-vision CNN stack (no LIDAR) on 8 cameras simultaneously.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🛰️ Satellite Imagery</h4>
+                                <p>CNNs count cars in parking lots (predicting retail foot traffic), track deforestation, detect illegal fishing boats, and estimate crop yields from above.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🏭 Quality Control</h4>
+                                <p>Manufacturing lines use CNN cameras to spot defects — a scratch on a circuit board, a misaligned component — faster and more consistently than human inspectors.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🐈 Wildlife Conservation</h4>
+                                <p>Camera-trap images are automatically classified by species so researchers don't have to manually review millions of photos. Some projects use this to track endangered cats like snow leopards!</p>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 24px;">
+                            <h4>💻 Train Your First CNN with Keras</h4>
+                            <p style="margin-bottom: 12px;">Let's build a CNN to classify images of cats vs. dogs using Keras (TensorFlow):</p>
+                        </div>
+
+                        <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto;"><code>import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers
+
+# 1. Load a sample dataset (CIFAR-10 has 10 classes, 60k images)
+(x_train, y_train), (x_test, y_test) = keras.datasets.cifar10.load_data()
+
+# Normalize pixel values to [0, 1]
+x_train, x_test = x_train / 255.0, x_test / 255.0
+
+# 2. Build the CNN — Conv → ReLU → Pool, repeated twice, then FC layers
+model = keras.Sequential([
+    # Block 1: detect simple edges & textures
+    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)),
+    layers.MaxPooling2D((2, 2)),
+
+    # Block 2: detect shapes & object parts
+    layers.Conv2D(64, (3, 3), activation='relu'),
+    layers.MaxPooling2D((2, 2)),
+
+    # Block 3: detect high-level features
+    layers.Conv2D(128, (3, 3), activation='relu'),
+
+    # Classifier head
+    layers.Flatten(),
+    layers.Dense(128, activation='relu'),
+    layers.Dropout(0.5),          # prevent overfitting
+    layers.Dense(10, activation='softmax')  # 10 classes
+])
+
+model.summary()
+# Total params: ~470,000  (vs. 150M+ for a plain FC net!)
+
+# 3. Compile: choose optimiser, loss function, metric
+model.compile(
+    optimizer='adam',
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy']
+)
+
+# 4. Train!
+history = model.fit(
+    x_train, y_train,
+    epochs=15,
+    batch_size=64,
+    validation_split=0.1
+)
+
+# 5. Evaluate on test set
+test_loss, test_acc = model.evaluate(x_test, y_test)
+print(f"Test accuracy: {test_acc:.2%}")
+# Expect ~70-75% after 15 epochs — not bad for 50 lines! 🐱
+
+# 6. Make a prediction
+import numpy as np
+classes = ['airplane','automobile','bird','cat','deer',
+           'dog','frog','horse','ship','truck']
+sample = x_test[42:43]
+pred = model.predict(sample)
+print(f"Predicted: {classes[np.argmax(pred)]} ({pred.max():.1%})")
+# "Predicted: cat (82.3%)" 🐾</code></pre>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 4: EXPERIMENTS -->
+        <section id="experiments" class="lesson-section">
+            <h2>🧪 Experiments: See CNNs in Action!</h2>
+            <p style="color: var(--text-light); margin-bottom: 30px;">No PhD required — these tools let you explore CNNs interactively!</p>
+
+            <div class="experiments-grid">
+                <div class="experiment-card">
+                    <h3>🤖 Teachable Machine</h3>
+                    <p>Train an image classifier in your browser — no code needed! Point your webcam at objects or upload photos and watch a CNN learn in real time.</p>
+                    <p><strong>Try:</strong> Train it to tell apart your cat from your coffee mug 🐱☕</p>
+                    <a href="https://teachablemachine.withgoogle.com/train/image" class="experiment-link" target="_blank">Teachable Machine →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🔍 CNN Explainer</h3>
+                    <p>An interactive visualisation showing exactly what happens inside a CNN — watch feature maps light up as an image passes through each layer.</p>
+                    <p><strong>Try:</strong> Upload a cat photo and watch which filters activate the most! 🔦</p>
+                    <a href="https://poloclub.github.io/cnn-explainer/" class="experiment-link" target="_blank">CNN Explainer →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🐱 TensorFlow Image Classification</h3>
+                    <p>Official TensorFlow tutorial — classify cats vs. dogs step by step with full code explanations. Runs in Google Colab (free GPU included)!</p>
+                    <p><strong>Try:</strong> Follow the tutorial end-to-end — takes about 30 minutes</p>
+                    <a href="https://www.tensorflow.org/tutorials/images/classification" class="experiment-link" target="_blank">TF Tutorial →</a>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px; background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(239, 68, 68, 0.1));">
+                <h3>🎯 Mini-Challenge: Transfer Learning in 10 Lines</h3>
+                <p style="margin-bottom: 12px;">Don't train from scratch — use a pre-trained ResNet50 and fine-tune it on your own images:</p>
+                <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto;"><code>from tensorflow.keras.applications import ResNet50
+from tensorflow.keras import layers, Model
+
+# Load ResNet50 pre-trained on ImageNet (skip the top classifier)
+base = ResNet50(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+base.trainable = False  # Freeze base — keep ImageNet knowledge!
+
+# Add your own classifier on top
+x = layers.GlobalAveragePooling2D()(base.output)
+x = layers.Dense(128, activation='relu')(x)
+output = layers.Dense(2, activation='softmax')(x)  # cat vs. dog
+
+model = Model(inputs=base.input, outputs=output)
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+
+# model.fit(your_data, your_labels, epochs=5)
+# Expect 95%+ accuracy with just a few hundred images!  🐱</code></pre>
+            </div>
+        </section>
+
+        <!-- SECTION 5: RESOURCES -->
+        <section id="resources" class="lesson-section">
+            <h2>📚 Resources for Further Learning</h2>
+
+            <div class="resources-section">
+                <div class="resources-columns">
+                    <div class="resource-column">
+                        <h3>🎥 Videos</h3>
+                        <ul>
+                            <li><a href="https://www.youtube.com/watch?v=FmpDIaiMIeA" target="_blank">But what is a convolution? — 3Blue1Brown</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=YRhxdVk_sIs" target="_blank">CNN Explained — StatQuest</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank">Neural Networks — 3Blue1Brown Series</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📖 Articles</h3>
+                        <ul>
+                            <li><a href="https://cs231n.github.io/convolutional-networks/" target="_blank">CS231n CNNs — Stanford</a></li>
+                            <li><a href="https://distill.pub/2017/feature-visualization/" target="_blank">Feature Visualization — Distill.pub</a></li>
+                            <li><a href="https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53" target="_blank">CNNs — the ELI5 Way</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>🛠️ Tools</h3>
+                        <ul>
+                            <li><a href="https://keras.io/api/applications/" target="_blank">Keras Pre-trained Models</a></li>
+                            <li><a href="https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html" target="_blank">PyTorch CNN Tutorial</a></li>
+                            <li><a href="https://teachablemachine.withgoogle.com/" target="_blank">Teachable Machine</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📚 Courses</h3>
+                        <ul>
+                            <li><a href="https://www.deeplearning.ai/courses/deep-learning-specialization/" target="_blank">Deep Learning Specialization — DeepLearning.AI</a></li>
+                            <li><a href="https://cs231n.stanford.edu/" target="_blank">CS231n: Computer Vision — Stanford</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="lesson-navigation">
+            <a href="transfer-learning.html" class="lesson-nav-btn">
+                <span>←</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Previous</span>
+                    <span class="lesson-nav-btn-title">Transfer Learning &amp; Fine-tuning</span>
+                </div>
+            </a>
+            <a href="transformers.html" class="lesson-nav-btn next">
+                <span>→</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Next Lesson</span>
+                    <span class="lesson-nav-btn-title">Transformers Architecture</span>
+                </div>
+            </a>
+        </nav>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Referencia - Learning AI, one cat at a time 🐱</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

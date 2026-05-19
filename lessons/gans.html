@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lesson 04: GANs - A cat artist vs. cat critic in an epic creative battle!">
+    <title>Lesson 04: GANs (Generative Adversarial Networks) | Referencia 🐱</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="../index.html" style="text-decoration: none; color: white;">
+                    <h1 class="logo">Referencia</h1>
+                </a>
+                <p class="tagline">Lesson 04: GANs</p>
+            </div>
+        </nav>
+    </header>
+
+    <div class="lesson-header">
+        <div class="container">
+            <div class="lesson-number">LESSON 04</div>
+            <h1 class="lesson-title">🎨 GANs: Generative Adversarial Networks</h1>
+            <p class="lesson-subtitle">Cat artist vs. cat critic - Two networks battling to create perfect fakes!</p>
+            <div class="lesson-info">
+                <span class="lesson-info-item">⏱️ 55 minutes</span>
+                <span class="lesson-info-item">🟡 Intermediate</span>
+                <span class="lesson-info-item">📚 5 sections</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="lesson-nav">
+        <div class="container">
+            <div class="lesson-nav-container">
+                <a href="#intro" class="lesson-nav-link active">Introduction</a>
+                <a href="#sketchnote" class="lesson-nav-link">Sketchnote</a>
+                <a href="#types" class="lesson-nav-link">Core Content</a>
+                <a href="#experiments" class="lesson-nav-link">Experiments</a>
+                <a href="#resources" class="lesson-nav-link">Resources</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- SECTION 1: INTRODUCTION -->
+        <section id="intro" class="lesson-section">
+            <h2>📖 Introduction: What are GANs?</h2>
+            
+            <div class="lesson-intro">
+                <p>Imagine two cats in an eternal creative battle. One cat is an <strong>artist (🎨 Generator)</strong> trying to paint perfect forgeries of famous artworks. The other is a <strong>critic with a detective hat (🔍 Discriminator)</strong> trying to spot the fakes from the real masterpieces.</p>
+                
+                <p>At first, the artist is terrible—the critic easily spots every fake. But they keep competing, and both get better! Eventually, the artist creates such convincing work that even the expert critic can't tell real from fake. That's a <strong>GAN</strong>!</p>
+            </div>
+
+            <div class="term-card" style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(124, 58, 237, 0.1)); border-left: 4px solid #ec4899;">
+                <h3>💡 Key Insight</h3>
+                <p><strong>GANs (Generative Adversarial Networks)</strong> pit two neural networks against each other: a Generator that creates fake data, and a Discriminator that tries to distinguish fake from real. Through this competition, both improve!</p>
+                <p><em>"GAN: Artist vs. Critic, may the best cat win!"</em></p>
+            </div>
+
+            <h3>🎯 What You'll Learn</h3>
+            <ul>
+                <li>How the Generator and Discriminator work together (and against each other!)</li>
+                <li>The adversarial training process</li>
+                <li>Why GANs are amazing for generating images, audio, and more</li>
+                <li>Common GAN architectures (DCGAN, StyleGAN, CycleGAN)</li>
+                <li>Challenges and limitations of GANs</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 2: SKETCHNOTE -->
+        <section id="sketchnote" class="lesson-section">
+            <h2>🎨 Sketchnote: Visual Summary</h2>
+            <p style="color: var(--text-light); margin-bottom: 20px;">The epic battle between artist cat and critic cat!</p>
+
+            <div class="sketchnote-container">
+                <div class="sketchnote-placeholder">
+                    <h3>🖼️ Sketchnote Concept</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;"><strong>A showdown scene between two cats:</strong></p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: center; max-width: 800px; margin: 0 auto;">
+                        <div style="background: #fce7f3; padding: 20px; border-radius: 10px; text-align: center;">
+                            <p style="font-size: 3rem;">🐱🎨</p>
+                            <h4>Generator Cat</h4>
+                            <p><em>"The Artist"</em></p>
+                            <ul style="text-align: left; font-size: 0.9rem;">
+                                <li>Beret & paintbrush</li>
+                                <li>Painting on easel</li>
+                                <li>Creating from noise</li>
+                                <li>Goal: Fool the critic!</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <p style="font-size: 2rem;">⚔️</p>
+                            <p><strong>VS</strong></p>
+                            <p style="font-size: 2rem;">🔄</p>
+                            <p style="font-size: 0.8rem;"><em>Adversarial<br>Training</em></p>
+                        </div>
+                        
+                        <div style="background: #dbeafe; padding: 20px; border-radius: 10px; text-align: center;">
+                            <p style="font-size: 3rem;">🐱🔍</p>
+                            <h4>Discriminator Cat</h4>
+                            <p><em>"The Critic"</em></p>
+                            <ul style="text-align: left; font-size: 0.9rem;">
+                                <li>Detective hat & magnifying glass</li>
+                                <li>Examining paintings</li>
+                                <li>Comparing to real art</li>
+                                <li>Goal: Spot the fakes!</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 25px; padding: 15px; background: #f0f9ff; border-radius: 8px;">
+                        <p><strong>Process Flow:</strong></p>
+                        <p>🎲 Random Noise → 🎨 Generator → 🖼️ Fake Image → 🔍 Discriminator ← 🖼️ Real Image</p>
+                        <p>Discriminator says: "REAL or FAKE?" → Both learn from mistakes!</p>
+                    </div>
+                    
+                    <p style="margin-top: 20px; color: var(--text-light);">
+                        💡 Save your sketchnote as: <code>/assets/sketchnotes/gans.png</code>
+                    </p>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px;">
+                <h3>🐱 The Art Forgery Story</h3>
+                <p><strong>Round 1:</strong> Artist cat paints a squiggly mess. Critic cat: "Obviously fake! 0/10" ❌</p>
+                <p><strong>Round 100:</strong> Artist cat gets better. Critic cat: "Hmm, the brushstrokes look off... 30% maybe real" 🤔</p>
+                <p><strong>Round 10,000:</strong> Artist cat creates stunning work. Critic cat: "This is... actually good? 50/50 can't tell!" 😰</p>
+                <p><strong>The magic:</strong> By competing, both networks become experts—the Generator at creating realistic images, the Discriminator at detecting subtle differences!</p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: CORE CONTENT -->
+        <section id="types" class="lesson-section">
+            <h2>📚 Core Content</h2>
+
+            <div class="accordion">
+                <!-- How GANs Work -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🎭 How GANs Work: The Two Players</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="term-card">
+                                <h4>🎨 Generator (G)</h4>
+                                <p><strong>Job:</strong> Create fake data that looks real</p>
+                                <p><strong>Input:</strong> Random noise (latent vector)</p>
+                                <p><strong>Output:</strong> Fake image/data</p>
+                                <p><strong>Goal:</strong> Fool the Discriminator</p>
+                                <p><strong>Loss:</strong> Gets punished when D correctly identifies fakes</p>
+                                <pre style="background: #f3f4f6; padding: 10px; border-radius: 5px; font-size: 0.8rem;"><code># Generator creates from noise
+noise = torch.randn(batch_size, 100)
+fake_images = generator(noise)</code></pre>
+                            </div>
+                            <div class="term-card">
+                                <h4>🔍 Discriminator (D)</h4>
+                                <p><strong>Job:</strong> Distinguish real from fake</p>
+                                <p><strong>Input:</strong> Real or fake data</p>
+                                <p><strong>Output:</strong> Probability (0=fake, 1=real)</p>
+                                <p><strong>Goal:</strong> Correctly classify all inputs</p>
+                                <p><strong>Loss:</strong> Gets punished for wrong classifications</p>
+                                <pre style="background: #f3f4f6; padding: 10px; border-radius: 5px; font-size: 0.8rem;"><code># Discriminator judges
+real_score = discriminator(real_images)
+fake_score = discriminator(fake_images)</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Training Process -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🔄 The Training Process: Adversarial Dance</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>Training Loop:</h4>
+                            <ol>
+                                <li><strong>Train Discriminator:</strong>
+                                    <ul>
+                                        <li>Show it real images → Should output 1 (real)</li>
+                                        <li>Show it fake images from G → Should output 0 (fake)</li>
+                                        <li>Update D to be better at telling them apart</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Train Generator:</strong>
+                                    <ul>
+                                        <li>Generate fake images</li>
+                                        <li>Pass through D (but don't update D!)</li>
+                                        <li>G wants D to output 1 for its fakes</li>
+                                        <li>Update G to create more convincing fakes</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Repeat thousands of times!</strong></li>
+                            </ol>
+                        </div>
+
+                        <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; margin-top: 20px;"><code># Simplified GAN training loop
+for epoch in range(num_epochs):
+    for real_images in dataloader:
+        # === Train Discriminator ===
+        # Real images should be classified as 1
+        real_loss = criterion(D(real_images), ones)
+        
+        # Fake images should be classified as 0
+        noise = torch.randn(batch_size, latent_dim)
+        fake_images = G(noise)
+        fake_loss = criterion(D(fake_images.detach()), zeros)
+        
+        d_loss = real_loss + fake_loss
+        d_optimizer.step()  # Update discriminator
+        
+        # === Train Generator ===
+        # Generator wants D to think fakes are real (output 1)
+        noise = torch.randn(batch_size, latent_dim)
+        fake_images = G(noise)
+        g_loss = criterion(D(fake_images), ones)  # Wants 1s!
+        
+        g_optimizer.step()  # Update generator</code></pre>
+                    </div>
+                </div>
+
+                <!-- Types of GANs -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>📊 Types of GANs</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>DCGAN</h4>
+                                <p>Deep Convolutional GAN - Uses CNNs for stable image generation</p>
+                                <p><strong>Key:</strong> First architecture that worked well for images</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>StyleGAN</h4>
+                                <p>Generates ultra-realistic faces with style control</p>
+                                <p><strong>Key:</strong> Can control features at different levels (pose, identity, fine details)</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>CycleGAN</h4>
+                                <p>Translates between domains without paired examples</p>
+                                <p><strong>Key:</strong> Horse↔Zebra, Photo↔Painting, Summer↔Winter</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Pix2Pix</h4>
+                                <p>Image-to-image translation with paired data</p>
+                                <p><strong>Key:</strong> Sketch→Photo, Day→Night, Edges→Real images</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>ProGAN</h4>
+                                <p>Progressive Growing - Starts small, adds layers</p>
+                                <p><strong>Key:</strong> More stable training for high-resolution images</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>BigGAN</h4>
+                                <p>Class-conditional, massive scale</p>
+                                <p><strong>Key:</strong> Generate specific ImageNet classes with incredible detail</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Challenges -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>⚠️ GAN Challenges & Solutions</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>Mode Collapse 😱</h4>
+                                <p><strong>Problem:</strong> Generator only produces a few types of outputs (finds one trick that fools D)</p>
+                                <p><strong>Solution:</strong> Minibatch discrimination, unrolled GANs, feature matching</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Training Instability 📉</h4>
+                                <p><strong>Problem:</strong> G and D don't improve together; one dominates</p>
+                                <p><strong>Solution:</strong> Careful learning rates, Wasserstein loss, spectral normalization</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Vanishing Gradients 👻</h4>
+                                <p><strong>Problem:</strong> If D is too good, G gets no useful signal</p>
+                                <p><strong>Solution:</strong> Label smoothing, WGAN gradient penalty</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Evaluation Difficulty 🤷</h4>
+                                <p><strong>Problem:</strong> Hard to measure how good generated images are</p>
+                                <p><strong>Solution:</strong> FID score, Inception Score, human evaluation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Applications -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🌟 Real-World Applications</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>🖼️ Image Generation</h4>
+                                <p>Create photorealistic faces, artwork, product images (ThisPersonDoesNotExist.com)</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🎨 Style Transfer</h4>
+                                <p>Transform photos to look like paintings, change seasons, age faces</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🔧 Image Enhancement</h4>
+                                <p>Super-resolution, colorization, inpainting (fill missing parts)</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>👗 Fashion & Design</h4>
+                                <p>Generate new clothing designs, virtual try-on, interior design</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🏥 Medical Imaging</h4>
+                                <p>Generate synthetic training data, augment rare conditions</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🎮 Gaming & VFX</h4>
+                                <p>Generate textures, environments, characters, deepfakes (⚠️ ethical concerns)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: EXPERIMENTS -->
+        <section id="experiments" class="lesson-section">
+            <h2>🧪 Experiments: See GANs in Action!</h2>
+            <p style="color: var(--text-light); margin-bottom: 30px;">Play with GAN-powered tools and watch the magic happen!</p>
+
+            <div class="experiments-grid">
+                <div class="experiment-card">
+                    <h3>👤 This Person Does Not Exist</h3>
+                    <p>Every refresh shows a completely AI-generated human face that doesn't belong to any real person. StyleGAN at its finest!</p>
+                    <p><strong>Mind-blowing:</strong> None of these people are real!</p>
+                    <a href="https://thispersondoesnotexist.com" class="experiment-link" target="_blank">See Fake Faces →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🎨 GAN Paint Studio</h3>
+                    <p>Paint with GANs! Draw rough shapes and watch them transform into realistic images. Add trees, remove buildings, change the sky.</p>
+                    <p><strong>Concepts:</strong> Semantic manipulation, inpainting</p>
+                    <a href="https://ganpaint.io/" class="experiment-link" target="_blank">Try GAN Paint →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🖌️ Artbreeder</h3>
+                    <p>Blend and evolve images using GANs. Create unique portraits, landscapes, and artwork by mixing genes!</p>
+                    <p><strong>Concepts:</strong> Latent space exploration, interpolation</p>
+                    <a href="https://www.artbreeder.com" class="experiment-link" target="_blank">Create on Artbreeder →</a>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px; background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(124, 58, 237, 0.1));">
+                <h3>💻 Build a Simple GAN</h3>
+                <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto;"><code># Simple GAN architecture in PyTorch
+import torch.nn as nn
+
+class Generator(nn.Module):
+    """The Artist Cat 🎨"""
+    def __init__(self, latent_dim=100):
+        super().__init__()
+        self.model = nn.Sequential(
+            nn.Linear(latent_dim, 256),
+            nn.LeakyReLU(0.2),
+            nn.Linear(256, 512),
+            nn.LeakyReLU(0.2),
+            nn.Linear(512, 784),  # 28x28 image
+            nn.Tanh()  # Output between -1 and 1
+        )
+    
+    def forward(self, z):
+        return self.model(z)
+
+class Discriminator(nn.Module):
+    """The Critic Cat 🔍"""
+    def __init__(self):
+        super().__init__()
+        self.model = nn.Sequential(
+            nn.Linear(784, 512),
+            nn.LeakyReLU(0.2),
+            nn.Linear(512, 256),
+            nn.LeakyReLU(0.2),
+            nn.Linear(256, 1),
+            nn.Sigmoid()  # Output probability: 0=fake, 1=real
+        )
+    
+    def forward(self, img):
+        return self.model(img)</code></pre>
+            </div>
+        </section>
+
+        <!-- SECTION 5: RESOURCES -->
+        <section id="resources" class="lesson-section">
+            <h2>📚 Resources for Further Learning</h2>
+            
+            <div class="resources-section">
+                <div class="resources-columns">
+                    <div class="resource-column">
+                        <h3>🎥 Videos</h3>
+                        <ul>
+                            <li><a href="https://www.youtube.com/watch?v=8L11aMN5KY8" target="_blank">GANs Explained - Computerphile</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=dCKbRCUyop8" target="_blank">GAN Tutorial - Stanford CS231n</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=5WoItGTWV54" target="_blank">StyleGAN Explained</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📖 Papers & Articles</h3>
+                        <ul>
+                            <li><a href="https://arxiv.org/abs/1406.2661" target="_blank">Original GAN Paper - Goodfellow 2014</a></li>
+                            <li><a href="https://arxiv.org/abs/1812.04948" target="_blank">StyleGAN Paper</a></li>
+                            <li><a href="https://jonathan-hui.medium.com/gan-whats-generative-adversarial-networks-and-its-application-f39ed278ef09" target="_blank">GAN Deep Dive - Jonathan Hui</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>🛠️ Tools & Code</h3>
+                        <ul>
+                            <li><a href="https://github.com/NVlabs/stylegan3" target="_blank">StyleGAN3 - Official NVIDIA</a></li>
+                            <li><a href="https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html" target="_blank">DCGAN Tutorial - PyTorch</a></li>
+                            <li><a href="https://www.tensorflow.org/tutorials/generative/dcgan" target="_blank">DCGAN - TensorFlow</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>🎮 Playgrounds</h3>
+                        <ul>
+                            <li><a href="https://thispersondoesnotexist.com" target="_blank">This Person Does Not Exist</a></li>
+                            <li><a href="https://www.artbreeder.com" target="_blank">Artbreeder</a></li>
+                            <li><a href="https://ganpaint.io/" target="_blank">GAN Paint Studio</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="lesson-navigation">
+            <a href="large-language-models.html" class="lesson-nav-btn">
+                <span>←</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Previous</span>
+                    <span class="lesson-nav-btn-title">LLMs</span>
+                </div>
+            </a>
+            <a href="diffusion-models.html" class="lesson-nav-btn next">
+                <span>→</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Next Lesson</span>
+                    <span class="lesson-nav-btn-title">Diffusion Models</span>
+                </div>
+            </a>
+        </nav>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Referencia - Learning AI, one cat at a time 🐱</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

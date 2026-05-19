@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A comprehensive reference guide for data scientists diving into AI and Large Language Models (LLMs)">
-    <title>Referencia - AI & LLM Guide for Data Scientists</title>
+    <meta name="description" content="A fun, cat-themed learning platform for complete beginners diving into AI and Large Language Models">
+    <title>Referencia - AI Learning Platform 🐱</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
         <nav class="navbar">
             <div class="container">
                 <h1 class="logo">Referencia</h1>
-                <p class="tagline">Your AI & LLM Reference Guide</p>
+                <p class="tagline">Your AI & LLM Reference Guide 🐱</p>
                 <div class="nav-toggle" id="navToggle">
                     <span></span>
                     <span></span>
@@ -29,19 +29,23 @@
 
     <main class="container">
         <section class="hero">
-            <h2>Welcome to Referencia</h2>
-            <p>An interactive learning platform for data scientists diving into the world of Artificial Intelligence and Large Language Models. Learn through structured lessons, visual explanations, and hands-on experiments.</p>
+            <h2>Welcome to Referencia 🐾</h2>
+            <p>An interactive AI dictionary and learning platform for beginners. Each lesson explains one AI concept with a plain-English definition, a cat-themed analogy, and a real-world use case. From "What is AI?" all the way to "Why does AI lie?" — we've got you covered, one concept at a time.</p>
+            <div style="text-align: center; margin-top: 25px;">
+                <a href="glossary.html" style="display: inline-block; padding: 12px 30px; background: var(--primary-color); color: white; border-radius: 8px; text-decoration: none; font-weight: 600; margin-right: 12px;">📖 Browse AI Dictionary</a>
+                <a href="lessons/intro-to-ai.html" style="display: inline-block; padding: 12px 30px; background: #10b981; color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">🐾 Start Learning →</a>
+            </div>
         </section>
 
+        <!-- CHAPTER 1 -->
         <section class="content-section">
-            <h2 class="section-title">📚 Learning Path</h2>
-            <p class="section-description">Follow our structured curriculum from fundamentals to advanced topics. Each lesson includes theory, visuals, experiments, and resources.</p>
-            
+            <h2 class="section-title">Chapter 1 — AI Foundations 🐾</h2>
+            <p class="section-description">Start here! No background needed. Learn what AI is and how machines learn from data.</p>
             <div class="lessons-grid">
                 <a href="lessons/intro-to-ai.html" class="lesson-card">
                     <div class="lesson-number">01</div>
-                    <h3>🤖 Introduction to AI</h3>
-                    <p>Understand what AI is, its types, and real-world applications</p>
+                    <h3>🤖 What is AI?</h3>
+                    <p>Whiskers learns what thinking machines are — and why they're not magic!</p>
                     <div class="lesson-meta">
                         <span class="lesson-duration">⏱️ 45 min</span>
                         <span class="lesson-level">🟢 Beginner</span>
@@ -51,579 +55,242 @@
                 <a href="lessons/machine-learning-basics.html" class="lesson-card">
                     <div class="lesson-number">02</div>
                     <h3>🧠 Machine Learning Basics</h3>
-                    <p>Explore supervised, unsupervised, and reinforcement learning</p>
+                    <p>Learning from data vs coding rules — Cat student learns to recognize felines!</p>
                     <div class="lesson-meta">
-                        <span class="lesson-duration">⏱️ 60 min</span>
+                        <span class="lesson-duration">⏱️ 45 min</span>
+                        <span class="lesson-level">🟢 Beginner</span>
+                    </div>
+                </a>
+
+                <a href="lessons/training-data.html" class="lesson-card">
+                    <div class="lesson-number">03</div>
+                    <h3>📂 Training Data &amp; Datasets</h3>
+                    <p>Prof. Whiskers's flashcard method — garbage in, garbage out!</p>
+                    <div class="lesson-meta">
+                        <span class="lesson-duration">⏱️ 40 min</span>
+                        <span class="lesson-level">🟢 Beginner</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- CHAPTER 2 -->
+        <section class="content-section">
+            <h2 class="section-title">Chapter 2 — How Models Learn 🧠</h2>
+            <p class="section-description">Understand the mechanics behind AI learning — neurons, depth, and avoiding bad habits.</p>
+            <div class="lessons-grid">
+                <a href="lessons/neural-networks.html" class="lesson-card">
+                    <div class="lesson-number">04</div>
+                    <h3>🕸️ Neural Networks</h3>
+                    <p>Layers of neurons passing signals like notes in class!</p>
+                    <div class="lesson-meta">
+                        <span class="lesson-duration">⏱️ 50 min</span>
                         <span class="lesson-level">🟢 Beginner</span>
                     </div>
                 </a>
 
                 <a href="lessons/deep-learning.html" class="lesson-card">
-                    <div class="lesson-number">03</div>
+                    <div class="lesson-number">05</div>
                     <h3>🔬 Deep Learning</h3>
-                    <p>Neural networks, CNNs, RNNs, and modern architectures</p>
+                    <p>Many layers make the magic — a kitten learning faces layer by layer!</p>
                     <div class="lesson-meta">
-                        <span class="lesson-duration">⏱️ 75 min</span>
+                        <span class="lesson-duration">⏱️ 55 min</span>
+                        <span class="lesson-level">🟡 Intermediate</span>
+                    </div>
+                </a>
+
+                <a href="lessons/overfitting-underfitting.html" class="lesson-card">
+                    <div class="lesson-number">06</div>
+                    <h3>📊 Overfitting vs. Underfitting</h3>
+                    <p>Cat Students Taking Exams — memorizer, lazy one, and balanced learner</p>
+                    <div class="lesson-meta">
+                        <span class="lesson-duration">⏱️ 50 min</span>
+                        <span class="lesson-level">🟡 Intermediate</span>
+                    </div>
+                </a>
+
+                <a href="lessons/transfer-learning.html" class="lesson-card">
+                    <div class="lesson-number">07</div>
+                    <h3>🔄 Transfer Learning &amp; Fine-tuning</h3>
+                    <p>Whiskers adapts hunting skills to herd sheep — reuse what you know!</p>
+                    <div class="lesson-meta">
+                        <span class="lesson-duration">⏱️ 45 min</span>
+                        <span class="lesson-level">🟡 Intermediate</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- CHAPTER 3 -->
+        <section class="content-section">
+            <h2 class="section-title">Chapter 3 — Model Architectures 🏗️</h2>
+            <p class="section-description">Explore the building blocks of modern AI — from image-reading CNNs to text-generating LLMs.</p>
+            <div class="lessons-grid">
+                <a href="lessons/cnn.html" class="lesson-card">
+                    <div class="lesson-number">08</div>
+                    <h3>👁️ CNNs — Computer Vision</h3>
+                    <p>How a cat's eye scans for edges, shapes, then faces!</p>
+                    <div class="lesson-meta">
+                        <span class="lesson-duration">⏱️ 50 min</span>
+                        <span class="lesson-level">🟡 Intermediate</span>
+                    </div>
+                </a>
+
+                <a href="lessons/transformers.html" class="lesson-card">
+                    <div class="lesson-number">09</div>
+                    <h3>⚡ Transformer Architecture</h3>
+                    <p>Attention Is All You Need — Whiskers pays attention to the right words!</p>
+                    <div class="lesson-meta">
+                        <span class="lesson-duration">⏱️ 60 min</span>
                         <span class="lesson-level">🟡 Intermediate</span>
                     </div>
                 </a>
 
                 <a href="lessons/large-language-models.html" class="lesson-card">
-                    <div class="lesson-number">04</div>
-                    <h3>🔤 Large Language Models</h3>
-                    <p>Transformers, training techniques, and LLM applications</p>
+                    <div class="lesson-number">10</div>
+                    <h3>📚 Large Language Models</h3>
+                    <p>The Literary Cat who read everything — predicting the next word!</p>
                     <div class="lesson-meta">
-                        <span class="lesson-duration">⏱️ 90 min</span>
+                        <span class="lesson-duration">⏱️ 60 min</span>
+                        <span class="lesson-level">🟡 Intermediate</span>
+                    </div>
+                </a>
+
+                <a href="lessons/gans.html" class="lesson-card">
+                    <div class="lesson-number">11</div>
+                    <h3>🎨 GANs</h3>
+                    <p>Cat Artist vs Cat Critic — two AIs competing to create realistic images!</p>
+                    <div class="lesson-meta">
+                        <span class="lesson-duration">⏱️ 55 min</span>
+                        <span class="lesson-level">🟡 Intermediate</span>
+                    </div>
+                </a>
+
+                <a href="lessons/diffusion-models.html" class="lesson-card">
+                    <div class="lesson-number">12</div>
+                    <h3>🌫️ Diffusion Models</h3>
+                    <p>From noise to cat picture — AI denoises step by step!</p>
+                    <div class="lesson-meta">
+                        <span class="lesson-duration">⏱️ 50 min</span>
+                        <span class="lesson-level">🟡 Intermediate</span>
+                    </div>
+                </a>
+
+                <a href="lessons/reinforcement-learning.html" class="lesson-card">
+                    <div class="lesson-number">13</div>
+                    <h3>🎮 Reinforcement Learning</h3>
+                    <p>Cat in a Maze — treats for good moves, spray bottle for bad ones!</p>
+                    <div class="lesson-meta">
+                        <span class="lesson-duration">⏱️ 65 min</span>
+                        <span class="lesson-level">🟡 Intermediate</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- CHAPTER 4 -->
+        <section class="content-section">
+            <h2 class="section-title">Chapter 4 — Working with Language Models 💬</h2>
+            <p class="section-description">How to understand, prompt, and extend language models for real-world applications.</p>
+            <div class="lessons-grid">
+                <a href="lessons/tokenization-embeddings.html" class="lesson-card">
+                    <div class="lesson-number">14</div>
+                    <h3>🔤 Tokenization &amp; Embeddings</h3>
+                    <p>Breaking words into tokens and mapping their meaning as coordinates!</p>
+                    <div class="lesson-meta">
+                        <span class="lesson-duration">⏱️ 45 min</span>
                         <span class="lesson-level">🟡 Intermediate</span>
                     </div>
                 </a>
 
                 <a href="lessons/prompt-engineering.html" class="lesson-card">
-                    <div class="lesson-number">05</div>
+                    <div class="lesson-number">15</div>
                     <h3>✍️ Prompt Engineering</h3>
-                    <p>Master the art of crafting effective prompts for LLMs</p>
+                    <p>Cat Asks for Milk — be specific or get chaos!</p>
                     <div class="lesson-meta">
-                        <span class="lesson-duration">⏱️ 60 min</span>
-                        <span class="lesson-level">🟡 Intermediate</span>
+                        <span class="lesson-duration">⏱️ 45 min</span>
+                        <span class="lesson-level">🟢 Beginner</span>
                     </div>
                 </a>
 
                 <a href="lessons/rag-systems.html" class="lesson-card">
-                    <div class="lesson-number">06</div>
-                    <h3>🔍 RAG Systems</h3>
-                    <p>Build retrieval-augmented generation applications</p>
+                    <div class="lesson-number">16</div>
+                    <h3>📋 RAG Systems</h3>
+                    <p>Whiskers checks the library before answering — no more making things up!</p>
                     <div class="lesson-meta">
-                        <span class="lesson-duration">⏱️ 90 min</span>
-                        <span class="lesson-level">🔴 Advanced</span>
-                    </div>
-                </a>
-
-                <a href="lessons/ai-frameworks.html" class="lesson-card">
-                    <div class="lesson-number">07</div>
-                    <h3>🛠️ AI Frameworks & Tools</h3>
-                    <p>PyTorch, TensorFlow, Hugging Face, and more</p>
-                    <div class="lesson-meta">
-                        <span class="lesson-duration">⏱️ 75 min</span>
+                        <span class="lesson-duration">⏱️ 55 min</span>
                         <span class="lesson-level">🟡 Intermediate</span>
                     </div>
                 </a>
 
-                <a href="lessons/best-practices.html" class="lesson-card">
-                    <div class="lesson-number">08</div>
-                    <h3>✅ Best Practices & Ethics</h3>
-                    <p>Safety, ethics, and production deployment strategies</p>
+                <a href="lessons/ai-agents.html" class="lesson-card">
+                    <div class="lesson-number">17</div>
+                    <h3>🕵️ AI Agents</h3>
+                    <p>Agent Whiskers on autonomous missions — sense, decide, act!</p>
                     <div class="lesson-meta">
-                        <span class="lesson-duration">⏱️ 60 min</span>
-                        <span class="lesson-level">🔴 Advanced</span>
+                        <span class="lesson-duration">⏱️ 55 min</span>
+                        <span class="lesson-level">🟡 Intermediate</span>
                     </div>
                 </a>
             </div>
         </section>
 
+        <!-- CHAPTER 5 -->
+        <section class="content-section">
+            <h2 class="section-title">Chapter 5 — Responsible AI ⚖️</h2>
+            <p class="section-description">Use AI thoughtfully. Understand bias, hallucinations, and how to verify AI outputs.</p>
+            <div class="lessons-grid">
+                <a href="lessons/model-bias.html" class="lesson-card">
+                    <div class="lesson-number">18</div>
+                    <h3>⚖️ Model Bias &amp; Fairness</h3>
+                    <p>I'm Not a Dog! — AI bias when training data isn't representative</p>
+                    <div class="lesson-meta">
+                        <span class="lesson-duration">⏱️ 40 min</span>
+                        <span class="lesson-level">🟢 Beginner</span>
+                    </div>
+                </a>
+
+                <a href="lessons/hallucinations.html" class="lesson-card">
+                    <div class="lesson-number">19</div>
+                    <h3>🌀 AI Hallucinations</h3>
+                    <p>Whiskers confidently makes things up — why AI lies and how to stop it!</p>
+                    <div class="lesson-meta">
+                        <span class="lesson-duration">⏱️ 40 min</span>
+                        <span class="lesson-level">�� Beginner</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- AI DICTIONARY CTA -->
         <section class="content-section quick-reference">
-            <h2 class="section-title">⚡ Quick Reference</h2>
-            <p class="section-description">Need to look up a term or concept quickly? Browse our reference sections.</p>
-            
+            <h2 class="section-title">📖 AI Dictionary</h2>
+            <p class="section-description">Every AI term you need — plain-English definitions, cat analogies, and real use cases. All in one searchable page.</p>
+            <div style="text-align: center; padding: 20px;">
+                <a href="glossary.html" style="display: inline-block; padding: 15px 40px; background: var(--primary-color); color: white; border-radius: 10px; text-decoration: none; font-size: 1.1rem; font-weight: 600;">🔍 Browse the AI Dictionary →</a>
+            </div>
+        </section>
+
+        <!-- WHY CAT-THEMED -->
+        <section class="content-section quick-reference">
+            <h2 class="section-title">🎯 Why Cat-Themed Learning?</h2>
+            <p class="section-description">Complex AI concepts explained through playful scenarios that stick in your memory!</p>
             <div class="reference-grid">
-                <a href="lessons/terminology.html" class="reference-card">
-                    <h3>📖 Key Terminology</h3>
-                    <p>Essential terms and concepts in AI and LLMs</p>
-                </a>
-                <a href="lessons/models-overview.html" class="reference-card">
-                    <h3>🌟 Popular Models</h3>
-                    <p>GPT, Claude, Gemini, LLaMA, BERT, and more</p>
-                </a>
-                <a href="lessons/applications.html" class="reference-card">
-                    <h3>💡 Applications</h3>
-                    <p>Real-world use cases and implementations</p>
-                </a>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Referencia - An open-source AI & LLM learning platform</p>
-            <p>Breaking down complex AI terminologies for data scientists</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
-            <div class="accordion">
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span>What is Machine Learning?</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <p><strong>Machine Learning (ML)</strong> is a subset of AI that enables systems to learn and improve from experience without being explicitly programmed. ML algorithms build models based on training data to make predictions or decisions.</p>
-                    </div>
+                <div class="reference-card">
+                    <h3>🎨 Visual &amp; Fun</h3>
+                    <p>Sketchnote comics with cat characters make abstract concepts concrete and memorable</p>
                 </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span>Types of Machine Learning</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="term-card">
-                            <h4>Supervised Learning</h4>
-                            <p>Training on labeled data where the model learns from input-output pairs. Used for classification and regression tasks.</p>
-                            <p><strong>Examples:</strong> Email spam detection, house price prediction, image classification</p>
-                        </div>
-                        <div class="term-card">
-                            <h4>Unsupervised Learning</h4>
-                            <p>Finding patterns in unlabeled data without predefined outputs. Used for clustering and dimensionality reduction.</p>
-                            <p><strong>Examples:</strong> Customer segmentation, anomaly detection, topic modeling</p>
-                        </div>
-                        <div class="term-card">
-                            <h4>Reinforcement Learning</h4>
-                            <p>Learning through trial and error with rewards and penalties. The agent learns optimal behavior through interaction with an environment.</p>
-                            <p><strong>Examples:</strong> Game playing (AlphaGo), robotics, autonomous vehicles</p>
-                        </div>
-                        <div class="term-card">
-                            <h4>Semi-Supervised Learning</h4>
-                            <p>Combines small amounts of labeled data with large amounts of unlabeled data during training.</p>
-                        </div>
-                    </div>
+                <div class="reference-card">
+                    <h3>📱 TikTok-Ready</h3>
+                    <p>Each lesson designed for social media sharing with comic-style visuals and short explanations</p>
                 </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span>Deep Learning</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <p><strong>Deep Learning</strong> is a subset of ML that uses neural networks with multiple layers (deep neural networks) to progressively extract higher-level features from raw input.</p>
-                        <p><strong>Key architectures:</strong></p>
-                        <ul>
-                            <li><strong>CNNs (Convolutional Neural Networks):</strong> Specialized for image processing and computer vision</li>
-                            <li><strong>RNNs (Recurrent Neural Networks):</strong> Designed for sequential data like text and time series</li>
-                            <li><strong>Transformers:</strong> Modern architecture for NLP tasks, basis for LLMs</li>
-                            <li><strong>GANs (Generative Adversarial Networks):</strong> Used for generating new data samples</li>
-                        </ul>
-                    </div>
+                <div class="reference-card">
+                    <h3>🧪 Hands-On</h3>
+                    <p>Interactive experiments and demos that bring concepts to life - try AI yourself!</p>
                 </div>
-            </div>
-        </section>
-
-        <section id="llm-overview" class="content-section">
-            <h2 class="section-title">🔤 Large Language Models (LLMs)</h2>
-            <div class="accordion">
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span>What are LLMs?</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <p><strong>Large Language Models</strong> are deep learning models trained on vast amounts of text data to understand and generate human-like text. They use transformer architecture and contain billions of parameters.</p>
-                        <p><strong>Capabilities:</strong></p>
-                        <ul>
-                            <li>Natural language understanding and generation</li>
-                            <li>Text completion and summarization</li>
-                            <li>Question answering and conversation</li>
-                            <li>Translation and code generation</li>
-                            <li>Few-shot and zero-shot learning</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span>How LLMs Work</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="term-card">
-                            <h4>Transformer Architecture</h4>
-                            <p>LLMs are built on the transformer architecture, which uses self-attention mechanisms to process input sequences in parallel, capturing long-range dependencies in text.</p>
-                        </div>
-                        <div class="term-card">
-                            <h4>Pre-training and Fine-tuning</h4>
-                            <p><strong>Pre-training:</strong> Models learn language patterns from massive text corpora using self-supervised learning (predicting masked or next tokens).</p>
-                            <p><strong>Fine-tuning:</strong> Adapting pre-trained models to specific tasks or domains using smaller, task-specific datasets.</p>
-                        </div>
-                        <div class="term-card">
-                            <h4>Tokens and Embeddings</h4>
-                            <p><strong>Tokenization:</strong> Breaking text into smaller units (tokens) that the model can process.</p>
-                            <p><strong>Embeddings:</strong> Converting tokens into high-dimensional vectors that capture semantic meaning.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span>Training Techniques</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="term-card">
-                            <h4>RLHF (Reinforcement Learning from Human Feedback)</h4>
-                            <p>A technique to align LLMs with human preferences by training a reward model based on human feedback and using it to fine-tune the model.</p>
-                        </div>
-                        <div class="term-card">
-                            <h4>Prompt Engineering</h4>
-                            <p>Crafting input prompts to guide the model towards desired outputs. Includes techniques like few-shot learning, chain-of-thought prompting, and instruction tuning.</p>
-                        </div>
-                        <div class="term-card">
-                            <h4>RAG (Retrieval-Augmented Generation)</h4>
-                            <p>Combining LLMs with external knowledge retrieval to provide more accurate, up-to-date, and grounded responses.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="key-terms" class="content-section">
-            <h2 class="section-title">📖 Key Terminology</h2>
-            <div class="terms-grid">
-                <div class="term-card">
-                    <h3>Parameters</h3>
-                    <p>Learned values in the neural network (weights and biases) that the model adjusts during training. More parameters generally mean more capacity to learn complex patterns.</p>
-                </div>
-                <div class="term-card">
-                    <h3>Context Window</h3>
-                    <p>The maximum amount of text (in tokens) that an LLM can process at once. Larger context windows allow handling longer documents.</p>
-                </div>
-                <div class="term-card">
-                    <h3>Temperature</h3>
-                    <p>A parameter controlling randomness in generation. Lower values (0-0.5) make output more deterministic, higher values (0.7-1.0+) more creative.</p>
-                </div>
-                <div class="term-card">
-                    <h3>Top-k / Top-p Sampling</h3>
-                    <p>Techniques for controlling text generation diversity by limiting the next token selection to top k tokens or tokens with cumulative probability p.</p>
-                </div>
-                <div class="term-card">
-                    <h3>Attention Mechanism</h3>
-                    <p>Core component of transformers that allows the model to focus on relevant parts of input when processing each token.</p>
-                </div>
-                <div class="term-card">
-                    <h3>Fine-tuning</h3>
-                    <p>Adapting a pre-trained model to specific tasks or domains using additional training on targeted datasets.</p>
-                </div>
-                <div class="term-card">
-                    <h3>Zero-shot Learning</h3>
-                    <p>Model performing tasks without specific training examples, relying on pre-trained knowledge and instructions.</p>
-                </div>
-                <div class="term-card">
-                    <h3>Few-shot Learning</h3>
-                    <p>Providing a few examples in the prompt to guide the model on how to perform a task.</p>
-                </div>
-                <div class="term-card">
-                    <h3>Hallucination</h3>
-                    <p>When LLMs generate false or nonsensical information presented as fact. A key challenge in LLM deployment.</p>
-                </div>
-                <div class="term-card">
-                    <h3>Inference</h3>
-                    <p>The process of using a trained model to make predictions or generate outputs on new data.</p>
-                </div>
-                <div class="term-card">
-                    <h3>Embeddings</h3>
-                    <p>Vector representations of text that capture semantic meaning, allowing mathematical operations on language.</p>
-                </div>
-                <div class="term-card">
-                    <h3>Perplexity</h3>
-                    <p>A metric measuring how well a language model predicts text. Lower perplexity indicates better performance.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="popular-models" class="content-section">
-            <h2 class="section-title">🌟 Popular Models</h2>
-            <div class="model-grid">
-                <div class="model-card">
-                    <h3>GPT (Generative Pre-trained Transformer)</h3>
-                    <p><strong>Developer:</strong> OpenAI</p>
-                    <p>Autoregressive language models trained on diverse internet text. GPT-4 is one of the most capable models available.</p>
-                    <p><strong>Key versions:</strong> GPT-3, GPT-3.5, GPT-4, GPT-4o</p>
-                </div>
-                <div class="model-card">
-                    <h3>Claude</h3>
-                    <p><strong>Developer:</strong> Anthropic</p>
-                    <p>AI assistant focused on being helpful, harmless, and honest. Known for strong reasoning and long context windows.</p>
-                    <p><strong>Key versions:</strong> Claude 2, Claude 3 (Opus, Sonnet, Haiku)</p>
-                </div>
-                <div class="model-card">
-                    <h3>Gemini</h3>
-                    <p><strong>Developer:</strong> Google</p>
-                    <p>Multimodal AI model designed to understand and generate text, images, audio, and code.</p>
-                    <p><strong>Key versions:</strong> Gemini Pro, Gemini Ultra</p>
-                </div>
-                <div class="model-card">
-                    <h3>LLaMA</h3>
-                    <p><strong>Developer:</strong> Meta</p>
-                    <p>Open-source foundation models ranging from 7B to 70B+ parameters. Widely used for research and fine-tuning.</p>
-                    <p><strong>Key versions:</strong> LLaMA, LLaMA 2, LLaMA 3</p>
-                </div>
-                <div class="model-card">
-                    <h3>BERT</h3>
-                    <p><strong>Developer:</strong> Google</p>
-                    <p>Bidirectional encoder model excellent for understanding tasks like classification and named entity recognition.</p>
-                    <p><strong>Variants:</strong> RoBERTa, DistilBERT, ALBERT</p>
-                </div>
-                <div class="model-card">
-                    <h3>T5 (Text-to-Text Transfer Transformer)</h3>
-                    <p><strong>Developer:</strong> Google</p>
-                    <p>Treats all NLP tasks as text-to-text problems, providing a unified framework for various language tasks.</p>
-                </div>
-                <div class="model-card">
-                    <h3>Mistral & Mixtral</h3>
-                    <p><strong>Developer:</strong> Mistral AI</p>
-                    <p>High-performance open-source models. Mixtral uses mixture-of-experts architecture for efficiency.</p>
-                </div>
-                <div class="model-card">
-                    <h3>Falcon</h3>
-                    <p><strong>Developer:</strong> TII (UAE)</p>
-                    <p>Open-source LLMs trained on high-quality data, competitive with proprietary models.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="frameworks" class="content-section">
-            <h2 class="section-title">🛠️ Frameworks & Tools</h2>
-            <div class="accordion">
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span>Deep Learning Frameworks</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="term-card">
-                            <h4>PyTorch</h4>
-                            <p>Popular deep learning framework with dynamic computation graphs. Widely used in research and production.</p>
-                        </div>
-                        <div class="term-card">
-                            <h4>TensorFlow</h4>
-                            <p>Comprehensive ML framework by Google. Strong ecosystem for production deployment.</p>
-                        </div>
-                        <div class="term-card">
-                            <h4>JAX</h4>
-                            <p>High-performance numerical computing library with automatic differentiation and GPU/TPU support.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span>LLM Frameworks & Libraries</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="term-card">
-                            <h4>Hugging Face Transformers</h4>
-                            <p>Leading library for pre-trained models. Provides easy access to thousands of models and datasets.</p>
-                        </div>
-                        <div class="term-card">
-                            <h4>LangChain</h4>
-                            <p>Framework for building applications with LLMs. Includes chains, agents, and memory components.</p>
-                        </div>
-                        <div class="term-card">
-                            <h4>LlamaIndex</h4>
-                            <p>Data framework for LLM applications, specializing in connecting custom data sources to LLMs.</p>
-                        </div>
-                        <div class="term-card">
-                            <h4>OpenAI API</h4>
-                            <p>API for accessing GPT models. Simple interface for integrating powerful LLMs into applications.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span>Vector Databases</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="term-card">
-                            <h4>Pinecone</h4>
-                            <p>Managed vector database for similarity search and recommendations.</p>
-                        </div>
-                        <div class="term-card">
-                            <h4>Weaviate</h4>
-                            <p>Open-source vector database with built-in vectorization and hybrid search.</p>
-                        </div>
-                        <div class="term-card">
-                            <h4>Chroma</h4>
-                            <p>Lightweight, open-source embedding database designed for LLM applications.</p>
-                        </div>
-                        <div class="term-card">
-                            <h4>FAISS</h4>
-                            <p>Facebook's library for efficient similarity search and clustering of dense vectors.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="applications" class="content-section">
-            <h2 class="section-title">💡 Applications & Use Cases</h2>
-            <div class="terms-grid">
-                <div class="term-card">
-                    <h3>Chatbots & Virtual Assistants</h3>
-                    <p>Customer service, personal assistants, and conversational AI powered by LLMs for natural interactions.</p>
-                </div>
-                <div class="term-card">
-                    <h3>Content Generation</h3>
-                    <p>Writing articles, marketing copy, creative stories, and documentation with AI assistance.</p>
-                </div>
-                <div class="term-card">
-                    <h3>Code Generation & Review</h3>
-                    <p>Automated code completion, bug detection, documentation generation, and code explanation (e.g., GitHub Copilot).</p>
-                </div>
-                <div class="term-card">
-                    <h3>Summarization</h3>
-                    <p>Condensing long documents, articles, or transcripts into concise summaries.</p>
-                </div>
-                <div class="term-card">
-                    <h3>Translation</h3>
-                    <p>High-quality machine translation across multiple languages with context awareness.</p>
-                </div>
-                <div class="term-card">
-                    <h3>Question Answering</h3>
-                    <p>Building systems that answer questions from knowledge bases or documents (RAG systems).</p>
-                </div>
-                <div class="term-card">
-                    <h3>Sentiment Analysis</h3>
-                    <p>Understanding emotions and opinions in text for social media monitoring and customer feedback.</p>
-                </div>
-                <div class="term-card">
-                    <h3>Named Entity Recognition</h3>
-                    <p>Identifying and classifying entities (people, organizations, locations) in text.</p>
-                </div>
-                <div class="term-card">
-                    <h3>Text Classification</h3>
-                    <p>Categorizing documents, emails, or support tickets automatically.</p>
-                </div>
-                <div class="term-card">
-                    <h3>Recommendation Systems</h3>
-                    <p>Personalized content and product recommendations based on user preferences and behavior.</p>
-                </div>
-                <div class="term-card">
-                    <h3>Data Augmentation</h3>
-                    <p>Generating synthetic training data to improve model performance and handle data scarcity.</p>
-                </div>
-                <div class="term-card">
-                    <h3>Research Assistant</h3>
-                    <p>Helping researchers find relevant papers, summarize literature, and generate hypotheses.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="best-practices" class="content-section">
-            <h2 class="section-title">✅ Best Practices</h2>
-            <div class="accordion">
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span>Prompt Engineering Best Practices</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <ul>
-                            <li><strong>Be specific and clear:</strong> Provide detailed instructions about what you want</li>
-                            <li><strong>Use examples:</strong> Few-shot prompting often improves results</li>
-                            <li><strong>Break down complex tasks:</strong> Chain-of-thought prompting for reasoning tasks</li>
-                            <li><strong>Specify output format:</strong> Request structured outputs (JSON, markdown, etc.)</li>
-                            <li><strong>Iterate and refine:</strong> Test different prompt variations</li>
-                            <li><strong>Add constraints:</strong> Define what to avoid or required elements</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span>Model Selection & Deployment</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <ul>
-                            <li><strong>Consider task requirements:</strong> Match model capabilities to your use case</li>
-                            <li><strong>Evaluate costs:</strong> Balance performance with API costs or infrastructure requirements</li>
-                            <li><strong>Test multiple models:</strong> Compare outputs across different models</li>
-                            <li><strong>Monitor performance:</strong> Track accuracy, latency, and user satisfaction</li>
-                            <li><strong>Plan for scaling:</strong> Consider rate limits and throughput requirements</li>
-                            <li><strong>Implement fallbacks:</strong> Handle API failures gracefully</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span>Safety & Ethics</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <ul>
-                            <li><strong>Validate outputs:</strong> Don't blindly trust LLM responses</li>
-                            <li><strong>Implement content filtering:</strong> Screen for harmful or inappropriate content</li>
-                            <li><strong>Handle hallucinations:</strong> Use retrieval-augmented generation (RAG) for factual accuracy</li>
-                            <li><strong>Protect privacy:</strong> Don't send sensitive data to external APIs</li>
-                            <li><strong>Add human oversight:</strong> Keep humans in the loop for critical decisions</li>
-                            <li><strong>Be transparent:</strong> Disclose when content is AI-generated</li>
-                            <li><strong>Consider bias:</strong> Evaluate and mitigate potential biases in outputs</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <button class="accordion-header">
-                        <span>Development Tips</span>
-                        <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-content">
-                        <ul>
-                            <li><strong>Start simple:</strong> Begin with basic prompts and iterate</li>
-                            <li><strong>Use established libraries:</strong> Leverage LangChain, LlamaIndex, etc.</li>
-                            <li><strong>Implement caching:</strong> Cache repeated queries to reduce costs</li>
-                            <li><strong>Version control prompts:</strong> Track prompt changes like code</li>
-                            <li><strong>Build evaluation datasets:</strong> Create test sets to measure performance</li>
-                            <li><strong>Log interactions:</strong> Keep records for debugging and improvement</li>
-                            <li><strong>Stay updated:</strong> The field evolves rapidly; follow latest developments</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="content-section resources">
-            <h2 class="section-title">📚 Learning Resources</h2>
-            <div class="resources-grid">
-                <div class="resource-card">
-                    <h3>📖 Courses & Tutorials</h3>
-                    <ul>
-                        <li>Fast.ai - Practical Deep Learning</li>
-                        <li>DeepLearning.AI - Coursera courses</li>
-                        <li>Hugging Face Course</li>
-                        <li>OpenAI Cookbook</li>
-                    </ul>
-                </div>
-                <div class="resource-card">
-                    <h3>📝 Research Papers</h3>
-                    <ul>
-                        <li>Attention Is All You Need (Transformers)</li>
-                        <li>BERT, GPT, T5 papers</li>
-                        <li>arXiv.org for latest research</li>
-                        <li>Papers With Code</li>
-                    </ul>
-                </div>
-                <div class="resource-card">
-                    <h3>🌐 Communities</h3>
-                    <ul>
-                        <li>Hugging Face Forums</li>
-                        <li>r/MachineLearning</li>
-                        <li>Discord communities (LangChain, etc.)</li>
-                        <li>Twitter/X ML community</li>
-                    </ul>
-                </div>
-                <div class="resource-card">
-                    <h3>🔧 Practice Platforms</h3>
-                    <ul>
-                        <li>Kaggle competitions</li>
-                        <li>Google Colab notebooks</li>
-                        <li>Hugging Face Spaces</li>
-                        <li>GitHub repositories</li>
-                    </ul>
+                <div class="reference-card">
+                    <h3>📚 Beginner-Friendly</h3>
+                    <p>No prerequisites needed - start from scratch and build your GenAI knowledge step by step</p>
                 </div>
             </div>
         </section>
@@ -631,8 +298,8 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Referencia - An open-source AI & LLM reference guide</p>
-            <p>Breaking down complex AI terminologies for data scientists</p>
+            <p>&copy; 2026 Referencia - Learning AI, one cat at a time 🐱</p>
+            <p>Made with 💙 for beginners diving into AI</p>
         </div>
     </footer>
 

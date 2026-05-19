@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lesson 06: Reinforcement Learning - A cat in a maze getting treats and avoiding spray bottles!">
+    <title>Lesson 06: Reinforcement Learning | Referencia 🐱</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="../index.html" style="text-decoration: none; color: white;">
+                    <h1 class="logo">Referencia</h1>
+                </a>
+                <p class="tagline">Lesson 06: Reinforcement Learning</p>
+            </div>
+        </nav>
+    </header>
+
+    <div class="lesson-header">
+        <div class="container">
+            <div class="lesson-number">LESSON 06</div>
+            <h1 class="lesson-title">🎮 Reinforcement Learning</h1>
+            <p class="lesson-subtitle">A cat in a maze - Learning through treats (+1) and spray bottles (-1)!</p>
+            <div class="lesson-info">
+                <span class="lesson-info-item">⏱️ 55 minutes</span>
+                <span class="lesson-info-item">🟡 Intermediate</span>
+                <span class="lesson-info-item">📚 5 sections</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="lesson-nav">
+        <div class="container">
+            <div class="lesson-nav-container">
+                <a href="#intro" class="lesson-nav-link active">Introduction</a>
+                <a href="#sketchnote" class="lesson-nav-link">Sketchnote</a>
+                <a href="#types" class="lesson-nav-link">Core Content</a>
+                <a href="#experiments" class="lesson-nav-link">Experiments</a>
+                <a href="#resources" class="lesson-nav-link">Resources</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- SECTION 1: INTRODUCTION -->
+        <section id="intro" class="lesson-section">
+            <h2>📖 Introduction: What is Reinforcement Learning?</h2>
+            
+            <div class="lesson-intro">
+                <p>Imagine a <strong>cat navigating a maze</strong> 🐱🧀. The cat doesn't have a map—it has to explore! When it finds cheese, it gets a <strong>treat (+1 reward)</strong>. When it hits a dead end or gets sprayed with water, that's a <strong>penalty (-1)</strong>. Over time, the cat learns which paths lead to treats!</p>
+                
+                <p>That's <strong>Reinforcement Learning (RL)</strong>—learning through trial and error. An <strong>agent</strong> takes <strong>actions</strong> in an <strong>environment</strong>, receives <strong>rewards</strong> or <strong>penalties</strong>, and learns a <strong>policy</strong> to maximize total reward over time!</p>
+            </div>
+
+            <div class="term-card" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(37, 99, 235, 0.1)); border-left: 4px solid #f59e0b;">
+                <h3>💡 Key Insight</h3>
+                <p><strong>Reinforcement Learning</strong> trains agents to make sequences of decisions by rewarding good outcomes and penalizing bad ones. The agent learns a strategy (policy) to maximize cumulative rewards!</p>
+                <p><em>"RL: Cat learns maze through treats and spray bottles!"</em></p>
+            </div>
+
+            <h3>🎯 What You'll Learn</h3>
+            <ul>
+                <li>The RL framework: agent, environment, state, action, reward</li>
+                <li>Exploration vs. exploitation tradeoff</li>
+                <li>Key algorithms: Q-Learning, Policy Gradient, Actor-Critic</li>
+                <li>Applications: games, robotics, recommendation systems</li>
+                <li>How RLHF makes LLMs like ChatGPT helpful</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 2: SKETCHNOTE -->
+        <section id="sketchnote" class="lesson-section">
+            <h2>🎨 Sketchnote: Visual Summary</h2>
+            <p style="color: var(--text-light); margin-bottom: 20px;">The adventurous cat learning by experience!</p>
+
+            <div class="sketchnote-container">
+                <div class="sketchnote-placeholder">
+                    <h3>🖼️ Sketchnote Concept</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;"><strong>A cat navigating a maze with rewards and penalties:</strong></p>
+                    
+                    <div style="background: linear-gradient(135deg, #fef3c7, #dbeafe); padding: 30px; border-radius: 10px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; text-align: center;">
+                            <div style="background: white; padding: 15px; border-radius: 8px;">
+                                <p style="font-size: 2.5rem;">🐱</p>
+                                <h4>Agent</h4>
+                                <p style="font-size: 0.85rem;">The learning cat</p>
+                            </div>
+                            <div style="background: white; padding: 15px; border-radius: 8px;">
+                                <p style="font-size: 2.5rem;">🧀</p>
+                                <h4>Reward +1</h4>
+                                <p style="font-size: 0.85rem;">Found cheese!</p>
+                            </div>
+                            <div style="background: white; padding: 15px; border-radius: 8px;">
+                                <p style="font-size: 2.5rem;">💦</p>
+                                <h4>Penalty -1</h4>
+                                <p style="font-size: 0.85rem;">Spray bottle!</p>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 20px; background: white; padding: 20px; border-radius: 8px;">
+                            <h4>🔄 The RL Loop</h4>
+                            <p style="font-size: 1.1rem;">
+                                State (where am I?) → Action (go left?) → Reward (treat or spray?) → New State → Repeat!
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 25px; padding: 15px; background: #f0f9ff; border-radius: 8px;">
+                        <p><strong>Visual Elements:</strong></p>
+                        <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
+                            <li>🗺️ Bird's-eye view of maze</li>
+                            <li>🐱 Cat at decision points</li>
+                            <li>🧀 Cheese at the goal</li>
+                            <li>💦 Spray bottles at dead ends</li>
+                            <li>↑↓←→ Arrows showing possible actions</li>
+                            <li>📊 Q-table showing learned values</li>
+                        </ul>
+                    </div>
+                    
+                    <p style="margin-top: 20px; color: var(--text-light);">
+                        💡 Save your sketchnote as: <code>/assets/sketchnotes/reinforcement-learning.png</code>
+                    </p>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px;">
+                <h3>🐱 The Maze Cat Story</h3>
+                <p><strong>Day 1:</strong> Cat enters maze, randomly wanders. Dead end → spray bottle! 💦 Cat remembers: "Don't go there."</p>
+                <p><strong>Day 10:</strong> Cat has explored more. Found cheese twice going left! 🧀 Cat thinks: "Left seems good..."</p>
+                <p><strong>Day 100:</strong> Cat knows the optimal path! Runs straight to cheese, avoids all spray bottles. Has learned a <strong>policy</strong>!</p>
+                <p><strong>Key insight:</strong> No one TOLD the cat where to go. It learned through experience—trial, error, and rewards!</p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: CORE CONTENT -->
+        <section id="types" class="lesson-section">
+            <h2>📚 Core Content</h2>
+
+            <div class="accordion">
+                <!-- The RL Framework -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🎯 The RL Framework</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>🐱 Agent</h4>
+                                <p>The learner/decision-maker. Our maze cat!</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🌍 Environment</h4>
+                                <p>The world the agent interacts with. The maze!</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>📍 State (s)</h4>
+                                <p>Current situation. "I'm at position (2,3)"</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🎬 Action (a)</h4>
+                                <p>What the agent can do. Up, down, left, right</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🎁 Reward (r)</h4>
+                                <p>Feedback signal. +1 for cheese, -1 for spray</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>📋 Policy (π)</h4>
+                                <p>The learned strategy. "At state s, do action a"</p>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px;">
+                            <h4>The RL Loop</h4>
+                            <pre style="background: #f3f4f6; padding: 15px; border-radius: 5px;"><code>while not done:
+    state = observe_environment()      # Where am I?
+    action = policy.choose(state)      # What should I do?
+    new_state, reward = env.step(action)  # Do it, see result
+    policy.learn(state, action, reward, new_state)  # Update!
+    state = new_state</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exploration vs Exploitation -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🎲 Exploration vs. Exploitation</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="term-card">
+                                <h4>🔍 Exploration</h4>
+                                <p>"Try something new! There might be better cheese!"</p>
+                                <p>Taking random or uncertain actions to discover new information.</p>
+                                <p><em>Cat tries a new path it's never taken</em></p>
+                            </div>
+                            <div class="term-card">
+                                <h4>💰 Exploitation</h4>
+                                <p>"Stick with what works! I know this path has cheese!"</p>
+                                <p>Using current knowledge to maximize reward.</p>
+                                <p><em>Cat takes the path it knows leads to cheese</em></p>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px;">
+                            <h4>ε-Greedy Strategy</h4>
+                            <p>With probability ε: explore (random action)</p>
+                            <p>With probability 1-ε: exploit (best known action)</p>
+                            <pre style="background: #f3f4f6; padding: 10px; border-radius: 5px;"><code>epsilon = 0.1  # 10% exploration
+if random() < epsilon:
+    action = random_action()    # Explore!
+else:
+    action = best_known_action()  # Exploit!</code></pre>
+                            <p>Often ε starts high (explore more early) and decreases over time (exploit learned knowledge).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Algorithms -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🧮 Key RL Algorithms</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>Q-Learning (Value-Based)</h4>
+                            <p>Learn the <strong>value</strong> of each state-action pair: Q(s,a)</p>
+                            <p>"How good is it to take action a in state s?"</p>
+                            <pre style="background: #1f2937; color: #e5e7eb; padding: 15px; border-radius: 5px;"><code># Q-Learning update rule
+Q[state][action] += learning_rate * (
+    reward + gamma * max(Q[new_state]) - Q[state][action]
+)
+# Translation: Update Q-value based on actual reward + future value</code></pre>
+                            <p>The agent builds a <strong>Q-table</strong>: a lookup for "in this state, this action is worth X."</p>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>Policy Gradient (Policy-Based)</h4>
+                            <p>Directly learn the policy π(a|s) without Q-values.</p>
+                            <p>"Learn a function that outputs action probabilities."</p>
+                            <p>Good for continuous action spaces (e.g., robotics).</p>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>Actor-Critic (Hybrid)</h4>
+                            <p><strong>Actor:</strong> Learns the policy (what to do)</p>
+                            <p><strong>Critic:</strong> Learns value function (how good is this?)</p>
+                            <p>Critic helps train the Actor more efficiently!</p>
+                            <p><strong>Popular versions:</strong> A2C, A3C, PPO, SAC</p>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>Deep RL</h4>
+                            <p>Use neural networks to approximate Q-functions or policies.</p>
+                            <p><strong>DQN:</strong> Deep Q-Network (neural net as Q-table)</p>
+                            <p><strong>PPO:</strong> Proximal Policy Optimization (stable policy gradient)</p>
+                            <p>Enables RL in complex environments like video games!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Applications -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🌟 Real-World Applications</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>🎮 Game Playing</h4>
+                                <p>AlphaGo, Atari games, StarCraft, Dota 2. RL agents that beat world champions!</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🤖 Robotics</h4>
+                                <p>Teaching robots to walk, grasp objects, navigate. Learning from simulation then real world.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🚗 Autonomous Vehicles</h4>
+                                <p>Decision-making in complex traffic scenarios. Lane changes, intersections.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>📺 Recommendations</h4>
+                                <p>Netflix, YouTube, Spotify optimizing for engagement. What to show next?</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>💹 Trading</h4>
+                                <p>Algorithmic trading strategies. When to buy, sell, hold?</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🤖 LLM Alignment (RLHF)</h4>
+                                <p>Making ChatGPT helpful! Reward model trained on human preferences.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RLHF -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🎯 RLHF: How ChatGPT Learns to Be Helpful</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>Reinforcement Learning from Human Feedback</h4>
+                            <p>RLHF uses RL to align LLMs with human preferences!</p>
+                            
+                            <ol>
+                                <li><strong>Pre-train LLM</strong> on text (next-token prediction)</li>
+                                <li><strong>Fine-tune on demonstrations</strong> (supervised learning on good examples)</li>
+                                <li><strong>Train a reward model:</strong>
+                                    <ul>
+                                        <li>Show humans two responses to same prompt</li>
+                                        <li>"Which response is better?"</li>
+                                        <li>Train a model to predict human preferences</li>
+                                    </ul>
+                                </li>
+                                <li><strong>RL training:</strong>
+                                    <ul>
+                                        <li>LLM generates response (action)</li>
+                                        <li>Reward model scores it (reward)</li>
+                                        <li>Update LLM to generate higher-scored responses</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px;">
+                            <h4>🐱 RLHF as Maze Cat</h4>
+                            <p><strong>Environment:</strong> Responding to user prompts</p>
+                            <p><strong>Action:</strong> Generate a response</p>
+                            <p><strong>Reward:</strong> Score from reward model (based on human preferences)</p>
+                            <p><strong>Goal:</strong> Learn to give helpful, harmless, honest responses!</p>
+                            <p><em>Instead of cheese, the cat gets treats for being helpful! 🐱✨</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: EXPERIMENTS -->
+        <section id="experiments" class="lesson-section">
+            <h2>🧪 Experiments: Train RL Agents!</h2>
+            <p style="color: var(--text-light); margin-bottom: 30px;">Watch and build learning agents!</p>
+
+            <div class="experiments-grid">
+                <div class="experiment-card">
+                    <h3>🎮 OpenAI Gym</h3>
+                    <p>The standard library for RL environments. CartPole, LunarLander, Atari games, and more!</p>
+                    <p><strong>Try:</strong> Train an agent to balance a pole</p>
+                    <a href="https://gymnasium.farama.org/" class="experiment-link" target="_blank">Explore Gymnasium →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🧠 Spinning Up</h3>
+                    <p>OpenAI's educational resource for deep RL. Great explanations and code!</p>
+                    <p><strong>Concepts:</strong> DQN, PPO, SAC with tutorials</p>
+                    <a href="https://spinningup.openai.com/" class="experiment-link" target="_blank">Learn with Spinning Up →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🕹️ RL Playground</h3>
+                    <p>Visualize Q-learning in action! Watch an agent learn to navigate a grid world.</p>
+                    <p><strong>Interactive:</strong> Adjust parameters, see results</p>
+                    <a href="https://cs.stanford.edu/people/karpathy/reinforcejs/gridworld_dp.html" class="experiment-link" target="_blank">Try RL Playground →</a>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px; background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(37, 99, 235, 0.1));">
+                <h3>💻 Train Your Own Agent</h3>
+                <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto;"><code># Simple Q-Learning for a cat maze!
+import numpy as np
+
+# Initialize Q-table (states × actions)
+Q = np.zeros((num_states, num_actions))
+epsilon = 0.1
+alpha = 0.1  # learning rate
+gamma = 0.99  # discount factor
+
+for episode in range(1000):
+    state = env.reset()  # Cat enters maze
+    
+    while not done:
+        # ε-greedy action selection
+        if np.random.random() < epsilon:
+            action = np.random.randint(num_actions)  # Explore
+        else:
+            action = np.argmax(Q[state])  # Exploit
+        
+        # Take action, observe result
+        new_state, reward, done = env.step(action)
+        
+        # Q-learning update
+        Q[state, action] += alpha * (
+            reward + gamma * np.max(Q[new_state]) - Q[state, action]
+        )
+        
+        state = new_state
+
+print("Cat learned the maze! 🐱🧀")</code></pre>
+            </div>
+        </section>
+
+        <!-- SECTION 5: RESOURCES -->
+        <section id="resources" class="lesson-section">
+            <h2>📚 Resources for Further Learning</h2>
+            
+            <div class="resources-section">
+                <div class="resources-columns">
+                    <div class="resource-column">
+                        <h3>🎥 Videos</h3>
+                        <ul>
+                            <li><a href="https://www.youtube.com/watch?v=2pWv7GOvuf0" target="_blank">RL Course - David Silver (DeepMind)</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=Mut_u40Sqz4" target="_blank">Q-Learning Explained</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=PtAIh9KSnjo" target="_blank">RLHF Explained</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📖 Articles & Books</h3>
+                        <ul>
+                            <li><a href="http://incompleteideas.net/book/the-book-2nd.html" target="_blank">Sutton & Barto - RL Bible (Free!)</a></li>
+                            <li><a href="https://lilianweng.github.io/posts/2018-02-19-rl-overview/" target="_blank">RL Overview - Lilian Weng</a></li>
+                            <li><a href="https://huggingface.co/learn/deep-rl-course" target="_blank">Deep RL Course - HuggingFace</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>🛠️ Tools</h3>
+                        <ul>
+                            <li><a href="https://gymnasium.farama.org/" target="_blank">Gymnasium (OpenAI Gym)</a></li>
+                            <li><a href="https://stable-baselines3.readthedocs.io/" target="_blank">Stable Baselines 3</a></li>
+                            <li><a href="https://github.com/ray-project/ray" target="_blank">Ray RLlib</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>🎮 Fun Demos</h3>
+                        <ul>
+                            <li><a href="https://valohai.com/blog/reinforcement-learning-games/" target="_blank">RL Playing Games</a></li>
+                            <li><a href="https://openai.com/blog/emergent-tool-use/" target="_blank">OpenAI Hide & Seek</a></li>
+                            <li><a href="https://deepmind.com/blog/article/alphastar-mastering-real-time-strategy-game-starcraft-ii" target="_blank">AlphaStar (StarCraft)</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="lesson-navigation">
+            <a href="diffusion-models.html" class="lesson-nav-btn">
+                <span>←</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Previous</span>
+                    <span class="lesson-nav-btn-title">Diffusion Models</span>
+                </div>
+            </a>
+            <a href="ai-agents.html" class="lesson-nav-btn next">
+                <span>→</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Next Lesson</span>
+                    <span class="lesson-nav-btn-title">AI Agents</span>
+                </div>
+            </a>
+        </nav>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Referencia - Learning AI, one cat at a time 🐱</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

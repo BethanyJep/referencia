@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lesson 02: Neural Networks - Neurons as cats passing notes in a network!">
+    <title>Lesson 02: Neural Networks | Referencia 🐱</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="../index.html" style="text-decoration: none; color: white;">
+                    <h1 class="logo">Referencia</h1>
+                </a>
+                <p class="tagline">Lesson 02: Neural Networks</p>
+            </div>
+        </nav>
+    </header>
+
+    <div class="lesson-header">
+        <div class="container">
+            <div class="lesson-number">LESSON 02</div>
+            <h1 class="lesson-title">🕸️ Neural Networks</h1>
+            <p class="lesson-subtitle">Neurons as cats passing notes - Understanding how information flows through layers!</p>
+            <div class="lesson-info">
+                <span class="lesson-info-item">⏱️ 50 minutes</span>
+                <span class="lesson-info-item">🟡 Intermediate</span>
+                <span class="lesson-info-item">📚 5 sections</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="lesson-nav">
+        <div class="container">
+            <div class="lesson-nav-container">
+                <a href="#intro" class="lesson-nav-link active">Introduction</a>
+                <a href="#sketchnote" class="lesson-nav-link">Sketchnote</a>
+                <a href="#types" class="lesson-nav-link">Core Content</a>
+                <a href="#experiments" class="lesson-nav-link">Experiments</a>
+                <a href="#resources" class="lesson-nav-link">Resources</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- SECTION 1: INTRODUCTION -->
+        <section id="intro" class="lesson-section">
+            <h2>📖 Introduction: What are Neural Networks?</h2>
+            
+            <div class="lesson-intro">
+                <p>Imagine a classroom where cats pass notes to each other. The first row of cats receives a message (input), processes it, and passes their notes to the cats behind them. Each cat adds its own interpretation before passing it on. By the time the note reaches the back of the room, the message has been transformed into an answer!</p>
+                
+                <p>That's essentially how <strong>neural networks</strong> work! They're computing systems inspired by the brain, made up of interconnected nodes (neurons) that process and pass information through layers.</p>
+            </div>
+
+            <div class="term-card" style="background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(37, 99, 235, 0.1)); border-left: 4px solid #7c3aed;">
+                <h3>💡 Key Insight</h3>
+                <p><strong>Neural Networks</strong> are layers of interconnected nodes that transform input data step-by-step. Each connection has a weight that determines how much influence one node has on another.</p>
+                <p><em>"NN: Cats passing notes, each adding their perspective!"</em></p>
+            </div>
+
+            <h3>🎯 What You'll Learn</h3>
+            <ul>
+                <li>How neurons work (the basic building block)</li>
+                <li>The layer structure: input, hidden, and output layers</li>
+                <li>How information flows forward through the network</li>
+                <li>How networks learn through backpropagation</li>
+                <li>Different types of neural networks and their uses</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 2: SKETCHNOTE -->
+        <section id="sketchnote" class="lesson-section">
+            <h2>🎨 Sketchnote: Visual Summary</h2>
+            <p style="color: var(--text-light); margin-bottom: 20px;">A cat-themed visual explanation of Neural Networks</p>
+
+            <div class="sketchnote-container">
+                <div class="sketchnote-placeholder">
+                    <h3>🖼️ Sketchnote Concept</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;"><strong>A network diagram where each neuron is a cat passing notes:</strong></p>
+                    
+                    <div style="background: linear-gradient(to right, #fef3c7, #dbeafe, #dcfce7); padding: 30px; border-radius: 10px; text-align: center;">
+                        <div style="display: flex; justify-content: space-around; align-items: center;">
+                            <div style="text-align: center;">
+                                <h4>📥 Input Layer</h4>
+                                <p>Cats receiving images</p>
+                                <p style="font-size: 2rem;">🐱 🐱 🐱</p>
+                                <p><em>"What did we see?"</em></p>
+                            </div>
+                            <div style="font-size: 2rem;">→ 📝 →</div>
+                            <div style="text-align: center;">
+                                <h4>🧠 Hidden Layers</h4>
+                                <p>Cats processing notes</p>
+                                <p style="font-size: 2rem;">🐱 🐱 🐱 🐱</p>
+                                <p><em>"Let me think..."</em></p>
+                            </div>
+                            <div style="font-size: 2rem;">→ 📝 →</div>
+                            <div style="text-align: center;">
+                                <h4>📤 Output Layer</h4>
+                                <p>Cat announcing result</p>
+                                <p style="font-size: 2rem;">🐱</p>
+                                <p><em>"It's a cat!"</em></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 25px; padding: 15px; background: #f0f9ff; border-radius: 8px;">
+                        <p><strong>Visual elements to include:</strong></p>
+                        <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
+                            <li>📝 Notes passing between cat neurons (with weights on arrows)</li>
+                            <li>🧮 Each cat does a mini calculation: sum inputs × weights, apply activation</li>
+                            <li>⚡ "Activation functions" shown as excited cats vs. sleepy cats</li>
+                            <li>🔄 Backpropagation: messenger cat running backwards with corrections</li>
+                        </ul>
+                    </div>
+                    
+                    <p style="margin-top: 20px; color: var(--text-light);">
+                        💡 Save your sketchnote as: <code>/assets/sketchnotes/neural-networks.png</code>
+                    </p>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px;">
+                <h3>🐱 The Cat Network Story</h3>
+                <p><strong>Input cats:</strong> The first row receives raw data—pixels from an image. Each cat looks at different parts: one sees edges, one sees colors, one sees shapes.</p>
+                <p><strong>Hidden cats:</strong> They combine notes from the input cats. "I got 'pointy ears' + 'whiskers' = probably a face!" Each passes their combined insights forward.</p>
+                <p><strong>Output cat:</strong> Receives all the processed notes and makes the final call: "CAT!" or "NOT CAT!"</p>
+                <p><strong>Learning:</strong> When wrong, a messenger cat runs back through the network saying "We need to adjust!" — that's backpropagation! 🏃‍♂️📝</p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: CORE CONTENT -->
+        <section id="types" class="lesson-section">
+            <h2>📚 Core Content</h2>
+
+            <div class="accordion">
+                <!-- The Neuron -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🧠 The Artificial Neuron (Perceptron)</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>A single neuron is the basic building block. Think of it as one cat receiving notes:</p>
+                        
+                        <div class="term-card">
+                            <h4>How a Neuron Works:</h4>
+                            <ol>
+                                <li><strong>Receive inputs:</strong> Gets values from previous neurons (or raw data)</li>
+                                <li><strong>Apply weights:</strong> Each input is multiplied by a weight (importance factor)</li>
+                                <li><strong>Sum it up:</strong> Add all weighted inputs together, plus a bias</li>
+                                <li><strong>Activation function:</strong> Decide whether to "fire" (pass the message on)</li>
+                            </ol>
+                        </div>
+
+                        <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; margin-top: 20px;"><code># A single neuron calculation
+import numpy as np
+
+def neuron(inputs, weights, bias):
+    # Step 1-2: Weight the inputs
+    weighted_sum = np.dot(inputs, weights) + bias
+    
+    # Step 3: Activation (ReLU example)
+    output = max(0, weighted_sum)  # If positive, pass it; else, 0
+    return output
+
+# Example: 3 inputs coming from previous neurons
+inputs = [0.5, 0.3, 0.8]
+weights = [0.4, 0.6, 0.2]  # Learned importance
+bias = 0.1
+
+result = neuron(inputs, weights, bias)
+# This cat decides what to pass to the next layer!</code></pre>
+                    </div>
+                </div>
+
+                <!-- Network Architecture -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🏗️ Network Architecture: Layers</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>📥 Input Layer</h4>
+                                <p>Receives raw data. For an image: one neuron per pixel. For text: one neuron per word/token.</p>
+                                <p><em>The cats that first see the data</em></p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🧠 Hidden Layer(s)</h4>
+                                <p>Where the magic happens! These neurons learn patterns and features. More layers = more complex patterns learned.</p>
+                                <p><em>Cats discussing and combining notes</em></p>
+                            </div>
+                            <div class="term-card">
+                                <h4>📤 Output Layer</h4>
+                                <p>Produces the final answer. For classification: one neuron per category. For regression: single value.</p>
+                                <p><em>The cat that announces the answer</em></p>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px;">
+                            <h4>"Deep" Learning</h4>
+                            <p>When a network has <strong>many hidden layers</strong>, we call it a <strong>deep neural network</strong>. That's where "Deep Learning" comes from!</p>
+                            <p>More layers can learn more abstract concepts:</p>
+                            <ul>
+                                <li>Layer 1: Edges and simple shapes</li>
+                                <li>Layer 2: Parts (eyes, ears, noses)</li>
+                                <li>Layer 3: Faces</li>
+                                <li>Layer 4: Specific individuals</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activation Functions -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>⚡ Activation Functions</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Activation functions decide if a neuron should "fire" (be excited 😺) or stay quiet (sleepy 😴).</p>
+                        
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>ReLU (Rectified Linear Unit)</h4>
+                                <p><code>f(x) = max(0, x)</code></p>
+                                <p>If positive → pass it through. If negative → output 0.</p>
+                                <p><em>Cat: "Only pass good vibes!"</em> 😺</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Sigmoid</h4>
+                                <p><code>f(x) = 1 / (1 + e^-x)</code></p>
+                                <p>Squashes output between 0 and 1. Good for probabilities!</p>
+                                <p><em>Cat: "How likely on a scale of 0-1?"</em> 🤔</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Softmax</h4>
+                                <p>Converts outputs to probabilities that sum to 1.</p>
+                                <p>Used in output layer for multi-class classification.</p>
+                                <p><em>Cats voting: "30% cat, 65% dog, 5% rabbit"</em> 🗳️</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Tanh</h4>
+                                <p><code>f(x) = (e^x - e^-x) / (e^x + e^-x)</code></p>
+                                <p>Squashes between -1 and 1. Centered at zero.</p>
+                                <p><em>Cat: "Strong no to strong yes"</em> 😾↔️😺</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learning: Forward & Back -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🔄 How Networks Learn: Forward & Backward Pass</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>➡️ Forward Pass</h4>
+                            <p>Data flows from input to output. Each neuron computes its value and passes it forward. At the end, we get a prediction.</p>
+                            <p><em>Cats passing notes front to back</em> 📝→📝→📝</p>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>📊 Calculate Loss</h4>
+                            <p>Compare prediction to the correct answer. The "loss function" measures how wrong we were.</p>
+                            <p><strong>Loss = How bad was our prediction?</strong></p>
+                            <ul>
+                                <li><strong>MSE:</strong> Mean Squared Error (for regression)</li>
+                                <li><strong>Cross-Entropy:</strong> For classification</li>
+                            </ul>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>⬅️ Backward Pass (Backpropagation)</h4>
+                            <p>The "messenger cat" runs backward through the network, telling each cat how to adjust their weights to make fewer mistakes next time.</p>
+                            <p><strong>Key insight:</strong> Uses calculus (chain rule) to figure out how much each weight contributed to the error.</p>
+                            <p><em>Messenger cat: "You weighted that input too heavily! Turn it down!"</em> 🏃‍♂️📝</p>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>🔧 Gradient Descent</h4>
+                            <p>The algorithm that actually updates the weights. Takes small steps in the direction that reduces the loss.</p>
+                            <p><strong>Learning Rate:</strong> How big each step is (too big = overshoot, too small = slow learning)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Types of Neural Networks -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>📊 Types of Neural Networks</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>Dense / Fully Connected (MLP)</h4>
+                                <p>Every neuron connects to every neuron in the next layer.</p>
+                                <p><strong>Use:</strong> Tabular data, basic classification</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Convolutional (CNN)</h4>
+                                <p>Specialized for images. Uses filters that slide across the image to detect features.</p>
+                                <p><strong>Use:</strong> Image classification, object detection</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Recurrent (RNN/LSTM)</h4>
+                                <p>Has memory! Processes sequences by feeding output back as input.</p>
+                                <p><strong>Use:</strong> Time series, early NLP</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Transformer</h4>
+                                <p>Uses attention mechanism. Powers modern LLMs like GPT!</p>
+                                <p><strong>Use:</strong> Text generation, translation, LLMs</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: EXPERIMENTS -->
+        <section id="experiments" class="lesson-section">
+            <h2>🧪 Experiments: Hands-On Learning</h2>
+            <p style="color: var(--text-light); margin-bottom: 30px;">Build and visualize neural networks!</p>
+
+            <div class="experiments-grid">
+                <div class="experiment-card">
+                    <h3>🎨 TensorFlow Playground</h3>
+                    <p>The best way to understand neural networks! Build networks visually, watch them train in real-time, and see how layers and neurons affect learning.</p>
+                    <p><strong>Try:</strong> Add more layers. Change activation functions. Watch the decision boundary evolve!</p>
+                    <a href="https://playground.tensorflow.org" class="experiment-link" target="_blank">Launch Playground →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🖌️ ConvNetJS Demo</h3>
+                    <p>Draw digits and watch a neural network classify them in real-time. See the activations in each layer!</p>
+                    <p><strong>Concepts:</strong> CNNs, real-time inference, layer visualizations</p>
+                    <a href="https://cs.stanford.edu/people/karpathy/convnetjs/demo/mnist.html" class="experiment-link" target="_blank">Try MNIST Demo →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>📊 NN-SVG Visualizer</h3>
+                    <p>Generate beautiful SVG visualizations of neural network architectures. Great for understanding structure!</p>
+                    <p><strong>Concepts:</strong> Network architecture, layer visualization</p>
+                    <a href="http://alexlenail.me/NN-SVG/index.html" class="experiment-link" target="_blank">Create Visualization →</a>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px; background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(37, 99, 235, 0.1));">
+                <h3>💻 Build Your First Neural Network</h3>
+                <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto;"><code># Simple neural network with PyTorch
+import torch
+import torch.nn as nn
+
+class CatClassifier(nn.Module):
+    def __init__(self):
+        super().__init__()
+        # Input layer → Hidden layer 1 (cats receiving images)
+        self.layer1 = nn.Linear(784, 128)  # 28x28 image = 784 pixels
+        # Hidden layer 1 → Hidden layer 2 (cats processing)
+        self.layer2 = nn.Linear(128, 64)
+        # Hidden layer 2 → Output (cat announcing result)
+        self.layer3 = nn.Linear(64, 2)  # Cat or Not Cat
+        
+        self.relu = nn.ReLU()  # Activation: only positive vibes!
+    
+    def forward(self, x):
+        # Forward pass: notes flowing through the network
+        x = self.relu(self.layer1(x))  # First cats process
+        x = self.relu(self.layer2(x))  # Second group processes  
+        x = self.layer3(x)             # Final cat decides
+        return x
+
+# Create the network
+model = CatClassifier()
+print(f"Total parameters (note weights): {sum(p.numel() for p in model.parameters())}")</code></pre>
+            </div>
+        </section>
+
+        <!-- SECTION 5: RESOURCES -->
+        <section id="resources" class="lesson-section">
+            <h2>📚 Resources for Further Learning</h2>
+            
+            <div class="resources-section">
+                <div class="resources-columns">
+                    <div class="resource-column">
+                        <h3>🎥 Must-Watch Videos</h3>
+                        <ul>
+                            <li><a href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank">Neural Networks - 3Blue1Brown (Amazing visuals!)</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=IHZwWFHWa-w" target="_blank">Backpropagation - 3Blue1Brown</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=w8yWXqWQYmU" target="_blank">Building Neural Nets from Scratch</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📖 Articles & Courses</h3>
+                        <ul>
+                            <li><a href="https://www.deeplearning.ai/courses/neural-networks-deep-learning/" target="_blank">Neural Networks Course - DeepLearning.ai</a></li>
+                            <li><a href="https://www.tensorflow.org/tutorials" target="_blank">TensorFlow Tutorials</a></li>
+                            <li><a href="https://pytorch.org/tutorials/" target="_blank">PyTorch Tutorials</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>🛠️ Interactive Tools</h3>
+                        <ul>
+                            <li><a href="https://playground.tensorflow.org" target="_blank">TensorFlow Playground</a></li>
+                            <li><a href="https://poloclub.github.io/cnn-explainer/" target="_blank">CNN Explainer</a></li>
+                            <li><a href="https://distill.pub/" target="_blank">Distill.pub (Beautiful ML articles)</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📚 Books</h3>
+                        <ul>
+                            <li><strong>Deep Learning</strong> - Goodfellow et al.</li>
+                            <li><strong>Neural Networks from Scratch</strong> - Harrison Kinsley</li>
+                            <li><strong>Grokking Deep Learning</strong> - Andrew Trask</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="lesson-navigation">
+            <a href="machine-learning-basics.html" class="lesson-nav-btn">
+                <span>←</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Previous</span>
+                    <span class="lesson-nav-btn-title">ML Basics</span>
+                </div>
+            </a>
+            <a href="large-language-models.html" class="lesson-nav-btn next">
+                <span>→</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Next Lesson</span>
+                    <span class="lesson-nav-btn-title">LLMs</span>
+                </div>
+            </a>
+        </nav>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Referencia - Learning AI, one cat at a time 🐱</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

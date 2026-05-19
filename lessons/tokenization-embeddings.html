@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lesson 14: Tokenization & Embeddings - How Whiskers turns words into numbers that AIs can understand!">
+    <title>Lesson 14: Tokenization & Embeddings | Referencia 🐱</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="../index.html" style="text-decoration: none; color: white;">
+                    <h1 class="logo">Referencia</h1>
+                </a>
+                <p class="tagline">Lesson 14: Tokenization &amp; Embeddings</p>
+            </div>
+        </nav>
+    </header>
+
+    <div class="lesson-header">
+        <div class="container">
+            <div class="lesson-number">LESSON 14</div>
+            <h1 class="lesson-title">🔤 Tokenization &amp; Embeddings</h1>
+            <p class="lesson-subtitle">How Whiskers turns words into numbers — and numbers into meaning!</p>
+            <div class="lesson-info">
+                <span class="lesson-info-item">⏱️ 45 minutes</span>
+                <span class="lesson-info-item">🟡 Intermediate</span>
+                <span class="lesson-info-item">📚 5 sections</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="lesson-nav">
+        <div class="container">
+            <div class="lesson-nav-container">
+                <a href="#intro" class="lesson-nav-link active">Introduction</a>
+                <a href="#sketchnote" class="lesson-nav-link">Sketchnote</a>
+                <a href="#types" class="lesson-nav-link">Core Content</a>
+                <a href="#experiments" class="lesson-nav-link">Experiments</a>
+                <a href="#resources" class="lesson-nav-link">Resources</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- SECTION 1: INTRODUCTION -->
+        <section id="intro" class="lesson-section">
+            <h2>📖 Introduction: How Does an AI Actually Read?</h2>
+
+            <div class="lesson-intro">
+                <p>Imagine <strong>Whiskers</strong> 🐱 is just learning to read. Before she can understand a sentence, she needs to recognise each word as a distinct unit. But here's the twist — Whiskers isn't human. She can only understand <em>numbers</em>. So before any learning can happen, every word (and even parts of words) must be converted into a number ID. That conversion process is called <strong>tokenization</strong>.</p>
+
+                <p>Now imagine <strong>Cat City</strong> 🏙️🐾 — a massive neighbourhood map where every cat has an address based on its personality. Fluffy Persians live on Persian Plaza. Striped tabbies cluster on Tabby Terrace. Maine Coons hang out just a few blocks away on Maine Coon Mile. Similar cats live close to each other. That's an <strong>embedding</strong>: a numerical address (a vector) that captures meaning, so that things with similar meanings end up living near each other in the map.</p>
+
+                <p>Together, tokenization and embeddings are the <em>two-step foundation</em> that lets every modern LLM — from GPT-4 to Gemini to Claude — process human language at all.</p>
+            </div>
+
+            <div class="term-card" style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(37, 99, 235, 0.1)); border-left: 4px solid #8b5cf6;">
+                <h3>💡 Key Insight</h3>
+                <p><strong>LLMs cannot read raw text.</strong> Every character, word, or sub-word must first become a number (tokenization), and then that number is mapped to a rich vector of meaning (embedding) before any deep learning can begin.</p>
+                <p><em>"Text → Tokens → Numbers → Vectors → Understanding!"</em></p>
+            </div>
+
+            <h3>🎯 What You'll Learn</h3>
+            <ul>
+                <li>Why AI models can't process raw text directly</li>
+                <li>The three main tokenization strategies: word, character, and subword (BPE/WordPiece)</li>
+                <li>Why token count matters for cost and context windows</li>
+                <li>What an embedding vector is and how it captures semantic meaning</li>
+                <li>The famous <em>king − man + woman ≈ queen</em> arithmetic trick</li>
+                <li>Types of embeddings and how to use them in practice with Python</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 2: SKETCHNOTE -->
+        <section id="sketchnote" class="lesson-section">
+            <h2>🎨 Sketchnote: Visual Summary</h2>
+            <p style="color: var(--text-light); margin-bottom: 20px;">From raw words to meaningful numbers — the two-step magic!</p>
+
+            <div class="sketchnote-container">
+                <div class="sketchnote-placeholder">
+                    <h3>🖼️ Sketchnote Concept</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;"><strong>Two panels: Tokenization on the left, Cat City Embeddings on the right.</strong></p>
+
+                    <!-- Panel 1: Tokenization -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                        <div style="background: linear-gradient(135deg, #ede9fe, #dbeafe); padding: 24px; border-radius: 12px; text-align: center;">
+                            <p style="font-size: 2.5rem;">🐱✂️</p>
+                            <h4 style="margin-bottom: 12px;">Step 1: Tokenization</h4>
+                            <p style="font-size: 0.95rem; margin-bottom: 14px;"><em>"Hello, Whiskers!"</em> gets sliced into tokens:</p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 14px;">
+                                <span style="background: #8b5cf6; color: white; padding: 6px 12px; border-radius: 6px; font-family: monospace; font-size: 0.9rem;">"Hello"</span>
+                                <span style="background: #3b82f6; color: white; padding: 6px 12px; border-radius: 6px; font-family: monospace; font-size: 0.9rem;">","</span>
+                                <span style="background: #10b981; color: white; padding: 6px 12px; border-radius: 6px; font-family: monospace; font-size: 0.9rem;">"Whisk"</span>
+                                <span style="background: #f59e0b; color: white; padding: 6px 12px; border-radius: 6px; font-family: monospace; font-size: 0.9rem;">"ers"</span>
+                                <span style="background: #ef4444; color: white; padding: 6px 12px; border-radius: 6px; font-family: monospace; font-size: 0.9rem;">"!"</span>
+                            </div>
+                            <p style="font-size: 0.85rem;">Each token → a number ID:</p>
+                            <p style="font-family: monospace; font-size: 0.85rem; background: white; padding: 8px; border-radius: 6px;">[9906, 11, 816, 18223, 0]</p>
+                        </div>
+
+                        <!-- Panel 2: Cat City Embeddings -->
+                        <div style="background: linear-gradient(135deg, #fef3c7, #d1fae5); padding: 24px; border-radius: 12px; text-align: center;">
+                            <p style="font-size: 2.5rem;">🏙️🗺️</p>
+                            <h4 style="margin-bottom: 12px;">Step 2: Cat City (Embeddings)</h4>
+                            <p style="font-size: 0.85rem; margin-bottom: 10px;">Similar words live near each other on the map!</p>
+                            <div style="background: white; padding: 12px; border-radius: 8px; position: relative; height: 140px; overflow: hidden;">
+                                <div style="position: absolute; top: 15px; left: 20px; font-size: 0.75rem;">🐱 cat</div>
+                                <div style="position: absolute; top: 30px; left: 45px; font-size: 0.75rem;">🐾 kitten</div>
+                                <div style="position: absolute; top: 10px; left: 70px; font-size: 0.75rem;">😺 feline</div>
+                                <div style="position: absolute; top: 80px; left: 15px; font-size: 0.75rem;">🐶 dog</div>
+                                <div style="position: absolute; top: 95px; left: 40px; font-size: 0.75rem;">🐕 puppy</div>
+                                <div style="position: absolute; top: 75px; left: 65px; font-size: 0.75rem;">🦴 canine</div>
+                                <div style="position: absolute; top: 20px; right: 20px; font-size: 0.75rem;">👑 king</div>
+                                <div style="position: absolute; top: 40px; right: 10px; font-size: 0.75rem;">👸 queen</div>
+                                <div style="position: absolute; bottom: 15px; right: 20px; font-size: 0.75rem;">🎨 art</div>
+                                <div style="position: absolute; bottom: 30px; right: 40px; font-size: 0.75rem;">🖼️ painting</div>
+                            </div>
+                            <p style="font-size: 0.8rem; margin-top: 8px; color: #6b7280;"><em>king − man + woman ≈ queen ✨</em></p>
+                        </div>
+                    </div>
+
+                    <div style="padding: 15px; background: #f0f9ff; border-radius: 8px;">
+                        <p><strong>The Full Pipeline:</strong></p>
+                        <p>📝 Raw Text → ✂️ Tokenize → 🔢 Token IDs → 📐 Embed → 🧠 Vectors → 🤖 LLM Understands!</p>
+                    </div>
+
+                    <p style="margin-top: 20px; color: var(--text-light);">
+                        💡 Save your sketchnote as: <code>/assets/sketchnotes/tokenization-embeddings.png</code>
+                    </p>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px;">
+                <h3>🐱 Whiskers Learns to Read — Step by Step</h3>
+                <p><strong>Input:</strong> <em>"Unbelievable cats!"</em></p>
+                <p><strong>Tokenizer says:</strong> Split into ["Un", "believ", "able", " cats", "!"] → [1203, 4567, 891, 22075, 0]</p>
+                <p><strong>Embedding layer says:</strong> Each ID → a vector. e.g. <code>1203 → [0.21, -0.44, 0.87, ..., 0.03]</code> (768 numbers)</p>
+                <p><strong>Transformer says:</strong> "Got it — those vectors describe something surprising about cats!"</p>
+                <p><strong>Result:</strong> Whiskers understands! ✅</p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: CORE CONTENT -->
+        <section id="types" class="lesson-section">
+            <h2>📚 Core Content</h2>
+
+            <div class="accordion">
+                <!-- Accordion 1: What is Tokenization? -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>✂️ What is Tokenization?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>Why Tokenization Exists</h4>
+                            <p>Neural networks are mathematical machines — they can only operate on <strong>numbers</strong>, never on raw letters or words. Tokenization is the process of:</p>
+                            <ol>
+                                <li><strong>Splitting</strong> text into manageable chunks called <em>tokens</em></li>
+                                <li><strong>Assigning</strong> each unique token a fixed integer ID from a vocabulary lookup table</li>
+                                <li><strong>Passing</strong> those integer IDs into the model as input</li>
+                            </ol>
+                            <p>Think of it as Whiskers needing a library card number for each word before she's allowed to check it out from the library! 🐱📚</p>
+                        </div>
+
+                        <h4 style="margin-top: 20px;">The Three Main Strategies</h4>
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>📖 Word-Level</h4>
+                                <p>Each whole word is one token. Simple and intuitive, but vocabulary explodes — hundreds of thousands of entries for every language variant, typo, and conjugation.</p>
+                                <p><em>"cats" → [5], "cat" → [4]</em> (different tokens!)</p>
+                                <p><strong>Problem:</strong> "Whiskers-purringly" would be unknown.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🔡 Character-Level</h4>
+                                <p>Each individual character is one token. Tiny vocabulary (just ~100 tokens for English) but sequences become very long, and the model struggles to learn word meanings.</p>
+                                <p><em>"cat" → ['c','a','t'] → [67, 65, 116]</em></p>
+                                <p><strong>Problem:</strong> Very long sequences, less efficient.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🧩 Subword (BPE / WordPiece)</h4>
+                                <p>The sweet spot! Splits words into common sub-pieces. Rare words break into known sub-words. Common words stay whole. Used by GPT, BERT, and most modern LLMs.</p>
+                                <p><em>"unbelievable" → ["un", "believ", "able"]</em></p>
+                                <p><strong>Best of both worlds!</strong> ✅</p>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px;">
+                            <h4>🔢 A Real Tokenization Example</h4>
+                            <p>Input text: <code>"Unbelievable!"</code></p>
+                            <p>Tokens: <code>["Un", "believ", "able", "!"]</code></p>
+                            <p>Token IDs: <code>[1203, 4567, 891, 233]</code></p>
+                            <p style="margin-top: 10px;">GPT-4 uses the <strong>cl100k_base</strong> tokenizer with ~100,000 tokens in its vocabulary. That means most common English words and sub-words each have their own unique ID.</p>
+                        </div>
+
+                        <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; margin-top: 20px; overflow-x: auto;"><code># Install: pip install tiktoken
+import tiktoken
+
+# Use the GPT-4 tokenizer
+enc = tiktoken.get_encoding("cl100k_base")
+
+text = "Unbelievable cats rule the world!"
+tokens = enc.encode(text)
+
+print("Token IDs:", tokens)
+# Token IDs: [1844, 45805, 17, 19611, 279, 2088, 0]
+# ... (exact IDs depend on tokenizer version)
+
+print("Token count:", len(tokens))
+# Token count: 7
+
+# Decode back to text
+decoded = enc.decode(tokens)
+print("Decoded:", decoded)
+# Decoded: Unbelievable cats rule the world!</code></pre>
+                    </div>
+                </div>
+
+                <!-- Accordion 2: Token Count Matters -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>💰 Token Count Matters</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>Context Window = Token Budget</h4>
+                            <p>Every LLM has a <strong>context window</strong> — the maximum number of tokens it can process at once (input + output combined). Once you hit the limit, earlier content gets cut off or the model refuses to answer.</p>
+                            <ul>
+                                <li><strong>GPT-3.5:</strong> 16,384 tokens ≈ ~12,000 words</li>
+                                <li><strong>GPT-4:</strong> 128,000 tokens ≈ ~96,000 words (a short novel!)</li>
+                                <li><strong>Claude 3:</strong> 200,000 tokens ≈ a very thick textbook</li>
+                                <li><strong>Gemini 1.5 Pro:</strong> 1,000,000 tokens ≈ multiple books</li>
+                            </ul>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px;">
+                            <h4>💸 Tokens = Money</h4>
+                            <p>Cloud LLM APIs charge per token, not per character or word. For example, OpenAI GPT-4o:</p>
+                            <ul>
+                                <li><strong>Input:</strong> ~$5 per 1 million tokens</li>
+                                <li><strong>Output:</strong> ~$15 per 1 million tokens</li>
+                            </ul>
+                            <p>A 1,000-token prompt costs about half a cent — cheap! But at scale (millions of API calls per day), it adds up fast. <strong>Efficient prompting = real money saved.</strong></p>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1)); border-left: 4px solid #10b981;">
+                            <h4>🐱 What Does 1,000 Tokens Look Like?</h4>
+                            <p>Roughly:</p>
+                            <ul>
+                                <li>~750 words of prose</li>
+                                <li>~3–4 paragraphs of normal English text</li>
+                                <li>~50 lines of Python code</li>
+                                <li>~2 pages of a book</li>
+                            </ul>
+                            <p><em>Rule of thumb: 1 token ≈ 0.75 words in English. Other languages (e.g. Chinese, Arabic) often use more tokens per word!</em></p>
+                        </div>
+
+                        <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; margin-top: 20px; overflow-x: auto;"><code>import tiktoken
+
+def count_tokens(text: str, model: str = "gpt-4") -> int:
+    """Count tokens in a string for a specific OpenAI model."""
+    enc = tiktoken.encoding_for_model(model)
+    return len(enc.encode(text))
+
+# Test with different texts
+examples = [
+    "Hi Whiskers!",
+    "The quick brown fox jumps over the lazy dog.",
+    "Explain quantum entanglement to a cat in five sentences.",
+]
+
+for text in examples:
+    n = count_tokens(text)
+    print(f"{n:3d} tokens | {text[:50]}")</code></pre>
+                    </div>
+                </div>
+
+                <!-- Accordion 3: What are Embeddings? -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>📐 What are Embeddings?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>From Token IDs to Meaning</h4>
+                            <p>Token IDs are just arbitrary integers — <code>cat = 4</code> and <code>kitten = 5</code> don't tell the model anything about their relationship. That's where <strong>embeddings</strong> come in.</p>
+                            <p>An embedding is a <strong>dense vector</strong> — a list of floating-point numbers (typically 768 to 4,096 numbers long) that encodes the <em>semantic meaning</em> of a token. It's the model's way of saying: "Here is where this word lives in meaning-space."</p>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px;">
+                            <h4>🏙️ Welcome to Cat City</h4>
+                            <p>Picture Cat City as a 2D neighbourhood map (in reality it's 768+ dimensions, but let's keep it friendly for Whiskers):</p>
+                            <ul>
+                                <li>🐱 <em>cat</em>, <em>kitten</em>, <em>feline</em> all live on the same block</li>
+                                <li>🐶 <em>dog</em>, <em>puppy</em>, <em>canine</em> live a few streets away (related — both pets!)</li>
+                                <li>👑 <em>king</em>, <em>queen</em>, <em>prince</em> live in the Royal District</li>
+                                <li>🎨 <em>art</em>, <em>painting</em>, <em>sculpture</em> live in the Arts Quarter</li>
+                            </ul>
+                            <p>Words with <strong>similar meanings</strong> get <strong>similar vector coordinates</strong> → they live near each other in the city.</p>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px; background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(239, 68, 68, 0.1)); border-left: 4px solid #8b5cf6;">
+                            <h4>✨ The Famous Analogy: king − man + woman ≈ queen</h4>
+                            <p>This is the most famous result in embedding research (from Word2Vec, 2013):</p>
+                            <pre style="background: #f3f4f6; padding: 12px; border-radius: 6px;"><code>vector("king") - vector("man") + vector("woman")
+≈ vector("queen")</code></pre>
+                            <p>Why does this work? The <em>direction</em> from "man" to "king" encodes the concept of royalty. Apply that same direction starting from "woman", and you land near "queen". Embeddings capture <strong>semantic relationships as geometry</strong>!</p>
+                            <p>Other examples that work:</p>
+                            <ul>
+                                <li><em>Paris − France + Germany ≈ Berlin</em></li>
+                                <li><em>walked − walk + run ≈ ran</em></li>
+                                <li><em>bigger − big + small ≈ smaller</em></li>
+                            </ul>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px;">
+                            <h4>📏 Cosine Similarity: How Close Are Two Vectors?</h4>
+                            <p>To measure how similar two embeddings are, we use <strong>cosine similarity</strong>:</p>
+                            <ul>
+                                <li><strong>1.0</strong> = identical meaning (same word)</li>
+                                <li><strong>0.8–0.9</strong> = very similar (cat / kitten)</li>
+                                <li><strong>0.5–0.7</strong> = related (cat / dog)</li>
+                                <li><strong>~0.0</strong> = unrelated (cat / mathematics)</li>
+                                <li><strong>-1.0</strong> = opposite meaning (hot / cold)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion 4: Types of Embeddings -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🗂️ Types of Embeddings</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p style="color: var(--text-light); margin-bottom: 20px;">Embeddings aren't just for words! Here are the main flavours:</p>
+
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>📝 Word Embeddings</h4>
+                                <p>The classics — one vector per word. Trained on massive text corpora.</p>
+                                <ul>
+                                    <li><strong>Word2Vec</strong> (Google, 2013)</li>
+                                    <li><strong>GloVe</strong> (Stanford, 2014)</li>
+                                    <li><strong>FastText</strong> (Meta, handles typos!)</li>
+                                </ul>
+                                <p><em>Limitation: same vector for "bank" (river) and "bank" (financial) — no context!</em></p>
+                            </div>
+                            <div class="term-card">
+                                <h4>📄 Sentence Embeddings</h4>
+                                <p>Encode the meaning of an <em>entire sentence or paragraph</em> as one vector. Much better for semantic search and document comparison.</p>
+                                <ul>
+                                    <li><strong>SBERT</strong> (Sentence-BERT)</li>
+                                    <li><strong>OpenAI Ada-002</strong></li>
+                                    <li><strong>Cohere Embed</strong></li>
+                                </ul>
+                            </div>
+                            <div class="term-card">
+                                <h4>🖼️ Image Embeddings</h4>
+                                <p>Images converted to vectors using CNNs or Vision Transformers. Used for reverse image search, face recognition, and image clustering.</p>
+                                <ul>
+                                    <li><strong>CLIP</strong> (OpenAI)</li>
+                                    <li><strong>ResNet</strong> features</li>
+                                    <li><strong>ViT</strong> (Vision Transformer)</li>
+                                </ul>
+                            </div>
+                            <div class="term-card">
+                                <h4>🌐 Multimodal Embeddings</h4>
+                                <p>Text and images embedded into the <em>same</em> vector space! You can compare a photo of a cat to the word "cat" and get a high similarity score.</p>
+                                <ul>
+                                    <li><strong>CLIP</strong> (text + image)</li>
+                                    <li><strong>ImageBind</strong> (Meta)</li>
+                                    <li><strong>Gemini embeddings</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px;">
+                            <h4>🆚 Contextual vs. Static Embeddings</h4>
+                            <p>Early embeddings (Word2Vec, GloVe) are <strong>static</strong> — every occurrence of "bank" gets the same vector regardless of context.</p>
+                            <p>Modern LLM-based embeddings are <strong>contextual</strong> — "bank" in "river bank" gets a different vector from "bank" in "savings bank". This is far more powerful!</p>
+                            <p>Models like BERT, GPT, and RoBERTa produce contextual embeddings from their internal layers.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion 5: Embeddings in Practice + Code -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🛠️ Embeddings in Practice + Code</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>Real-World Use Cases for Embeddings</h4>
+                            <div class="terms-grid">
+                                <div style="background: #f0fdf4; padding: 14px; border-radius: 8px; border-left: 3px solid #10b981;">
+                                    <p><strong>🔍 Semantic Search</strong></p>
+                                    <p>Find documents by meaning, not just keywords. "How do I fix my feline's upset stomach?" finds results about cats even without the word "cat".</p>
+                                </div>
+                                <div style="background: #eff6ff; padding: 14px; border-radius: 8px; border-left: 3px solid #3b82f6;">
+                                    <p><strong>🎯 Recommendation Systems</strong></p>
+                                    <p>Products or articles with similar embeddings get recommended together. "You liked this cat toy — here are similar ones!"</p>
+                                </div>
+                                <div style="background: #fdf4ff; padding: 14px; border-radius: 8px; border-left: 3px solid #a855f7;">
+                                    <p><strong>🗂️ Clustering</strong></p>
+                                    <p>Group documents by topic automatically. No labels needed — similar embeddings cluster together.</p>
+                                </div>
+                                <div style="background: #fff7ed; padding: 14px; border-radius: 8px; border-left: 3px solid #f97316;">
+                                    <p><strong>🚨 Anomaly Detection</strong></p>
+                                    <p>An email with a very different embedding from normal company emails might be spam or a security threat.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px;">
+                            <h4>💻 Generate & Compare Embeddings with sentence-transformers</h4>
+                        </div>
+                        <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; margin-top: 12px; overflow-x: auto;"><code># pip install sentence-transformers
+from sentence_transformers import SentenceTransformer
+import numpy as np
+
+model = SentenceTransformer("all-MiniLM-L6-v2")
+
+# Whiskers explores Cat City with embeddings!
+sentences = [
+    "Whiskers the cat loves chasing mice.",
+    "My kitten enjoys hunting small rodents.",   # Similar!
+    "The stock market crashed yesterday.",        # Unrelated
+    "Felines are natural predators of mice.",    # Very similar!
+]
+
+embeddings = model.encode(sentences)
+print(f"Embedding shape: {embeddings.shape}")
+# (4, 384) — 4 sentences, 384-dimensional vectors
+
+# Compute cosine similarity
+def cosine_sim(a, b):
+    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+
+query = embeddings[0]  # "Whiskers the cat loves chasing mice."
+for i, (sent, emb) in enumerate(zip(sentences[1:], embeddings[1:]), 1):
+    sim = cosine_sim(query, emb)
+    print(f"Similarity {sim:.3f}: {sent[:50]}")</code></pre>
+
+                        <div class="term-card" style="margin-top: 20px;">
+                            <h4>💻 Using OpenAI Embeddings API</h4>
+                        </div>
+                        <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; margin-top: 12px; overflow-x: auto;"><code># pip install openai
+from openai import OpenAI
+import numpy as np
+
+client = OpenAI()  # Uses OPENAI_API_KEY env var
+
+def get_embedding(text: str) -> list[float]:
+    response = client.embeddings.create(
+        model="text-embedding-3-small",  # 1536 dimensions
+        input=text,
+    )
+    return response.data[0].embedding
+
+# Embed Whiskers' cat facts
+cat_embed = get_embedding("Whiskers is a fluffy orange tabby cat.")
+dog_embed = get_embedding("Rex is a loyal golden retriever dog.")
+food_embed = get_embedding("The lasagna was delicious at the Italian restaurant.")
+
+# king - man + woman ≈ queen
+king = get_embedding("king")
+man  = get_embedding("man")
+woman = get_embedding("woman")
+queen_approx = np.array(king) - np.array(man) + np.array(woman)
+queen_actual = get_embedding("queen")
+
+sim = np.dot(queen_approx, queen_actual) / (
+    np.linalg.norm(queen_approx) * np.linalg.norm(queen_actual)
+)
+print(f"king-man+woman vs queen similarity: {sim:.3f}")
+# Should be ~0.85 — pretty close! 👑</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: EXPERIMENTS -->
+        <section id="experiments" class="lesson-section">
+            <h2>🧪 Experiments: Play with Tokens and Vectors!</h2>
+            <p style="color: var(--text-light); margin-bottom: 30px;">Hands-on tools to build your intuition for tokenization and embeddings.</p>
+
+            <div class="experiments-grid">
+                <div class="experiment-card">
+                    <h3>✂️ OpenAI Tokenizer</h3>
+                    <p>Paste any text and watch it get sliced into tokens in real time. See how different languages, code, and emoji tokenize differently!</p>
+                    <p><strong>Try:</strong> Paste a paragraph and count how many tokens it uses vs. words.</p>
+                    <a href="https://platform.openai.com/tokenizer" class="experiment-link" target="_blank">OpenAI Tokenizer →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🗺️ Embedding Projector</h3>
+                    <p>TensorFlow's interactive 3D visualiser for word embeddings. Watch clusters of similar words appear in real space — Cat City made visible!</p>
+                    <p><strong>Try:</strong> Search for "cat" and see which words are its nearest neighbours.</p>
+                    <a href="https://projector.tensorflow.org/" class="experiment-link" target="_blank">TF Embedding Projector →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🤗 Sentence Transformers</h3>
+                    <p>HuggingFace's library of pre-trained sentence embedding models. Free, open source, and incredibly powerful for semantic search.</p>
+                    <p><strong>Try:</strong> Run the quickstart notebook to find semantically similar sentences.</p>
+                    <a href="https://huggingface.co/sentence-transformers" class="experiment-link" target="_blank">HuggingFace Models →</a>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px; background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(37, 99, 235, 0.1));">
+                <h3>💻 Mini Challenge: Build Whiskers' Semantic Search</h3>
+                <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto;"><code># pip install sentence-transformers
+from sentence_transformers import SentenceTransformer, util
+
+model = SentenceTransformer("all-MiniLM-L6-v2")
+
+# Whiskers' cat fact knowledge base
+cat_facts = [
+    "Cats sleep 12 to 16 hours per day on average.",
+    "A cat's purring frequency promotes bone healing.",
+    "Cats have 32 muscles in each ear for precise movement.",
+    "Ancient Egyptians worshipped cats as sacred animals.",
+    "Cats can make over 100 different vocal sounds.",
+    "A group of cats is called a clowder.",
+]
+
+# Embed the knowledge base
+fact_embeddings = model.encode(cat_facts, convert_to_tensor=True)
+
+# Ask Whiskers anything!
+query = "How long do cats sleep?"
+query_embedding = model.encode(query, convert_to_tensor=True)
+
+# Find the most relevant fact
+scores = util.cos_sim(query_embedding, fact_embeddings)[0]
+best_idx = scores.argmax().item()
+
+print(f"Query: {query}")
+print(f"Best match (score={scores[best_idx]:.2f}): {cat_facts[best_idx]}")
+# Best match: "Cats sleep 12 to 16 hours per day on average." 🎯🐱</code></pre>
+            </div>
+        </section>
+
+        <!-- SECTION 5: RESOURCES -->
+        <section id="resources" class="lesson-section">
+            <h2>📚 Resources for Further Learning</h2>
+
+            <div class="resources-section">
+                <div class="resources-columns">
+                    <div class="resource-column">
+                        <h3>🎥 Videos</h3>
+                        <ul>
+                            <li><a href="https://www.youtube.com/watch?v=viZrOnJclY0" target="_blank">Tokenization Explained — Andrej Karpathy</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=wjZofJX0v4M" target="_blank">Word Embeddings Explained — StatQuest</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=5MaWmXwxFNQ" target="_blank">Word2Vec Paper Walkthrough</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📖 Articles</h3>
+                        <ul>
+                            <li><a href="https://jalammar.github.io/illustrated-word2vec/" target="_blank">The Illustrated Word2Vec — Jay Alammar</a></li>
+                            <li><a href="https://platform.openai.com/docs/guides/embeddings" target="_blank">OpenAI Embeddings Guide</a></li>
+                            <li><a href="https://huggingface.co/docs/transformers/tokenizer_summary" target="_blank">HuggingFace Tokenizer Summary</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>🛠️ Tools &amp; Libraries</h3>
+                        <ul>
+                            <li><a href="https://github.com/openai/tiktoken" target="_blank">tiktoken (OpenAI tokenizer)</a></li>
+                            <li><a href="https://www.sbert.net/" target="_blank">Sentence-Transformers (SBERT)</a></li>
+                            <li><a href="https://radimrehurek.com/gensim/" target="_blank">Gensim (Word2Vec)</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📚 Courses</h3>
+                        <ul>
+                            <li><a href="https://www.deeplearning.ai/short-courses/understanding-and-applying-text-embeddings/" target="_blank">Text Embeddings — DeepLearning.AI</a></li>
+                            <li><a href="https://www.coursera.org/learn/nlp-sequence-models" target="_blank">NLP Sequence Models — Coursera</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="lesson-navigation">
+            <a href="reinforcement-learning.html" class="lesson-nav-btn">
+                <span>←</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Previous</span>
+                    <span class="lesson-nav-btn-title">Reinforcement Learning</span>
+                </div>
+            </a>
+            <a href="prompt-engineering.html" class="lesson-nav-btn next">
+                <span>→</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Next Lesson</span>
+                    <span class="lesson-nav-btn-title">Prompt Engineering</span>
+                </div>
+            </a>
+        </nav>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Referencia - Learning AI, one cat at a time 🐱</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

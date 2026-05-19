@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lesson 09: Transformers Architecture - How Whiskers reads a sentence and instantly knows what every word means!">
+    <title>Lesson 09: Transformers Architecture | Referencia 🐱</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="../index.html" style="text-decoration: none; color: white;">
+                    <h1 class="logo">Referencia</h1>
+                </a>
+                <p class="tagline">Lesson 09: Transformers Architecture</p>
+            </div>
+        </nav>
+    </header>
+
+    <div class="lesson-header">
+        <div class="container">
+            <div class="lesson-number">LESSON 09</div>
+            <h1 class="lesson-title">🔄 Transformers Architecture</h1>
+            <p class="lesson-subtitle">How Whiskers reads a sentence and instantly knows what every word means!</p>
+            <div class="lesson-info">
+                <span class="lesson-info-item">⏱️ 60 minutes</span>
+                <span class="lesson-info-item">🟡 Intermediate</span>
+                <span class="lesson-info-item">📚 5 sections</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="lesson-nav">
+        <div class="container">
+            <div class="lesson-nav-container">
+                <a href="#intro" class="lesson-nav-link active">Introduction</a>
+                <a href="#sketchnote" class="lesson-nav-link">Sketchnote</a>
+                <a href="#types" class="lesson-nav-link">Core Content</a>
+                <a href="#experiments" class="lesson-nav-link">Experiments</a>
+                <a href="#resources" class="lesson-nav-link">Resources</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- SECTION 1: INTRODUCTION -->
+        <section id="intro" class="lesson-section">
+            <h2>📖 Introduction: Attention Is All You Need</h2>
+
+            <div class="lesson-intro">
+                <p>Whiskers is reading: <strong>"The cat sat on the mat because <em>it</em> was warm."</strong> 🐱 When she hits the word <em>"it"</em>, she doesn't panic. In an instant she scans back over the whole sentence and knows: <em>it</em> = the mat, not the cat — because the mat is the thing that could be warm. She did that by <strong>paying attention</strong> to the right words.</p>
+
+                <p>Before 2017, AI language models processed text one word at a time, like reading with a hand covering everything except the current word. They forgot things. They were slow. Then a team at Google published a paper called <strong>"Attention Is All You Need"</strong> — and everything changed. The <strong>Transformer</strong> architecture processes all words simultaneously, letting every word pay attention to every other word in one pass. The result: GPT, BERT, ChatGPT, Gemini, and Claude — all Transformers under the hood.</p>
+            </div>
+
+            <div class="term-card" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1)); border-left: 4px solid #6366f1;">
+                <h3>💡 Key Insight</h3>
+                <p><strong>The Transformer's superpower is Self-Attention:</strong> for every word in a sentence, it computes how much that word should "attend to" every other word. This happens for all words at once (in parallel), making it both more accurate <em>and</em> faster to train than anything before it.</p>
+                <p><em>"Before Transformers: AI read one word at a time. After Transformers: AI reads all words simultaneously, seeing the whole picture at once." 🔭</em></p>
+            </div>
+
+            <h3>🎯 What You'll Learn</h3>
+            <ul>
+                <li>Why RNNs/LSTMs struggled and what problem Transformers solved</li>
+                <li>How Self-Attention works (Query, Key, Value — the QKV framework)</li>
+                <li>What Multi-Head Attention is and why multiple heads help</li>
+                <li>The Encoder-Decoder architecture (and when to use each part)</li>
+                <li>How Transformers became the backbone of GPT, BERT, ChatGPT, and more</li>
+                <li>Use a pre-trained Transformer in 5 lines with HuggingFace 🤗</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 2: SKETCHNOTE -->
+        <section id="sketchnote" class="lesson-section">
+            <h2>🎨 Sketchnote: Whiskers Pays Attention</h2>
+            <p style="color: var(--text-light); margin-bottom: 20px;">See how attention flows between words in a real sentence!</p>
+
+            <div class="sketchnote-container">
+                <div class="sketchnote-placeholder">
+                    <h3>🖼️ Self-Attention Visualised</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;"><strong>"The cat sat on the mat because it was warm"</strong></p>
+
+                    <!-- Inline attention visualisation -->
+                    <div style="background: linear-gradient(135deg, #ede9fe, #dbeafe); padding: 30px; border-radius: 12px;">
+
+                        <p style="font-weight: bold; margin-bottom: 6px; font-size: 0.9rem; color: #4c1d95;">🔍 When the model processes the word <strong>"it"</strong>, where does it look?</p>
+                        <p style="font-size: 0.85rem; color: #5b21b6; margin-bottom: 20px;">Line thickness = attention strength. Bold border = the word being processed.</p>
+
+                        <!-- Words in a row -->
+                        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 30px;">
+                            <div style="background:white;border:1px solid #a5b4fc;border-radius:8px;padding:8px 12px;text-align:center;min-width:52px;">
+                                <div style="font-size:0.85rem;font-weight:600;">The</div>
+                                <div style="height:4px;background:#e0e7ff;border-radius:2px;margin-top:4px;"></div>
+                                <div style="font-size:0.65rem;color:#818cf8;margin-top:2px;">2%</div>
+                            </div>
+                            <div style="background:white;border:2px solid #6366f1;border-radius:8px;padding:8px 12px;text-align:center;min-width:52px;">
+                                <div style="font-size:0.85rem;font-weight:700;color:#4338ca;">cat</div>
+                                <div style="height:4px;background:#818cf8;border-radius:2px;margin-top:4px;width:70%;"></div>
+                                <div style="font-size:0.65rem;color:#4338ca;margin-top:2px;font-weight:bold;">18%</div>
+                            </div>
+                            <div style="background:white;border:1px solid #a5b4fc;border-radius:8px;padding:8px 12px;text-align:center;min-width:52px;">
+                                <div style="font-size:0.85rem;font-weight:600;">sat</div>
+                                <div style="height:4px;background:#c7d2fe;border-radius:2px;margin-top:4px;width:25%;"></div>
+                                <div style="font-size:0.65rem;color:#818cf8;margin-top:2px;">5%</div>
+                            </div>
+                            <div style="background:white;border:1px solid #a5b4fc;border-radius:8px;padding:8px 12px;text-align:center;min-width:52px;">
+                                <div style="font-size:0.85rem;font-weight:600;">on</div>
+                                <div style="height:4px;background:#e0e7ff;border-radius:2px;margin-top:4px;width:10%;"></div>
+                                <div style="font-size:0.65rem;color:#818cf8;margin-top:2px;">1%</div>
+                            </div>
+                            <div style="background:white;border:1px solid #a5b4fc;border-radius:8px;padding:8px 12px;text-align:center;min-width:52px;">
+                                <div style="font-size:0.85rem;font-weight:600;">the</div>
+                                <div style="height:4px;background:#e0e7ff;border-radius:2px;margin-top:4px;width:10%;"></div>
+                                <div style="font-size:0.65rem;color:#818cf8;margin-top:2px;">1%</div>
+                            </div>
+                            <div style="background:#4f46e5;border:3px solid #3730a3;border-radius:8px;padding:8px 12px;text-align:center;min-width:52px;">
+                                <div style="font-size:0.85rem;font-weight:800;color:white;">mat</div>
+                                <div style="height:6px;background:#a5b4fc;border-radius:2px;margin-top:4px;"></div>
+                                <div style="font-size:0.65rem;color:#e0e7ff;margin-top:2px;font-weight:bold;">45% ⭐</div>
+                            </div>
+                            <div style="background:white;border:1px solid #a5b4fc;border-radius:8px;padding:8px 12px;text-align:center;min-width:52px;">
+                                <div style="font-size:0.85rem;font-weight:600;">because</div>
+                                <div style="height:4px;background:#c7d2fe;border-radius:2px;margin-top:4px;width:20%;"></div>
+                                <div style="font-size:0.65rem;color:#818cf8;margin-top:2px;">3%</div>
+                            </div>
+                            <div style="background:#7c3aed;border:4px solid #5b21b6;border-radius:8px;padding:8px 12px;text-align:center;min-width:52px;box-shadow:0 0 0 3px #ddd6fe;">
+                                <div style="font-size:0.85rem;font-weight:800;color:white;">it</div>
+                                <div style="height:6px;background:#ddd6fe;border-radius:2px;margin-top:4px;"></div>
+                                <div style="font-size:0.65rem;color:#ede9fe;margin-top:2px;font-weight:bold;">← me!</div>
+                            </div>
+                            <div style="background:white;border:1px solid #a5b4fc;border-radius:8px;padding:8px 12px;text-align:center;min-width:52px;">
+                                <div style="font-size:0.85rem;font-weight:600;">was</div>
+                                <div style="height:4px;background:#c7d2fe;border-radius:2px;margin-top:4px;width:30%;"></div>
+                                <div style="font-size:0.65rem;color:#818cf8;margin-top:2px;">8%</div>
+                            </div>
+                            <div style="background:white;border:2px solid #818cf8;border-radius:8px;padding:8px 12px;text-align:center;min-width:52px;">
+                                <div style="font-size:0.85rem;font-weight:700;color:#4338ca;">warm</div>
+                                <div style="height:4px;background:#818cf8;border-radius:2px;margin-top:4px;width:80%;"></div>
+                                <div style="font-size:0.65rem;color:#4338ca;margin-top:2px;font-weight:bold;">17%</div>
+                            </div>
+                        </div>
+
+                        <div style="background: white; border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+                            <p style="margin: 0; font-size: 0.9rem;">
+                                🐱 <strong>Whiskers' conclusion:</strong> "it" attends most strongly to <strong>"mat" (45%)</strong> and "warm" (17%) — so <em>it</em> refers to the mat, which was warm. The cat just happens to be sitting on it!
+                            </p>
+                        </div>
+
+                        <!-- QKV explainer -->
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px;">
+                            <div style="background: white; padding: 12px; border-radius: 8px; border-top: 4px solid #f59e0b;">
+                                <p style="font-size: 1.4rem; text-align: center;">❓</p>
+                                <p style="font-weight: bold; text-align: center; margin: 4px 0;">Query (Q)</p>
+                                <p style="font-size: 0.8rem; text-align: center; color: #6b7280;">"What am I looking for?"<br><em>"it" asks: who/what am I?</em></p>
+                            </div>
+                            <div style="background: white; padding: 12px; border-radius: 8px; border-top: 4px solid #10b981;">
+                                <p style="font-size: 1.4rem; text-align: center;">🔑</p>
+                                <p style="font-weight: bold; text-align: center; margin: 4px 0;">Key (K)</p>
+                                <p style="font-size: 0.8rem; text-align: center; color: #6b7280;">"What do I offer?"<br><em>Each word signals its relevance</em></p>
+                            </div>
+                            <div style="background: white; padding: 12px; border-radius: 8px; border-top: 4px solid #8b5cf6;">
+                                <p style="font-size: 1.4rem; text-align: center;">📦</p>
+                                <p style="font-weight: bold; text-align: center; margin: 4px 0;">Value (V)</p>
+                                <p style="font-size: 0.8rem; text-align: center; color: #6b7280;">"What info do I carry?"<br><em>The actual content passed on</em></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 20px; color: var(--text-light);">
+                        💡 Save your sketchnote as: <code>/assets/sketchnotes/transformers.png</code>
+                    </p>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px;">
+                <h3>🐱 Whiskers' Attention Diary</h3>
+                <p><strong>Sentence:</strong> "The cat sat on the mat because it was warm."</p>
+                <p><strong>Processing "it":</strong></p>
+                <p>🔍 Query: "I'm a pronoun — who or what does the author mean by me?"</p>
+                <p>🔑 Checking Keys: "cat" is a possible referent (18%)... "mat" is a possible referent (45%)... "warm" provides context (17%)</p>
+                <p>📦 Collecting Values: "mat" → physical object that can hold warmth → <em>most likely referent</em></p>
+                <p><strong>Conclusion:</strong> <em>"it" = the mat.</em> Confidence: very high. 🐾✅</p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: CORE CONTENT -->
+        <section id="types" class="lesson-section">
+            <h2>📚 Core Content</h2>
+
+            <div class="accordion">
+
+                <!-- Accordion 1: The Problem Transformers Solved -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>⚠️ The Problem Transformers Solved</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>Life Before 2017: RNNs and LSTMs</h4>
+                            <p>Before Transformers, the dominant architectures for language were <strong>Recurrent Neural Networks (RNNs)</strong> and their improved cousin <strong>Long Short-Term Memory networks (LSTMs)</strong>. Both shared one fundamental constraint: they processed text <em>one word at a time, in sequence.</em></p>
+                            <p>This caused two serious problems:</p>
+                            <ul>
+                                <li><strong>Forgetting:</strong> By the time an RNN reached word 50, it had largely forgotten word 1. The "hidden state" that carries context forward is a fixed-size vector — it can only hold so much. A sentence like "The trophy wouldn't fit in the suitcase because <em>it</em> was too big" requires long-range reasoning that RNNs struggled with.</li>
+                                <li><strong>Slowness:</strong> Processing word 5 requires having first processed words 1–4. You <em>cannot</em> parallelise this — it's inherently sequential. Training on billions of sentences took weeks.</li>
+                            </ul>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 16px;">
+                            <h4>📄 The Paper That Changed Everything</h4>
+                            <p>In June 2017, eight Google Brain researchers published <strong>"Attention Is All You Need"</strong>. The title was a provocation: forget RNNs, forget convolutions — attention mechanisms alone are sufficient to build a world-class language model.</p>
+                            <p>Key innovations:</p>
+                            <ul>
+                                <li><strong>Process all words at once</strong> (parallel, not sequential)</li>
+                                <li><strong>Self-Attention:</strong> every word can directly attend to every other word — no forgetting over long distances</li>
+                                <li><strong>Multi-Head Attention:</strong> run attention multiple times in parallel, each learning different relationships</li>
+                                <li><strong>Positional Encoding:</strong> since there's no sequential processing, inject word-order information explicitly</li>
+                            </ul>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 16px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.08));">
+                            <h4>🌍 Real-World Impact: Google Translate</h4>
+                            <p>In late 2016, Google switched Google Translate from an LSTM to a Transformer (Google Neural Machine Translation v2 → Transformer). Translation quality improved more in that single switch than in the previous <em>ten years combined</em>. Users immediately noticed — translations felt more natural and context-aware.</p>
+                            <p><em>Today, every major AI product — ChatGPT, Gemini, Claude, Copilot — is a Transformer. The 2017 paper is the most influential in AI history. 🏆</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion 2: Self-Attention Mechanism -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🔍 Self-Attention Mechanism</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>The Core Idea</h4>
+                            <p>For every word in the input, Self-Attention asks: <strong>"How much should I pay attention to every other word when computing my meaning?"</strong></p>
+                            <p>The result is a weighted combination of all other words' information — words with high relevance contribute more to the current word's updated representation.</p>
+                        </div>
+
+                        <div class="terms-grid" style="margin-top: 16px;">
+                            <div class="term-card">
+                                <h4>❓ Query (Q)</h4>
+                                <p>"What am I looking for?" — A vector representing what the current word needs from its context.</p>
+                                <p><em>The word "it" queries: "I'm a pronoun — find my referent."</em></p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🔑 Key (K)</h4>
+                                <p>"What do I offer?" — A vector representing what each word can provide to others that are querying it.</p>
+                                <p><em>The word "mat" advertises: "I'm a concrete object — I can be a referent."</em></p>
+                            </div>
+                            <div class="term-card">
+                                <h4>📦 Value (V)</h4>
+                                <p>"What information do I carry?" — The actual content that gets mixed into the output.</p>
+                                <p><em>Once "mat" wins attention, its value (semantic info) flows into "it"'s representation.</em></p>
+                            </div>
+                        </div>
+
+                        <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto; margin-top: 20px;"><code>import torch
+import torch.nn.functional as F
+
+# Simplified self-attention (conceptual, not production code)
+def self_attention(Q, K, V):
+    """
+    Q, K, V: matrices of shape [seq_len, d_model]
+    Each row = one word's Query / Key / Value vector
+    """
+    d_k = Q.shape[-1]  # dimension of key vectors
+
+    # Step 1: Compute attention scores (how much does each word attend to each other?)
+    # Dot product of Q and K: [seq_len, seq_len] matrix
+    scores = torch.matmul(Q, K.transpose(-2, -1)) / (d_k ** 0.5)
+    # Divide by sqrt(d_k) to prevent extremely large dot products → stable gradients
+
+    # Step 2: Softmax → attention weights (probabilities, sum to 1 per row)
+    attention_weights = F.softmax(scores, dim=-1)
+
+    # Step 3: Weighted sum of Value vectors
+    output = torch.matmul(attention_weights, V)
+
+    return output, attention_weights
+# That's it! The whole self-attention mechanism in ~10 lines.
+# The magic is that attention_weights[i][j] = how much word i attends to word j</code></pre>
+
+                        <div class="term-card" style="margin-top: 16px;">
+                            <h4>🏦 The "bank" Ambiguity Example</h4>
+                            <p>Consider two sentences:</p>
+                            <ul>
+                                <li>"She walked along the river <strong>bank</strong>." → bank attends to "river" (financial sense ruled out)</li>
+                                <li>"She deposited money at the <strong>bank</strong>." → bank attends to "deposited", "money" (financial sense confirmed)</li>
+                            </ul>
+                            <p>The word "bank" gets a <em>different context-aware representation</em> in each sentence — the same token, but the attention mechanism routes different context into its final meaning. This is called <strong>contextual embedding</strong>, and it's why Transformers are so much better at understanding language than older methods.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion 3: Multi-Head Attention -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🐱 Multi-Head Attention</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>Why Just One Set of Attention Isn't Enough</h4>
+                            <p>A single round of self-attention can only capture <em>one type of relationship</em> between words at a time. But language is rich — words relate to each other grammatically, semantically, and pragmatically all at once.</p>
+                            <p><strong>Multi-Head Attention</strong> runs the full Q/K/V attention mechanism <em>h</em> times in parallel, each with its own learned weight matrices. Each "head" independently learns a different type of relationship:</p>
+                            <ul>
+                                <li><strong>Head 1:</strong> Syntactic structure ("what's the subject? the verb?")</li>
+                                <li><strong>Head 2:</strong> Coreference ("which pronouns refer to which nouns?")</li>
+                                <li><strong>Head 3:</strong> Semantic similarity ("which words mean related things?")</li>
+                                <li><strong>Head 4:</strong> Position / proximity relationships</li>
+                                <li>… up to 8, 12, 16, or 96 heads in modern large models</li>
+                            </ul>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 16px; background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(249, 115, 22, 0.1));">
+                            <h4>🐱 Whiskers' Senses Analogy</h4>
+                            <p>When Whiskers enters a room, she doesn't use just one sense. She uses all of them simultaneously:</p>
+                            <ul>
+                                <li>👁️ <strong>Eyes:</strong> Is there anything moving? (Head 1 — motion detection)</li>
+                                <li>👃 <strong>Nose:</strong> Is there food? Another cat? (Head 2 — scent/identity)</li>
+                                <li>👂 <strong>Ears:</strong> Any squeaking or rustling? (Head 3 — sound/danger)</li>
+                                <li>🐾 <strong>Whiskers:</strong> How wide is that gap? Safe to pass? (Head 4 — spatial awareness)</li>
+                            </ul>
+                            <p>Each "head" attends to different aspects simultaneously, then combines them for the full picture. That's Multi-Head Attention. 🐾</p>
+                        </div>
+
+                        <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto; margin-top: 16px;"><code>import torch
+import torch.nn as nn
+
+class MultiHeadAttention(nn.Module):
+    def __init__(self, d_model=512, num_heads=8):
+        super().__init__()
+        self.d_model = d_model
+        self.num_heads = num_heads
+        self.d_k = d_model // num_heads  # each head gets d_model/num_heads dims
+
+        # Separate learned projections for each head's Q, K, V
+        self.W_q = nn.Linear(d_model, d_model)
+        self.W_k = nn.Linear(d_model, d_model)
+        self.W_v = nn.Linear(d_model, d_model)
+        self.W_o = nn.Linear(d_model, d_model)  # final projection
+
+    def forward(self, x):
+        batch, seq_len, _ = x.shape
+
+        # Project and split into num_heads
+        Q = self.W_q(x).view(batch, seq_len, self.num_heads, self.d_k).transpose(1, 2)
+        K = self.W_k(x).view(batch, seq_len, self.num_heads, self.d_k).transpose(1, 2)
+        V = self.W_v(x).view(batch, seq_len, self.num_heads, self.d_k).transpose(1, 2)
+        # Shape: [batch, num_heads, seq_len, d_k]
+
+        # Scaled dot-product attention for ALL heads simultaneously
+        scores = torch.matmul(Q, K.transpose(-2, -1)) / (self.d_k ** 0.5)
+        weights = torch.softmax(scores, dim=-1)
+        attn_out = torch.matmul(weights, V)
+
+        # Concatenate all heads and project back
+        attn_out = attn_out.transpose(1, 2).contiguous().view(batch, seq_len, self.d_model)
+        return self.W_o(attn_out)
+# 8 heads running in parallel — each learning a different relationship type 🐱</code></pre>
+                    </div>
+                </div>
+
+                <!-- Accordion 4: Encoder-Decoder Architecture -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🏗️ Encoder-Decoder Architecture</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p style="margin-bottom: 16px;">The original Transformer had two halves. Modern models often use just one half, depending on the task. Choosing the right architecture for the job is one of the first decisions an NLP practitioner makes:</p>
+
+                        <div class="terms-grid">
+                            <div class="term-card" style="border-top: 4px solid #3b82f6;">
+                                <h4>🔵 Encoder-Only</h4>
+                                <p><strong>What it does:</strong> Reads input text and builds a deep understanding of it. Each token sees all other tokens (bidirectional).</p>
+                                <p><strong>Best for:</strong> Classification, search, question answering, sentiment analysis — tasks where you need to <em>understand</em> text.</p>
+                                <p><strong>Famous models:</strong></p>
+                                <ul>
+                                    <li>BERT (Google, 2018) — trained on masked word prediction</li>
+                                    <li>RoBERTa (Facebook, 2019) — improved BERT training</li>
+                                    <li>DistilBERT — 40% smaller, 97% of BERT's performance</li>
+                                </ul>
+                                <p><em>Analogy: Whiskers reading a document thoroughly before answering a question about it. 📖</em></p>
+                            </div>
+
+                            <div class="term-card" style="border-top: 4px solid #10b981;">
+                                <h4>🟢 Decoder-Only</h4>
+                                <p><strong>What it does:</strong> Generates text left to right — each token can only attend to previous tokens (causal/autoregressive).</p>
+                                <p><strong>Best for:</strong> Text generation, code completion, chatbots, creative writing — tasks where you need to <em>produce</em> text.</p>
+                                <p><strong>Famous models:</strong></p>
+                                <ul>
+                                    <li>GPT-2, GPT-3, GPT-4 (OpenAI)</li>
+                                    <li>Claude (Anthropic)</li>
+                                    <li>Gemini (Google)</li>
+                                    <li>LLaMA (Meta)</li>
+                                </ul>
+                                <p><em>Analogy: Whiskers composing a story, one word at a time, never looking ahead. ✍️</em></p>
+                            </div>
+
+                            <div class="term-card" style="border-top: 4px solid #f59e0b;">
+                                <h4>🟡 Encoder-Decoder</h4>
+                                <p><strong>What it does:</strong> Encoder reads and understands the input; decoder generates a new output conditioned on that understanding. Cross-attention links the two.</p>
+                                <p><strong>Best for:</strong> Translation, summarisation, question answering with generated answers.</p>
+                                <p><strong>Famous models:</strong></p>
+                                <ul>
+                                    <li>T5 (Google) — "Text-to-Text Transfer Transformer"</li>
+                                    <li>BART (Facebook) — great for summarisation</li>
+                                    <li>mT5 — multilingual version of T5</li>
+                                    <li>Whisper (OpenAI) — speech-to-text</li>
+                                </ul>
+                                <p><em>Analogy: Whiskers listening to French (encoder) then meowing in English (decoder). 🇫🇷→🇬🇧</em></p>
+                            </div>
+                        </div>
+
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-top: 20px;">
+                            <h4 style="margin-top: 0;">🧱 Other Key Components (inside each Transformer block)</h4>
+                            <div class="terms-grid">
+                                <div class="term-card">
+                                    <h4>📍 Positional Encoding</h4>
+                                    <p>Since Transformers process all tokens at once (no sequence), we must explicitly inject word order. Sinusoidal waves or learned embeddings are added to each token's representation.</p>
+                                </div>
+                                <div class="term-card">
+                                    <h4>➡️ Feed-Forward Network</h4>
+                                    <p>After attention, each position independently passes through a two-layer MLP (multiply, ReLU, multiply again). This is where most of the "knowledge" is stored.</p>
+                                </div>
+                                <div class="term-card">
+                                    <h4>⚖️ Layer Normalisation</h4>
+                                    <p>Normalises activations at each layer for stable training. Applied before or after each sub-layer (pre-norm vs post-norm — an active research topic!).</p>
+                                </div>
+                                <div class="term-card">
+                                    <h4>💧 Residual Connections</h4>
+                                    <p>Each sub-layer's input is added to its output: <code>output = LayerNorm(x + SubLayer(x))</code>. Borrowed from ResNet — enables very deep stacking without vanishing gradients.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion 5: Why Transformers Changed Everything + Code -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🚀 Why Transformers Changed Everything + Code</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>The Scaling Revolution</h4>
+                            <p>The Transformer's parallel architecture means you can train it on <strong>thousands of GPUs simultaneously</strong> — something impossible with sequential RNNs. This unlocked a crucial discovery: <strong>scaling laws</strong>. Simply making a Transformer bigger (more layers, more parameters) trained on more data consistently produces more capable models. This gave us:</p>
+                        </div>
+
+                        <div class="terms-grid" style="margin-top: 16px;">
+                            <div class="term-card">
+                                <h4>🤖 GPT Series (OpenAI)</h4>
+                                <p>GPT-1 (2018, 117M params) → GPT-2 (2019, 1.5B) → GPT-3 (2020, 175B) → GPT-4 (2023, ~1T estimated). Each jump: new emergent capabilities.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🔍 BERT (Google)</h4>
+                                <p>Bidirectional Encoder Representations from Transformers. Revolutionised Google Search — understands the intent behind queries, not just keywords. 2019.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>💬 ChatGPT (OpenAI)</h4>
+                                <p>GPT-4 + RLHF (Reinforcement Learning from Human Feedback) — making the model helpful, harmless, and honest. Reached 100M users in 2 months (fastest ever).</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🐱 Claude (Anthropic)</h4>
+                                <p>Transformer trained with Constitutional AI — a technique for aligning model values. Named after Claude Shannon (information theory). Remarkably good at long-form reasoning.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>💎 Gemini (Google)</h4>
+                                <p>Google DeepMind's flagship model. Natively multimodal (text, images, audio, code, video in one model). First model to beat GPT-4 on many benchmarks.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🦙 LLaMA (Meta)</h4>
+                                <p>Open-source Transformer family. Released weights publicly — spawned thousands of fine-tuned variants (Vicuna, Alpaca, WizardLM). Democratised LLM research.</p>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 24px;">
+                            <h4>💻 Use a Pre-Trained Transformer in 5 Lines (HuggingFace)</h4>
+                            <p style="margin-bottom: 12px;">You don't need to train from scratch. Use one of thousands of pre-trained models from the HuggingFace Hub:</p>
+                        </div>
+
+                        <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto;"><code># pip install transformers torch
+
+from transformers import pipeline
+
+# 1. Sentiment analysis (Encoder-only: DistilBERT under the hood)
+classifier = pipeline("sentiment-analysis")
+result = classifier("I love cats so much it should be illegal! 🐱")
+print(result)
+# [{'label': 'POSITIVE', 'score': 0.9998}]
+
+# 2. Text generation (Decoder-only: GPT-2 under the hood)
+generator = pipeline("text-generation", model="gpt2")
+story = generator(
+    "Whiskers the cat discovered a hidden door that led to",
+    max_new_tokens=50
+)
+print(story[0]["generated_text"])
+# "Whiskers the cat discovered a hidden door that led to a room filled with..."
+
+# 3. Summarisation (Encoder-Decoder: BART under the hood)
+summariser = pipeline("summarization", model="facebook/bart-large-cnn")
+long_text = """
+    Convolutional Neural Networks revolutionised computer vision by using shared
+    filters that slide across images. They detect edges, shapes, and finally
+    whole objects through hierarchical feature learning. CNNs are used in
+    medical imaging, face recognition, autonomous vehicles, and satellite analysis.
+"""
+summary = summariser(long_text, max_length=40, min_length=20)
+print(summary[0]["summary_text"])
+# "CNNs detect edges and shapes to recognise objects. Used in medicine, phones, cars."
+
+# 4. Translation (Encoder-Decoder: MarianMT under the hood)
+translator = pipeline("translation_en_to_fr",
+                      model="Helsinki-NLP/opus-mt-en-fr")
+translated = translator("The cat is sitting on the mat.")
+print(translated[0]["translation_text"])
+# "Le chat est assis sur le tapis." 🐱🇫🇷
+
+# 5. Question Answering (Encoder-only: BERT under the hood)
+qa = pipeline("question-answering")
+answer = qa(
+    question="What animal is Whiskers?",
+    context="Whiskers is a curious cat who loves learning about AI and attention mechanisms."
+)
+print(answer["answer"])
+# "cat"  ✅</code></pre>
+
+                        <div class="term-card" style="margin-top: 20px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));">
+                            <h4>🔮 What's Next After Transformers?</h4>
+                            <p>Researchers are actively working on Transformer successors:</p>
+                            <ul>
+                                <li><strong>Mamba / SSMs:</strong> State Space Models — linear-time sequence processing (no quadratic attention cost)</li>
+                                <li><strong>Mixture of Experts (MoE):</strong> Only activate a subset of parameters per token — GPT-4 and Gemini reportedly use this</li>
+                                <li><strong>Flash Attention:</strong> Same math, 10× faster via clever GPU memory management</li>
+                                <li><strong>Ring Attention:</strong> Distribute attention across many GPUs → million-token context windows</li>
+                            </ul>
+                            <p><em>The Transformer is 7 years old and still dominant. But watch this space — Whiskers always lands on her feet. 🐾</em></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 4: EXPERIMENTS -->
+        <section id="experiments" class="lesson-section">
+            <h2>🧪 Experiments: See Attention in Action!</h2>
+            <p style="color: var(--text-light); margin-bottom: 30px;">Visualise what the model is actually paying attention to!</p>
+
+            <div class="experiments-grid">
+                <div class="experiment-card">
+                    <h3>🔭 BertViz Attention Visualiser</h3>
+                    <p>Visualise the attention heads of BERT, GPT-2, and other Transformers. Watch <em>exactly</em> which words attend to which — for each of the 12 heads!</p>
+                    <p><strong>Try:</strong> Paste your own sentences and find the head that tracks pronouns 🐱</p>
+                    <a href="https://github.com/jessevig/bertviz" class="experiment-link" target="_blank">BertViz on GitHub →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🤗 HuggingFace NLP Course</h3>
+                    <p>The best free course on Transformers — covers tokenization, fine-tuning, and building real applications. Chapter 1 is a perfect complement to this lesson.</p>
+                    <p><strong>Try:</strong> Complete Chapter 1 and run the code examples in Colab</p>
+                    <a href="https://huggingface.co/learn/nlp-course/chapter1/1" class="experiment-link" target="_blank">HuggingFace Course →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🎨 The Illustrated Transformer</h3>
+                    <p>Jay Alammar's legendary visual walkthrough of the Transformer architecture. The clearest explanation of QKV attention on the internet — every diagram is gold.</p>
+                    <p><strong>Try:</strong> Read it alongside this lesson for a double dose of intuition 🔥</p>
+                    <a href="https://jalammar.github.io/illustrated-transformer/" class="experiment-link" target="_blank">Illustrated Transformer →</a>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));">
+                <h3>💻 Fine-Tune BERT for Sentiment Analysis</h3>
+                <p style="margin-bottom: 12px;">Take a pre-trained BERT and adapt it to your own task in minutes:</p>
+                <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto;"><code># pip install transformers datasets torch
+
+from transformers import (AutoTokenizer, AutoModelForSequenceClassification,
+                           TrainingArguments, Trainer)
+from datasets import load_dataset
+import numpy as np
+
+# 1. Load a sentiment dataset (SST-2: movie review sentences)
+dataset = load_dataset("glue", "sst2")
+
+# 2. Load pre-trained DistilBERT tokenizer and model
+model_name = "distilbert-base-uncased"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=2)
+
+# 3. Tokenize: convert words → numbers the model understands
+def tokenize(batch):
+    return tokenizer(batch["sentence"], truncation=True, padding=True)
+
+tokenized = dataset.map(tokenize, batched=True)
+
+# 4. Define training arguments
+training_args = TrainingArguments(
+    output_dir="./whiskers-sentiment",
+    num_train_epochs=3,
+    per_device_train_batch_size=32,
+    evaluation_strategy="epoch",
+    save_strategy="epoch",
+    load_best_model_at_end=True,
+)
+
+# 5. Evaluate with accuracy
+def compute_metrics(eval_pred):
+    logits, labels = eval_pred
+    preds = np.argmax(logits, axis=-1)
+    return {"accuracy": (preds == labels).mean()}
+
+# 6. Train!
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=tokenized["train"],
+    eval_dataset=tokenized["validation"],
+    compute_metrics=compute_metrics,
+)
+trainer.train()
+# Expect ~92% accuracy — beating many human benchmarks!
+
+# 7. Predict on new text
+inputs = tokenizer("Whiskers loved every lesson in this course!", return_tensors="pt")
+outputs = model(**inputs)
+prediction = outputs.logits.argmax().item()
+print("POSITIVE 😺" if prediction == 1 else "NEGATIVE 😿")
+# "POSITIVE 😺" — obviously!</code></pre>
+            </div>
+        </section>
+
+        <!-- SECTION 5: RESOURCES -->
+        <section id="resources" class="lesson-section">
+            <h2>📚 Resources for Further Learning</h2>
+
+            <div class="resources-section">
+                <div class="resources-columns">
+                    <div class="resource-column">
+                        <h3>🎥 Videos</h3>
+                        <ul>
+                            <li><a href="https://www.youtube.com/watch?v=4Bdc55j80l8" target="_blank">Attention Mechanism — Andrej Karpathy</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=wjZofJX0v4M" target="_blank">Transformer Neural Networks — StatQuest</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=kCc8FmEb1nY" target="_blank">Let's build GPT from scratch — Karpathy</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📖 Articles</h3>
+                        <ul>
+                            <li><a href="https://jalammar.github.io/illustrated-transformer/" target="_blank">The Illustrated Transformer — Jay Alammar</a></li>
+                            <li><a href="https://arxiv.org/abs/1706.03762" target="_blank">Attention Is All You Need (original paper)</a></li>
+                            <li><a href="https://jalammar.github.io/illustrated-bert/" target="_blank">The Illustrated BERT — Jay Alammar</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>🛠️ Tools</h3>
+                        <ul>
+                            <li><a href="https://huggingface.co/models" target="_blank">HuggingFace Model Hub</a></li>
+                            <li><a href="https://github.com/jessevig/bertviz" target="_blank">BertViz — Attention Visualiser</a></li>
+                            <li><a href="https://transformer.huggingface.co/" target="_blank">Write with Transformers (Demo)</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📚 Courses</h3>
+                        <ul>
+                            <li><a href="https://huggingface.co/learn/nlp-course" target="_blank">HuggingFace NLP Course (free)</a></li>
+                            <li><a href="https://www.deeplearning.ai/courses/natural-language-processing-specialization/" target="_blank">NLP Specialisation — DeepLearning.AI</a></li>
+                            <li><a href="https://web.stanford.edu/class/cs224n/" target="_blank">CS224N: NLP with Deep Learning — Stanford</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="lesson-navigation">
+            <a href="cnn.html" class="lesson-nav-btn">
+                <span>←</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Previous</span>
+                    <span class="lesson-nav-btn-title">CNNs — Computer Vision</span>
+                </div>
+            </a>
+            <a href="large-language-models.html" class="lesson-nav-btn next">
+                <span>→</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Next Lesson</span>
+                    <span class="lesson-nav-btn-title">Large Language Models</span>
+                </div>
+            </a>
+        </nav>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Referencia - Learning AI, one cat at a time 🐱</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

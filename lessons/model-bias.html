@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lesson 10: Model Bias & Fairness - When the cat food detector only recognizes fancy brands!">
+    <title>Lesson 10: Model Bias & Fairness | Referencia 🐱</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="../index.html" style="text-decoration: none; color: white;">
+                    <h1 class="logo">Referencia</h1>
+                </a>
+                <p class="tagline">Lesson 10: Model Bias & Fairness</p>
+            </div>
+        </nav>
+    </header>
+
+    <div class="lesson-header">
+        <div class="container">
+            <div class="lesson-number">LESSON 10</div>
+            <h1 class="lesson-title">⚖️ Model Bias & Fairness</h1>
+            <p class="lesson-subtitle">When the cat food detector only knows fancy brands - Understanding AI bias!</p>
+            <div class="lesson-info">
+                <span class="lesson-info-item">⏱️ 50 minutes</span>
+                <span class="lesson-info-item">🟢 Beginner</span>
+                <span class="lesson-info-item">📚 5 sections</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="lesson-nav">
+        <div class="container">
+            <div class="lesson-nav-container">
+                <a href="#intro" class="lesson-nav-link active">Introduction</a>
+                <a href="#sketchnote" class="lesson-nav-link">Sketchnote</a>
+                <a href="#types" class="lesson-nav-link">Core Content</a>
+                <a href="#experiments" class="lesson-nav-link">Experiments</a>
+                <a href="#resources" class="lesson-nav-link">Resources</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- SECTION 1: INTRODUCTION -->
+        <section id="intro" class="lesson-section">
+            <h2>📖 Introduction: The Biased Cat Food Detector</h2>
+            
+            <div class="lesson-intro">
+                <p>Imagine you train a <strong>"Cat Food Detector"</strong> 🐱🍽️ but all your training photos are of fancy gourmet brands from upscale pet stores. When you deploy it, it works great for expensive brands—but fails completely for regular supermarket cat food!</p>
+                
+                <p>The model isn't "wrong"—it learned exactly what you showed it. But the training data was <strong>biased</strong>, and now the model perpetuates that bias. This happens with AI systems in the real world, and the consequences can be serious—from facial recognition that fails on certain skin tones to hiring algorithms that discriminate.</p>
+            </div>
+
+            <div class="term-card" style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(37, 99, 235, 0.1)); border-left: 4px solid #a855f7;">
+                <h3>💡 Key Insight</h3>
+                <p><strong>AI models learn from data</strong>—if the data is biased, the model will be biased. This isn't a bug; it's how ML works. The responsibility is on us to ensure fair data and fair outcomes!</p>
+                <p><em>"Bias: The cat food detector trained only on fancy brands!"</em></p>
+            </div>
+
+            <h3>🎯 What You'll Learn</h3>
+            <ul>
+                <li>What bias in ML means and where it comes from</li>
+                <li>Types of bias: historical, representation, measurement</li>
+                <li>Real-world examples of AI bias</li>
+                <li>Techniques to detect and mitigate bias</li>
+                <li>The importance of diverse teams and responsible AI</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 2: SKETCHNOTE -->
+        <section id="sketchnote" class="lesson-section">
+            <h2>🎨 Sketchnote: Visual Summary</h2>
+            <p style="color: var(--text-light); margin-bottom: 20px;">The biased cat food detector!</p>
+
+            <div class="sketchnote-container">
+                <div class="sketchnote-placeholder">
+                    <h3>🖼️ Sketchnote Concept</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;"><strong>A cat food detector with blind spots:</strong></p>
+                    
+                    <div style="background: linear-gradient(135deg, #fef3c7, #fce7f3); padding: 30px; border-radius: 10px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div style="text-align: center;">
+                                <h4>Training Data 📊</h4>
+                                <p style="font-size: 2rem;">🥫✨ 🥫✨ 🥫✨</p>
+                                <p><em>All fancy gourmet brands!</em></p>
+                                <p style="font-size: 0.9rem;">90% Premium Brand A<br>10% Premium Brand B</p>
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <h4>Real World 🌍</h4>
+                                <p style="font-size: 2rem;">🥫✨ 🥫 🥫 🥫 🥫</p>
+                                <p><em>Mostly regular brands!</em></p>
+                                <p style="font-size: 0.9rem;">20% Premium<br>80% Regular brands</p>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 20px; background: #fee2e2; padding: 15px; border-radius: 8px; text-align: center;">
+                            <p style="font-size: 1.5rem;">🐱🔍❓</p>
+                            <p><strong>Model in the wild:</strong> "Is this... food? I don't recognize non-fancy brands!"</p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 25px; padding: 15px; background: #f0f9ff; border-radius: 8px;">
+                        <p><strong>Key Visual:</strong> Show a funnel where biased data flows in, and biased decisions flow out</p>
+                        <p>Data Bias → Model Bias → Decision Bias → Real-World Harm</p>
+                    </div>
+                    
+                    <p style="margin-top: 20px; color: var(--text-light);">
+                        💡 Save your sketchnote as: <code>/assets/sketchnotes/model-bias.png</code>
+                    </p>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px;">
+                <h3>🐱 The Cat Food Detector Story</h3>
+                <p><strong>Problem:</strong> A startup builds an app to identify cat food brands from photos. The developers, being cat enthusiasts with good incomes, only photograph their own expensive brands.</p>
+                <p><strong>Result:</strong> App works great in wealthy neighborhoods, fails completely in regular stores. The model isn't racist or classist—it just learned from biased data!</p>
+                <p><strong>The fix:</strong> Collect diverse training data representing ALL cat food brands, price points, and packaging styles.</p>
+                <p><strong>Lesson:</strong> Your training data must represent the full diversity of your use case!</p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: CORE CONTENT -->
+        <section id="types" class="lesson-section">
+            <h2>📚 Core Content</h2>
+
+            <div class="accordion">
+                <!-- Types of Bias -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>📊 Types of Bias</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>📜 Historical Bias</h4>
+                                <p>Bias that exists in the real world and gets captured in data</p>
+                                <p><strong>Example:</strong> Training on historical hiring data encodes past discrimination</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>👥 Representation Bias</h4>
+                                <p>Some groups underrepresented in training data</p>
+                                <p><strong>Example:</strong> Facial recognition trained mostly on lighter skin tones</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>📏 Measurement Bias</h4>
+                                <p>How we measure or label things introduces bias</p>
+                                <p><strong>Example:</strong> Using arrest rates as proxy for crime rates</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🔄 Feedback Loops</h4>
+                                <p>Model's decisions influence future training data</p>
+                                <p><strong>Example:</strong> Predictive policing → more arrests in predicted areas → reinforces predictions</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🏷️ Labeling Bias</h4>
+                                <p>Human annotators inject their biases into labels</p>
+                                <p><strong>Example:</strong> Different annotators may label "toxic" content inconsistently</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🎯 Selection Bias</h4>
+                                <p>Non-random selection of training examples</p>
+                                <p><strong>Example:</strong> Medical AI trained only on patients who could afford treatment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real-World Examples -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🌍 Real-World Examples of AI Bias</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card" style="border-left: 4px solid #ef4444;">
+                            <h4>🎯 COMPAS Recidivism Algorithm</h4>
+                            <p>Used in US courts to predict reoffending risk. ProPublica found it falsely labeled Black defendants as high-risk at nearly twice the rate of white defendants.</p>
+                        </div>
+
+                        <div class="term-card" style="border-left: 4px solid #ef4444;">
+                            <h4>📸 Facial Recognition Disparities</h4>
+                            <p>MIT study found commercial facial recognition had error rates of 0.8% for light-skinned men but 34.7% for dark-skinned women. Trained on non-diverse datasets.</p>
+                        </div>
+
+                        <div class="term-card" style="border-left: 4px solid #ef4444;">
+                            <h4>💼 Amazon's Hiring Tool</h4>
+                            <p>Trained on 10 years of resumes (mostly male), it learned to penalize resumes containing words like "women's" and downgrade graduates of all-women's colleges. Amazon scrapped it.</p>
+                        </div>
+
+                        <div class="term-card" style="border-left: 4px solid #ef4444;">
+                            <h4>🏥 Healthcare Algorithms</h4>
+                            <p>An algorithm used to allocate healthcare resources was found to systematically under-estimate the health needs of Black patients because it used healthcare costs (not actual health) as a proxy.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detecting Bias -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🔍 Detecting Bias</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>📊 Disaggregated Metrics</h4>
+                                <p>Don't just look at overall accuracy—break down performance by group</p>
+                                <p><strong>Check:</strong> Accuracy for each demographic group separately</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>📈 Data Audits</h4>
+                                <p>Examine your training data distribution</p>
+                                <p><strong>Check:</strong> Is each group well-represented?</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>⚖️ Fairness Metrics</h4>
+                                <p>Mathematical measures of fairness</p>
+                                <p><strong>Examples:</strong> Demographic parity, equalized odds, calibration</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🧪 Counterfactual Testing</h4>
+                                <p>Change protected attributes, see if prediction changes</p>
+                                <p><strong>Test:</strong> Does changing gender in a resume change the score?</p>
+                            </div>
+                        </div>
+
+                        <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; margin-top: 20px;"><code># Check for bias: disaggregated metrics
+def check_fairness(y_true, y_pred, sensitive_attribute):
+    """Check accuracy across different groups"""
+    groups = set(sensitive_attribute)
+    
+    for group in groups:
+        mask = sensitive_attribute == group
+        group_accuracy = accuracy_score(y_true[mask], y_pred[mask])
+        print(f"Group '{group}': {group_accuracy:.2%}")
+    
+    # If there's a big gap between groups, we have a fairness problem!
+
+# Example output:
+# Group 'fancy_brand': 95%
+# Group 'regular_brand': 62%  ← Big gap! Bias detected! 🚨</code></pre>
+                    </div>
+                </div>
+
+                <!-- Mitigating Bias -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🔧 Mitigating Bias</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>📊 Pre-processing: Fix the Data</h4>
+                            <ul>
+                                <li><strong>Collect diverse data:</strong> Ensure all groups are well-represented</li>
+                                <li><strong>Re-balance:</strong> Oversample underrepresented groups</li>
+                                <li><strong>Remove proxies:</strong> Exclude features that correlate with protected attributes</li>
+                            </ul>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>⚙️ In-processing: Fix the Model</h4>
+                            <ul>
+                                <li><strong>Fairness constraints:</strong> Add fairness terms to the loss function</li>
+                                <li><strong>Adversarial debiasing:</strong> Train to be accurate but not predictive of protected attributes</li>
+                                <li><strong>Fair representation learning:</strong> Learn embeddings that don't encode bias</li>
+                            </ul>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>📤 Post-processing: Fix the Output</h4>
+                            <ul>
+                                <li><strong>Threshold adjustment:</strong> Different decision thresholds per group</li>
+                                <li><strong>Calibration:</strong> Ensure predictions mean the same thing across groups</li>
+                                <li><strong>Reject option:</strong> Send uncertain cases to human review</li>
+                            </ul>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>👥 Process Improvements</h4>
+                            <ul>
+                                <li><strong>Diverse teams:</strong> Different perspectives catch different biases</li>
+                                <li><strong>Community input:</strong> Involve affected communities in development</li>
+                                <li><strong>Regular audits:</strong> Continuously monitor for bias in production</li>
+                                <li><strong>Documentation:</strong> Model cards, datasheets, transparency</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Responsible AI -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🌟 Responsible AI Principles</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>⚖️ Fairness</h4>
+                                <p>AI should not discriminate against individuals or groups</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🔍 Transparency</h4>
+                                <p>How AI systems work should be understandable</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>📋 Accountability</h4>
+                                <p>Humans should be responsible for AI outcomes</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🔒 Privacy</h4>
+                                <p>AI should respect user data and privacy</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🛡️ Safety</h4>
+                                <p>AI should not cause harm to individuals or society</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🤝 Inclusivity</h4>
+                                <p>AI should benefit everyone, not just certain groups</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: EXPERIMENTS -->
+        <section id="experiments" class="lesson-section">
+            <h2>🧪 Experiments: Explore AI Fairness!</h2>
+            <p style="color: var(--text-light); margin-bottom: 30px;">Hands-on tools to understand and address bias!</p>
+
+            <div class="experiments-grid">
+                <div class="experiment-card">
+                    <h3>🎭 What-If Tool</h3>
+                    <p>Google's tool for exploring ML models. Slice data by groups, test fairness, find counterfactual examples!</p>
+                    <p><strong>Try:</strong> Compare model performance across different groups</p>
+                    <a href="https://pair-code.github.io/what-if-tool/" class="experiment-link" target="_blank">Launch What-If Tool →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>📊 AI Fairness 360</h3>
+                    <p>IBM's open-source toolkit with 70+ fairness metrics and 10+ bias mitigation algorithms!</p>
+                    <p><strong>Concepts:</strong> Comprehensive fairness analysis</p>
+                    <a href="https://aif360.mybluemix.net/" class="experiment-link" target="_blank">Explore AIF360 →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🔍 Fairlearn</h3>
+                    <p>Microsoft's Python toolkit for assessing and improving fairness of ML models.</p>
+                    <p><strong>Try:</strong> Built-in dashboards and mitigation algorithms</p>
+                    <a href="https://fairlearn.org/" class="experiment-link" target="_blank">Try Fairlearn →</a>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px; background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(37, 99, 235, 0.1));">
+                <h3>💻 Analyze Fairness with Fairlearn</h3>
+                <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto;"><code># Analyze model fairness with Fairlearn
+from fairlearn.metrics import MetricFrame
+from sklearn.metrics import accuracy_score, precision_score
+
+# Assume we have predictions and a sensitive feature (e.g., cat_food_type)
+sensitive_feature = ["fancy", "regular", "fancy", "regular", ...]
+
+# Create a MetricFrame to analyze metrics by group
+metric_frame = MetricFrame(
+    metrics={
+        "accuracy": accuracy_score,
+        "precision": precision_score
+    },
+    y_true=y_test,
+    y_pred=y_pred,
+    sensitive_features=sensitive_feature
+)
+
+# See metrics by group
+print(metric_frame.by_group)
+# Output:
+#          accuracy  precision
+# fancy       0.95       0.93
+# regular     0.62       0.58  ← Big disparity!
+
+# Overall metrics
+print(f"Overall accuracy: {metric_frame.overall['accuracy']:.2%}")
+
+# The difference shows our model is biased against regular brands! 🚨</code></pre>
+            </div>
+        </section>
+
+        <!-- SECTION 5: RESOURCES -->
+        <section id="resources" class="lesson-section">
+            <h2>📚 Resources for Further Learning</h2>
+            
+            <div class="resources-section">
+                <div class="resources-columns">
+                    <div class="resource-column">
+                        <h3>🎥 Videos</h3>
+                        <ul>
+                            <li><a href="https://www.youtube.com/watch?v=TWWsW1w-BVo" target="_blank">Algorithmic Bias - Coded Bias Documentary</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=UG_X_7g63rY" target="_blank">AI Fairness - Google</a></li>
+                            <li><a href="https://www.ted.com/talks/joy_buolamwini_how_i_m_fighting_bias_in_algorithms" target="_blank">Fighting Bias in Algorithms - Joy Buolamwini</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📖 Articles & Papers</h3>
+                        <ul>
+                            <li><a href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing" target="_blank">Machine Bias - ProPublica</a></li>
+                            <li><a href="http://gendershades.org/" target="_blank">Gender Shades Project</a></li>
+                            <li><a href="https://arxiv.org/abs/1810.03993" target="_blank">Model Cards for Model Reporting</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>🛠️ Tools</h3>
+                        <ul>
+                            <li><a href="https://fairlearn.org/" target="_blank">Fairlearn (Microsoft)</a></li>
+                            <li><a href="https://aif360.mybluemix.net/" target="_blank">AI Fairness 360 (IBM)</a></li>
+                            <li><a href="https://pair-code.github.io/what-if-tool/" target="_blank">What-If Tool (Google)</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📚 Courses & Books</h3>
+                        <ul>
+                            <li><a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank">AI For Everyone - Andrew Ng</a></li>
+                            <li><strong>Book:</strong> "Weapons of Math Destruction" - Cathy O'Neil</li>
+                            <li><strong>Book:</strong> "Race After Technology" - Ruha Benjamin</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="lesson-navigation">
+            <a href="overfitting-underfitting.html" class="lesson-nav-btn">
+                <span>←</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Previous</span>
+                    <span class="lesson-nav-btn-title">Overfitting & Underfitting</span>
+                </div>
+            </a>
+            <a href="../index.html" class="lesson-nav-btn next">
+                <span>🎉</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Complete!</span>
+                    <span class="lesson-nav-btn-title">Back to All Lessons</span>
+                </div>
+            </a>
+        </nav>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Referencia - Learning AI, one cat at a time 🐱</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

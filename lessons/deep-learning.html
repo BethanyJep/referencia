@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson 03: Deep Learning | Referencia</title>
+    <meta name="description" content="Lesson 05: Deep Learning - How kittens learn to see faces through layers of understanding, and how deep neural networks do the same thing at superhuman scale.">
+    <title>Lesson 05: Deep Learning | Referencia 🐱</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -13,48 +14,734 @@
                 <a href="../index.html" style="text-decoration: none; color: white;">
                     <h1 class="logo">Referencia</h1>
                 </a>
-                <p class="tagline">Lesson 03: Deep Learning</p>
+                <p class="tagline">Lesson 05: Deep Learning</p>
             </div>
         </nav>
     </header>
+
     <div class="lesson-header">
         <div class="container">
-            <div class="lesson-number">LESSON 03</div>
-            <h1 class="lesson-title">🔬 Deep Learning</h1>
-            <p class="lesson-subtitle">Neural networks, CNNs, RNNs, and modern architectures</p>
+            <div class="lesson-number">LESSON 05</div>
+            <h1 class="lesson-title">🧠 Deep Learning</h1>
+            <p class="lesson-subtitle">Layer by layer — how neural networks learn to see, listen, and understand like a cat!</p>
             <div class="lesson-info">
-                <span class="lesson-info-item">⏱️ 75 minutes</span>
+                <span class="lesson-info-item">⏱️ 55 minutes</span>
                 <span class="lesson-info-item">🟡 Intermediate</span>
+                <span class="lesson-info-item">📚 5 sections</span>
             </div>
         </div>
     </div>
+
+    <nav class="lesson-nav">
+        <div class="container">
+            <div class="lesson-nav-container">
+                <a href="#intro" class="lesson-nav-link active">Introduction</a>
+                <a href="#sketchnote" class="lesson-nav-link">Sketchnote</a>
+                <a href="#content" class="lesson-nav-link">Core Content</a>
+                <a href="#experiments" class="lesson-nav-link">Experiments</a>
+                <a href="#resources" class="lesson-nav-link">Resources</a>
+            </div>
+        </div>
+    </nav>
+
     <main class="container">
-        <section class="lesson-section">
-            <h2>📖 Lesson Coming Soon</h2>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             SECTION 1: INTRODUCTION
+        ═══════════════════════════════════════════════════════════ -->
+        <section id="intro" class="lesson-section">
+            <h2>📖 Introduction: What is Deep Learning?</h2>
+
             <div class="lesson-intro">
-                <p>This lesson will cover neural networks, CNNs, RNNs, Transformers, and more.</p>
+                <p>Watch a kitten the first time it meets another cat. It doesn't immediately understand "that's a face". Instead its brain processes the scene in stages: first it notices contrast — dark and light patches. Then it registers lines and curves. Then it assembles those curves into shapes — a round head, triangular ears. Finally it snaps together: <em>"That's a cat face!"</em></p>
+
+                <p>Deep Learning works in exactly the same way. A <strong>deep neural network</strong> is a stack of processing layers, each one transforming the data into a slightly more abstract representation. Early layers detect simple features like edges and colours; middle layers assemble those into shapes and textures; deep layers identify high-level concepts like "cat ear" or "dog snout". By the time data reaches the final layer, the network has built a rich internal understanding — learned entirely from examples, no hand-coding required.</p>
+
+                <p><strong>Deep Learning</strong> is a subfield of machine learning where neural networks with <em>many layers</em> (the "deep" part) learn hierarchical representations directly from raw data. It powers virtually every AI breakthrough of the past decade: the voice assistant on your phone, the image filter on your camera, the recommendation engine on your streaming service, and the large language models driving today's AI revolution.</p>
+            </div>
+
+            <div class="term-card" style="background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(37, 99, 235, 0.1)); border-left: 4px solid #7c3aed;">
+                <h3>💡 Key Insight</h3>
+                <p><strong>Deep Learning</strong> = machine learning with neural networks that have many layers. Each layer learns increasingly abstract features from raw data — no human feature engineering needed. More depth → richer representations → state-of-the-art results.</p>
+                <p><em>"In 2010 the best image classifiers had ~25% error. By 2015, deep learning models were down to ~3% — better than most humans."</em></p>
+            </div>
+
+            <h3>🎯 What You'll Learn</h3>
+            <ul>
+                <li>Why "deep" means better — the power of stacking layers</li>
+                <li>How each layer of a network learns progressively abstract features</li>
+                <li>The three most important deep learning architectures: CNNs, RNNs/LSTMs, and Transformers</li>
+                <li>How backpropagation trains a network (gradient descent made approachable)</li>
+                <li>The practical tools — PyTorch, TensorFlow, Keras — and how to write your first deep network</li>
+                <li>Real-world applications from speech recognition to autonomous driving</li>
+            </ul>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             SECTION 2: SKETCHNOTE
+        ═══════════════════════════════════════════════════════════ -->
+        <section id="sketchnote" class="lesson-section">
+            <h2>🎨 Sketchnote: Visual Summary</h2>
+            <p style="color: var(--text-light); margin-bottom: 20px;">The cat brain — layer by layer!</p>
+
+            <div class="sketchnote-container">
+                <div class="sketchnote-placeholder">
+                    <h3>🖼️ Sketchnote Concept</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;"><strong>How a deep network recognises Whiskers — one layer at a time:</strong></p>
+
+                    <!-- Flow title -->
+                    <div style="background: linear-gradient(135deg, #ede9fe, #dbeafe); padding: 14px 20px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
+                        <p style="margin: 0; font-size: 1rem;">🐱 Input Photo → <strong>Deep Network</strong> → 🏷️ "It's Whiskers!"</p>
+                    </div>
+
+                    <!-- Layer-by-layer flow -->
+                    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 20px; align-items: stretch;">
+
+                        <div style="background: #fef3c7; padding: 14px 8px; border-radius: 10px; text-align: center; border: 2px solid #fbbf24;">
+                            <p style="font-size: 1.8rem; margin: 0 0 6px 0;">🟫⬛</p>
+                            <p style="font-weight: bold; font-size: 0.8rem; margin: 0 0 4px 0; color: #92400e;">Layer 1</p>
+                            <p style="font-size: 0.75rem; color: #78350f; margin: 0;">Pixels &amp; Edges</p>
+                            <p style="font-size: 0.7rem; color: #9ca3af; margin-top: 6px;">"I see lines and contrast"</p>
+                        </div>
+
+                        <div style="display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">→</div>
+
+                        <div style="background: #d1fae5; padding: 14px 8px; border-radius: 10px; text-align: center; border: 2px solid #34d399;">
+                            <p style="font-size: 1.8rem; margin: 0 0 6px 0;">⭕🔺</p>
+                            <p style="font-weight: bold; font-size: 0.8rem; margin: 0 0 4px 0; color: #065f46;">Layer 2</p>
+                            <p style="font-size: 0.75rem; color: #064e3b; margin: 0;">Shapes &amp; Curves</p>
+                            <p style="font-size: 0.7rem; color: #9ca3af; margin-top: 6px;">"Circles, triangles…"</p>
+                        </div>
+
+                        <div style="display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">→</div>
+
+                        <div style="background: #dbeafe; padding: 14px 8px; border-radius: 10px; text-align: center; border: 2px solid #60a5fa;">
+                            <p style="font-size: 1.8rem; margin: 0 0 6px 0;">👁️👃</p>
+                            <p style="font-weight: bold; font-size: 0.8rem; margin: 0 0 4px 0; color: #1e40af;">Layer 3</p>
+                            <p style="font-size: 0.75rem; color: #1e3a8a; margin: 0;">Face Parts</p>
+                            <p style="font-size: 0.7rem; color: #9ca3af; margin-top: 6px;">"Eyes, ears, nose…"</p>
+                        </div>
+
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 20px; align-items: stretch;">
+
+                        <div style="background: #ede9fe; padding: 14px 8px; border-radius: 10px; text-align: center; border: 2px solid #a78bfa;">
+                            <p style="font-size: 1.8rem; margin: 0 0 6px 0;">🐱</p>
+                            <p style="font-weight: bold; font-size: 0.8rem; margin: 0 0 4px 0; color: #5b21b6;">Layer 4</p>
+                            <p style="font-size: 0.75rem; color: #4c1d95; margin: 0;">Cat Face Concept</p>
+                            <p style="font-size: 0.7rem; color: #9ca3af; margin-top: 6px;">"That arrangement = cat"</p>
+                        </div>
+
+                        <div style="display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">→</div>
+
+                        <div style="background: linear-gradient(135deg, #fce7f3, #ede9fe); padding: 14px 8px; border-radius: 10px; text-align: center; border: 2px solid #ec4899;">
+                            <p style="font-size: 1.8rem; margin: 0 0 6px 0;">🏷️✅</p>
+                            <p style="font-weight: bold; font-size: 0.8rem; margin: 0 0 4px 0; color: #9d174d;">Output Layer</p>
+                            <p style="font-size: 0.75rem; color: #831843; margin: 0;">"It's Whiskers!"</p>
+                            <p style="font-size: 0.7rem; color: #9ca3af; margin-top: 6px;">Confidence: 98.7%</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Architecture comparison strip -->
+                    <p style="font-weight: bold; margin-bottom: 10px; text-align: center;">🏗️ Three Deep Learning Architectures at a Glance:</p>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px;">
+                        <div style="background: #fff7ed; padding: 12px; border-radius: 8px; text-align: center; border: 1px solid #fed7aa;">
+                            <p style="font-size: 1.4rem; margin: 0;">🖼️</p>
+                            <p style="font-weight: bold; font-size: 0.85rem; margin: 4px 0; color: #c2410c;">CNN</p>
+                            <p style="font-size: 0.75rem; color: #6b7280; margin: 0;">Images &amp; Video</p>
+                        </div>
+                        <div style="background: #ecfdf5; padding: 12px; border-radius: 8px; text-align: center; border: 1px solid #a7f3d0;">
+                            <p style="font-size: 1.4rem; margin: 0;">📜</p>
+                            <p style="font-weight: bold; font-size: 0.85rem; margin: 4px 0; color: #065f46;">RNN / LSTM</p>
+                            <p style="font-size: 0.75rem; color: #6b7280; margin: 0;">Sequences &amp; Text</p>
+                        </div>
+                        <div style="background: #eff6ff; padding: 12px; border-radius: 8px; text-align: center; border: 1px solid #bfdbfe;">
+                            <p style="font-size: 1.4rem; margin: 0;">⚡</p>
+                            <p style="font-weight: bold; font-size: 0.85rem; margin: 4px 0; color: #1d4ed8;">Transformer</p>
+                            <p style="font-size: 0.75rem; color: #6b7280; margin: 0;">Modern NLP &amp; beyond</p>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 16px; color: var(--text-light); font-size: 0.9rem; text-align: center;">
+                        💡 Save your sketchnote as: <code>assets/sketchnotes/deep-learning.png</code>
+                    </p>
+                </div>
             </div>
         </section>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             SECTION 3: CORE CONTENT
+        ═══════════════════════════════════════════════════════════ -->
+        <section id="content" class="lesson-section">
+            <h2>📚 Core Content</h2>
+
+            <div class="accordion">
+
+                <!-- ── Accordion 1: What is Deep Learning? ── -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🔬 What is Deep Learning?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Machine learning gave us algorithms that improve from data. Deep Learning pushed this further by using <strong>neural networks with many stacked layers</strong>, allowing the network to automatically learn its own features — no human-crafted rules required.</p>
+
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>📐 Before Deep Learning (pre-2012)</h4>
+                                <p>Engineers had to manually craft the features that models used. For image recognition this meant writing code to detect specific edges, colour histograms, or texture patterns — a slow, brittle process.</p>
+                                <p><strong>Problem:</strong> Humans can't anticipate every visual feature that matters for every image type.</p>
+                                <p><strong>ImageNet 2010 accuracy:</strong> ~74% (26% error rate)</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🚀 After Deep Learning (2012+)</h4>
+                                <p>AlexNet (2012) used a <strong>deep convolutional neural network</strong> trained on GPUs to win ImageNet by a massive margin. The network learned its own features from raw pixels — and decimated the competition.</p>
+                                <p><strong>Breakthrough:</strong> Features emerge automatically through learning.</p>
+                                <p><strong>ImageNet 2015 accuracy:</strong> ~97% (3% error — superhuman!)</p>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px; background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(37,99,235,0.08)); border-left: 4px solid #7c3aed;">
+                            <h4>💡 Why Does "Deep" Help?</h4>
+                            <p>Each layer in a deep network takes the output of the previous layer and transforms it into a more abstract representation. A shallow network (1–2 hidden layers) can in theory approximate any function, but in practice it needs <em>exponentially more neurons</em> to match what a deep network learns efficiently. Depth is a form of representational compression.</p>
+                            <ul>
+                                <li><strong>Shallow networks:</strong> Learn simple, direct mappings well</li>
+                                <li><strong>Deep networks:</strong> Learn hierarchical, compositional representations — exactly how the real world is structured</li>
+                            </ul>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 16px;">
+                            <h4>🐱 The Kitten Analogy in Full</h4>
+                            <p>A kitten seeing another cat for the first time:</p>
+                            <ol>
+                                <li><strong>Retina (Layer 1):</strong> Raw light levels, contrast — pixels</li>
+                                <li><strong>Primary visual cortex (Layer 2):</strong> Oriented edges and lines</li>
+                                <li><strong>Secondary visual cortex (Layer 3):</strong> Curves, corners, simple shapes</li>
+                                <li><strong>Temporal lobe (Layer 4):</strong> Object parts — eyes, ears, whiskers</li>
+                                <li><strong>Recognition area (Output):</strong> "That's a cat!" — with confidence score</li>
+                            </ol>
+                            <p>A deep neural network, particularly a CNN, mirrors this hierarchy almost exactly.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Accordion 2: How Depth Helps ── -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>📐 How Depth Helps: Layer-by-Layer Feature Extraction</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>The power of deep learning lies in <strong>hierarchical feature learning</strong>. Let's trace what each layer in a CNN actually learns when trained on cat photos:</p>
+
+                        <div style="overflow-x: auto;">
+                            <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; min-width: 560px;">
+                                <thead>
+                                    <tr style="background: #7c3aed; color: white;">
+                                        <th style="padding: 12px; text-align: left;">Layer</th>
+                                        <th style="padding: 12px; text-align: left;">What it Learns</th>
+                                        <th style="padding: 12px; text-align: left;">Cat Example</th>
+                                        <th style="padding: 12px; text-align: left;">Abstraction Level</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="background: #fef3c7;">
+                                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb;"><strong>Layer 1–2</strong></td>
+                                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb;">Edges, colour blobs, gradients</td>
+                                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb;">"Fur texture edges"</td>
+                                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb;">Very low</td>
+                                    </tr>
+                                    <tr style="background: #d1fae5;">
+                                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb;"><strong>Layer 3–4</strong></td>
+                                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb;">Corners, curves, simple textures</td>
+                                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb;">"Curved ear outline"</td>
+                                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb;">Low</td>
+                                    </tr>
+                                    <tr style="background: #dbeafe;">
+                                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb;"><strong>Layer 5–8</strong></td>
+                                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb;">Object parts, complex patterns</td>
+                                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb;">"Pointy triangular ear"</td>
+                                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb;">Medium</td>
+                                    </tr>
+                                    <tr style="background: #ede9fe;">
+                                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb;"><strong>Layer 9–14</strong></td>
+                                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb;">Semantic object concepts</td>
+                                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb;">"Cat face arrangement"</td>
+                                        <td style="padding: 10px; border-bottom: 1px solid #e5e7eb;">High</td>
+                                    </tr>
+                                    <tr style="background: #fce7f3;">
+                                        <td style="padding: 10px;"><strong>Output Layer</strong></td>
+                                        <td style="padding: 10px;">Class probabilities</td>
+                                        <td style="padding: 10px;">"Cat: 98.7%, Dog: 0.9%"</td>
+                                        <td style="padding: 10px;">Decision</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="terms-grid" style="margin-top: 20px;">
+                            <div class="term-card">
+                                <h4>🌊 Shallow Network (1–2 layers)</h4>
+                                <p>Can only learn simple, direct input-output mappings. Good for tabular data with engineered features. Struggles with raw pixels, audio, or text.</p>
+                                <p><strong>Analogy:</strong> A kitten that only knows "light = day, dark = night" — no understanding of objects.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🏔️ Deep Network (10+ layers)</h4>
+                                <p>Learns rich, hierarchical representations. Each layer builds on the previous one. Requires more data and compute, but achieves dramatically better results on complex tasks.</p>
+                                <p><strong>Analogy:</strong> A fully trained cat that can identify not just "day/night" but dozens of objects, faces, and situations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Accordion 3: Key Architectures ── -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🏗️ Key Deep Learning Architectures</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Three architectures dominate deep learning. Each was designed for a different type of data and task:</p>
+
+                        <div class="terms-grid">
+                            <div class="term-card" style="border-left: 4px solid #f97316;">
+                                <h4>🖼️ CNN — Convolutional Neural Network</h4>
+                                <p><strong>Best for:</strong> Images and video</p>
+                                <p><strong>Key idea:</strong> Uses small filters (like a magnifying glass) that slide across the image, looking for the same pattern everywhere. This makes them translation-invariant — a cat ear is a cat ear whether it's in the top-left or bottom-right of the image.</p>
+                                <p><strong>Famous examples:</strong> AlexNet, VGG, ResNet, EfficientNet</p>
+                                <p><strong>Used in:</strong> Photo tagging, medical imaging, self-driving car cameras, facial recognition</p>
+                                <p><em>→ You'll go deep on CNNs in the upcoming Computer Vision lesson!</em></p>
+                            </div>
+                            <div class="term-card" style="border-left: 4px solid #10b981;">
+                                <h4>🔄 RNN / LSTM — Recurrent Neural Network</h4>
+                                <p><strong>Best for:</strong> Sequences — text, audio, time series</p>
+                                <p><strong>Key idea:</strong> Has a "memory" — each step can look at what it processed previously. This lets it handle data where order matters: "the cat sat on the mat" ≠ "the mat sat on the cat".</p>
+                                <p><strong>LSTM</strong> (Long Short-Term Memory) adds gates to control what to remember and forget over long sequences.</p>
+                                <p><strong>Used in:</strong> Speech recognition, machine translation, autocomplete, music generation</p>
+                                <p><em>→ Largely replaced by Transformers for NLP, but still important for streaming time-series data.</em></p>
+                            </div>
+                            <div class="term-card" style="border-left: 4px solid #3b82f6;">
+                                <h4>⚡ Transformer</h4>
+                                <p><strong>Best for:</strong> Language, and increasingly everything else</p>
+                                <p><strong>Key idea:</strong> Uses <strong>attention</strong> — every token can directly "attend" to every other token in the sequence, regardless of distance. No more vanishing gradient over long sequences!</p>
+                                <p><strong>Famous examples:</strong> GPT series, BERT, T5, ViT (Vision Transformer)</p>
+                                <p><strong>Used in:</strong> ChatGPT, GitHub Copilot, Google Translate, Stable Diffusion (combined with other models)</p>
+                                <p><em>→ Dedicated Transformer lesson coming up — it's worth its own deep dive!</em></p>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px; background: linear-gradient(135deg, rgba(251,191,36,0.1), rgba(245,158,11,0.08)); border-left: 4px solid #f59e0b;">
+                            <h4>🐱 Which Architecture for Which Task?</h4>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px;">
+                                <div>
+                                    <p><strong>Image classification:</strong> CNN or Vision Transformer</p>
+                                    <p><strong>Object detection in video:</strong> CNN-based (YOLO, R-CNN)</p>
+                                    <p><strong>Speech-to-text:</strong> RNN/LSTM or Transformer (Whisper)</p>
+                                </div>
+                                <div>
+                                    <p><strong>Text generation (GPT):</strong> Transformer</p>
+                                    <p><strong>Time series forecasting:</strong> LSTM or Transformer</p>
+                                    <p><strong>Image generation:</strong> Diffusion model + Transformer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Accordion 4: Training Deep Networks ── -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>⚙️ Training Deep Networks: Backpropagation &amp; Gradient Descent</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>How does a deep network actually <em>learn</em>? The answer is a beautiful algorithm called <strong>backpropagation</strong>, powered by <strong>gradient descent</strong>.</p>
+
+                        <div class="term-card" style="background: linear-gradient(135deg, rgba(37,99,235,0.06), rgba(124,58,237,0.06)); border-left: 4px solid var(--primary-color);">
+                            <h4>🏔️ The Gradient Descent Cat Analogy</h4>
+                            <p>Imagine Whiskers is blindfolded on a hilly landscape. The height of any point represents how <em>wrong</em> the network currently is (the <strong>loss</strong>). Whiskers wants to find the valley — the lowest point (minimum loss).</p>
+                            <p>At each step, Whiskers feels the slope of the ground beneath her paws (the <strong>gradient</strong>) and takes a small step downhill. She repeats this until she can't go lower — she's found a good solution!</p>
+                            <p>The <strong>learning rate</strong> controls how big each step is. Too big → overshoot the valley. Too small → takes forever to arrive.</p>
+                        </div>
+
+                        <div class="terms-grid" style="margin-top: 20px;">
+                            <div class="term-card">
+                                <h4>⏩ Forward Pass</h4>
+                                <p>Input data flows <em>forward</em> through every layer, each one transforming it. The final layer produces a prediction.</p>
+                                <p><strong>Example:</strong> A cat photo → pixels → edges → shapes → "Cat: 72% confidence"</p>
+                                <p>On the first pass, the network knows nothing, so the confidence is basically random.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>📉 Loss Calculation</h4>
+                                <p>The prediction is compared to the true label using a <strong>loss function</strong> that measures how wrong the network was.</p>
+                                <p><strong>Common loss functions:</strong></p>
+                                <ul>
+                                    <li>Cross-entropy loss (classification)</li>
+                                    <li>Mean squared error (regression)</li>
+                                </ul>
+                                <p><strong>Example:</strong> True answer "Cat" → predicted "Dog" → high loss!</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>⏪ Backward Pass (Backpropagation)</h4>
+                                <p>The error signal flows <em>backwards</em> through every layer using the chain rule of calculus. Each weight receives a gradient telling it: "adjust this way to reduce the error".</p>
+                                <p><strong>Whiskers analogy:</strong> The blame for the wrong answer is shared backwards through every paw that contributed to it!</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🔧 Weight Update</h4>
+                                <p>Each weight is nudged in the direction that reduces loss:</p>
+                                <p style="font-family: monospace; background: #f1f5f9; padding: 6px 10px; border-radius: 6px; display: block; margin: 8px 0; font-size: 0.9rem;">weight = weight − (learning_rate × gradient)</p>
+                                <p>This tiny adjustment, done millions of times across billions of examples, is how a random network becomes an expert.</p>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px;">
+                            <h4>📊 Key Training Hyperparameters</h4>
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px;">
+                                <div style="background: #f8fafc; padding: 12px; border-radius: 8px; text-align: center;">
+                                    <p style="font-size: 1.4rem; margin: 0;">🔁</p>
+                                    <p style="font-weight: bold; margin: 6px 0 2px 0;">Epoch</p>
+                                    <p style="font-size: 0.85rem; color: #6b7280; margin: 0;">One full pass through the entire training dataset. Typical: 10–100 epochs.</p>
+                                </div>
+                                <div style="background: #f8fafc; padding: 12px; border-radius: 8px; text-align: center;">
+                                    <p style="font-size: 1.4rem; margin: 0;">📦</p>
+                                    <p style="font-weight: bold; margin: 6px 0 2px 0;">Batch Size</p>
+                                    <p style="font-size: 0.85rem; color: #6b7280; margin: 0;">How many examples to process before each weight update. Typical: 32–256.</p>
+                                </div>
+                                <div style="background: #f8fafc; padding: 12px; border-radius: 8px; text-align: center;">
+                                    <p style="font-size: 1.4rem; margin: 0;">🎚️</p>
+                                    <p style="font-weight: bold; margin: 6px 0 2px 0;">Learning Rate</p>
+                                    <p style="font-size: 0.85rem; color: #6b7280; margin: 0;">Step size for gradient descent. Typical: 0.001–0.0001. Most critical hyperparameter!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Accordion 5: Deep Learning in Practice ── -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🛠️ Deep Learning in Practice: Tools &amp; Code</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>You don't need to implement backpropagation by hand. These frameworks handle all the calculus for you — you just define the network architecture and plug in your data.</p>
+
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>🔥 PyTorch</h4>
+                                <p>Facebook's framework — the favourite of researchers. Dynamic computation graphs make debugging intuitive. Most cutting-edge papers release PyTorch code.</p>
+                                <p><strong>Best for:</strong> Research, custom architectures, production (TorchServe)</p>
+                                <a href="https://pytorch.org/" target="_blank" rel="noopener">pytorch.org →</a>
+                            </div>
+                            <div class="term-card">
+                                <h4>🌊 TensorFlow</h4>
+                                <p>Google's framework — battle-hardened for large-scale production. TensorBoard provides excellent training visualisation. TensorFlow Lite deploys to mobile.</p>
+                                <p><strong>Best for:</strong> Production at scale, mobile/embedded deployment</p>
+                                <a href="https://www.tensorflow.org/" target="_blank" rel="noopener">tensorflow.org →</a>
+                            </div>
+                            <div class="term-card">
+                                <h4>🎯 Keras</h4>
+                                <p>A high-level API that sits on top of TensorFlow (and optionally JAX or PyTorch). The friendliest way to build neural networks — great for learning and rapid prototyping.</p>
+                                <p><strong>Best for:</strong> Beginners, fast prototyping, standard architectures</p>
+                                <a href="https://keras.io/" target="_blank" rel="noopener">keras.io →</a>
+                            </div>
+                        </div>
+
+                        <h4 style="margin-top: 28px; margin-bottom: 12px;">💻 Your First Deep Network with Keras (Cat vs. Dog Classifier)</h4>
+
+                        <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto;"><code><span style="color:#6ee7b7;"># Install: pip install tensorflow</span>
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers
+
+<span style="color:#6ee7b7;"># Build a simple deep CNN — Professor Whiskers' image brain</span>
+model = keras.Sequential([
+    <span style="color:#9ca3af;"># Input: 64x64 pixel colour image</span>
+    layers.Input(shape=(64, 64, 3)),
+
+    <span style="color:#9ca3af;"># Layer 1-2: Learn edges and simple patterns</span>
+    layers.Conv2D(32, (3, 3), activation="relu", padding="same"),
+    layers.MaxPooling2D((2, 2)),
+
+    <span style="color:#9ca3af;"># Layer 3-4: Learn shapes and textures</span>
+    layers.Conv2D(64, (3, 3), activation="relu", padding="same"),
+    layers.MaxPooling2D((2, 2)),
+
+    <span style="color:#9ca3af;"># Layer 5-6: Learn object parts (ears, eyes, nose)</span>
+    layers.Conv2D(128, (3, 3), activation="relu", padding="same"),
+    layers.MaxPooling2D((2, 2)),
+
+    <span style="color:#9ca3af;"># Flatten + Dense layers for decision making</span>
+    layers.Flatten(),
+    layers.Dense(256, activation="relu"),
+    layers.Dropout(0.5),  <span style="color:#9ca3af;"># Prevents overfitting</span>
+
+    <span style="color:#9ca3af;"># Output: 1 neuron — 0 = dog, 1 = cat</span>
+    layers.Dense(1, activation="sigmoid"),
+])
+
+model.summary()  <span style="color:#9ca3af;"># Print layer shapes and parameter counts</span>
+
+<span style="color:#6ee7b7;"># Compile: choose optimiser, loss, and metrics</span>
+model.compile(
+    optimizer="adam",          <span style="color:#9ca3af;"># Adam: adaptive gradient descent</span>
+    loss="binary_crossentropy",
+    metrics=["accuracy"]
+)
+
+<span style="color:#6ee7b7;"># Train the model!</span>
+history = model.fit(
+    train_dataset,
+    epochs=20,
+    validation_data=val_dataset,
+    batch_size=32
+)
+
+print(f"Final validation accuracy: {max(history.history['val_accuracy']):.1%}")</code></pre>
+
+                        <div class="term-card" style="margin-top: 20px;">
+                            <h4>⚡ Same Network in PyTorch</h4>
+                            <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto; margin-top: 12px;"><code>import torch
+import torch.nn as nn
+
+class CatDogCNN(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.features = nn.Sequential(
+            nn.Conv2d(3, 32, 3, padding=1), nn.ReLU(), nn.MaxPool2d(2),
+            nn.Conv2d(32, 64, 3, padding=1), nn.ReLU(), nn.MaxPool2d(2),
+            nn.Conv2d(64, 128, 3, padding=1), nn.ReLU(), nn.MaxPool2d(2),
+        )
+        self.classifier = nn.Sequential(
+            nn.Flatten(),
+            nn.Linear(128 * 8 * 8, 256), nn.ReLU(),
+            nn.Dropout(0.5),
+            nn.Linear(256, 1), nn.Sigmoid()
+        )
+
+    def forward(self, x):
+        return self.classifier(self.features(x))
+
+model = CatDogCNN()
+print(model)  <span style="color:#9ca3af;"># 🐱 Whiskers' brain, defined in 16 lines!</span></code></pre>
+                        </div>
+
+                        <h4 style="margin-top: 24px; margin-bottom: 12px;">🌍 Deep Learning Use Cases</h4>
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>🎤 Speech Recognition</h4>
+                                <p>Siri, Alexa, Google Assistant — all powered by deep neural networks (typically Transformer-based today, evolved from LSTMs).</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🚗 Autonomous Driving</h4>
+                                <p>Camera feeds → deep CNNs → detect pedestrians, lane markings, traffic signs in real time. Tesla's Autopilot, Waymo.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🏥 Medical Imaging</h4>
+                                <p>Deep learning models match or exceed radiologists at detecting cancer in mammograms and diabetic retinopathy in eye scans.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🌐 Language Models</h4>
+                                <p>GPT-4, Gemini, Claude — massive Transformer networks trained on trillions of text tokens. Deep learning at its most extreme scale.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /.accordion -->
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             SECTION 4: EXPERIMENTS
+        ═══════════════════════════════════════════════════════════ -->
+        <section id="experiments" class="lesson-section">
+            <h2>🧪 Experiments</h2>
+            <p style="color: var(--text-light); margin-bottom: 24px;">Explore deep learning interactively — no GPU required for the first two!</p>
+
+            <div class="experiments-grid">
+
+                <div class="experiment-card">
+                    <div style="font-size: 2.5rem; margin-bottom: 12px;">🎮</div>
+                    <h3>TensorFlow Playground</h3>
+                    <p>The best way to <strong>see deep learning in action</strong>. Adjust the number of layers and neurons in your browser and watch the network learn to separate data points in real time. No code needed!</p>
+                    <ul style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 16px;">
+                        <li>Add more hidden layers — watch the decision boundary improve</li>
+                        <li>Try the "spiral" dataset — needs depth to solve!</li>
+                        <li>Experiment with learning rate and batch size</li>
+                    </ul>
+                    <a href="https://playground.tensorflow.org/" target="_blank" rel="noopener" class="experiment-link">Open TF Playground →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <div style="font-size: 2.5rem; margin-bottom: 12px;">🚀</div>
+                    <h3>Fast.ai Practical Deep Learning</h3>
+                    <p>Jeremy Howard's legendary <strong>free course</strong> teaches deep learning from the top down — you build impressive models in Lesson 1 and understand the theory afterwards. Used by thousands of practitioners.</p>
+                    <ul style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 16px;">
+                        <li>Lesson 1: Train an image classifier on your own photos</li>
+                        <li>Uses PyTorch under the hood</li>
+                        <li>Runs on free Kaggle or Colab notebooks</li>
+                    </ul>
+                    <a href="https://course.fast.ai/" target="_blank" rel="noopener" class="experiment-link">Start Fast.ai Course →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <div style="font-size: 2.5rem; margin-bottom: 12px;">☁️</div>
+                    <h3>Google Colab Deep Learning</h3>
+                    <p>Run deep learning code for <strong>free</strong> in the browser with a GPU or TPU. Google Colab has hundreds of pre-built notebooks — from CNNs to Transformers — ready to run and modify.</p>
+                    <ul style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 16px;">
+                        <li>Search "Keras image classification tutorial"</li>
+                        <li>Try the TensorFlow beginner tutorial</li>
+                        <li>Clone fast.ai notebooks and run them</li>
+                    </ul>
+                    <a href="https://colab.research.google.com/" target="_blank" rel="noopener" class="experiment-link">Open Google Colab →</a>
+                </div>
+
+            </div>
+
+            <div class="term-card" style="margin-top: 32px; background: linear-gradient(135deg, rgba(124,58,237,0.06), rgba(37,99,235,0.06)); border-left: 4px solid #7c3aed;">
+                <h3>🐍 Colab Quick-Start: Train a Cat Classifier in 10 Minutes</h3>
+                <p>Paste this into a <a href="https://colab.research.google.com/" target="_blank" rel="noopener">Google Colab</a> cell and click Run:</p>
+                <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; margin-top: 12px; overflow-x: auto;"><code><span style="color:#6ee7b7;"># Free GPU available in Colab! Runtime → Change runtime type → T4 GPU</span>
+!pip install tensorflow datasets -q
+
+import tensorflow as tf
+from datasets import load_dataset
+import numpy as np
+
+<span style="color:#6ee7b7;"># Load 2,000 cat vs. dog images</span>
+ds = load_dataset("microsoft/cats_vs_dogs", split="train[:2000]")
+
+<span style="color:#6ee7b7;"># Preprocess: resize to 64x64 and normalise pixels to [0, 1]</span>
+def preprocess(example):
+    img = tf.image.resize(
+        tf.cast(np.array(example["image"].convert("RGB")), tf.float32),
+        [64, 64]
+    ) / 255.0
+    return img, example["labels"]
+
+X = np.array([np.array(ex["image"].convert("RGB").resize((64,64)))/255.0 for ex in ds])
+y = np.array([ex["labels"] for ex in ds])
+
+<span style="color:#6ee7b7;"># Build a 3-layer CNN</span>
+model = tf.keras.Sequential([
+    tf.keras.layers.Conv2D(32, 3, activation="relu", input_shape=(64, 64, 3)),
+    tf.keras.layers.MaxPooling2D(),
+    tf.keras.layers.Conv2D(64, 3, activation="relu"),
+    tf.keras.layers.MaxPooling2D(),
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(64, activation="relu"),
+    tf.keras.layers.Dense(1, activation="sigmoid")
+])
+
+model.compile(optimizer="adam", loss="binary_crossentropy", metrics=["accuracy"])
+model.fit(X, y, epochs=5, validation_split=0.2)
+print("🐱 Whiskers' brain is trained!")</code></pre>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             SECTION 5: RESOURCES
+        ═══════════════════════════════════════════════════════════ -->
+        <section id="resources" class="lesson-section">
+            <h2>📚 Resources</h2>
+            <p style="color: var(--text-light); margin-bottom: 24px;">The best learning materials for going deeper into deep learning:</p>
+
+            <div class="terms-grid">
+                <div class="term-card">
+                    <h4>📖 Foundational Reading</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">
+                            <a href="https://www.deeplearningbook.org/" target="_blank" rel="noopener">📘 Deep Learning Book — Goodfellow, Bengio &amp; Courville</a>
+                            <p style="font-size: 0.85rem; color: var(--text-light); margin: 2px 0 0 0;">The authoritative textbook — free online. Chapters 6–9 cover deep networks.</p>
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">
+                            <a href="https://d2l.ai/" target="_blank" rel="noopener">🎓 Dive into Deep Learning (d2l.ai)</a>
+                            <p style="font-size: 0.85rem; color: var(--text-light); margin: 2px 0 0 0;">Interactive textbook with runnable code in PyTorch, TensorFlow, and JAX.</p>
+                        </li>
+                        <li style="padding: 8px 0;">
+                            <a href="https://cs231n.github.io/" target="_blank" rel="noopener">🏫 Stanford CS231n: CNNs for Visual Recognition</a>
+                            <p style="font-size: 0.85rem; color: var(--text-light); margin: 2px 0 0 0;">Classic course notes — the go-to resource for understanding CNNs.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="term-card">
+                    <h4>🎬 Videos &amp; Courses</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">
+                            <a href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank" rel="noopener">▶️ 3Blue1Brown: But what is a neural network?</a>
+                            <p style="font-size: 0.85rem; color: var(--text-light); margin: 2px 0 0 0;">The best visual introduction to neural networks on the internet (19 mins)</p>
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">
+                            <a href="https://www.deeplearning.ai/courses/" target="_blank" rel="noopener">🧠 DeepLearning.AI — Andrew Ng's Courses</a>
+                            <p style="font-size: 0.85rem; color: var(--text-light); margin: 2px 0 0 0;">Deep Learning Specialization: 5 courses from fundamentals to sequence models</p>
+                        </li>
+                        <li style="padding: 8px 0;">
+                            <a href="https://course.fast.ai/" target="_blank" rel="noopener">🚀 Fast.ai — Practical Deep Learning for Coders</a>
+                            <p style="font-size: 0.85rem; color: var(--text-light); margin: 2px 0 0 0;">Top-down, practical first approach — build things from Day 1</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="term-card">
+                    <h4>🛠️ Framework Documentation</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">
+                            <a href="https://pytorch.org/tutorials/" target="_blank" rel="noopener">🔥 PyTorch Tutorials</a>
+                            <p style="font-size: 0.85rem; color: var(--text-light); margin: 2px 0 0 0;">Official tutorials from 60-minute blitz to advanced topics</p>
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">
+                            <a href="https://www.tensorflow.org/tutorials" target="_blank" rel="noopener">🌊 TensorFlow Tutorials</a>
+                            <p style="font-size: 0.85rem; color: var(--text-light); margin: 2px 0 0 0;">Beginner-to-advanced with Keras API, all runnable in Colab</p>
+                        </li>
+                        <li style="padding: 8px 0;">
+                            <a href="https://keras.io/examples/" target="_blank" rel="noopener">🎯 Keras Code Examples</a>
+                            <p style="font-size: 0.85rem; color: var(--text-light); margin: 2px 0 0 0;">150+ worked examples across vision, NLP, audio, and more</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 24px; background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(37,99,235,0.08)); border-left: 4px solid #7c3aed;">
+                <h4>🐱 Whiskers' Deep Learning Cheat Sheet</h4>
+                <ul>
+                    <li>🧠 <strong>Deep = many layers</strong> — depth enables hierarchical, abstract feature learning.</li>
+                    <li>🖼️ <strong>CNN</strong> for images — convolutional filters slide across the image looking for patterns.</li>
+                    <li>🔄 <strong>RNN/LSTM</strong> for sequences — has memory so previous steps inform current ones.</li>
+                    <li>⚡ <strong>Transformer</strong> for language (and more) — attention lets every token talk to every other token.</li>
+                    <li>⏩ <strong>Forward pass</strong> → prediction → <strong>loss</strong> → <strong>backward pass</strong> → update weights → repeat!</li>
+                    <li>🔥 <strong>PyTorch</strong> if you want flexibility; <strong>Keras/TF</strong> if you want simplicity; <strong>Fast.ai</strong> if you want speed.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             LESSON NAVIGATION
+        ═══════════════════════════════════════════════════════════ -->
         <nav class="lesson-navigation">
-            <a href="machine-learning-basics.html" class="lesson-nav-btn">
+            <a href="neural-networks.html" class="lesson-nav-btn">
                 <span>←</span>
                 <div class="lesson-nav-btn-content">
                     <span class="lesson-nav-btn-label">Previous</span>
-                    <span class="lesson-nav-btn-title">Machine Learning Basics</span>
+                    <span class="lesson-nav-btn-title">Neural Networks</span>
                 </div>
             </a>
-            <a href="large-language-models.html" class="lesson-nav-btn next">
+            <a href="overfitting-underfitting.html" class="lesson-nav-btn next">
                 <span>→</span>
                 <div class="lesson-nav-btn-content">
                     <span class="lesson-nav-btn-label">Next</span>
-                    <span class="lesson-nav-btn-title">Large Language Models</span>
+                    <span class="lesson-nav-btn-title">Overfitting vs. Underfitting</span>
                 </div>
             </a>
         </nav>
+
     </main>
+
     <footer>
         <div class="container">
-            <p>&copy; 2025 Referencia - An open-source AI & LLM learning platform</p>
+            <p>&copy; 2026 Referencia - Learning AI, one cat at a time 🐱</p>
         </div>
     </footer>
     <script src="../script.js"></script>

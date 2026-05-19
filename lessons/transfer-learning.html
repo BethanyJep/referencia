@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lesson 07: Transfer Learning & Fine-tuning - Whiskers transfers her hunting skills to a brand-new task!">
+    <title>Lesson 07: Transfer Learning & Fine-tuning | Referencia 🐱</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="../index.html" style="text-decoration: none; color: white;">
+                    <h1 class="logo">Referencia</h1>
+                </a>
+                <p class="tagline">Lesson 07: Transfer Learning & Fine-tuning</p>
+            </div>
+        </nav>
+    </header>
+
+    <div class="lesson-header">
+        <div class="container">
+            <div class="lesson-number">LESSON 07</div>
+            <h1 class="lesson-title">🐈 Transfer Learning & Fine-tuning</h1>
+            <p class="lesson-subtitle">Whiskers transfers her elite hunting skills to herd sheep — no retraining required!</p>
+            <div class="lesson-info">
+                <span class="lesson-info-item">⏱️ 45 minutes</span>
+                <span class="lesson-info-item">🟡 Intermediate</span>
+                <span class="lesson-info-item">📚 5 sections</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="lesson-nav">
+        <div class="container">
+            <div class="lesson-nav-container">
+                <a href="#intro" class="lesson-nav-link active">Introduction</a>
+                <a href="#sketchnote" class="lesson-nav-link">Sketchnote</a>
+                <a href="#types" class="lesson-nav-link">Core Content</a>
+                <a href="#experiments" class="lesson-nav-link">Experiments</a>
+                <a href="#resources" class="lesson-nav-link">Resources</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- SECTION 1: INTRODUCTION -->
+        <section id="intro" class="lesson-section">
+            <h2>📖 Introduction: Don't Start from Scratch!</h2>
+
+            <div class="lesson-intro">
+                <p>Meet <strong>Whiskers</strong> 🐈 — a seasoned hunter. After years of training, she has mastered lightning-fast reflexes, silent movement, laser focus on prey, and split-second decision-making. One day she is asked to herd a flock of sheep. Does she forget everything and start as a helpless kitten again? <em>Absolutely not!</em> She adapts her existing expertise to the new job in a fraction of the time.</p>
+
+                <p>That's <strong>Transfer Learning</strong> in a nutshell: take a model that already learned something useful and <em>adapt it</em> to a new, related task — instead of learning everything from zero. And <strong>Fine-tuning</strong> is the specific technique of continuing to train that pretrained model on your own, smaller dataset to specialise it further.</p>
+            </div>
+
+            <div class="term-card" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1)); border-left: 4px solid #2563eb;">
+                <h3>💡 Key Insight</h3>
+                <p><strong>Training from scratch</strong> requires massive datasets (billions of examples) and weeks of GPU time costing tens of thousands of dollars. <strong>Transfer learning</strong> starts from a pretrained model and adapts it with a small dataset in a matter of hours — often reaching the same or better accuracy!</p>
+                <p><em>"Don't reinvent the wheel. Steal Whiskers' wheel and put a sheep-herding attachment on it."</em> 🐑</p>
+            </div>
+
+            <h3>🎯 What You'll Learn</h3>
+            <ul>
+                <li>What Transfer Learning is and why it works so well</li>
+                <li>The most popular pretrained models and where to find them</li>
+                <li>Feature extraction vs. full fine-tuning — when to use each</li>
+                <li>LoRA and parameter-efficient fine-tuning (PEFT) for consumer hardware</li>
+                <li>A practical decision framework: which approach fits your data size?</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 2: SKETCHNOTE -->
+        <section id="sketchnote" class="lesson-section">
+            <h2>🎨 Sketchnote: Two Paths to a Trained Model</h2>
+            <p style="color: var(--text-light); margin-bottom: 20px;">Training from scratch vs. Transfer Learning — spot the difference!</p>
+
+            <div class="sketchnote-container">
+                <div class="sketchnote-placeholder">
+                    <h3>🖼️ Sketchnote Concept</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;"><strong>Two paths to a trained model:</strong></p>
+
+                    <!-- Path A: From Scratch -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                        <div style="background: linear-gradient(135deg, #fee2e2, #fecaca); padding: 20px; border-radius: 12px; text-align: center; border: 2px solid #ef4444;">
+                            <p style="font-weight: 700; color: #dc2626; font-size: 1rem; margin-bottom: 10px;">❌ PATH A — From Scratch</p>
+                            <p style="font-size: 2.5rem; margin: 8px 0;">🐱</p>
+                            <p style="font-size: 0.85rem; color: #7f1d1d;"><strong>Tiny kitten starting with nothing</strong></p>
+                            <div style="margin: 12px 0; font-size: 0.8rem; color: #991b1b;">
+                                <p>📦 Need: billions of labelled examples</p>
+                                <p>💻 Need: 100s of GPUs</p>
+                                <p>⏳ Time: weeks or months</p>
+                                <p>💰 Cost: $$$$$</p>
+                            </div>
+                            <div style="background: #ef4444; color: white; border-radius: 6px; padding: 6px; font-size: 0.8rem;">Very slow learning curve 📉</div>
+                        </div>
+
+                        <!-- Path B: Transfer Learning -->
+                        <div style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); padding: 20px; border-radius: 12px; text-align: center; border: 2px solid #10b981;">
+                            <p style="font-weight: 700; color: #065f46; font-size: 1rem; margin-bottom: 10px;">✅ PATH B — Transfer Learning</p>
+                            <p style="font-size: 2.5rem; margin: 8px 0;">🐈‍⬛</p>
+                            <p style="font-size: 0.85rem; color: #064e3b;"><strong>Expert adult cat (pretrained model)</strong></p>
+                            <div style="margin: 12px 0; font-size: 0.8rem; color: #065f46;">
+                                <p>🎩 Add: small "adapter hat" for new task</p>
+                                <p>📦 Need: hundreds or thousands of examples</p>
+                                <p>⏳ Time: hours on a single GPU</p>
+                                <p>💰 Cost: $</p>
+                            </div>
+                            <div style="background: #10b981; color: white; border-radius: 6px; padding: 6px; font-size: 0.8rem;">Quick ramp-up 📈🚀</div>
+                        </div>
+                    </div>
+
+                    <!-- Arrow and insight -->
+                    <div style="background: #ede9fe; border-radius: 10px; padding: 16px; margin-bottom: 10px; border-left: 4px solid #7c3aed;">
+                        <p style="margin: 0; font-size: 0.9rem;"><strong>🧠 Why it works:</strong> The pretrained model already learned <em>universal</em> low-level features — edges in images, grammar patterns in text. Your task just needs the higher-level specialisation on top!</p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px;">
+                        <div style="background: white; padding: 10px; border-radius: 8px; text-align: center; border: 1px solid #e5e7eb;">
+                            <p style="font-size: 1.5rem;">❄️</p>
+                            <p style="font-size: 0.75rem;"><strong>Frozen layers</strong><br>Keep pretrained weights</p>
+                        </div>
+                        <div style="background: white; padding: 10px; border-radius: 8px; text-align: center; border: 1px solid #e5e7eb;">
+                            <p style="font-size: 1.5rem;">🔥</p>
+                            <p style="font-size: 0.75rem;"><strong>Trainable layers</strong><br>Update for new task</p>
+                        </div>
+                        <div style="background: white; padding: 10px; border-radius: 8px; text-align: center; border: 1px solid #e5e7eb;">
+                            <p style="font-size: 1.5rem;">🎯</p>
+                            <p style="font-size: 0.75rem;"><strong>New head</strong><br>Task-specific output</p>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 20px; color: var(--text-light); font-size: 0.85rem;">
+                        💡 Save your sketchnote as: <code>/assets/sketchnotes/transfer-learning.png</code>
+                    </p>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px;">
+                <h3>🐱 Whiskers' Skill Transfer Log</h3>
+                <p><strong>Original skill:</strong> Elite mouse hunter — lightning reflexes, heat sensing, shadow-pattern recognition</p>
+                <p><strong>New task:</strong> Sheep herder</p>
+                <p><strong>Transferable skills (frozen ❄️):</strong> Spatial awareness, quick turning radius, peripheral vision, stamina</p>
+                <p><strong>Skills to fine-tune (🔥):</strong> Target size (sheep >> mouse), preferred direction (herd together vs. catch), bark-vs-hiss response</p>
+                <p><strong>Result:</strong> Competent sheep herder in <em>3 days</em> instead of 3 years! ✅</p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: CORE CONTENT -->
+        <section id="types" class="lesson-section">
+            <h2>📚 Core Content</h2>
+
+            <div class="accordion">
+                <!-- Section 1: What is Transfer Learning -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🔁 What is Transfer Learning?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>The Core Idea</h4>
+                            <p>Transfer Learning means reusing a model trained on <strong>Task A</strong> as the starting point for <strong>Task B</strong>. The key assumption is that Tasks A and B share some underlying structure — and for most real-world AI tasks, they do!</p>
+                            <p>Lower-level features are almost always universal:</p>
+                            <ul>
+                                <li><strong>Vision:</strong> edge detectors, texture filters, colour patterns — useful for ANY image task</li>
+                                <li><strong>Language:</strong> grammar, word relationships, sentence structure — useful for ANY text task</li>
+                                <li><strong>Audio:</strong> frequency patterns, rhythm, phonemes — useful for ANY audio task</li>
+                            </ul>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 16px;">
+                            <h4>🌍 A Real-World Example: BERT for Medical Text</h4>
+                            <p>Google's <strong>BERT</strong> was pretrained on the entirety of English Wikipedia and BookCorpus — roughly 3.3 billion words. It took 4 days on 64 TPU chips.</p>
+                            <p>A hospital wants to classify medical notes as "urgent" or "routine". They have only <strong>1,000 labelled examples</strong>.</p>
+                            <ul>
+                                <li>Training BERT from scratch on 1,000 examples → terrible accuracy (model never generalises)</li>
+                                <li>Fine-tuning pretrained BERT for 30 minutes on 1,000 examples → <strong>~92% accuracy!</strong></li>
+                            </ul>
+                            <p><em>BERT already understood English. It just needed to learn the medical jargon twist.</em></p>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 16px; background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(124, 58, 237, 0.08));">
+                            <h4>💼 Industry Use Case: Custom Support Chatbots</h4>
+                            <p>Companies like Shopify, Intercom, and Notion fine-tune GPT-style models on their own support documentation. Instead of a generic "I don't know", their chatbot responds with accurate, brand-specific answers — trained in a single afternoon using a few thousand support tickets.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Pretrained Models -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🏛️ Pretrained Models — The Starting Points</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p style="margin-bottom: 16px;">Think of pretrained models as a <strong>library of highly educated cat specialists</strong> you can hire for free and train further for your specific job. They live at <a href="https://huggingface.co/models" target="_blank">HuggingFace Hub</a> — over 500,000 models available at no cost!</p>
+
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>🖼️ ImageNet Models</h4>
+                                <p><strong>Examples:</strong> VGG16, ResNet-50, EfficientNet, ViT</p>
+                                <p><strong>Trained on:</strong> 14 million labelled images across 1,000 categories</p>
+                                <p><strong>Good for:</strong> Any image classification, object detection, or feature extraction task</p>
+                                <p><strong>Fine-tune for:</strong> Medical imaging, satellite photos, product defect detection</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>📖 BERT / RoBERTa</h4>
+                                <p><strong>Trained on:</strong> Wikipedia + BooksCorpus (3.3B words)</p>
+                                <p><strong>Understands:</strong> Bidirectional context — reads left <em>and</em> right</p>
+                                <p><strong>Good for:</strong> Classification, named entity recognition, question answering</p>
+                                <p><strong>Fine-tune for:</strong> Sentiment analysis, spam detection, legal document review</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🤖 GPT Family</h4>
+                                <p><strong>Trained on:</strong> Vast internet text (Common Crawl + books)</p>
+                                <p><strong>Understands:</strong> Autoregressive text generation — predicts next token</p>
+                                <p><strong>Good for:</strong> Text generation, summarisation, chat, code</p>
+                                <p><strong>Fine-tune for:</strong> Custom writing style, domain-specific Q&amp;A, instruction following</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🖼️📝 CLIP</h4>
+                                <p><strong>Trained on:</strong> 400 million image-text pairs from the internet</p>
+                                <p><strong>Understands:</strong> Both images and text in a shared embedding space</p>
+                                <p><strong>Good for:</strong> Image search, zero-shot classification, multimodal tasks</p>
+                                <p><strong>Fine-tune for:</strong> Product image matching, visual Q&amp;A, content moderation</p>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 16px;">
+                            <h4>🐱 The Cat Specialist Library</h4>
+                            <p>Imagine walking into a library and finding:</p>
+                            <ul>
+                                <li>🔬 <strong>Professor ResNet</strong> — has memorised 14 million images. Knows exactly what a Persian cat looks like from 47 angles.</li>
+                                <li>📚 <strong>Dr. BERT</strong> — has read all of Wikipedia twice. Expert in English grammar and world knowledge.</li>
+                                <li>✍️ <strong>GPT the Scribe</strong> — has read half the internet. Can write in any style or format.</li>
+                                <li>🌐 <strong>CLIP the Polyglot</strong> — speaks both Image and Text fluently.</li>
+                            </ul>
+                            <p>All free to hire. Just bring your specific task!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Feature Extraction vs Fine-tuning -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>❄️🔥 Feature Extraction vs. Fine-tuning</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p style="margin-bottom: 16px;">Once you've picked your pretrained model, you have two main strategies. The choice depends on how much data you have and how much compute you can spare.</p>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                            <div class="term-card" style="border-left: 4px solid #3b82f6;">
+                                <h4>❄️ Feature Extraction</h4>
+                                <p><strong>What:</strong> Freeze <em>all</em> pretrained layers. Only train a new, small classifier head on top.</p>
+                                <p><strong>Speed:</strong> Very fast — only a few parameters to update</p>
+                                <p><strong>Data needed:</strong> Works with as few as 100–500 examples</p>
+                                <p><strong>Analogy:</strong> Whiskers keeps all her hunting instincts frozen; you just teach her a new finishing move.</p>
+                                <p><strong>Best when:</strong> Your task is similar to the pretrained task, or you have very little data</p>
+                            </div>
+                            <div class="term-card" style="border-left: 4px solid #ef4444;">
+                                <h4>🔥 Fine-tuning</h4>
+                                <p><strong>What:</strong> Unfreeze some or all pretrained layers and continue training them on your dataset too.</p>
+                                <p><strong>Speed:</strong> Slower — many parameters to update</p>
+                                <p><strong>Data needed:</strong> Ideally 1,000+ examples</p>
+                                <p><strong>Analogy:</strong> Whiskers also updates her core reflexes based on field experience with sheep.</p>
+                                <p><strong>Best when:</strong> Your domain is very different from pretraining, or you need maximum accuracy</p>
+                            </div>
+                        </div>
+
+                        <!-- Layer diagram -->
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; margin-bottom: 16px;">
+                            <p style="font-weight: 600; margin-bottom: 12px; text-align: center;">Visualising Frozen ❄️ vs. Trainable 🔥 Layers</p>
+                            <div style="display: flex; flex-direction: column; gap: 8px; max-width: 400px; margin: 0 auto;">
+                                <div style="background: #bfdbfe; border-radius: 6px; padding: 8px; text-align: center; border: 2px dashed #3b82f6;">❄️ Layer 1 — Low-level features (edges, phonemes) — FROZEN</div>
+                                <div style="background: #bfdbfe; border-radius: 6px; padding: 8px; text-align: center; border: 2px dashed #3b82f6;">❄️ Layer 2 — Mid-level features (shapes, phrases) — FROZEN</div>
+                                <div style="background: #bfdbfe; border-radius: 6px; padding: 8px; text-align: center; border: 2px dashed #3b82f6;">❄️ Layer 3 — High-level features (objects, concepts) — FROZEN</div>
+                                <div style="background: #fca5a5; border-radius: 6px; padding: 8px; text-align: center; border: 2px solid #ef4444;">🔥 New Classifier Head — YOUR TASK — TRAINABLE</div>
+                            </div>
+                            <p style="text-align: center; font-size: 0.8rem; color: var(--text-light); margin-top: 10px;">Feature Extraction: only the red layer trains. Fine-tuning: some frozen layers become trainable too.</p>
+                        </div>
+
+                        <div class="term-card" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(239, 68, 68, 0.08));">
+                            <h4>⚠️ Common Mistake: Fine-tuning with Too Little Data</h4>
+                            <p>If you fine-tune all layers with only 50 examples, the model will <strong>catastrophically forget</strong> its pretrained knowledge — a phenomenon called <em>catastrophic forgetting</em>. The model overfits your tiny dataset and loses everything it learned. When in doubt with small datasets, freeze more layers!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: LoRA and PEFT -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>⚡ LoRA & Parameter-Efficient Fine-tuning (PEFT)</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>The Problem with Full Fine-tuning at Scale</h4>
+                            <p>Llama 3 8B has <strong>8 billion parameters</strong>. Storing a full copy of gradients during fine-tuning requires ~96 GB of GPU memory — that's multiple A100s. Even big companies can't fine-tune giant models for every use-case.</p>
+                            <p><strong>Solution:</strong> Only train a tiny fraction of parameters, keep the rest frozen.</p>
+                        </div>
+
+                        <div class="terms-grid" style="margin-top: 16px;">
+                            <div class="term-card">
+                                <h4>🔌 LoRA (Low-Rank Adaptation)</h4>
+                                <p>Instead of updating a large weight matrix W directly, LoRA injects two tiny matrices A and B (called <em>adapter matrices</em>) such that the update is <code>W + A×B</code>.</p>
+                                <p><strong>Size:</strong> Only 1–2% of the total parameter count needs to be trained.</p>
+                                <p><strong>Quality:</strong> Nearly identical to full fine-tuning on most benchmarks.</p>
+                                <p><strong>Result:</strong> Fine-tune Llama 3 on a consumer RTX 4090 GPU overnight!</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🗜️ QLoRA (Quantised LoRA)</h4>
+                                <p>Load the pretrained model in 4-bit precision (quantised) to massively reduce memory, then add LoRA adapters on top.</p>
+                                <p><strong>Size:</strong> Fine-tune a 70B parameter model on a single 48 GB GPU.</p>
+                                <p><strong>Trade-off:</strong> Slightly lower quality than full precision, but often imperceptible in practice.</p>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 16px;">
+                            <h4>💻 Code: Fine-tuning with HuggingFace PEFT + LoRA</h4>
+                            <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto;"><code>from transformers import AutoModelForCausalLM, AutoTokenizer
+from peft import get_peft_model, LoraConfig, TaskType
+from datasets import load_dataset
+from transformers import TrainingArguments, Trainer
+
+# 1. Load a pretrained model (Whiskers, the expert cat!)
+model_name = "meta-llama/Llama-3.2-3B"
+model = AutoModelForCausalLM.from_pretrained(model_name, load_in_4bit=True)
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+
+# 2. Configure LoRA — only train adapter matrices (1-2% of params)
+lora_config = LoraConfig(
+    task_type=TaskType.CAUSAL_LM,
+    r=16,           # rank of adapter matrices (lower = fewer params)
+    lora_alpha=32,  # scaling factor
+    lora_dropout=0.1,
+    target_modules=["q_proj", "v_proj"]  # which layers to adapt
+)
+
+# 3. Wrap the model with LoRA adapters
+model = get_peft_model(model, lora_config)
+model.print_trainable_parameters()
+# trainable params: 4,194,304 / 3,212,749,824 (0.13%!) 😲
+
+# 4. Load YOUR small dataset (the new task for Whiskers!)
+dataset = load_dataset("your-org/support-tickets")
+
+# 5. Train! Whiskers learns her new speciality in hours
+training_args = TrainingArguments(
+    output_dir="./whiskers-custom-model",
+    num_train_epochs=3,
+    per_device_train_batch_size=4,
+    learning_rate=2e-4,
+)
+trainer = Trainer(model=model, args=training_args, train_dataset=dataset["train"])
+trainer.train()
+
+# 6. Save and use the adapter weights (tiny file, ~10 MB!)
+model.save_pretrained("./whiskers-adapter")</code></pre>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 16px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(37, 99, 235, 0.08));">
+                            <h4>🐱 The Adapter Hat Analogy</h4>
+                            <p>Whiskers, the expert cat, already has all her skills packed into her brain (frozen weights). LoRA adds a tiny <em>specialty hat</em> on top. The hat is small, easy to swap, and makes her behave differently for each task. You can have:</p>
+                            <ul>
+                                <li>🎩 The "Medical Support" hat — changes her responses to medical queries</li>
+                                <li>🏕️ The "Outdoor Survival" hat — for field operations</li>
+                                <li>🎸 The "Music Theory" hat — for creative tasks</li>
+                            </ul>
+                            <p>Swap the hat, keep the cat. Same model, infinite specialisations!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5: When to Use What -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🗺️ When to Use What — The Decision Framework</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p style="margin-bottom: 16px;">Not every problem needs the same solution. Here's Whiskers' field guide:</p>
+
+                        <div style="overflow-x: auto; margin-bottom: 20px;">
+                            <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                                <thead>
+                                    <tr style="background: #1e40af; color: white;">
+                                        <th style="padding: 10px 14px; text-align: left; border-radius: 0;">Situation</th>
+                                        <th style="padding: 10px 14px; text-align: left;">Approach</th>
+                                        <th style="padding: 10px 14px; text-align: left;">Why</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="background: #f8fafc;">
+                                        <td style="padding: 10px 14px; border-bottom: 1px solid #e2e8f0;">No labelled data at all</td>
+                                        <td style="padding: 10px 14px; border-bottom: 1px solid #e2e8f0;">Use base model with prompt engineering</td>
+                                        <td style="padding: 10px 14px; border-bottom: 1px solid #e2e8f0;">No training needed</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px 14px; border-bottom: 1px solid #e2e8f0;">Small dataset (&lt;1 K examples)</td>
+                                        <td style="padding: 10px 14px; border-bottom: 1px solid #e2e8f0;">Feature extraction (freeze all, train head)</td>
+                                        <td style="padding: 10px 14px; border-bottom: 1px solid #e2e8f0;">Avoids overfitting and catastrophic forgetting</td>
+                                    </tr>
+                                    <tr style="background: #f8fafc;">
+                                        <td style="padding: 10px 14px; border-bottom: 1px solid #e2e8f0;">Medium dataset (1 K – 100 K)</td>
+                                        <td style="padding: 10px 14px; border-bottom: 1px solid #e2e8f0;">LoRA / QLoRA fine-tuning</td>
+                                        <td style="padding: 10px 14px; border-bottom: 1px solid #e2e8f0;">Best quality/cost tradeoff; runs on consumer GPU</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px 14px; border-bottom: 1px solid #e2e8f0;">Large dataset (&gt;100 K examples)</td>
+                                        <td style="padding: 10px 14px; border-bottom: 1px solid #e2e8f0;">Full fine-tuning</td>
+                                        <td style="padding: 10px 14px; border-bottom: 1px solid #e2e8f0;">Data justifies updating all weights</td>
+                                    </tr>
+                                    <tr style="background: #f8fafc;">
+                                        <td style="padding: 10px 14px;">Very specific domain (medical, legal)</td>
+                                        <td style="padding: 10px 14px;">Domain-adaptive pretraining → then fine-tune</td>
+                                        <td style="padding: 10px 14px;">Model needs to learn domain vocabulary first</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4 style="margin-bottom: 12px;">🌟 Real-World Hall of Fame</h4>
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>💬 ChatGPT (OpenAI)</h4>
+                                <p>GPT-4 base model fine-tuned with <strong>RLHF</strong> (Reinforcement Learning from Human Feedback) — humans rate outputs and the model learns to prefer helpful, harmless answers.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>👨‍💻 GitHub Copilot</h4>
+                                <p>OpenAI Codex (a GPT variant) fine-tuned on <strong>billions of lines of public GitHub code</strong> — the model learned general language, then specialised in programming syntax and patterns.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>💰 BloombergGPT</h4>
+                                <p>A 50B-parameter model pretrained on <strong>363B tokens of financial text</strong> (Bloomberg's archives) then fine-tuned for financial NLP tasks. Better than GPT-4 on financial benchmarks.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🩺 Med-PaLM 2 (Google)</h4>
+                                <p>Google's PaLM 2 fine-tuned on medical question-answering datasets. Achieved expert-level performance on US Medical Licensing Exam (USMLE) questions.</p>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 16px; background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(236, 72, 153, 0.08));">
+                            <h4>🐈 Whiskers' Wisdom</h4>
+                            <p><em>"A wise cat doesn't start hunting from birth every single morning. She builds on yesterday's experience, today's new information, and tomorrow's refined instincts. Transfer learning is just a cat being sensible."</em></p>
+                            <p>— Whiskers, in a rare philosophical mood 🐱</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: EXPERIMENTS -->
+        <section id="experiments" class="lesson-section">
+            <h2>🧪 Experiments: Try Transfer Learning Yourself!</h2>
+            <p style="color: var(--text-light); margin-bottom: 30px;">From no-code browser tools to full fine-tuning pipelines — pick your level!</p>
+
+            <div class="experiments-grid">
+                <div class="experiment-card">
+                    <h3>🎓 HuggingFace Fine-tuning Tutorial</h3>
+                    <p>The official, thorough guide to fine-tuning any pretrained model on a custom dataset using the Transformers library. Includes text classification, token labelling, and summarisation walkthroughs.</p>
+                    <p><strong>Try:</strong> Fine-tune BERT on the movie review sentiment dataset (takes ~10 min on Colab)</p>
+                    <a href="https://huggingface.co/docs/transformers/training" class="experiment-link" target="_blank">HuggingFace Training Guide →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🤖 Google Teachable Machine</h3>
+                    <p>Transfer learning entirely in your browser — zero code required! Upload images using your webcam, and Teachable Machine fine-tunes a pretrained MobileNet model on your examples in seconds.</p>
+                    <p><strong>Try:</strong> Train a model to recognise thumbs up vs. thumbs down from your webcam in under 2 minutes!</p>
+                    <a href="https://teachablemachine.withgoogle.com/" class="experiment-link" target="_blank">Teachable Machine →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🏃 Fast.ai Transfer Learning</h3>
+                    <p>Fast.ai's opinionated library makes transfer learning on images incredibly easy. Their vision tutorial takes a pretrained ResNet and fine-tunes it on your custom dataset in just a few lines.</p>
+                    <p><strong>Try:</strong> Build a cat breed classifier using 150 images per breed with ResNet34 pretrained on ImageNet</p>
+                    <a href="https://docs.fast.ai/tutorial.vision.html" class="experiment-link" target="_blank">Fast.ai Vision Tutorial →</a>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px; background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1));">
+                <h3>💻 Quick Start: Feature Extraction with HuggingFace</h3>
+                <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto;"><code>from transformers import pipeline
+
+# Use a pretrained model with ZERO fine-tuning — feature extraction at its simplest!
+# Whiskers reads your text and classifies sentiment out of the box.
+
+classifier = pipeline("text-classification", model="distilbert-base-uncased-finetuned-sst-2-english")
+
+reviews = [
+    "This cat food tastes amazing, Whiskers loved it!",
+    "The packaging arrived damaged and the service was terrible.",
+    "Decent product but nothing special for the price."
+]
+
+for review in reviews:
+    result = classifier(review)[0]
+    emoji = "😸" if result["label"] == "POSITIVE" else "😾"
+    print(f"{emoji} {result['label']} ({result['score']:.2%}) — {review[:50]}...")
+
+# Output:
+# 😸 POSITIVE (99.87%) — This cat food tastes amazing, Whiskers loved it!...
+# 😾 NEGATIVE (99.72%) — The packaging arrived damaged and the service was...
+# 😾 NEGATIVE (62.31%) — Decent product but nothing special for the price....</code></pre>
+            </div>
+        </section>
+
+        <!-- SECTION 5: RESOURCES -->
+        <section id="resources" class="lesson-section">
+            <h2>📚 Resources for Further Learning</h2>
+
+            <div class="resources-section">
+                <div class="resources-columns">
+                    <div class="resource-column">
+                        <h3>🎥 Videos</h3>
+                        <ul>
+                            <li><a href="https://www.youtube.com/watch?v=yofjFQddwHE" target="_blank">Transfer Learning — StatQuest</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=BqqfQnyjmgg" target="_blank">Fine-Tuning LLMs — Andrej Karpathy</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=Us5ZFp16PaU" target="_blank">LoRA Explained — Yannic Kilcher</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📖 Articles</h3>
+                        <ul>
+                            <li><a href="https://huggingface.co/blog/lora" target="_blank">LoRA: Low-Rank Adaptation — HuggingFace Blog</a></li>
+                            <li><a href="https://cs231n.github.io/transfer-learning/" target="_blank">Transfer Learning — CS231n (Stanford)</a></li>
+                            <li><a href="https://arxiv.org/abs/2305.14314" target="_blank">QLoRA Paper (Dettmers et al., 2023)</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>🛠️ Tools</h3>
+                        <ul>
+                            <li><a href="https://huggingface.co/models" target="_blank">HuggingFace Model Hub</a></li>
+                            <li><a href="https://github.com/huggingface/peft" target="_blank">PEFT Library (HuggingFace)</a></li>
+                            <li><a href="https://colab.research.google.com/" target="_blank">Google Colab (free GPUs!)</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📚 Courses</h3>
+                        <ul>
+                            <li><a href="https://www.deeplearning.ai/short-courses/finetuning-large-language-models/" target="_blank">Fine-Tuning LLMs — DeepLearning.AI</a></li>
+                            <li><a href="https://course.fast.ai/" target="_blank">Practical Deep Learning — Fast.ai</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="lesson-navigation">
+            <a href="overfitting-underfitting.html" class="lesson-nav-btn">
+                <span>←</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Previous</span>
+                    <span class="lesson-nav-btn-title">Overfitting vs. Underfitting</span>
+                </div>
+            </a>
+            <a href="cnn.html" class="lesson-nav-btn next">
+                <span>→</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Next Lesson</span>
+                    <span class="lesson-nav-btn-title">CNNs — Computer Vision</span>
+                </div>
+            </a>
+        </nav>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Referencia - Learning AI, one cat at a time 🐱</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

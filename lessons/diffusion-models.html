@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lesson 05: Diffusion Models - A cat with an eraser cleaning noise from canvas!">
+    <title>Lesson 05: Diffusion Models | Referencia 🐱</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="../index.html" style="text-decoration: none; color: white;">
+                    <h1 class="logo">Referencia</h1>
+                </a>
+                <p class="tagline">Lesson 05: Diffusion Models</p>
+            </div>
+        </nav>
+    </header>
+
+    <div class="lesson-header">
+        <div class="container">
+            <div class="lesson-number">LESSON 05</div>
+            <h1 class="lesson-title">✨ Diffusion Models</h1>
+            <p class="lesson-subtitle">A cat with an eraser cleaning noise from canvas - The magic behind DALL-E & Stable Diffusion!</p>
+            <div class="lesson-info">
+                <span class="lesson-info-item">⏱️ 55 minutes</span>
+                <span class="lesson-info-item">🟡 Intermediate</span>
+                <span class="lesson-info-item">📚 5 sections</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="lesson-nav">
+        <div class="container">
+            <div class="lesson-nav-container">
+                <a href="#intro" class="lesson-nav-link active">Introduction</a>
+                <a href="#sketchnote" class="lesson-nav-link">Sketchnote</a>
+                <a href="#types" class="lesson-nav-link">Core Content</a>
+                <a href="#experiments" class="lesson-nav-link">Experiments</a>
+                <a href="#resources" class="lesson-nav-link">Resources</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- SECTION 1: INTRODUCTION -->
+        <section id="intro" class="lesson-section">
+            <h2>📖 Introduction: What are Diffusion Models?</h2>
+            
+            <div class="lesson-intro">
+                <p>Imagine a beautiful painting that slowly gets covered in TV static noise until it's completely random. Now imagine a <strong>cat with a magic eraser</strong> that can carefully remove that noise, step by step, until the original painting emerges!</p>
+                
+                <p>That's the essence of <strong>diffusion models</strong>! They learn to reverse the process of adding noise. The model trains on images that have been gradually corrupted with noise, learning at each step how to "denoise" the image. At generation time, it starts with pure noise and gradually cleans it into a beautiful, coherent image!</p>
+            </div>
+
+            <div class="term-card" style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(124, 58, 237, 0.1)); border-left: 4px solid #06b6d4;">
+                <h3>💡 Key Insight</h3>
+                <p><strong>Diffusion Models</strong> work by learning to reverse the process of adding noise. Training: gradually add noise to images. Generation: start with noise and gradually remove it to create images!</p>
+                <p><em>"Diffusion: Cat erases static to reveal masterpieces!"</em></p>
+            </div>
+
+            <h3>🎯 What You'll Learn</h3>
+            <ul>
+                <li>The forward process: adding noise step by step</li>
+                <li>The reverse process: denoising to generate images</li>
+                <li>Why diffusion models produce such high-quality images</li>
+                <li>How text-to-image models like DALL-E and Stable Diffusion work</li>
+                <li>Comparing diffusion models to GANs</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 2: SKETCHNOTE -->
+        <section id="sketchnote" class="lesson-section">
+            <h2>🎨 Sketchnote: Visual Summary</h2>
+            <p style="color: var(--text-light); margin-bottom: 20px;">The denoising cat artist at work!</p>
+
+            <div class="sketchnote-container">
+                <div class="sketchnote-placeholder">
+                    <h3>🖼️ Sketchnote Concept</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;"><strong>Two processes side by side:</strong></p>
+                    
+                    <div style="background: #f0f9ff; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                        <h4>📉 Forward Process (Training): Adding Noise</h4>
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                            <div style="text-align: center;">
+                                <p>🖼️</p>
+                                <p style="font-size: 0.8rem;">Clear Image</p>
+                            </div>
+                            <span>→ +📺</span>
+                            <div style="text-align: center;">
+                                <p>🖼️+·</p>
+                                <p style="font-size: 0.8rem;">Little Noise</p>
+                            </div>
+                            <span>→ +📺</span>
+                            <div style="text-align: center;">
+                                <p>🖼️+··</p>
+                                <p style="font-size: 0.8rem;">More Noise</p>
+                            </div>
+                            <span>→ +📺</span>
+                            <div style="text-align: center;">
+                                <p>📺📺📺</p>
+                                <p style="font-size: 0.8rem;">Pure Noise</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: #dcfce7; padding: 20px; border-radius: 10px;">
+                        <h4>📈 Reverse Process (Generation): Removing Noise</h4>
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                            <div style="text-align: center;">
+                                <p>📺📺📺</p>
+                                <p style="font-size: 0.8rem;">Pure Noise</p>
+                            </div>
+                            <span>→ 🐱🧽</span>
+                            <div style="text-align: center;">
+                                <p>📺·🖼️?</p>
+                                <p style="font-size: 0.8rem;">Shapes appear</p>
+                            </div>
+                            <span>→ 🐱🧽</span>
+                            <div style="text-align: center;">
+                                <p>·🖼️</p>
+                                <p style="font-size: 0.8rem;">Getting clearer</p>
+                            </div>
+                            <span>→ 🐱🧽</span>
+                            <div style="text-align: center;">
+                                <p>🖼️✨</p>
+                                <p style="font-size: 0.8rem;">Beautiful Image!</p>
+                            </div>
+                        </div>
+                        <p style="text-align: center; margin-top: 10px;"><strong>Cat with eraser: "Step by step, I'll clean this up!"</strong> 🐱🧽</p>
+                    </div>
+                    
+                    <div style="margin-top: 25px; padding: 15px; background: #fef3c7; border-radius: 8px;">
+                        <p><strong>Key Visual:</strong> A cat artist with a magical eraser, carefully cleaning away static from a canvas. Each wipe reveals more of the hidden image beneath!</p>
+                        <p>Speech bubble: <em>"A little noise here... let me clean that up!"</em></p>
+                    </div>
+                    
+                    <p style="margin-top: 20px; color: var(--text-light);">
+                        💡 Save your sketchnote as: <code>/assets/sketchnotes/diffusion-models.png</code>
+                    </p>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px;">
+                <h3>🐱 The Magic Eraser Story</h3>
+                <p><strong>Training time:</strong> The cat watches as beautiful paintings are slowly covered in static. At each step, it memorizes: "When the noise looks like THIS, the image underneath probably looks like THAT."</p>
+                <p><strong>Generation time:</strong> Given pure static, the cat thinks: "Hmm, this noise pattern suggests there might be a face here... let me erase a bit... yes, I see an eye forming!" Step by step, it reveals an image that was never really there—but COULD have been!</p>
+                <p><strong>With text prompts:</strong> "A cat astronaut on the moon" guides the erasing: "This noise should become a helmet here... moon surface there..."</p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: CORE CONTENT -->
+        <section id="types" class="lesson-section">
+            <h2>📚 Core Content</h2>
+
+            <div class="accordion">
+                <!-- The Two Processes -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🔄 The Two Processes: Forward & Reverse</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="term-card">
+                                <h4>📉 Forward Process (Fixed)</h4>
+                                <p><strong>What:</strong> Gradually add Gaussian noise over T steps</p>
+                                <p><strong>When:</strong> During training only</p>
+                                <p><strong>Formula:</strong> q(x_t | x_{t-1}) - add a bit more noise</p>
+                                <p><strong>Result:</strong> Original image → Pure noise</p>
+                                <p><em>This process is deterministic—we don't learn it!</em></p>
+                            </div>
+                            <div class="term-card">
+                                <h4>📈 Reverse Process (Learned)</h4>
+                                <p><strong>What:</strong> Learn to remove noise step by step</p>
+                                <p><strong>When:</strong> Training (learn) & Generation (use)</p>
+                                <p><strong>Formula:</strong> p_θ(x_{t-1} | x_t) - predict & remove noise</p>
+                                <p><strong>Result:</strong> Pure noise → Generated image</p>
+                                <p><em>This is what the neural network learns!</em></p>
+                            </div>
+                        </div>
+                        
+                        <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; margin-top: 20px;"><code># Simplified diffusion concept
+# Forward: Add noise
+def forward_step(image, noise_level):
+    noise = torch.randn_like(image)
+    return sqrt(1 - noise_level) * image + sqrt(noise_level) * noise
+
+# Reverse: Predict and remove noise (THIS is learned!)
+def reverse_step(noisy_image, model, timestep):
+    predicted_noise = model(noisy_image, timestep)
+    # Subtract the predicted noise to get cleaner image
+    return denoise(noisy_image, predicted_noise)</code></pre>
+                    </div>
+                </div>
+
+                <!-- How Training Works -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🏋️ How Training Works</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>Training Objective: Predict the Noise!</h4>
+                            <ol>
+                                <li><strong>Take a clean image</strong> from the training set</li>
+                                <li><strong>Pick a random timestep</strong> t (1 to T, e.g., 1000)</li>
+                                <li><strong>Add noise</strong> appropriate for that timestep</li>
+                                <li><strong>Ask the model:</strong> "What noise was added?"</li>
+                                <li><strong>Compare</strong> predicted noise vs. actual noise</li>
+                                <li><strong>Update weights</strong> to predict better</li>
+                            </ol>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px;">
+                            <h4>🐱 Cat's Training Day</h4>
+                            <p><strong>Teacher:</strong> "Here's a cat photo with some noise added at step 500."</p>
+                            <p><strong>Cat student:</strong> "I think the noise looks like... this pattern!"</p>
+                            <p><strong>Teacher:</strong> "Close! Here's the actual noise. Adjust your understanding."</p>
+                            <p><strong>After millions of examples:</strong> Cat becomes expert at identifying noise patterns at every timestep!</p>
+                        </div>
+
+                        <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; margin-top: 20px;"><code># Simplified training loop
+for epoch in range(num_epochs):
+    for images in dataloader:
+        # 1. Sample random timestep
+        t = torch.randint(0, T, (batch_size,))
+        
+        # 2. Sample noise
+        noise = torch.randn_like(images)
+        
+        # 3. Create noisy images
+        noisy_images = add_noise(images, noise, t)
+        
+        # 4. Predict the noise
+        predicted_noise = model(noisy_images, t)
+        
+        # 5. Loss = how wrong was our noise prediction?
+        loss = F.mse_loss(predicted_noise, noise)
+        
+        # 6. Update model
+        optimizer.step()</code></pre>
+                    </div>
+                </div>
+
+                <!-- Generation / Sampling -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🎨 Generation: Creating Images from Noise</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>The Denoising Loop</h4>
+                            <ol>
+                                <li><strong>Start with pure random noise</strong> (x_T)</li>
+                                <li><strong>For t = T down to 1:</strong>
+                                    <ul>
+                                        <li>Model predicts what noise is in current image</li>
+                                        <li>Subtract (some of) that predicted noise</li>
+                                        <li>Add a tiny bit of new noise (for stochasticity)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>After T steps:</strong> Beautiful generated image!</li>
+                            </ol>
+                        </div>
+
+                        <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; margin-top: 20px;"><code># Simplified generation (sampling)
+def generate_image(model, num_steps=1000):
+    # Start with pure noise
+    x = torch.randn(1, 3, 256, 256)  # Random noise image
+    
+    # Gradually denoise
+    for t in reversed(range(num_steps)):
+        # Model predicts the noise
+        predicted_noise = model(x, t)
+        
+        # Remove some of that noise
+        x = remove_noise(x, predicted_noise, t)
+        
+        # Add tiny bit of randomness (except last step)
+        if t > 0:
+            x = x + small_noise()
+    
+    return x  # Clean generated image!</code></pre>
+                    </div>
+                </div>
+
+                <!-- Text-to-Image -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>📝 Text-to-Image: DALL-E, Stable Diffusion, Midjourney</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>Adding Text Conditioning</h4>
+                            <p>Text-to-image models add a crucial ingredient: <strong>text embeddings that guide the denoising!</strong></p>
+                            <ol>
+                                <li><strong>Encode the text prompt</strong> (using CLIP or similar)</li>
+                                <li><strong>Feed text embedding to the model</strong> at each step</li>
+                                <li><strong>Model learns:</strong> "Given this noise AND this text, what should I denoise toward?"</li>
+                            </ol>
+                        </div>
+
+                        <div class="terms-grid" style="margin-top: 20px;">
+                            <div class="term-card">
+                                <h4>DALL-E (OpenAI)</h4>
+                                <p>Pioneered text-to-image. DALL-E 3 uses improved understanding of prompts.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Stable Diffusion</h4>
+                                <p>Open-source! Works in latent space (compressed), making it fast and runnable locally.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Midjourney</h4>
+                                <p>Known for artistic, stylized outputs. Accessible via Discord.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Imagen (Google)</h4>
+                                <p>Uses large language models for better text understanding.</p>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px;">
+                            <h4>🐱 Guided Denoising Example</h4>
+                            <p><strong>Prompt:</strong> "A fluffy orange cat wearing a tiny crown"</p>
+                            <p><strong>At each denoising step:</strong></p>
+                            <ul>
+                                <li>Model checks: "Does this look more like a fluffy cat? Good, denoise this way."</li>
+                                <li>"Is it orange? Let me adjust colors..."</li>
+                                <li>"Where should the crown go? On the head area..."</li>
+                            </ul>
+                            <p>The text embedding acts like a compass, guiding each step toward the desired image!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diffusion vs GANs -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>⚖️ Diffusion vs. GANs</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                            <tr style="background: var(--primary-color); color: white;">
+                                <th style="padding: 12px; text-align: left;">Aspect</th>
+                                <th style="padding: 12px; text-align: left;">Diffusion Models</th>
+                                <th style="padding: 12px; text-align: left;">GANs</th>
+                            </tr>
+                            <tr style="background: #f3f4f6;">
+                                <td style="padding: 12px;"><strong>Training</strong></td>
+                                <td style="padding: 12px;">Stable, simple loss</td>
+                                <td style="padding: 12px;">Tricky adversarial balance</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px;"><strong>Mode Collapse</strong></td>
+                                <td style="padding: 12px;">Doesn't happen ✅</td>
+                                <td style="padding: 12px;">Common problem ❌</td>
+                            </tr>
+                            <tr style="background: #f3f4f6;">
+                                <td style="padding: 12px;"><strong>Diversity</strong></td>
+                                <td style="padding: 12px;">High variety ✅</td>
+                                <td style="padding: 12px;">Can be limited</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px;"><strong>Speed</strong></td>
+                                <td style="padding: 12px;">Slow (many steps) ❌</td>
+                                <td style="padding: 12px;">Fast (single forward pass) ✅</td>
+                            </tr>
+                            <tr style="background: #f3f4f6;">
+                                <td style="padding: 12px;"><strong>Quality</strong></td>
+                                <td style="padding: 12px;">Excellent, state-of-art</td>
+                                <td style="padding: 12px;">Very good</td>
+                            </tr>
+                        </table>
+                        
+                        <div class="term-card">
+                            <h4>Why Diffusion Won (For Now)</h4>
+                            <p>Diffusion models have largely overtaken GANs for image generation because:</p>
+                            <ul>
+                                <li>Training is much more stable—no balancing act needed</li>
+                                <li>They produce more diverse outputs</li>
+                                <li>Quality matches or exceeds GANs</li>
+                                <li>Easy to add conditioning (text, images, etc.)</li>
+                            </ul>
+                            <p>The main downside: slower generation (though techniques like DDIM and distillation are helping!)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: EXPERIMENTS -->
+        <section id="experiments" class="lesson-section">
+            <h2>🧪 Experiments: Create with Diffusion!</h2>
+            <p style="color: var(--text-light); margin-bottom: 30px;">Experience the magic of text-to-image generation!</p>
+
+            <div class="experiments-grid">
+                <div class="experiment-card">
+                    <h3>🎨 Stable Diffusion Online</h3>
+                    <p>Generate images from text prompts for free! No signup required. Watch the denoising process happen!</p>
+                    <p><strong>Try prompt:</strong> "A fluffy cat astronaut floating in space, digital art"</p>
+                    <a href="https://stablediffusionweb.com/" class="experiment-link" target="_blank">Try Stable Diffusion →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🖌️ DALL-E 3</h3>
+                    <p>OpenAI's latest text-to-image model. Incredible prompt understanding and artistic quality.</p>
+                    <p><strong>Concepts:</strong> Text conditioning, prompt engineering</p>
+                    <a href="https://openai.com/dall-e-3" class="experiment-link" target="_blank">Try DALL-E 3 →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🎭 Playground AI</h3>
+                    <p>Free tool to explore different diffusion models side-by-side. Compare outputs and learn prompt techniques!</p>
+                    <p><strong>Concepts:</strong> Model comparison, prompt engineering</p>
+                    <a href="https://playground.com/" class="experiment-link" target="_blank">Try Playground →</a>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px; background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(124, 58, 237, 0.1));">
+                <h3>💻 Run Stable Diffusion Locally</h3>
+                <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto;"><code># Using Hugging Face Diffusers library
+from diffusers import StableDiffusionPipeline
+import torch
+
+# Load the model (downloads ~4GB first time)
+pipe = StableDiffusionPipeline.from_pretrained(
+    "runwayml/stable-diffusion-v1-5",
+    torch_dtype=torch.float16
+)
+pipe = pipe.to("cuda")  # Use GPU
+
+# Generate an image!
+prompt = "A majestic cat wearing a tiny crown, oil painting style"
+image = pipe(prompt).images[0]
+
+# Save it
+image.save("royal_cat.png")
+print("Your royal cat has been generated! 👑🐱")</code></pre>
+            </div>
+        </section>
+
+        <!-- SECTION 5: RESOURCES -->
+        <section id="resources" class="lesson-section">
+            <h2>📚 Resources for Further Learning</h2>
+            
+            <div class="resources-section">
+                <div class="resources-columns">
+                    <div class="resource-column">
+                        <h3>🎥 Videos</h3>
+                        <ul>
+                            <li><a href="https://www.youtube.com/watch?v=HoKDTa5jHvg" target="_blank">Diffusion Models Explained - Computerphile</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=W-O7AZNzbzQ" target="_blank">How AI Image Generators Work</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=1CIpzeNxIhU" target="_blank">Stable Diffusion Deep Dive</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📖 Papers & Articles</h3>
+                        <ul>
+                            <li><a href="https://arxiv.org/abs/2006.11239" target="_blank">DDPM Paper (Original)</a></li>
+                            <li><a href="https://lilianweng.github.io/posts/2021-07-11-diffusion-models/" target="_blank">Lilian Weng's Diffusion Guide</a></li>
+                            <li><a href="https://jalammar.github.io/illustrated-stable-diffusion/" target="_blank">Illustrated Stable Diffusion</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>🛠️ Tools & Code</h3>
+                        <ul>
+                            <li><a href="https://github.com/huggingface/diffusers" target="_blank">🤗 Diffusers Library</a></li>
+                            <li><a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui" target="_blank">Stable Diffusion WebUI</a></li>
+                            <li><a href="https://github.com/CompVis/stable-diffusion" target="_blank">Official Stable Diffusion</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>🎮 Playgrounds</h3>
+                        <ul>
+                            <li><a href="https://stablediffusionweb.com/" target="_blank">Stable Diffusion Web</a></li>
+                            <li><a href="https://playground.com/" target="_blank">Playground AI</a></li>
+                            <li><a href="https://lexica.art/" target="_blank">Lexica (Prompt Search)</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="lesson-navigation">
+            <a href="gans.html" class="lesson-nav-btn">
+                <span>←</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Previous</span>
+                    <span class="lesson-nav-btn-title">GANs</span>
+                </div>
+            </a>
+            <a href="reinforcement-learning.html" class="lesson-nav-btn next">
+                <span>→</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Next Lesson</span>
+                    <span class="lesson-nav-btn-title">Reinforcement Learning</span>
+                </div>
+            </a>
+        </nav>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Referencia - Learning AI, one cat at a time 🐱</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

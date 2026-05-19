@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lesson 08: Prompt Engineering - A cat asking a genie for milk the RIGHT way!">
+    <title>Lesson 08: Prompt Engineering | Referencia 🐱</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="../index.html" style="text-decoration: none; color: white;">
+                    <h1 class="logo">Referencia</h1>
+                </a>
+                <p class="tagline">Lesson 08: Prompt Engineering</p>
+            </div>
+        </nav>
+    </header>
+
+    <div class="lesson-header">
+        <div class="container">
+            <div class="lesson-number">LESSON 08</div>
+            <h1 class="lesson-title">✨ Prompt Engineering</h1>
+            <p class="lesson-subtitle">A cat asking a genie - Learning to get exactly what you want!</p>
+            <div class="lesson-info">
+                <span class="lesson-info-item">⏱️ 45 minutes</span>
+                <span class="lesson-info-item">🟢 Beginner</span>
+                <span class="lesson-info-item">📚 5 sections</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="lesson-nav">
+        <div class="container">
+            <div class="lesson-nav-container">
+                <a href="#intro" class="lesson-nav-link active">Introduction</a>
+                <a href="#sketchnote" class="lesson-nav-link">Sketchnote</a>
+                <a href="#types" class="lesson-nav-link">Core Content</a>
+                <a href="#experiments" class="lesson-nav-link">Experiments</a>
+                <a href="#resources" class="lesson-nav-link">Resources</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- SECTION 1: INTRODUCTION -->
+        <section id="intro" class="lesson-section">
+            <h2>📖 Introduction: What is Prompt Engineering?</h2>
+            
+            <div class="lesson-intro">
+                <p>Imagine a cat 🐱 has found a genie 🧞 who grants wishes. The cat says <strong>"I want milk!"</strong> — and a milk truck crashes through the wall! 🚛💥 The cat should have said: <strong>"I want a small bowl of warm milk, served in my favorite dish, please."</strong></p>
+                
+                <p><strong>Prompt Engineering</strong> is the art of communicating with AI to get exactly what you want. Like wishing carefully with a genie, how you phrase your request dramatically affects the output!</p>
+            </div>
+
+            <div class="term-card" style="background: linear-gradient(135deg, rgba(234, 179, 8, 0.1), rgba(37, 99, 235, 0.1)); border-left: 4px solid #eab308;">
+                <h3>💡 Key Insight</h3>
+                <p><strong>Prompt Engineering</strong> is crafting inputs to AI models that elicit the best possible outputs. It's about being specific, providing context, and guiding the AI toward your desired result!</p>
+                <p><em>"Prompting: Ask the genie carefully, or get a milk truck!"</em></p>
+            </div>
+
+            <h3>🎯 What You'll Learn</h3>
+            <ul>
+                <li>Why prompts matter so much for LLM outputs</li>
+                <li>Core techniques: specificity, examples, personas, chain-of-thought</li>
+                <li>Prompt patterns that work across different tasks</li>
+                <li>Common mistakes and how to avoid them</li>
+                <li>Advanced techniques: few-shot, RAG, prompt chaining</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 2: SKETCHNOTE -->
+        <section id="sketchnote" class="lesson-section">
+            <h2>🎨 Sketchnote: Visual Summary</h2>
+            <p style="color: var(--text-light); margin-bottom: 20px;">The cat and the genie - Wish carefully!</p>
+
+            <div class="sketchnote-container">
+                <div class="sketchnote-placeholder">
+                    <h3>🖼️ Sketchnote Concept</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;"><strong>Two scenarios showing the power of good prompts:</strong></p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div style="background: #fee2e2; padding: 20px; border-radius: 10px; text-align: center;">
+                            <h4>❌ Bad Prompt</h4>
+                            <p style="font-size: 2rem;">🐱💬 "I want milk!"</p>
+                            <p style="font-size: 2rem;">🧞✨</p>
+                            <p style="font-size: 2rem;">🚛💥</p>
+                            <p><em>Milk truck crashes through wall!</em></p>
+                        </div>
+                        
+                        <div style="background: #dcfce7; padding: 20px; border-radius: 10px; text-align: center;">
+                            <h4>✅ Good Prompt</h4>
+                            <p style="font-size: 2rem;">🐱💬 "A small bowl of warm milk in my dish, please"</p>
+                            <p style="font-size: 2rem;">🧞✨</p>
+                            <p style="font-size: 2rem;">🥛😺</p>
+                            <p><em>Perfect! Exactly what was wanted!</em></p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 25px; padding: 15px; background: #f0f9ff; border-radius: 8px;">
+                        <p><strong>Key Elements of a Good Prompt:</strong></p>
+                        <p>🎯 Specific + 📋 Context + 📝 Format + 🎭 Tone + 📏 Constraints</p>
+                    </div>
+                    
+                    <p style="margin-top: 20px; color: var(--text-light);">
+                        💡 Save your sketchnote as: <code>/assets/sketchnotes/prompt-engineering.png</code>
+                    </p>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px;">
+                <h3>🐱 The Genie Wish Story</h3>
+                <p><strong>Moral:</strong> LLMs are like literal genies—they do exactly what you ask, not what you <em>meant</em>!</p>
+                <p><strong>Vague wish:</strong> "Make me rich" → You're now named Rich 🤦</p>
+                <p><strong>Specific wish:</strong> "Transfer $1 million to my bank account at [Bank], account #[X], from a legal source, without anyone being harmed" → Better! (though still ethically questionable 😅)</p>
+                <p><strong>Lesson:</strong> Be specific, provide context, and anticipate edge cases!</p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: CORE CONTENT -->
+        <section id="types" class="lesson-section">
+            <h2>📚 Core Content</h2>
+
+            <div class="accordion">
+                <!-- Basic Prompting Principles -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>📝 Basic Prompting Principles</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>🎯 Be Specific</h4>
+                                <p><strong>Bad:</strong> "Write about cats"</p>
+                                <p><strong>Good:</strong> "Write a 200-word blog post about why cats make great pets for apartment living"</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>📋 Provide Context</h4>
+                                <p><strong>Bad:</strong> "Fix this code"</p>
+                                <p><strong>Good:</strong> "This Python function should sort a list, but it's returning None. Here's the code: [code]"</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>📐 Specify Format</h4>
+                                <p><strong>Bad:</strong> "List some ideas"</p>
+                                <p><strong>Good:</strong> "Give me 5 ideas as a numbered list, each with a one-sentence explanation"</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🎭 Set the Tone</h4>
+                                <p><strong>Bad:</strong> "Explain quantum physics"</p>
+                                <p><strong>Good:</strong> "Explain quantum physics in a fun, casual way like you're talking to a curious 10-year-old"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Powerful Techniques -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>💪 Powerful Prompting Techniques</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>🎭 Role/Persona Prompting</h4>
+                            <p>Tell the AI who to "be":</p>
+                            <pre style="background: #f3f4f6; padding: 10px; border-radius: 5px;"><code>"You are an experienced Python developer who writes clean, well-documented code. 
+Review this code and suggest improvements..."</code></pre>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>🧠 Chain-of-Thought (CoT)</h4>
+                            <p>Ask the AI to show its reasoning:</p>
+                            <pre style="background: #f3f4f6; padding: 10px; border-radius: 5px;"><code>"Solve this step by step:
+A store has 50 apples. They sell 23 and receive a shipment of 15. How many do they have?
+
+Think through each step before giving the final answer."</code></pre>
+                            <p>This dramatically improves accuracy on complex reasoning tasks!</p>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>📚 Few-Shot Learning</h4>
+                            <p>Show examples of what you want:</p>
+                            <pre style="background: #f3f4f6; padding: 10px; border-radius: 5px;"><code>"Classify the sentiment as positive, negative, or neutral.
+
+Example 1: "I love this product!" → Positive
+Example 2: "Terrible experience, never again" → Negative  
+Example 3: "It arrived on Tuesday" → Neutral
+
+Now classify: "This exceeded my expectations!"</code></pre>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>📋 Output Templates</h4>
+                            <p>Give a structure to fill:</p>
+                            <pre style="background: #f3f4f6; padding: 10px; border-radius: 5px;"><code>"Analyze this product and respond in this format:
+
+PROS:
+- [list 3 pros]
+
+CONS:
+- [list 3 cons]
+
+VERDICT: [one sentence summary]"</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompt Patterns -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🎨 Useful Prompt Patterns</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>"Act as..." Pattern</h4>
+                                <pre style="background: #f3f4f6; padding: 8px; border-radius: 5px; font-size: 0.8rem;"><code>Act as a senior software engineer...
+Act as a helpful tutor who...
+Act as a creative writing coach...</code></pre>
+                            </div>
+                            <div class="term-card">
+                                <h4>"Let's think step by step"</h4>
+                                <pre style="background: #f3f4f6; padding: 8px; border-radius: 5px; font-size: 0.8rem;"><code>[Complex problem]
+
+Let's think through this step by step.</code></pre>
+                            </div>
+                            <div class="term-card">
+                                <h4>Critique & Improve</h4>
+                                <pre style="background: #f3f4f6; padding: 8px; border-radius: 5px; font-size: 0.8rem;"><code>Here's my [work]. First, identify 3 weaknesses.
+Then provide specific improvements for each.</code></pre>
+                            </div>
+                            <div class="term-card">
+                                <h4>Pros/Cons Analysis</h4>
+                                <pre style="background: #f3f4f6; padding: 8px; border-radius: 5px; font-size: 0.8rem;"><code>Analyze [X] by listing:
+- 5 advantages
+- 5 disadvantages
+- Overall recommendation</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Common Mistakes -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>⚠️ Common Mistakes</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="terms-grid">
+                            <div class="term-card" style="border-left: 4px solid #ef4444;">
+                                <h4>❌ Being Too Vague</h4>
+                                <p>"Write something about AI"</p>
+                                <p>→ Gets generic, unfocused output</p>
+                            </div>
+                            <div class="term-card" style="border-left: 4px solid #ef4444;">
+                                <h4>❌ Missing Context</h4>
+                                <p>"Is this a good approach?"</p>
+                                <p>→ AI doesn't know your goals/constraints</p>
+                            </div>
+                            <div class="term-card" style="border-left: 4px solid #ef4444;">
+                                <h4>❌ One Giant Prompt</h4>
+                                <p>Asking for 10 things at once</p>
+                                <p>→ Quality drops, things get missed</p>
+                            </div>
+                            <div class="term-card" style="border-left: 4px solid #ef4444;">
+                                <h4>❌ No Examples</h4>
+                                <p>Expecting specific format without showing it</p>
+                                <p>→ Output doesn't match expectations</p>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px; border-left: 4px solid #22c55e;">
+                            <h4>✅ The Fix: Iterative Refinement</h4>
+                            <p>Don't expect perfection on the first try! Prompting is iterative:</p>
+                            <ol>
+                                <li>Try a prompt</li>
+                                <li>Evaluate the output</li>
+                                <li>Identify what's missing or wrong</li>
+                                <li>Refine the prompt</li>
+                                <li>Repeat until satisfied</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advanced Techniques -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🚀 Advanced Techniques</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>🔗 Prompt Chaining</h4>
+                            <p>Break complex tasks into multiple prompts:</p>
+                            <ol>
+                                <li>Prompt 1: "Brainstorm 10 blog post ideas about AI"</li>
+                                <li>Prompt 2: "Pick the best idea and create an outline"</li>
+                                <li>Prompt 3: "Write the introduction based on this outline"</li>
+                                <li>...</li>
+                            </ol>
+                            <p>Each step focuses on one thing → better quality!</p>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>📚 RAG (Retrieval-Augmented Generation)</h4>
+                            <p>Inject relevant documents into the prompt:</p>
+                            <pre style="background: #f3f4f6; padding: 10px; border-radius: 5px;"><code>Based on the following documentation:
+[Retrieved relevant docs]
+
+Answer this question: [User question]
+
+Only use information from the provided documentation.</code></pre>
+                            <p>Reduces hallucination by grounding answers in real data!</p>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>🎯 System Prompts</h4>
+                            <p>Set persistent instructions for the entire conversation:</p>
+                            <pre style="background: #f3f4f6; padding: 10px; border-radius: 5px;"><code>System: You are a helpful coding assistant. Always:
+- Write clean, documented code
+- Explain your reasoning
+- Suggest best practices
+- Ask clarifying questions when needed</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: EXPERIMENTS -->
+        <section id="experiments" class="lesson-section">
+            <h2>🧪 Experiments: Practice Your Prompting!</h2>
+            <p style="color: var(--text-light); margin-bottom: 30px;">Learn by doing—try these prompting challenges!</p>
+
+            <div class="experiments-grid">
+                <div class="experiment-card">
+                    <h3>🎯 Prompt Battle</h3>
+                    <p>Challenge: Get ChatGPT to write a haiku about coding. Try different prompts and see how the quality varies!</p>
+                    <p><strong>Compare:</strong> "Write a haiku" vs. detailed instructions with examples</p>
+                    <a href="https://chat.openai.com" class="experiment-link" target="_blank">Try on ChatGPT →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>📚 Learn Prompting</h3>
+                    <p>Comprehensive guide with interactive examples. Learn every technique from basics to advanced!</p>
+                    <p><strong>Free course:</strong> From zero to prompt expert</p>
+                    <a href="https://learnprompting.org/" class="experiment-link" target="_blank">Learn Prompting →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🧪 Prompt Playground</h3>
+                    <p>OpenAI's playground lets you tweak parameters and see immediate results. Great for experimenting!</p>
+                    <p><strong>Try:</strong> Adjust temperature, compare outputs</p>
+                    <a href="https://platform.openai.com/playground" class="experiment-link" target="_blank">OpenAI Playground →</a>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px; background: linear-gradient(135deg, rgba(234, 179, 8, 0.1), rgba(37, 99, 235, 0.1));">
+                <h3>💻 Prompt Engineering Challenge</h3>
+                <p>Try improving these prompts:</p>
+                <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto;"><code># 🐱 Challenge 1: Too vague
+BAD: "Write a story"
+YOUR IMPROVED VERSION: ???
+
+# 🐱 Challenge 2: Missing format
+BAD: "Give me recipe ideas"
+YOUR IMPROVED VERSION: ???
+
+# 🐱 Challenge 3: No context
+BAD: "Is this code good?"
+YOUR IMPROVED VERSION: ???
+
+# Example Good Prompt:
+"You are an expert Python developer. Review this code for:
+1. Bugs or errors
+2. Performance issues
+3. Code style improvements
+
+Code:
+```python
+[code here]
+```
+
+Format your response as:
+## Issues Found
+## Suggested Fixes
+## Improved Code"</code></pre>
+            </div>
+        </section>
+
+        <!-- SECTION 5: RESOURCES -->
+        <section id="resources" class="lesson-section">
+            <h2>📚 Resources for Further Learning</h2>
+            
+            <div class="resources-section">
+                <div class="resources-columns">
+                    <div class="resource-column">
+                        <h3>📖 Guides</h3>
+                        <ul>
+                            <li><a href="https://learnprompting.org/" target="_blank">Learn Prompting (Free Course)</a></li>
+                            <li><a href="https://www.promptingguide.ai/" target="_blank">Prompt Engineering Guide</a></li>
+                            <li><a href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank">OpenAI Prompt Guide</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>🎥 Videos</h3>
+                        <ul>
+                            <li><a href="https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/" target="_blank">ChatGPT Prompt Engineering - DeepLearning.AI</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=_ZvnD96BsHw" target="_blank">Prompt Engineering Tips</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>🛠️ Tools</h3>
+                        <ul>
+                            <li><a href="https://platform.openai.com/playground" target="_blank">OpenAI Playground</a></li>
+                            <li><a href="https://anthropic.com/claude" target="_blank">Claude</a></li>
+                            <li><a href="https://github.com/f/awesome-chatgpt-prompts" target="_blank">Awesome ChatGPT Prompts</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📚 Papers</h3>
+                        <ul>
+                            <li><a href="https://arxiv.org/abs/2201.11903" target="_blank">Chain-of-Thought Prompting</a></li>
+                            <li><a href="https://arxiv.org/abs/2302.11382" target="_blank">Self-Consistency</a></li>
+                            <li><a href="https://arxiv.org/abs/2210.03629" target="_blank">ReAct Prompting</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="lesson-navigation">
+            <a href="ai-agents.html" class="lesson-nav-btn">
+                <span>←</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Previous</span>
+                    <span class="lesson-nav-btn-title">AI Agents</span>
+                </div>
+            </a>
+            <a href="overfitting-underfitting.html" class="lesson-nav-btn next">
+                <span>→</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Next Lesson</span>
+                    <span class="lesson-nav-btn-title">Overfitting & Underfitting</span>
+                </div>
+            </a>
+        </nav>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Referencia - Learning AI, one cat at a time 🐱</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

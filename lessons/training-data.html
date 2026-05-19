@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lesson 03: Training Data & Datasets - Learn how Professor Whiskers teaches kittens using flashcards, and why the quality of training data makes or breaks an AI model.">
+    <title>Lesson 03: Training Data &amp; Datasets | Referencia 🐱</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="../index.html" style="text-decoration: none; color: white;">
+                    <h1 class="logo">Referencia</h1>
+                </a>
+                <p class="tagline">Lesson 03: Training Data &amp; Datasets</p>
+            </div>
+        </nav>
+    </header>
+
+    <div class="lesson-header">
+        <div class="container">
+            <div class="lesson-number">LESSON 03</div>
+            <h1 class="lesson-title">🗂️ Training Data &amp; Datasets</h1>
+            <p class="lesson-subtitle">Professor Whiskers' flashcard school — what AI learns from matters everything!</p>
+            <div class="lesson-info">
+                <span class="lesson-info-item">⏱️ 40 minutes</span>
+                <span class="lesson-info-item">🟢 Beginner</span>
+                <span class="lesson-info-item">📚 5 sections</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="lesson-nav">
+        <div class="container">
+            <div class="lesson-nav-container">
+                <a href="#intro" class="lesson-nav-link active">Introduction</a>
+                <a href="#sketchnote" class="lesson-nav-link">Sketchnote</a>
+                <a href="#content" class="lesson-nav-link">Core Content</a>
+                <a href="#experiments" class="lesson-nav-link">Experiments</a>
+                <a href="#resources" class="lesson-nav-link">Resources</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+
+        <!-- ═══════════════════════════════════════════════════════════
+             SECTION 1: INTRODUCTION
+        ═══════════════════════════════════════════════════════════ -->
+        <section id="intro" class="lesson-section">
+            <h2>📖 Introduction: What is Training Data?</h2>
+
+            <div class="lesson-intro">
+                <p>Meet <strong>Professor Whiskers</strong> 🎓🐱 — a distinguished tabby in a graduation cap who runs the finest kitten school in town. Professor Whiskers is teaching a young kitten how to tell cats apart from dogs. The secret tool? <strong>Flashcards.</strong> Each flashcard shows a picture on the front and the answer on the back: "Cat 🐱" or "Dog 🐕".</p>
+
+                <p>Here's the catch: <em>the kitten can only learn from the flashcards it's shown.</em> If Professor Whiskers only brings flashcards of fluffy white cats, the kitten will eventually decide that ALL animals are fluffy white cats — and will confidently label a poodle as a cat! This is exactly how AI works. The examples an AI model trains on — the <strong>training data</strong> — shape everything it knows.</p>
+
+                <p><strong>Training data</strong> is the collection of examples that a machine learning model learns from during training. Just like a student who studies from textbooks, an AI model studies patterns in data. If the data is rich, diverse, and accurate, the model learns well. If the data is narrow, biased, or mislabeled, the model will make those same mistakes — at scale.</p>
+            </div>
+
+            <div class="term-card" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1)); border-left: 4px solid var(--primary-color);">
+                <h3>💡 Key Insight</h3>
+                <p><strong>Training data</strong> is the set of labeled (or unlabeled) examples used to teach a machine learning model to recognise patterns, make predictions, or generate outputs — the quality and diversity of this data directly determines how well the model performs.</p>
+                <p><em>"GIGO: Garbage In, Garbage Out. Great data → great model. Bad data → bad model."</em></p>
+            </div>
+
+            <h3>🎯 What You'll Learn</h3>
+            <ul>
+                <li>What training data is and why it is the foundation of every AI system</li>
+                <li>The difference between labeled and unlabeled data</li>
+                <li>The three main types of data: structured, unstructured, and semi-structured</li>
+                <li>Why data quality matters more than data quantity</li>
+                <li>How to split data into train, validation, and test sets</li>
+                <li>Where to find real-world datasets used by AI researchers</li>
+            </ul>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             SECTION 2: SKETCHNOTE
+        ═══════════════════════════════════════════════════════════ -->
+        <section id="sketchnote" class="lesson-section">
+            <h2>🎨 Sketchnote: Visual Summary</h2>
+            <p style="color: var(--text-light); margin-bottom: 20px;">Professor Whiskers' flashcard classroom — the three piles of learning!</p>
+
+            <div class="sketchnote-container">
+                <div class="sketchnote-placeholder">
+                    <h3>🖼️ Sketchnote Concept</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;"><strong>Professor Whiskers sorting flashcards into Train, Validate &amp; Test piles:</strong></p>
+
+                    <!-- Professor Whiskers banner -->
+                    <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 20px; border-radius: 12px; text-align: center; margin-bottom: 24px;">
+                        <p style="font-size: 3.5rem; margin-bottom: 4px;">🎓🐱</p>
+                        <h4 style="margin: 0 0 6px 0;">Professor Whiskers' Flashcard Academy</h4>
+                        <p style="margin: 0; font-size: 0.95rem; color: #92400e;"><em>"Show me your flashcards and I'll show you your model!"</em></p>
+                    </div>
+
+                    <!-- Flashcard stacks row -->
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px;">
+                        <div style="background: white; padding: 14px; border-radius: 10px; border: 2px solid #bfdbfe; text-align: center;">
+                            <p style="font-size: 2rem; margin: 0;">🐱</p>
+                            <p style="font-weight: bold; margin: 4px 0; color: #1d4ed8;">Cats</p>
+                            <p style="font-size: 0.8rem; color: #6b7280; margin: 0;">5,000 flashcards</p>
+                        </div>
+                        <div style="background: white; padding: 14px; border-radius: 10px; border: 2px solid #bbf7d0; text-align: center;">
+                            <p style="font-size: 2rem; margin: 0;">🐕</p>
+                            <p style="font-weight: bold; margin: 4px 0; color: #15803d;">Dogs</p>
+                            <p style="font-size: 0.8rem; color: #6b7280; margin: 0;">5,000 flashcards</p>
+                        </div>
+                        <div style="background: white; padding: 14px; border-radius: 10px; border: 2px solid #fde68a; text-align: center;">
+                            <p style="font-size: 2rem; margin: 0;">🐦</p>
+                            <p style="font-weight: bold; margin: 4px 0; color: #b45309;">Birds</p>
+                            <p style="font-size: 0.8rem; color: #6b7280; margin: 0;">5,000 flashcards</p>
+                        </div>
+                    </div>
+
+                    <!-- Train / Validate / Test split -->
+                    <p style="font-weight: bold; margin-bottom: 12px;">📦 Professor Whiskers splits the flashcards into three piles:</p>
+                    <div style="display: grid; grid-template-columns: 5fr 2fr 2fr; gap: 12px; margin-bottom: 24px;">
+                        <div style="background: linear-gradient(135deg, #ede9fe, #dbeafe); padding: 16px; border-radius: 10px; text-align: center; border: 2px solid #a78bfa;">
+                            <p style="font-size: 2.2rem; margin: 0;">📚📚📚📚</p>
+                            <p style="font-weight: bold; color: #5b21b6; margin: 6px 0 2px 0;">Training Set</p>
+                            <p style="font-size: 0.85rem; color: #6b7280; margin: 0;">70–80% of data</p>
+                            <p style="font-size: 0.8rem; margin-top: 6px; color: #4c1d95;">The kitten studies these</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); padding: 16px; border-radius: 10px; text-align: center; border: 2px solid #34d399;">
+                            <p style="font-size: 2.2rem; margin: 0;">📋📋</p>
+                            <p style="font-weight: bold; color: #065f46; margin: 6px 0 2px 0;">Validation Set</p>
+                            <p style="font-size: 0.85rem; color: #6b7280; margin: 0;">10–15%</p>
+                            <p style="font-size: 0.8rem; margin-top: 6px; color: #064e3b;">Weekly quiz</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #fee2e2, #fecaca); padding: 16px; border-radius: 10px; text-align: center; border: 2px solid #f87171;">
+                            <p style="font-size: 2.2rem; margin: 0;">📝</p>
+                            <p style="font-weight: bold; color: #991b1b; margin: 6px 0 2px 0;">Test Set</p>
+                            <p style="font-size: 0.85rem; color: #6b7280; margin: 0;">10–15%</p>
+                            <p style="font-size: 0.8rem; margin-top: 6px; color: #7f1d1d;">Final exam!</p>
+                        </div>
+                    </div>
+
+                    <!-- Labeled vs Unlabeled -->
+                    <div style="background: #f8fafc; padding: 16px; border-radius: 10px; border: 1px solid #e2e8f0;">
+                        <p style="font-weight: bold; margin-bottom: 10px; text-align: center;">🏷️ Labeled vs. Unlabeled Flashcards</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <div style="background: #ecfdf5; padding: 12px; border-radius: 8px; text-align: center;">
+                                <p style="font-size: 1.6rem; margin: 0;">🐱 ✅</p>
+                                <p style="font-size: 0.85rem; margin: 4px 0 0 0;"><strong>Labeled:</strong> "This is a cat!"<br><span style="color: #6b7280;">Answer on the back</span></p>
+                            </div>
+                            <div style="background: #fff7ed; padding: 12px; border-radius: 8px; text-align: center;">
+                                <p style="font-size: 1.6rem; margin: 0;">❓ 🐾</p>
+                                <p style="font-size: 0.85rem; margin: 4px 0 0 0;"><strong>Unlabeled:</strong> "Some animal..."<br><span style="color: #6b7280;">No answer on the back</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 18px; color: var(--text-light); font-size: 0.9rem; text-align: center;">
+                        💡 Save your sketchnote as: <code>assets/sketchnotes/training-data.png</code>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             SECTION 3: CORE CONTENT
+        ═══════════════════════════════════════════════════════════ -->
+        <section id="content" class="lesson-section">
+            <h2>📚 Core Content</h2>
+
+            <div class="accordion">
+
+                <!-- ── Accordion 1: What is Training Data? ── -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🗂️ What is Training Data?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Training data is the collection of <strong>examples</strong> fed to a machine learning algorithm so it can learn patterns and relationships. Think of it as the textbook, workbook, and practice tests all rolled into one enormous pile of information.</p>
+
+                        <p>Every ML model — from the spam filter in Gmail to the image recognition chip in your phone — learned what it knows from training data. There are no shortcuts: the model's knowledge is <em>bounded</em> by what was in that data.</p>
+
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>🏷️ Labeled Data</h4>
+                                <p>Each example comes with the correct answer (a <em>label</em>). The model learns by comparing its guesses to these labels and adjusting.</p>
+                                <p><strong>Example:</strong> 10,000 photos each tagged "cat" or "dog".</p>
+                                <p><strong>Used in:</strong> Supervised learning</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>❓ Unlabeled Data</h4>
+                                <p>Examples without correct answers. The model must find patterns on its own — grouping similar things together.</p>
+                                <p><strong>Example:</strong> 1 million photos with no tags at all.</p>
+                                <p><strong>Used in:</strong> Unsupervised &amp; self-supervised learning</p>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px; background: linear-gradient(135deg, rgba(251,191,36,0.1), rgba(245,158,11,0.1)); border-left: 4px solid #f59e0b;">
+                            <h4>🐱 Real-World Example: Gmail Spam Filter</h4>
+                            <p>Google trained Gmail's spam filter on <strong>millions of emails</strong> already labeled "spam" or "not spam" by users who clicked the spam button. The model learned that emails with "You've won a prize!" and no sender name are very likely spam. Without that labeled data, the filter would have no idea what spam looks like.</p>
+                        </div>
+
+                        <div style="margin-top: 20px;">
+                            <h4>🔬 Supervised vs. Unsupervised at a Glance</h4>
+                            <table style="width:100%; border-collapse: collapse; font-size: 0.95rem;">
+                                <thead>
+                                    <tr style="background: var(--primary-color); color: white;">
+                                        <th style="padding: 10px; text-align: left; border-radius: 6px 0 0 0;">Aspect</th>
+                                        <th style="padding: 10px; text-align: left;">Supervised</th>
+                                        <th style="padding: 10px; text-align: left; border-radius: 0 6px 0 0;">Unsupervised</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="background: #f8fafc;">
+                                        <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;"><strong>Labels?</strong></td>
+                                        <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">Yes ✅</td>
+                                        <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">No ❌</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;"><strong>Goal</strong></td>
+                                        <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">Predict labels on new data</td>
+                                        <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">Discover hidden patterns</td>
+                                    </tr>
+                                    <tr style="background: #f8fafc;">
+                                        <td style="padding: 10px;"><strong>Example</strong></td>
+                                        <td style="padding: 10px;">Spam detection</td>
+                                        <td style="padding: 10px;">Customer segmentation</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Accordion 2: Types of Data ── -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>📊 Types of Data</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Not all data looks the same. AI models can learn from many different kinds of information, and each type poses different engineering challenges.</p>
+
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>📋 Structured Data</h4>
+                                <p>Organised into rows and columns — like a spreadsheet or database table. Every column has a well-defined type.</p>
+                                <p><strong>Examples:</strong> Patient records in a hospital, stock prices, weather sensor readings, e-commerce purchase history.</p>
+                                <p><strong>Typical ML tasks:</strong> Classification, regression, forecasting</p>
+                                <p><strong>Commonly stored in:</strong> CSV files, SQL databases, Excel sheets</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🖼️ Unstructured Data</h4>
+                                <p>Has no predefined format. Rich in information but harder for machines to parse without learning first.</p>
+                                <p><strong>Examples:</strong> Photos, videos, audio recordings, raw text, social media posts, PDFs.</p>
+                                <p><strong>Typical ML tasks:</strong> Image recognition, speech-to-text, sentiment analysis</p>
+                                <p><strong>Roughly 80% of all data in the world is unstructured.</strong></p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🔀 Semi-Structured Data</h4>
+                                <p>Has some organisational markers (tags, keys) but doesn't fit neatly into a table. Sits between structured and unstructured.</p>
+                                <p><strong>Examples:</strong> JSON files, XML, HTML pages, email (subject/body/headers), log files.</p>
+                                <p><strong>Why it matters:</strong> Most data from APIs and web services arrives in JSON or XML format.</p>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px;">
+                            <h4>🐱 Professor Whiskers' Data Pantry</h4>
+                            <p>Imagine Professor Whiskers' school pantry:</p>
+                            <ul>
+                                <li><strong>Structured</strong> 📋 = A neatly labeled tin of kibble: "Tuna Flavour, 200g, Best Before Jan 2026"</li>
+                                <li><strong>Unstructured</strong> 🖼️ = A mystery bag — might be treats, might be cat toys, impossible to tell without opening!</li>
+                                <li><strong>Semi-structured</strong> 🔀 = A bag with a label that says "food" but doesn't say what kind or how much.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Accordion 3: Data Quality ── -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>⚠️ Data Quality: Garbage In, Garbage Out</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card" style="background: linear-gradient(135deg, rgba(239,68,68,0.1), rgba(249,115,22,0.08)); border-left: 4px solid #ef4444;">
+                            <h4>🗑️ GIGO — Garbage In, Garbage Out</h4>
+                            <p>This is one of the oldest principles in computing and it applies perfectly to machine learning: <strong>the quality of your output can never exceed the quality of your input.</strong> A brilliantly designed neural network trained on messy, biased, or mislabeled data will produce messy, biased, wrong predictions.</p>
+                        </div>
+
+                        <h4 style="margin-top: 24px;">Common Data Quality Problems:</h4>
+
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>⚖️ Biased Data</h4>
+                                <p>The training data over-represents or under-represents certain groups, leading the model to make unfair or inaccurate predictions for underrepresented cases.</p>
+                                <p><strong>Example:</strong> A facial recognition system trained mostly on light-skinned faces performs poorly on darker-skinned faces.</p>
+                                <p><strong>Cat analogy:</strong> If all of Professor Whiskers' flashcards show only orange tabbies, the kitten will be confused by black cats.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🕳️ Missing Values</h4>
+                                <p>Some examples have incomplete information — blank cells, null fields, or dropped sensor readings.</p>
+                                <p><strong>Impact:</strong> Models may learn wrong patterns or crash when they encounter missing data.</p>
+                                <p><strong>Fix:</strong> Imputation (fill in with averages) or removal of incomplete rows.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🔖 Mislabeled Examples</h4>
+                                <p>Some examples have the wrong label — a photo of a cat tagged "dog", or an email tagged "spam" that is actually legitimate.</p>
+                                <p><strong>Impact:</strong> Directly teaches the model the wrong answer.</p>
+                                <p><strong>Cat analogy:</strong> Professor Whiskers accidentally put the wrong answer on the back of some flashcards!</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>📉 Insufficient Data</h4>
+                                <p>Too few examples for the model to learn reliable patterns — especially for rare classes or edge cases.</p>
+                                <p><strong>Example:</strong> Trying to train a cancer detection model with only 50 patient scans.</p>
+                                <p><strong>Fix:</strong> Data augmentation, transfer learning, or collecting more data.</p>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px; background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(5,150,105,0.08)); border-left: 4px solid #10b981;">
+                            <h4>✅ What Good Data Looks Like</h4>
+                            <ul>
+                                <li><strong>Sufficient quantity</strong> — enough examples to cover the real-world distribution</li>
+                                <li><strong>Diversity</strong> — represents all relevant groups and edge cases fairly</li>
+                                <li><strong>Accuracy</strong> — labels are correct and data is clean</li>
+                                <li><strong>Relevance</strong> — the data actually relates to the task being solved</li>
+                                <li><strong>Freshness</strong> — data isn't so old that the world has changed</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Accordion 4: Train / Validation / Test Split ── -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>✂️ Train / Validation / Test Split</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>You never train and evaluate a model on the <em>same</em> data. That would be like letting a student grade their own exam with the textbook open — it tells you nothing about whether they actually learned!</p>
+
+                        <p>Instead, the dataset is split into three separate portions:</p>
+
+                        <div class="terms-grid">
+                            <div class="term-card" style="border-left: 4px solid #7c3aed;">
+                                <h4>📚 Training Set (~70–80%)</h4>
+                                <p>The largest portion. The model sees these examples repeatedly and adjusts its parameters to fit the patterns.</p>
+                                <p><strong>Cat analogy:</strong> The pile of flashcards Professor Whiskers uses every day in class.</p>
+                            </div>
+                            <div class="term-card" style="border-left: 4px solid #059669;">
+                                <h4>📋 Validation Set (~10–15%)</h4>
+                                <p>Held out during training, used after each training epoch to measure how well the model generalises so far. Used to tune hyperparameters.</p>
+                                <p><strong>Cat analogy:</strong> The weekly pop-quiz flashcards. Used to check if the kitten is making progress.</p>
+                            </div>
+                            <div class="term-card" style="border-left: 4px solid #dc2626;">
+                                <h4>📝 Test Set (~10–15%)</h4>
+                                <p>Locked away and never touched until training is completely finished. Provides the final, unbiased measure of real-world performance.</p>
+                                <p><strong>Cat analogy:</strong> The final exam. The kitten has never seen these flashcards before!</p>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 24px; text-align: center; padding: 20px; background: #f1f5f9; border-radius: 10px;">
+                            <p style="font-weight: bold; margin-bottom: 12px;">Visual: 80 / 10 / 10 Split on 1,000 examples</p>
+                            <div style="display: flex; gap: 4px; height: 40px; border-radius: 8px; overflow: hidden;">
+                                <div style="flex: 8; background: #7c3aed; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.85rem; font-weight: bold;">Training (800)</div>
+                                <div style="flex: 1; background: #059669; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.75rem; font-weight: bold;">Val (100)</div>
+                                <div style="flex: 1; background: #dc2626; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.75rem; font-weight: bold;">Test (100)</div>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px;">
+                            <h4>⚠️ Data Leakage — The Cardinal Sin</h4>
+                            <p><strong>Data leakage</strong> happens when information from the validation or test set accidentally "leaks" into training — making performance look better than it really is. This is a critical mistake that leads to models that seem great in the lab but fail in the real world.</p>
+                            <p><em>Professor Whiskers' equivalent: accidentally including the final exam questions in the study materials!</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Accordion 5: Real-World Datasets & Code ── -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🌍 Real-World Datasets &amp; Loading Data with Code</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>The AI community has released enormous, carefully curated datasets that have driven major breakthroughs. Here are some of the most important ones:</p>
+
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>🖼️ ImageNet</h4>
+                                <p><strong>14 million images</strong> across 21,000+ categories, each hand-labeled. Sparked the deep learning revolution in 2012 when AlexNet used it to achieve unprecedented image recognition accuracy.</p>
+                                <p><strong>Used for:</strong> Training convolutional neural networks</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🌐 Common Crawl</h4>
+                                <p>A <strong>petabyte-scale</strong> web crawl containing text from billions of web pages. The raw material behind GPT-2, GPT-3, and many other large language models.</p>
+                                <p><strong>Used for:</strong> Pre-training large language models</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🎙️ LibriSpeech</h4>
+                                <p><strong>1,000 hours</strong> of English audiobook speech with transcripts. A benchmark dataset for automatic speech recognition (ASR) systems.</p>
+                                <p><strong>Used for:</strong> Training speech-to-text models</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>🐱 Oxford-IIIT Pet Dataset</h4>
+                                <p><strong>7,349 images</strong> of 37 cat and dog breeds. A classic computer vision dataset — and yes, it has lots of cats! Used for fine-grained breed classification.</p>
+                                <p><strong>Great for:</strong> Beginners to practice image classification</p>
+                            </div>
+                        </div>
+
+                        <h4 style="margin-top: 28px; margin-bottom: 12px;">💻 Loading a Dataset with Python</h4>
+
+                        <p>With the <a href="https://huggingface.co/docs/datasets" target="_blank" rel="noopener">🤗 HuggingFace <code>datasets</code></a> library you can load thousands of research datasets in one line:</p>
+
+                        <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto;"><code><span style="color:#6ee7b7;"># Install: pip install datasets pandas</span>
+from datasets import load_dataset
+import pandas as pd
+
+<span style="color:#6ee7b7;"># Load a real dataset — Oxford Pets (37 cat &amp; dog breeds)</span>
+dataset = load_dataset("pcuenq/oxford-pets")
+
+<span style="color:#6ee7b7;"># Explore the structure</span>
+print(dataset)          <span style="color:#9ca3af;"># DatasetDict with train/test splits</span>
+print(dataset["train"][0])  <span style="color:#9ca3af;"># First training example</span>
+
+<span style="color:#6ee7b7;"># Convert to a pandas DataFrame for easy exploration</span>
+df = pd.DataFrame(dataset["train"])
+print(df.head())
+print(df["label"].value_counts())  <span style="color:#9ca3af;"># How many of each breed?</span>
+
+<span style="color:#6ee7b7;"># Check the split sizes</span>
+print(f"Training examples: {len(dataset['train'])}")
+print(f"Test examples:     {len(dataset['test'])}")</code></pre>
+
+                        <div class="term-card" style="margin-top: 20px;">
+                            <h4>📊 Loading a CSV Dataset with pandas</h4>
+                            <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto; margin-top: 12px;"><code>import pandas as pd
+from sklearn.model_selection import train_test_split
+
+<span style="color:#6ee7b7;"># Load from a CSV file</span>
+df = pd.read_csv("cat_features.csv")
+
+<span style="color:#6ee7b7;"># Inspect quality</span>
+print(df.info())          <span style="color:#9ca3af;"># Column types and missing values</span>
+print(df.isnull().sum())  <span style="color:#9ca3af;"># Count missing values per column</span>
+print(df.describe())      <span style="color:#9ca3af;"># Statistical summary</span>
+
+<span style="color:#6ee7b7;"># Split into train (70%), validation (15%), test (15%)</span>
+X = df.drop("label", axis=1)
+y = df["label"]
+
+X_train, X_temp, y_train, y_temp = train_test_split(
+    X, y, test_size=0.30, random_state=42
+)
+X_val, X_test, y_val, y_test = train_test_split(
+    X_temp, y_temp, test_size=0.50, random_state=42
+)
+
+print(f"Train: {len(X_train)}, Val: {len(X_val)}, Test: {len(X_test)}")</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /.accordion -->
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             SECTION 4: EXPERIMENTS
+        ═══════════════════════════════════════════════════════════ -->
+        <section id="experiments" class="lesson-section">
+            <h2>🧪 Experiments</h2>
+            <p style="color: var(--text-light); margin-bottom: 24px;">Hands-on activities to reinforce what you've learned about training data:</p>
+
+            <div class="experiments-grid">
+
+                <div class="experiment-card">
+                    <div style="font-size: 2.5rem; margin-bottom: 12px;">🎓</div>
+                    <h3>Google Teachable Machine</h3>
+                    <p>Train your own image classifier <strong>directly in the browser</strong> using your webcam! Use different amounts and types of training photos and watch how data quality affects accuracy. Professor Whiskers approves!</p>
+                    <ul style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 16px;">
+                        <li>Collect training images via webcam</li>
+                        <li>Train with 5 photos vs. 50 — compare results</li>
+                        <li>Try adding a bad/mislabeled class</li>
+                    </ul>
+                    <a href="https://teachablemachine.withgoogle.com/" target="_blank" rel="noopener" class="experiment-link">Open Teachable Machine →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <div style="font-size: 2.5rem; margin-bottom: 12px;">🤗</div>
+                    <h3>HuggingFace Datasets Hub</h3>
+                    <p>Browse <strong>thousands of real AI training datasets</strong> — from multilingual text corpora to medical imaging to audio. Filter by task, language, size, and licence to find datasets for any project.</p>
+                    <ul style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 16px;">
+                        <li>Search for "cats" or "animals"</li>
+                        <li>Check dataset cards for biases and limitations</li>
+                        <li>Try loading one with <code>load_dataset()</code></li>
+                    </ul>
+                    <a href="https://huggingface.co/datasets" target="_blank" rel="noopener" class="experiment-link">Explore HuggingFace Datasets →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <div style="font-size: 2.5rem; margin-bottom: 12px;">📊</div>
+                    <h3>Kaggle Datasets</h3>
+                    <p>Kaggle hosts <strong>over 250,000 public datasets</strong> across every domain imaginable. Download, explore in a notebook, and build a model — all for free. A perfect playground for training data experiments.</p>
+                    <ul style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 16px;">
+                        <li>Find the Cat vs. Dog dataset</li>
+                        <li>Check class balance and image quality</li>
+                        <li>Run an EDA (Exploratory Data Analysis) notebook</li>
+                    </ul>
+                    <a href="https://www.kaggle.com/datasets" target="_blank" rel="noopener" class="experiment-link">Browse Kaggle Datasets →</a>
+                </div>
+
+            </div>
+
+            <div class="term-card" style="margin-top: 32px; background: linear-gradient(135deg, rgba(37,99,235,0.06), rgba(124,58,237,0.06)); border-left: 4px solid var(--primary-color);">
+                <h3>🐍 Quick-Start: Explore a Dataset in 5 Minutes</h3>
+                <p>Copy this into a <a href="https://colab.research.google.com/" target="_blank" rel="noopener">Google Colab</a> notebook and run it to explore a real image dataset right now:</p>
+                <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; margin-top: 12px; overflow-x: auto;"><code><span style="color:#6ee7b7;"># Run in Google Colab (free GPU available!)</span>
+!pip install datasets -q
+
+from datasets import load_dataset
+import matplotlib.pyplot as plt
+
+<span style="color:#6ee7b7;"># Load Cats vs. Dogs</span>
+ds = load_dataset("microsoft/cats_vs_dogs", split="train[:200]")
+
+<span style="color:#6ee7b7;"># Show first 9 images</span>
+fig, axes = plt.subplots(3, 3, figsize=(8, 8))
+for i, ax in enumerate(axes.flatten()):
+    ax.imshow(ds[i]["image"])
+    label = "🐱 Cat" if ds[i]["labels"] == 0 else "🐕 Dog"
+    ax.set_title(label, fontsize=10)
+    ax.axis("off")
+plt.suptitle("Professor Whiskers' Training Flashcards!", fontsize=13)
+plt.tight_layout()
+plt.show()
+
+print(f"Total examples loaded: {len(ds)}")</code></pre>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             SECTION 5: RESOURCES
+        ═══════════════════════════════════════════════════════════ -->
+        <section id="resources" class="lesson-section">
+            <h2>📚 Resources</h2>
+            <p style="color: var(--text-light); margin-bottom: 24px;">Deepen your understanding with these carefully selected resources:</p>
+
+            <div class="terms-grid">
+                <div class="term-card">
+                    <h4>📖 Documentation &amp; Guides</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">
+                            <a href="https://huggingface.co/docs/datasets/index" target="_blank" rel="noopener">🤗 HuggingFace Datasets Docs</a>
+                            <p style="font-size: 0.85rem; color: var(--text-light); margin: 2px 0 0 0;">Official guide to loading, processing, and creating datasets</p>
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">
+                            <a href="https://scikit-learn.org/stable/modules/cross_validation.html" target="_blank" rel="noopener">🔬 Scikit-learn: Cross-validation &amp; Splitting</a>
+                            <p style="font-size: 0.85rem; color: var(--text-light); margin: 2px 0 0 0;">How to properly split and validate your datasets</p>
+                        </li>
+                        <li style="padding: 8px 0;">
+                            <a href="https://developers.google.com/machine-learning/crash-course/training-and-test-sets/splitting-data" target="_blank" rel="noopener">🧠 Google ML Crash Course: Splitting Data</a>
+                            <p style="font-size: 0.85rem; color: var(--text-light); margin: 2px 0 0 0;">Google's own primer on train/val/test splits</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="term-card">
+                    <h4>🎬 Videos &amp; Courses</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">
+                            <a href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank" rel="noopener">▶️ 3Blue1Brown: Neural Networks (Episode 1)</a>
+                            <p style="font-size: 0.85rem; color: var(--text-light); margin: 2px 0 0 0;">Visual, intuitive explanation of how models learn from data</p>
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">
+                            <a href="https://course.fast.ai/" target="_blank" rel="noopener">🚀 Fast.ai Practical Deep Learning</a>
+                            <p style="font-size: 0.85rem; color: var(--text-light); margin: 2px 0 0 0;">Free course — Lesson 1 covers datasets and training loops</p>
+                        </li>
+                        <li style="padding: 8px 0;">
+                            <a href="https://www.kaggle.com/learn/intro-to-machine-learning" target="_blank" rel="noopener">📊 Kaggle: Intro to Machine Learning</a>
+                            <p style="font-size: 0.85rem; color: var(--text-light); margin: 2px 0 0 0;">Free micro-course covering data, models, and validation</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="term-card">
+                    <h4>🔬 Notable Datasets to Explore</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">
+                            <a href="https://www.image-net.org/" target="_blank" rel="noopener">🖼️ ImageNet</a>
+                            <p style="font-size: 0.85rem; color: var(--text-light); margin: 2px 0 0 0;">14M images, 21K categories — sparked the DL revolution</p>
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">
+                            <a href="https://commoncrawl.org/" target="_blank" rel="noopener">🌐 Common Crawl</a>
+                            <p style="font-size: 0.85rem; color: var(--text-light); margin: 2px 0 0 0;">Petabyte-scale web text used to train GPT-class models</p>
+                        </li>
+                        <li style="padding: 8px 0;">
+                            <a href="https://www.openslr.org/12/" target="_blank" rel="noopener">🎙️ LibriSpeech</a>
+                            <p style="font-size: 0.85rem; color: var(--text-light); margin: 2px 0 0 0;">1,000 hours of speech — the benchmark for ASR models</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 24px; background: linear-gradient(135deg, rgba(251,191,36,0.1), rgba(245,158,11,0.08)); border-left: 4px solid #f59e0b;">
+                <h4>🐱 Professor Whiskers' Key Takeaways</h4>
+                <ul>
+                    <li>🗂️ <strong>Training data</strong> is the foundation — without it, there is no AI model.</li>
+                    <li>🏷️ <strong>Labeled data</strong> powers supervised learning; unlabeled data powers unsupervised.</li>
+                    <li>⚠️ <strong>Data quality</strong> matters more than data quantity — always audit your data.</li>
+                    <li>✂️ <strong>Always split</strong> into train / validation / test and never let the sets overlap.</li>
+                    <li>🌍 <strong>Real datasets</strong> like ImageNet and Common Crawl drove the biggest AI breakthroughs.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             LESSON NAVIGATION
+        ═══════════════════════════════════════════════════════════ -->
+        <nav class="lesson-navigation">
+            <a href="machine-learning-basics.html" class="lesson-nav-btn">
+                <span>←</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Previous</span>
+                    <span class="lesson-nav-btn-title">Machine Learning Basics</span>
+                </div>
+            </a>
+            <a href="neural-networks.html" class="lesson-nav-btn next">
+                <span>→</span>
+                <div class="lesson-nav-btn-content">
+                    <span class="lesson-nav-btn-label">Next</span>
+                    <span class="lesson-nav-btn-title">Neural Networks</span>
+                </div>
+            </a>
+        </nav>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Referencia - Learning AI, one cat at a time 🐱</p>
+        </div>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+</html>

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson 04: Large Language Models | Referencia</title>
+    <meta name="description" content="Lesson 03: Large Language Models - A literary cat with librarian glasses on a pile of books!">
+    <title>Lesson 03: Large Language Models | Referencia 🐱</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -13,50 +14,464 @@
                 <a href="../index.html" style="text-decoration: none; color: white;">
                     <h1 class="logo">Referencia</h1>
                 </a>
-                <p class="tagline">Lesson 04: Large Language Models</p>
+                <p class="tagline">Lesson 03: Large Language Models</p>
             </div>
         </nav>
     </header>
+
     <div class="lesson-header">
         <div class="container">
-            <div class="lesson-number">LESSON 04</div>
-            <h1 class="lesson-title">🔤 Large Language Models</h1>
-            <p class="lesson-subtitle">Transformers, training techniques, and LLM applications</p>
+            <div class="lesson-number">LESSON 03</div>
+            <h1 class="lesson-title">📚 Large Language Models</h1>
+            <p class="lesson-subtitle">A literary cat who has read everything - Understanding transformers & text generation!</p>
             <div class="lesson-info">
-                <span class="lesson-info-item">⏱️ 90 minutes</span>
+                <span class="lesson-info-item">⏱️ 60 minutes</span>
                 <span class="lesson-info-item">🟡 Intermediate</span>
+                <span class="lesson-info-item">📚 5 sections</span>
             </div>
         </div>
     </div>
+
+    <nav class="lesson-nav">
+        <div class="container">
+            <div class="lesson-nav-container">
+                <a href="#intro" class="lesson-nav-link active">Introduction</a>
+                <a href="#sketchnote" class="lesson-nav-link">Sketchnote</a>
+                <a href="#types" class="lesson-nav-link">Core Content</a>
+                <a href="#experiments" class="lesson-nav-link">Experiments</a>
+                <a href="#resources" class="lesson-nav-link">Resources</a>
+            </div>
+        </div>
+    </nav>
+
     <main class="container">
-        <section class="lesson-section">
-            <h2>📖 Lesson Coming Soon</h2>
+        <!-- SECTION 1: INTRODUCTION -->
+        <section id="intro" class="lesson-section">
+            <h2>📖 Introduction: What are Large Language Models?</h2>
+            
             <div class="lesson-intro">
-                <p>This lesson will cover transformer architecture, pre-training, fine-tuning, and modern LLMs.</p>
+                <p>Imagine a cat who has spent years in a library, reading every book ever written—novels, textbooks, websites, code, conversations. This <strong>literary cat with librarian glasses</strong> 📚🐱 has absorbed so much text that it can now continue any sentence you start, answer questions, write stories, and even code!</p>
+                
+                <p>That's essentially what a <strong>Large Language Model (LLM)</strong> is—a neural network trained on massive amounts of text data that learns to predict the next word, token by token. GPT, Claude, Llama, Gemini—they're all incredibly well-read cats!</p>
+            </div>
+
+            <div class="term-card" style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(37, 99, 235, 0.1)); border-left: 4px solid #22c55e;">
+                <h3>💡 Key Insight</h3>
+                <p><strong>Large Language Models</strong> are neural networks trained to predict the next token in a sequence. By training on billions of words, they learn language patterns, facts, reasoning, and even style!</p>
+                <p><em>"LLM: A cat that's read everything and can finish your sentences!"</em></p>
+            </div>
+
+            <h3>🎯 What You'll Learn</h3>
+            <ul>
+                <li>How LLMs work: tokenization and next-token prediction</li>
+                <li>The Transformer architecture and attention mechanism</li>
+                <li>Training LLMs: pre-training and fine-tuning</li>
+                <li>Popular LLMs: GPT, Claude, Llama, Gemini</li>
+                <li>Capabilities and limitations of LLMs</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 2: SKETCHNOTE -->
+        <section id="sketchnote" class="lesson-section">
+            <h2>🎨 Sketchnote: Visual Summary</h2>
+            <p style="color: var(--text-light); margin-bottom: 20px;">The well-read literary cat!</p>
+
+            <div class="sketchnote-container">
+                <div class="sketchnote-placeholder">
+                    <h3>🖼️ Sketchnote Concept</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;"><strong>A literary cat surrounded by knowledge:</strong></p>
+                    
+                    <div style="background: linear-gradient(135deg, #fef3c7, #dbeafe); padding: 30px; border-radius: 10px; text-align: center;">
+                        <p style="font-size: 4rem;">🐱📚</p>
+                        <h4>Professor Whiskers</h4>
+                        <p><em>The Literary Cat</em></p>
+                        
+                        <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px; flex-wrap: wrap;">
+                            <div style="background: white; padding: 15px; border-radius: 8px; max-width: 200px;">
+                                <p>📖 Has read:</p>
+                                <ul style="text-align: left; font-size: 0.85rem;">
+                                    <li>Wikipedia (all of it!)</li>
+                                    <li>Books & novels</li>
+                                    <li>Code repositories</li>
+                                    <li>Conversations</li>
+                                    <li>Scientific papers</li>
+                                </ul>
+                            </div>
+                            <div style="background: white; padding: 15px; border-radius: 8px; max-width: 200px;">
+                                <p>🎯 Can do:</p>
+                                <ul style="text-align: left; font-size: 0.85rem;">
+                                    <li>Finish your sentences</li>
+                                    <li>Answer questions</li>
+                                    <li>Write stories</li>
+                                    <li>Generate code</li>
+                                    <li>Explain concepts</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 25px; padding: 15px; background: #f0f9ff; border-radius: 8px;">
+                        <p><strong>Process Flow:</strong></p>
+                        <p>📝 "The cat sat on the..." → 🐱📚 *thinks* → 🔤 "mat" (or "couch" or "keyboard")</p>
+                        <p>Token by token, predicting what comes next!</p>
+                    </div>
+                    
+                    <p style="margin-top: 20px; color: var(--text-light);">
+                        💡 Save your sketchnote as: <code>/assets/sketchnotes/llms.png</code>
+                    </p>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px;">
+                <h3>🐱 The Literary Cat Story</h3>
+                <p><strong>Background:</strong> Professor Whiskers spent years in the Great Internet Library, reading everything: Wikipedia, novels, StackOverflow, Reddit, academic papers, code repositories...</p>
+                <p><strong>Superpower:</strong> Given any text, it can predict what comes next! "The Eiffel Tower is located in..." → "Paris, France"</p>
+                <p><strong>How it works:</strong> Not by "understanding" like humans, but by recognizing patterns from all that reading. It knows that "Paris" often follows mentions of "Eiffel Tower"!</p>
+                <p><strong>The twist:</strong> By just predicting next words really well, it can appear to reason, write creatively, and solve problems!</p>
             </div>
         </section>
+
+        <!-- SECTION 3: CORE CONTENT -->
+        <section id="types" class="lesson-section">
+            <h2>📚 Core Content</h2>
+
+            <div class="accordion">
+                <!-- How LLMs Work -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🔤 How LLMs Work: Tokenization & Prediction</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>Step 1: Tokenization</h4>
+                            <p>Text is split into <strong>tokens</strong>—usually words or parts of words.</p>
+                            <pre style="background: #f3f4f6; padding: 10px; border-radius: 5px;"><code>"The cat sat" → ["The", " cat", " sat"]
+"unbelievable" → ["un", "believ", "able"]</code></pre>
+                            <p>LLMs work with ~50,000 possible tokens in their vocabulary.</p>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>Step 2: Next-Token Prediction</h4>
+                            <p>The core task: given previous tokens, predict the next one.</p>
+                            <pre style="background: #f3f4f6; padding: 10px; border-radius: 5px;"><code>Input: "The cat sat on the"
+Output probabilities:
+  "mat" → 15%
+  "floor" → 12%
+  "couch" → 10%
+  "keyboard" → 8% (if trained on programmer data! 😸)
+  ...</code></pre>
+                            <p>The model outputs a probability for EVERY token in its vocabulary!</p>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>Step 3: Autoregressive Generation</h4>
+                            <p>To generate text, keep predicting and appending:</p>
+                            <ol>
+                                <li>"The cat" → predict "sat" → append</li>
+                                <li>"The cat sat" → predict "on" → append</li>
+                                <li>"The cat sat on" → predict "the" → append</li>
+                                <li>"The cat sat on the" → predict "mat" → append</li>
+                                <li>... continue until done!</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transformer Architecture -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🔮 The Transformer Architecture</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>🌟 Attention Is All You Need</h4>
+                            <p>The <strong>Transformer</strong> architecture (2017) revolutionized NLP. Key innovation: <strong>self-attention</strong>.</p>
+                            <p>Self-attention lets the model look at ALL other words when processing each word, not just nearby ones!</p>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>How Attention Works (Simplified)</h4>
+                            <p><strong>Example:</strong> "The cat didn't cross the street because <u>it</u> was too tired."</p>
+                            <p>What does "it" refer to? The cat or the street?</p>
+                            <p><strong>Attention mechanism:</strong> The model learns to look back at "cat" when processing "it" because they're related.</p>
+                            <p>Query: "What is 'it' looking for?"<br>
+                            Key: "What can each word offer?"<br>
+                            Value: "What information does each word have?"</p>
+                        </div>
+
+                        <div class="terms-grid" style="margin-top: 20px;">
+                            <div class="term-card">
+                                <h4>Multi-Head Attention</h4>
+                                <p>Multiple attention "heads" run in parallel, each learning different relationships (grammar, meaning, style, etc.)</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Feed-Forward Layers</h4>
+                                <p>After attention, each token goes through dense neural network layers for more processing.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Layer Normalization</h4>
+                                <p>Keeps values stable during training. Applied after attention and feed-forward.</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Positional Encoding</h4>
+                                <p>Adds position info since attention doesn't inherently know word order.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Training LLMs -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🏋️ Training LLMs: Pre-training & Fine-tuning</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="term-card">
+                            <h4>Phase 1: Pre-training</h4>
+                            <p><strong>Goal:</strong> Learn language patterns from massive text data</p>
+                            <p><strong>Data:</strong> Billions of words from the internet, books, code</p>
+                            <p><strong>Task:</strong> Predict the next token (self-supervised)</p>
+                            <p><strong>Cost:</strong> Millions of dollars in compute! 💸</p>
+                            <p><em>Professor Whiskers reads the entire library...</em></p>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>Phase 2: Fine-tuning</h4>
+                            <p><strong>Goal:</strong> Specialize for specific tasks or behaviors</p>
+                            <p><strong>Methods:</strong></p>
+                            <ul>
+                                <li><strong>Supervised Fine-tuning (SFT):</strong> Train on curated Q&A pairs</li>
+                                <li><strong>RLHF:</strong> Reinforcement Learning from Human Feedback</li>
+                                <li><strong>Instruction Tuning:</strong> Learn to follow instructions</li>
+                            </ul>
+                            <p><em>Teaching Professor Whiskers to be helpful, harmless, and honest!</em></p>
+                        </div>
+
+                        <div class="term-card">
+                            <h4>RLHF: How ChatGPT Became Chat-GPT</h4>
+                            <ol>
+                                <li>Train base model (GPT-3.5)</li>
+                                <li>Fine-tune on conversations (SFT)</li>
+                                <li>Humans rank outputs (which response is better?)</li>
+                                <li>Train a "reward model" on rankings</li>
+                                <li>Use RL to optimize for higher rewards</li>
+                            </ol>
+                            <p>This makes the model more helpful and less likely to produce harmful content!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Popular LLMs -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>🌟 Popular LLMs: The Cat Family</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="terms-grid">
+                            <div class="term-card">
+                                <h4>GPT-4 / GPT-4o (OpenAI)</h4>
+                                <p>The most well-known LLM. Powers ChatGPT. Multimodal (text + images).</p>
+                                <p><strong>Strengths:</strong> Reasoning, coding, general knowledge</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Claude (Anthropic)</h4>
+                                <p>Known for being helpful, harmless, honest. Long context windows (100K+ tokens).</p>
+                                <p><strong>Strengths:</strong> Safety, long documents, coding</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Gemini (Google)</h4>
+                                <p>Google's flagship model. Natively multimodal from the start.</p>
+                                <p><strong>Strengths:</strong> Multimodal reasoning, integration with Google</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Llama 3 (Meta)</h4>
+                                <p>Open-weights model you can run locally! Very capable for its size.</p>
+                                <p><strong>Strengths:</strong> Open source, customizable, local deployment</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Mistral / Mixtral</h4>
+                                <p>French company making efficient, open models. Mixture of Experts architecture.</p>
+                                <p><strong>Strengths:</strong> Efficiency, open weights, European</p>
+                            </div>
+                            <div class="term-card">
+                                <h4>Phi-3 (Microsoft)</h4>
+                                <p>Small but mighty! Trained on high-quality data, runs on phones.</p>
+                                <p><strong>Strengths:</strong> Small size, efficient, edge deployment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Capabilities & Limitations -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>⚖️ Capabilities & Limitations</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="term-card" style="border-left: 4px solid #22c55e;">
+                                <h4>✅ What LLMs CAN Do</h4>
+                                <ul>
+                                    <li>Generate coherent, contextual text</li>
+                                    <li>Answer questions (from training data)</li>
+                                    <li>Summarize, translate, explain</li>
+                                    <li>Write code and debug</li>
+                                    <li>Roleplay and creative writing</li>
+                                    <li>Follow complex instructions</li>
+                                    <li>In-context learning (few-shot)</li>
+                                </ul>
+                            </div>
+                            <div class="term-card" style="border-left: 4px solid #ef4444;">
+                                <h4>❌ What LLMs CAN'T Do (Well)</h4>
+                                <ul>
+                                    <li>Access real-time information (without tools)</li>
+                                    <li>Guarantee factual accuracy (hallucinations!)</li>
+                                    <li>Truly "understand" like humans</li>
+                                    <li>Reliable math/counting</li>
+                                    <li>Consistent long-term memory</li>
+                                    <li>Know when they don't know</li>
+                                    <li>Avoid biases from training data</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="term-card" style="margin-top: 20px;">
+                            <h4>🎭 Hallucinations</h4>
+                            <p>LLMs can confidently generate false information because they're pattern-matching, not truth-checking.</p>
+                            <p><strong>Example:</strong> Ask for a citation, and it might invent a paper that doesn't exist!</p>
+                            <p><strong>Why:</strong> The model learned that citations LOOK like [Author, Year, Journal], so it generates plausible-looking ones.</p>
+                            <p><em>Professor Whiskers sometimes makes up books that sound real but don't exist!</em> 📚🙀</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: EXPERIMENTS -->
+        <section id="experiments" class="lesson-section">
+            <h2>🧪 Experiments: Chat with LLMs!</h2>
+            <p style="color: var(--text-light); margin-bottom: 30px;">Experience the power of language models firsthand!</p>
+
+            <div class="experiments-grid">
+                <div class="experiment-card">
+                    <h3>💬 ChatGPT</h3>
+                    <p>The most famous LLM interface. Try having conversations, asking it to explain concepts, or generate code!</p>
+                    <p><strong>Try:</strong> "Explain quantum computing like I'm 5"</p>
+                    <a href="https://chat.openai.com" class="experiment-link" target="_blank">Open ChatGPT →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🤖 Claude</h3>
+                    <p>Anthropic's helpful assistant. Great for long documents and nuanced discussions.</p>
+                    <p><strong>Try:</strong> Upload a PDF and ask questions about it</p>
+                    <a href="https://claude.ai" class="experiment-link" target="_blank">Try Claude →</a>
+                </div>
+
+                <div class="experiment-card">
+                    <h3>🦙 Run Llama Locally</h3>
+                    <p>Run open-source LLMs on your own computer with Ollama!</p>
+                    <p><strong>Try:</strong> <code>ollama run llama3</code></p>
+                    <a href="https://ollama.ai" class="experiment-link" target="_blank">Get Ollama →</a>
+                </div>
+            </div>
+
+            <div class="term-card" style="margin-top: 30px; background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(37, 99, 235, 0.1));">
+                <h3>💻 Use LLMs in Code</h3>
+                <pre style="background: #1f2937; color: #e5e7eb; padding: 20px; border-radius: 8px; overflow-x: auto;"><code># Using OpenAI's API
+from openai import OpenAI
+
+client = OpenAI()  # Uses OPENAI_API_KEY env variable
+
+# Chat with GPT-4
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[
+        {"role": "system", "content": "You are a helpful cat professor."},
+        {"role": "user", "content": "Explain transformers in one sentence."}
+    ]
+)
+
+print(response.choices[0].message.content)
+# "Transformers use self-attention to process all words simultaneously,
+#  allowing the model to understand context from any position in the text! 🐱"</code></pre>
+            </div>
+        </section>
+
+        <!-- SECTION 5: RESOURCES -->
+        <section id="resources" class="lesson-section">
+            <h2>📚 Resources for Further Learning</h2>
+            
+            <div class="resources-section">
+                <div class="resources-columns">
+                    <div class="resource-column">
+                        <h3>🎥 Videos</h3>
+                        <ul>
+                            <li><a href="https://www.youtube.com/watch?v=wjZofJX0v4M" target="_blank">Transformers Explained - 3Blue1Brown</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=zjkBMFhNj_g" target="_blank">Attention Is All You Need - Yannic Kilcher</a></li>
+                            <li><a href="https://www.youtube.com/watch?v=kCc8FmEb1nY" target="_blank">Let's Build GPT - Andrej Karpathy</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📖 Articles</h3>
+                        <ul>
+                            <li><a href="https://jalammar.github.io/illustrated-transformer/" target="_blank">The Illustrated Transformer</a></li>
+                            <li><a href="https://lilianweng.github.io/posts/2023-01-27-the-transformer-family-v2/" target="_blank">Transformer Family - Lilian Weng</a></li>
+                            <li><a href="https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/" target="_blank">What Is ChatGPT Doing? - Wolfram</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>🛠️ Tools</h3>
+                        <ul>
+                            <li><a href="https://platform.openai.com/" target="_blank">OpenAI API</a></li>
+                            <li><a href="https://huggingface.co/" target="_blank">Hugging Face</a></li>
+                            <li><a href="https://ollama.ai/" target="_blank">Ollama (Local LLMs)</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-column">
+                        <h3>📚 Courses</h3>
+                        <ul>
+                            <li><a href="https://www.deeplearning.ai/courses/chatgpt-prompt-engineering-for-developers/" target="_blank">Prompt Engineering - DeepLearning.AI</a></li>
+                            <li><a href="https://stanford-cs324.github.io/winter2022/" target="_blank">Stanford CS324 - LLMs</a></li>
+                            <li><a href="https://huggingface.co/learn/nlp-course" target="_blank">HuggingFace NLP Course</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
         <nav class="lesson-navigation">
-            <a href="deep-learning.html" class="lesson-nav-btn">
+            <a href="neural-networks.html" class="lesson-nav-btn">
                 <span>←</span>
                 <div class="lesson-nav-btn-content">
                     <span class="lesson-nav-btn-label">Previous</span>
-                    <span class="lesson-nav-btn-title">Deep Learning</span>
+                    <span class="lesson-nav-btn-title">Neural Networks</span>
                 </div>
             </a>
-            <a href="../index.html" class="lesson-nav-btn next">
+            <a href="gans.html" class="lesson-nav-btn next">
                 <span>→</span>
                 <div class="lesson-nav-btn-content">
-                    <span class="lesson-nav-btn-label">Back to</span>
-                    <span class="lesson-nav-btn-title">All Lessons</span>
+                    <span class="lesson-nav-btn-label">Next Lesson</span>
+                    <span class="lesson-nav-btn-title">GANs</span>
                 </div>
             </a>
         </nav>
     </main>
+
     <footer>
         <div class="container">
-            <p>&copy; 2025 Referencia - An open-source AI & LLM learning platform</p>
+            <p>&copy; 2026 Referencia - Learning AI, one cat at a time 🐱</p>
         </div>
     </footer>
+
     <script src="../script.js"></script>
 </body>
 </html>
